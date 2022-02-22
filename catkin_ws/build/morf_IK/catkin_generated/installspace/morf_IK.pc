@@ -1,0 +1,8 @@
+prefix=/home/leonor/tese/catkin_ws/install
+
+Name: morf_IK
+Description: Description of morf_IK
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 
