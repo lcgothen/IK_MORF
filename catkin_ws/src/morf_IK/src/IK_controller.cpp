@@ -1,5 +1,7 @@
 // PARA CORRER
 // . ~/tese/catkin_ws/devel/setup.bash
+// cd home/leonor/tese/IK_MORF/catkin_ws/devel/lib/morf_IK
+// ./IK_controller
 
 #include <cstdio>
 #include <cstdlib>
@@ -29,14 +31,120 @@ class PointCoord
         return aux;
     }
 
-    PointCoord morf2TC0() // change coordinates from world frame to TC0 frame
+    PointCoord morf2FL() // change coordinates from morf frame to front left leg frame
     {
-        PointCoord aux;
+        PointCoord aux, aux0, aux1;
 
-        // find a way to get the values automatically
-        aux.x = -z-0.15904;
+        /*aux.x = -z-0.15904;
         aux.y = y-0.097885;
-        aux.z = x+0.009518;
+        aux.z = x+0.009518;*/
+
+        aux0.x=z+1.5904e-01;
+        aux0.y=x+1.0487e-02;
+        aux0.z=y-6.2794e-02;
+
+        aux1.x=-aux0.x+7.3954e-05;
+        aux1.y=-aux0.y-2.1711e-03;
+        aux1.z=aux0.z-2.3107e-02;
+
+        aux.x=aux1.x+6.9797e-05;
+        aux.y=aux1.z-1.1983e-02;
+        aux.z=-aux1.y-1.2019e-03;
+
+        return aux;
+    }
+
+    PointCoord morf2ML() // change coordinates from morf frame to middle left leg frame
+    {
+        PointCoord aux, aux0, aux1;
+
+        aux0.x=z+1.5041e-02;
+        aux0.y=x+1.0487e-02;
+        aux0.z=y-6.2780e-02;
+
+        aux1.x=-aux0.x+7.3954e-05;
+        aux1.y=-aux0.y-2.1711e-03;
+        aux1.z=aux0.z-2.3107e-02;
+
+        aux.x=aux1.x+6.9797e-05;
+        aux.y=aux1.z-1.1983e-02;
+        aux.z=-aux1.y-1.2019e-03;
+
+        return aux;
+    }
+
+    PointCoord morf2BL() // change coordinates from morf frame to back left leg frame
+    {
+        PointCoord aux, aux0, aux1;
+
+        aux0.x=z-1.2896e-01;
+        aux0.y=x+1.0487e-02;
+        aux0.z=y-6.2775e-02;
+
+        aux1.x=-aux0.x+7.3954e-05;
+        aux1.y=-aux0.y-2.1711e-03;
+        aux1.z=aux0.z-2.3107e-02;
+
+        aux.x=aux1.x+6.9797e-05;
+        aux.y=aux1.z-1.1983e-02;
+        aux.z=-aux1.y-1.2019e-03;
+
+        return aux;
+    }
+
+    PointCoord morf2FR() // change coordinates from morf frame to front right leg frame
+    {
+        PointCoord aux, aux0, aux1;
+
+        aux0.x=-z-1.5942e-01;
+        aux0.y=x+1.0488e-02;
+        aux0.z=-y-6.2777e-02;
+
+        aux1.x=-aux0.x+7.3954e-05;
+        aux1.y=-aux0.y-2.1711e-03;
+        aux1.z=aux0.z-2.3107e-02;
+
+        aux.x=aux1.x+6.9648e-05;
+        aux.y=aux1.z-1.1983e-02;
+        aux.z=-aux1.y-1.2020e-03;
+
+        return aux;
+    }
+
+    PointCoord morf2MR() // change coordinates from morf frame to middle right leg frame
+    {
+        PointCoord aux, aux0, aux1;
+
+        aux0.x=-z-1.4819e-02;
+        aux0.y=x+1.0488e-02;
+        aux0.z=-y-6.2778e-02;
+
+        aux1.x=-aux0.x+7.3954e-05;
+        aux1.y=-aux0.y-2.1711e-03;
+        aux1.z=aux0.z-2.3107e-02;
+
+        aux.x=aux1.x+6.9648e-05;
+        aux.y=aux1.z-1.1983e-02;
+        aux.z=-aux1.y-1.2020e-03;
+
+        return aux;
+    }
+
+    PointCoord morf2BR() // change coordinates from morf frame to back right leg frame
+    {
+        PointCoord aux, aux0, aux1;
+
+        aux0.x=-z+1.2918e-01;
+        aux0.y=x+1.0488e-02;
+        aux0.z=-y-6.2779e-02;
+
+        aux1.x=-aux0.x+7.3954e-05;
+        aux1.y=-aux0.y-2.1711e-03;
+        aux1.z=aux0.z-2.3107e-02;
+
+        aux.x=aux1.x+6.9648e-05;
+        aux.y=aux1.z-1.1983e-02;
+        aux.z=-aux1.y-1.2020e-03;
 
         return aux;
     }
@@ -55,12 +163,21 @@ class IK_angles
 
         th1 = atan2(-target.x, target.y);
 
+        xc1 = cos(th1)*target.x+sin(th1)*target.y-L1;
+        yc1 = sin(th1)*target.x+cos(th1)*target.y;
+        zc1 = target.z-L0;
+
+        th2 = acos((pow(L3,2)-pow(yc1,2)-pow(zc1,2)-pow(L2,2))/(-2*L2*sqrt(pow(yc1,2)+pow(zc1,2))))-atan2(-zc1,yc1)+offset2;
+        th3 = acos((pow(yc1,2)+pow(zc1,2)-pow(L2,2)-pow(L3,2))/(2*L2*L3))+offset3;
+
+        /* OLD IK calcs
         xc1 = target.y-L1*cos(th1);
         yc1 = target.z-L0;
         zc1 = target.x;
 
         th2 = acos((pow(L3,2)-pow(xc1,2)-pow(yc1,2)-pow(L2,2))/(-2*L2*sqrt(pow(xc1,2)+pow(yc1,2))))-atan2(-yc1,xc1)+offset2;
         th3 = acos((pow(xc1,2)+pow(yc1,2)-pow(L2,2)-pow(L3,2))/(2*L2*L3))+offset3;
+        */
     }
 };
 
@@ -74,21 +191,20 @@ int main(int argc, char **argv)
 
     // target coords
     PointCoord target;
-    target.x = -0.067814;
-    target.y = 0.18821;
-    target.z = -0.18;
-    PointCoord targetTC0 = target.morf2TC0(); //convert to TC0 frame
+    
+    target.x = -5.9516e-02;
+    target.y = +1.9789e-01;
+    target.z = -2.0904e-01;
+    
+    
+    PointCoord targetFL = target.morf2FL(); //convert to front left leg frame
 
-    ROS_INFO("%f, %f, %f", targetTC0.x, targetTC0.y, targetTC0.z);
+    ROS_INFO("%f, %f, %f", targetFL.x, targetFL.y, targetFL.z);
 
-    //float aTC0, aCF0, aFT0; // angles
 
-    // IK equations
-    //aTC0 = atan2(-targetTC0.x, targetTC0.y);
-
-    IK_angles leg0;
-    leg0.get_angles(targetTC0);
-    ROS_INFO("%f, %f, %f", leg0.th1, leg0.th2, leg0.th3);
+    IK_angles FL;
+    FL.get_angles(targetFL);
+    ROS_INFO("%f, %f, %f", FL.th1, FL.th2, FL.th3);
 
     /* COMM TEST */
 
@@ -99,10 +215,9 @@ int main(int argc, char **argv)
     while (ros::ok())
     {
         msg.data.clear();
-        //msg.data.push_back(aTC0);
-        msg.data.push_back(leg0.th1);
-        msg.data.push_back(leg0.th2);
-        msg.data.push_back(leg0.th3);
+        msg.data.push_back(FL.th1);
+        msg.data.push_back(FL.th2);
+        msg.data.push_back(FL.th3);
 
         //ROS_INFO("%f, %f, %f", msg.data[0], msg.data[1], msg.data[2]);
 

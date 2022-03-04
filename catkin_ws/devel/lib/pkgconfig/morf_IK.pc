@@ -1,4 +1,4 @@
-prefix=/home/leonor/tese/catkin_ws/devel
+prefix=/home/leonor/tese/IK_MORF/catkin_ws/devel
 
 Name: morf_IK
 Description: Description of morf_IK

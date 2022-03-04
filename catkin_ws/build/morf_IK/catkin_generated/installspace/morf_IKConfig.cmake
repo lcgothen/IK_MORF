@@ -67,14 +67,14 @@ set(morf_IK_CONFIG_INCLUDED TRUE)
 
 # set variables for source/devel/install prefixes
 if("FALSE" STREQUAL "TRUE")
-  set(morf_IK_SOURCE_PREFIX /home/leonor/tese/catkin_ws/src/morf_IK)
-  set(morf_IK_DEVEL_PREFIX /home/leonor/tese/catkin_ws/devel)
+  set(morf_IK_SOURCE_PREFIX /home/leonor/tese/IK_MORF/catkin_ws/src/morf_IK)
+  set(morf_IK_DEVEL_PREFIX /home/leonor/tese/IK_MORF/catkin_ws/devel)
   set(morf_IK_INSTALL_PREFIX "")
   set(morf_IK_PREFIX ${morf_IK_DEVEL_PREFIX})
 else()
   set(morf_IK_SOURCE_PREFIX "")
   set(morf_IK_DEVEL_PREFIX "")
-  set(morf_IK_INSTALL_PREFIX /home/leonor/tese/catkin_ws/install)
+  set(morf_IK_INSTALL_PREFIX /home/leonor/tese/IK_MORF/catkin_ws/install)
   set(morf_IK_PREFIX ${morf_IK_INSTALL_PREFIX})
 endif()
 
@@ -154,7 +154,7 @@ foreach(library ${libraries})
     set(lib_path "")
     set(lib "${library}-NOTFOUND")
     # since the path where the library is found is returned we have to iterate over the paths manually
-    foreach(path /home/leonor/tese/catkin_ws/install/lib;/opt/ros/noetic/lib)
+    foreach(path /home/leonor/tese/IK_MORF/catkin_ws/install/lib;/opt/ros/melodic/lib)
       find_library(lib ${library}
         PATHS ${path}
         NO_DEFAULT_PATH NO_CMAKE_FIND_ROOT_PATH)
@@ -211,7 +211,7 @@ foreach(depend ${depends})
   _unpack_libraries_with_build_configuration(morf_IK_LIBRARIES ${morf_IK_LIBRARIES})
 
   _list_append_unique(morf_IK_LIBRARY_DIRS ${${morf_IK_dep}_LIBRARY_DIRS})
-  _list_append_deduplicate(morf_IK_EXPORTED_TARGETS ${${morf_IK_dep}_EXPORTED_TARGETS})
+  list(APPEND morf_IK_EXPORTED_TARGETS ${${morf_IK_dep}_EXPORTED_TARGETS})
 endforeach()
 
 set(pkg_cfg_extras "")

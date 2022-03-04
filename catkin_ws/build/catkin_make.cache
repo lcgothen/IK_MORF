@@ -1,2 +1,2 @@
 morf_IK
--DCATKIN_DEVEL_PREFIX=/home/leonor/tese/catkin_ws/devel -DCMAKE_INSTALL_PREFIX=/home/leonor/tese/catkin_ws/install -G Unix Makefiles
+-DCATKIN_DEVEL_PREFIX=/home/leonor/tese/IK_MORF/catkin_ws/devel -DCMAKE_INSTALL_PREFIX=/home/leonor/tese/IK_MORF/catkin_ws/install -G Unix Makefiles

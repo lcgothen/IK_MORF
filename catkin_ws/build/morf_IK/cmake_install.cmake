@@ -1,8 +1,8 @@
-# Install script for directory: /home/leonor/tese/catkin_ws/src/morf_IK
+# Install script for directory: /home/leonor/tese/IK_MORF/catkin_ws/src/morf_IK
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "/home/leonor/tese/catkin_ws/install")
+  set(CMAKE_INSTALL_PREFIX "/home/leonor/tese/IK_MORF/catkin_ws/install")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -38,17 +38,17 @@ if(NOT DEFINED CMAKE_CROSSCOMPILING)
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/leonor/tese/catkin_ws/build/morf_IK/catkin_generated/installspace/morf_IK.pc")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/leonor/tese/IK_MORF/catkin_ws/build/morf_IK/catkin_generated/installspace/morf_IK.pc")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/morf_IK/cmake" TYPE FILE FILES
-    "/home/leonor/tese/catkin_ws/build/morf_IK/catkin_generated/installspace/morf_IKConfig.cmake"
-    "/home/leonor/tese/catkin_ws/build/morf_IK/catkin_generated/installspace/morf_IKConfig-version.cmake"
+    "/home/leonor/tese/IK_MORF/catkin_ws/build/morf_IK/catkin_generated/installspace/morf_IKConfig.cmake"
+    "/home/leonor/tese/IK_MORF/catkin_ws/build/morf_IK/catkin_generated/installspace/morf_IKConfig-version.cmake"
     )
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/morf_IK" TYPE FILE FILES "/home/leonor/tese/catkin_ws/src/morf_IK/package.xml")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/morf_IK" TYPE FILE FILES "/home/leonor/tese/IK_MORF/catkin_ws/src/morf_IK/package.xml")
 endif()
 
