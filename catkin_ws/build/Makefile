@@ -285,6 +285,32 @@ gtest/fast:
 .PHONY : gtest/fast
 
 #=============================================================================
+# Target rules for targets named control
+
+# Build rule for target.
+control: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 control
+.PHONY : control
+
+# fast build rule for target.
+control/fast:
+	$(MAKE) -f morf_IK/CMakeFiles/control.dir/build.make morf_IK/CMakeFiles/control.dir/build
+.PHONY : control/fast
+
+#=============================================================================
+# Target rules for targets named coords
+
+# Build rule for target.
+coords: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 coords
+.PHONY : coords
+
+# fast build rule for target.
+coords/fast:
+	$(MAKE) -f morf_IK/CMakeFiles/coords.dir/build.make morf_IK/CMakeFiles/coords.dir/build
+.PHONY : coords/fast
+
+#=============================================================================
 # Target rules for targets named roscpp_generate_messages_py
 
 # Build rule for target.
@@ -514,6 +540,8 @@ help:
 	@echo "... gmock"
 	@echo "... gtest_main"
 	@echo "... gtest"
+	@echo "... control"
+	@echo "... coords"
 	@echo "... roscpp_generate_messages_py"
 	@echo "... roscpp_generate_messages_eus"
 	@echo "... roscpp_generate_messages_lisp"

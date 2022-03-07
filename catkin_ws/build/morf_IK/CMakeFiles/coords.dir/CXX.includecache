@@ -1,0 +1,30 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/leonor/tese/IK_MORF/catkin_ws/src/morf_IK/include/coordinates.cpp
+cstdio
+-
+cstdlib
+-
+sstream
+-
+cmath
+-
+coordinates.hpp
+/home/leonor/tese/IK_MORF/catkin_ws/src/morf_IK/include/coordinates.hpp
+
+/home/leonor/tese/IK_MORF/catkin_ws/src/morf_IK/include/coordinates.hpp
+cstdio
+-
+cstdlib
+-
+sstream
+-
+cmath
+-
+

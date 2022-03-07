@@ -108,6 +108,8 @@ IK_controller_EXTERNAL_OBJECTS =
 /home/leonor/tese/IK_MORF/catkin_ws/devel/lib/morf_IK/IK_controller: /usr/lib/x86_64-linux-gnu/libboost_atomic.so
 /home/leonor/tese/IK_MORF/catkin_ws/devel/lib/morf_IK/IK_controller: /usr/lib/x86_64-linux-gnu/libpthread.so
 /home/leonor/tese/IK_MORF/catkin_ws/devel/lib/morf_IK/IK_controller: /usr/lib/x86_64-linux-gnu/libconsole_bridge.so.0.4
+/home/leonor/tese/IK_MORF/catkin_ws/devel/lib/morf_IK/IK_controller: /home/leonor/tese/IK_MORF/catkin_ws/devel/lib/libcoords.so
+/home/leonor/tese/IK_MORF/catkin_ws/devel/lib/morf_IK/IK_controller: /home/leonor/tese/IK_MORF/catkin_ws/devel/lib/libcontrol.so
 /home/leonor/tese/IK_MORF/catkin_ws/devel/lib/morf_IK/IK_controller: morf_IK/CMakeFiles/IK_controller.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/leonor/tese/IK_MORF/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable /home/leonor/tese/IK_MORF/catkin_ws/devel/lib/morf_IK/IK_controller"
 	cd /home/leonor/tese/IK_MORF/catkin_ws/build/morf_IK && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/IK_controller.dir/link.txt --verbose=$(VERBOSE)

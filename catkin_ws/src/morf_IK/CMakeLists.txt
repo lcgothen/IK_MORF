@@ -206,4 +206,9 @@ include_directories(
 # catkin_add_nosetests(test)
 
 add_executable(IK_controller src/IK_controller.cpp)
-target_link_libraries(IK_controller ${catkin_LIBRARIES})
+add_library(coords include/coordinates.cpp)
+add_library(control include/controller.cpp)
+target_link_libraries(IK_controller 
+                      ${catkin_LIBRARIES}
+                      coords
+                      control)

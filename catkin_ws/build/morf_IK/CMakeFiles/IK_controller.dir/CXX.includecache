@@ -6,6 +6,28 @@
 
 #IncludeRegexTransform: 
 
+/home/leonor/tese/IK_MORF/catkin_ws/src/morf_IK/include/controller.hpp
+cstdio
+-
+cstdlib
+-
+sstream
+-
+cmath
+-
+coordinates.hpp
+/home/leonor/tese/IK_MORF/catkin_ws/src/morf_IK/include/coordinates.hpp
+
+/home/leonor/tese/IK_MORF/catkin_ws/src/morf_IK/include/coordinates.hpp
+cstdio
+-
+cstdlib
+-
+sstream
+-
+cmath
+-
+
 /home/leonor/tese/IK_MORF/catkin_ws/src/morf_IK/src/IK_controller.cpp
 cstdio
 -
@@ -23,6 +45,10 @@ sstream
 -
 cmath
 -
+../include/coordinates.hpp
+/home/leonor/tese/IK_MORF/catkin_ws/src/morf_IK/include/coordinates.hpp
+../include/controller.hpp
+/home/leonor/tese/IK_MORF/catkin_ws/src/morf_IK/include/controller.hpp
 
 /opt/ros/melodic/include/ros/advertise_options.h
 ros/forwards.h

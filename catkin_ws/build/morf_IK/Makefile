@@ -56,18 +56,6 @@ CMAKE_BINARY_DIR = /home/leonor/tese/IK_MORF/catkin_ws/build
 #=============================================================================
 # Targets provided globally by CMake.
 
-# Special rule for the target install/strip
-install/strip: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
-	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
-.PHONY : install/strip
-
-# Special rule for the target install/strip
-install/strip/fast: preinstall/fast
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
-	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
-.PHONY : install/strip/fast
-
 # Special rule for the target install/local
 install/local: preinstall
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
@@ -101,6 +89,18 @@ test:
 test/fast: test
 
 .PHONY : test/fast
+
+# Special rule for the target install/strip
+install/strip: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
+	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+.PHONY : install/strip
+
+# Special rule for the target install/strip
+install/strip/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
+	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+.PHONY : install/strip/fast
 
 # Special rule for the target list_install_components
 list_install_components:
@@ -166,6 +166,36 @@ preinstall/fast:
 depend:
 	cd /home/leonor/tese/IK_MORF/catkin_ws/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
+
+# Convenience name for target.
+morf_IK/CMakeFiles/control.dir/rule:
+	cd /home/leonor/tese/IK_MORF/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 morf_IK/CMakeFiles/control.dir/rule
+.PHONY : morf_IK/CMakeFiles/control.dir/rule
+
+# Convenience name for target.
+control: morf_IK/CMakeFiles/control.dir/rule
+
+.PHONY : control
+
+# fast build rule for target.
+control/fast:
+	cd /home/leonor/tese/IK_MORF/catkin_ws/build && $(MAKE) -f morf_IK/CMakeFiles/control.dir/build.make morf_IK/CMakeFiles/control.dir/build
+.PHONY : control/fast
+
+# Convenience name for target.
+morf_IK/CMakeFiles/coords.dir/rule:
+	cd /home/leonor/tese/IK_MORF/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 morf_IK/CMakeFiles/coords.dir/rule
+.PHONY : morf_IK/CMakeFiles/coords.dir/rule
+
+# Convenience name for target.
+coords: morf_IK/CMakeFiles/coords.dir/rule
+
+.PHONY : coords
+
+# fast build rule for target.
+coords/fast:
+	cd /home/leonor/tese/IK_MORF/catkin_ws/build && $(MAKE) -f morf_IK/CMakeFiles/coords.dir/build.make morf_IK/CMakeFiles/coords.dir/build
+.PHONY : coords/fast
 
 # Convenience name for target.
 morf_IK/CMakeFiles/roscpp_generate_messages_py.dir/rule:
@@ -407,6 +437,60 @@ IK_controller/fast:
 	cd /home/leonor/tese/IK_MORF/catkin_ws/build && $(MAKE) -f morf_IK/CMakeFiles/IK_controller.dir/build.make morf_IK/CMakeFiles/IK_controller.dir/build
 .PHONY : IK_controller/fast
 
+include/controller.o: include/controller.cpp.o
+
+.PHONY : include/controller.o
+
+# target to build an object file
+include/controller.cpp.o:
+	cd /home/leonor/tese/IK_MORF/catkin_ws/build && $(MAKE) -f morf_IK/CMakeFiles/control.dir/build.make morf_IK/CMakeFiles/control.dir/include/controller.cpp.o
+.PHONY : include/controller.cpp.o
+
+include/controller.i: include/controller.cpp.i
+
+.PHONY : include/controller.i
+
+# target to preprocess a source file
+include/controller.cpp.i:
+	cd /home/leonor/tese/IK_MORF/catkin_ws/build && $(MAKE) -f morf_IK/CMakeFiles/control.dir/build.make morf_IK/CMakeFiles/control.dir/include/controller.cpp.i
+.PHONY : include/controller.cpp.i
+
+include/controller.s: include/controller.cpp.s
+
+.PHONY : include/controller.s
+
+# target to generate assembly for a file
+include/controller.cpp.s:
+	cd /home/leonor/tese/IK_MORF/catkin_ws/build && $(MAKE) -f morf_IK/CMakeFiles/control.dir/build.make morf_IK/CMakeFiles/control.dir/include/controller.cpp.s
+.PHONY : include/controller.cpp.s
+
+include/coordinates.o: include/coordinates.cpp.o
+
+.PHONY : include/coordinates.o
+
+# target to build an object file
+include/coordinates.cpp.o:
+	cd /home/leonor/tese/IK_MORF/catkin_ws/build && $(MAKE) -f morf_IK/CMakeFiles/coords.dir/build.make morf_IK/CMakeFiles/coords.dir/include/coordinates.cpp.o
+.PHONY : include/coordinates.cpp.o
+
+include/coordinates.i: include/coordinates.cpp.i
+
+.PHONY : include/coordinates.i
+
+# target to preprocess a source file
+include/coordinates.cpp.i:
+	cd /home/leonor/tese/IK_MORF/catkin_ws/build && $(MAKE) -f morf_IK/CMakeFiles/coords.dir/build.make morf_IK/CMakeFiles/coords.dir/include/coordinates.cpp.i
+.PHONY : include/coordinates.cpp.i
+
+include/coordinates.s: include/coordinates.cpp.s
+
+.PHONY : include/coordinates.s
+
+# target to generate assembly for a file
+include/coordinates.cpp.s:
+	cd /home/leonor/tese/IK_MORF/catkin_ws/build && $(MAKE) -f morf_IK/CMakeFiles/coords.dir/build.make morf_IK/CMakeFiles/coords.dir/include/coordinates.cpp.s
+.PHONY : include/coordinates.cpp.s
+
 src/IK_controller.o: src/IK_controller.cpp.o
 
 .PHONY : src/IK_controller.o
@@ -440,10 +524,12 @@ help:
 	@echo "... all (the default if no target is provided)"
 	@echo "... clean"
 	@echo "... depend"
-	@echo "... install/strip"
 	@echo "... install/local"
 	@echo "... rebuild_cache"
 	@echo "... test"
+	@echo "... install/strip"
+	@echo "... control"
+	@echo "... coords"
 	@echo "... list_install_components"
 	@echo "... roscpp_generate_messages_py"
 	@echo "... roscpp_generate_messages_eus"
@@ -463,6 +549,12 @@ help:
 	@echo "... install"
 	@echo "... rosgraph_msgs_generate_messages_eus"
 	@echo "... IK_controller"
+	@echo "... include/controller.o"
+	@echo "... include/controller.i"
+	@echo "... include/controller.s"
+	@echo "... include/coordinates.o"
+	@echo "... include/coordinates.i"
+	@echo "... include/coordinates.s"
 	@echo "... src/IK_controller.o"
 	@echo "... src/IK_controller.i"
 	@echo "... src/IK_controller.s"
