@@ -6,6 +6,50 @@
 #include "coordinates.hpp"
 using namespace coords;
 
+
+point point::subtract(point a)
+{
+    point aux;
+
+    aux.x = x-a.x;
+    aux.y = y-a.y;
+    aux.z = z-a.z;
+
+    return aux;
+}
+
+point point::sum(point a)
+{
+    point aux;
+
+    aux.x = x+a.x;
+    aux.y = y+a.y;
+    aux.z = z+a.z;
+
+    return aux;
+}
+
+point point::mult_num(float a)
+{
+    point aux;
+
+    aux.x = x*a;
+    aux.y = y*a;
+    aux.z = z*a;
+
+    return aux;
+}
+
+point point::div_num(float a)
+{
+    point aux;
+
+    aux.x = x/a;
+    aux.y = y/a;
+    aux.z = z/a;
+
+    return aux;
+}
  
 point point::world2FL() // change coordinates from world frame to front left leg frame
 {

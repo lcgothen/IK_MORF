@@ -41,14 +41,14 @@
 /home/leonor/tese/IK_MORF/catkin_ws/build/morf_IK/CMakeFiles/install/strip.dir
 /home/leonor/tese/IK_MORF/catkin_ws/build/morf_IK/CMakeFiles/control.dir
 /home/leonor/tese/IK_MORF/catkin_ws/build/morf_IK/CMakeFiles/coords.dir
-/home/leonor/tese/IK_MORF/catkin_ws/build/morf_IK/CMakeFiles/list_install_components.dir
-/home/leonor/tese/IK_MORF/catkin_ws/build/morf_IK/CMakeFiles/roscpp_generate_messages_py.dir
 /home/leonor/tese/IK_MORF/catkin_ws/build/morf_IK/CMakeFiles/roscpp_generate_messages_eus.dir
 /home/leonor/tese/IK_MORF/catkin_ws/build/morf_IK/CMakeFiles/edit_cache.dir
 /home/leonor/tese/IK_MORF/catkin_ws/build/morf_IK/CMakeFiles/roscpp_generate_messages_lisp.dir
 /home/leonor/tese/IK_MORF/catkin_ws/build/morf_IK/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir
 /home/leonor/tese/IK_MORF/catkin_ws/build/morf_IK/CMakeFiles/std_msgs_generate_messages_lisp.dir
 /home/leonor/tese/IK_MORF/catkin_ws/build/morf_IK/CMakeFiles/roscpp_generate_messages_cpp.dir
+/home/leonor/tese/IK_MORF/catkin_ws/build/morf_IK/CMakeFiles/install.dir
+/home/leonor/tese/IK_MORF/catkin_ws/build/morf_IK/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir
 /home/leonor/tese/IK_MORF/catkin_ws/build/morf_IK/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir
 /home/leonor/tese/IK_MORF/catkin_ws/build/morf_IK/CMakeFiles/std_msgs_generate_messages_cpp.dir
 /home/leonor/tese/IK_MORF/catkin_ws/build/morf_IK/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir
@@ -57,6 +57,6 @@
 /home/leonor/tese/IK_MORF/catkin_ws/build/morf_IK/CMakeFiles/std_msgs_generate_messages_nodejs.dir
 /home/leonor/tese/IK_MORF/catkin_ws/build/morf_IK/CMakeFiles/roscpp_generate_messages_nodejs.dir
 /home/leonor/tese/IK_MORF/catkin_ws/build/morf_IK/CMakeFiles/std_msgs_generate_messages_py.dir
-/home/leonor/tese/IK_MORF/catkin_ws/build/morf_IK/CMakeFiles/install.dir
-/home/leonor/tese/IK_MORF/catkin_ws/build/morf_IK/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir
-/home/leonor/tese/IK_MORF/catkin_ws/build/morf_IK/CMakeFiles/IK_controller.dir
+/home/leonor/tese/IK_MORF/catkin_ws/build/morf_IK/CMakeFiles/list_install_components.dir
+/home/leonor/tese/IK_MORF/catkin_ws/build/morf_IK/CMakeFiles/roscpp_generate_messages_py.dir
+/home/leonor/tese/IK_MORF/catkin_ws/build/morf_IK/CMakeFiles/main.dir

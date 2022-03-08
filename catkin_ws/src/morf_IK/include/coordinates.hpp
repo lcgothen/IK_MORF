@@ -12,6 +12,11 @@ namespace coords
         float x, y, z;
         float Ox, Oy, Oz;
 
+        point subtract(point a);
+        point sum(point a);
+        point mult_num(float a);
+        point div_num(float a);
+
         point world2FL(); // change coordinates from world frame to front left leg frame
         point morf2FL(); // change coordinates from morf frame to front left leg frame
         point morf2ML(); // change coordinates from morf frame to middle left leg frame

@@ -2,6 +2,7 @@
 #include <cstdlib>
 #include <sstream>
 #include <cmath>
+#include <random>
 
 #include "coordinates.hpp"
 using namespace coords;
@@ -9,7 +10,7 @@ using namespace coords;
 #include "controller.hpp"
 using namespace controller;
 
-void angles::get_angles(point target) // calculate angles with IK equations
+void angles::calcIK(point target) // calculate angles with IK equations
 {
     float xc1, yc1, zc1;
     float L0 = 0.01701, L1 = 0.039805, L2 = 0.070044, L3 = 0.11242;
@@ -76,4 +77,54 @@ void CPG::walk()
     FL.th1 = oH1;
     FL.th2 = -oH2+offset2;
     FL.th3 = offset3;
+}
+
+void DMP::init(point y0, float Hz)
+{
+    for(int i=0; i<N; i++)
+    {
+        w[i] = rand()/RAND_MAX;
+        h[i] = rand()/RAND_MAX;
+        c[i] = rand()/RAND_MAX;
+    }
+
+    dy.x=0;
+    dy.y=0;
+    dy.z=0;
+    ddy.x=0;
+    ddy.y=0;
+    ddy.z=0;   
+
+    y.x=y0.x;
+    y.y=y0.y;
+    y.z=y0.z;
+
+    dt = 1/Hz;
+}
+
+void DMP::calc(point y0, point goal)
+{
+    t+= dt;
+    dy = y.subtract(prev_y).div_num(dt);
+    ddy = dy.subtract(prev_dy).div_num(dt);
+    prev_y.x=y.x;
+    prev_y.y=y.y;
+    prev_y.z=y.z;
+    prev_dy.x=dy.x;
+    prev_dy.y=dy.y;
+    prev_dy.z=dy.z;
+
+    x = exp(-ax*t);
+
+    float sum_mult=0, sum=0;
+    for(int i=0; i<N; i++)
+    {
+        sum_mult += psi[i]*w[i];
+        sum += psi[i];
+        psi[i] = exp(-h[i]*pow(x-c[i],2));
+    }
+
+    point f = goal.subtract(y0).mult_num(sum_mult/sum*x);
+
+    y = goal.subtract((ddy.subtract(ddy).div_num(az)).sum(dy).div_num(bz));
 }

@@ -102,16 +102,6 @@ install/strip/fast: preinstall/fast
 	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
 .PHONY : install/strip/fast
 
-# Special rule for the target list_install_components
-list_install_components:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Available install components are: \"Unspecified\""
-.PHONY : list_install_components
-
-# Special rule for the target list_install_components
-list_install_components/fast: list_install_components
-
-.PHONY : list_install_components/fast
-
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
@@ -134,6 +124,16 @@ install/fast: preinstall/fast
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
 	/usr/bin/cmake -P cmake_install.cmake
 .PHONY : install/fast
+
+# Special rule for the target list_install_components
+list_install_components:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Available install components are: \"Unspecified\""
+.PHONY : list_install_components
+
+# Special rule for the target list_install_components
+list_install_components/fast: list_install_components
+
+.PHONY : list_install_components/fast
 
 # The main all target
 all: cmake_check_build_system
@@ -196,21 +196,6 @@ coords: morf_IK/CMakeFiles/coords.dir/rule
 coords/fast:
 	cd /home/leonor/tese/IK_MORF/catkin_ws/build && $(MAKE) -f morf_IK/CMakeFiles/coords.dir/build.make morf_IK/CMakeFiles/coords.dir/build
 .PHONY : coords/fast
-
-# Convenience name for target.
-morf_IK/CMakeFiles/roscpp_generate_messages_py.dir/rule:
-	cd /home/leonor/tese/IK_MORF/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 morf_IK/CMakeFiles/roscpp_generate_messages_py.dir/rule
-.PHONY : morf_IK/CMakeFiles/roscpp_generate_messages_py.dir/rule
-
-# Convenience name for target.
-roscpp_generate_messages_py: morf_IK/CMakeFiles/roscpp_generate_messages_py.dir/rule
-
-.PHONY : roscpp_generate_messages_py
-
-# fast build rule for target.
-roscpp_generate_messages_py/fast:
-	cd /home/leonor/tese/IK_MORF/catkin_ws/build && $(MAKE) -f morf_IK/CMakeFiles/roscpp_generate_messages_py.dir/build.make morf_IK/CMakeFiles/roscpp_generate_messages_py.dir/build
-.PHONY : roscpp_generate_messages_py/fast
 
 # Convenience name for target.
 morf_IK/CMakeFiles/roscpp_generate_messages_eus.dir/rule:
@@ -286,6 +271,21 @@ roscpp_generate_messages_cpp: morf_IK/CMakeFiles/roscpp_generate_messages_cpp.di
 roscpp_generate_messages_cpp/fast:
 	cd /home/leonor/tese/IK_MORF/catkin_ws/build && $(MAKE) -f morf_IK/CMakeFiles/roscpp_generate_messages_cpp.dir/build.make morf_IK/CMakeFiles/roscpp_generate_messages_cpp.dir/build
 .PHONY : roscpp_generate_messages_cpp/fast
+
+# Convenience name for target.
+morf_IK/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/rule:
+	cd /home/leonor/tese/IK_MORF/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 morf_IK/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/rule
+.PHONY : morf_IK/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/rule
+
+# Convenience name for target.
+rosgraph_msgs_generate_messages_eus: morf_IK/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/rule
+
+.PHONY : rosgraph_msgs_generate_messages_eus
+
+# fast build rule for target.
+rosgraph_msgs_generate_messages_eus/fast:
+	cd /home/leonor/tese/IK_MORF/catkin_ws/build && $(MAKE) -f morf_IK/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/build.make morf_IK/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/build
+.PHONY : rosgraph_msgs_generate_messages_eus/fast
 
 # Convenience name for target.
 morf_IK/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/rule:
@@ -408,34 +408,34 @@ std_msgs_generate_messages_py/fast:
 .PHONY : std_msgs_generate_messages_py/fast
 
 # Convenience name for target.
-morf_IK/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/rule:
-	cd /home/leonor/tese/IK_MORF/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 morf_IK/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/rule
-.PHONY : morf_IK/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/rule
+morf_IK/CMakeFiles/roscpp_generate_messages_py.dir/rule:
+	cd /home/leonor/tese/IK_MORF/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 morf_IK/CMakeFiles/roscpp_generate_messages_py.dir/rule
+.PHONY : morf_IK/CMakeFiles/roscpp_generate_messages_py.dir/rule
 
 # Convenience name for target.
-rosgraph_msgs_generate_messages_eus: morf_IK/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/rule
+roscpp_generate_messages_py: morf_IK/CMakeFiles/roscpp_generate_messages_py.dir/rule
 
-.PHONY : rosgraph_msgs_generate_messages_eus
+.PHONY : roscpp_generate_messages_py
 
 # fast build rule for target.
-rosgraph_msgs_generate_messages_eus/fast:
-	cd /home/leonor/tese/IK_MORF/catkin_ws/build && $(MAKE) -f morf_IK/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/build.make morf_IK/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/build
-.PHONY : rosgraph_msgs_generate_messages_eus/fast
+roscpp_generate_messages_py/fast:
+	cd /home/leonor/tese/IK_MORF/catkin_ws/build && $(MAKE) -f morf_IK/CMakeFiles/roscpp_generate_messages_py.dir/build.make morf_IK/CMakeFiles/roscpp_generate_messages_py.dir/build
+.PHONY : roscpp_generate_messages_py/fast
 
 # Convenience name for target.
-morf_IK/CMakeFiles/IK_controller.dir/rule:
-	cd /home/leonor/tese/IK_MORF/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 morf_IK/CMakeFiles/IK_controller.dir/rule
-.PHONY : morf_IK/CMakeFiles/IK_controller.dir/rule
+morf_IK/CMakeFiles/main.dir/rule:
+	cd /home/leonor/tese/IK_MORF/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 morf_IK/CMakeFiles/main.dir/rule
+.PHONY : morf_IK/CMakeFiles/main.dir/rule
 
 # Convenience name for target.
-IK_controller: morf_IK/CMakeFiles/IK_controller.dir/rule
+main: morf_IK/CMakeFiles/main.dir/rule
 
-.PHONY : IK_controller
+.PHONY : main
 
 # fast build rule for target.
-IK_controller/fast:
-	cd /home/leonor/tese/IK_MORF/catkin_ws/build && $(MAKE) -f morf_IK/CMakeFiles/IK_controller.dir/build.make morf_IK/CMakeFiles/IK_controller.dir/build
-.PHONY : IK_controller/fast
+main/fast:
+	cd /home/leonor/tese/IK_MORF/catkin_ws/build && $(MAKE) -f morf_IK/CMakeFiles/main.dir/build.make morf_IK/CMakeFiles/main.dir/build
+.PHONY : main/fast
 
 include/controller.o: include/controller.cpp.o
 
@@ -491,32 +491,32 @@ include/coordinates.cpp.s:
 	cd /home/leonor/tese/IK_MORF/catkin_ws/build && $(MAKE) -f morf_IK/CMakeFiles/coords.dir/build.make morf_IK/CMakeFiles/coords.dir/include/coordinates.cpp.s
 .PHONY : include/coordinates.cpp.s
 
-src/IK_controller.o: src/IK_controller.cpp.o
+src/main.o: src/main.cpp.o
 
-.PHONY : src/IK_controller.o
+.PHONY : src/main.o
 
 # target to build an object file
-src/IK_controller.cpp.o:
-	cd /home/leonor/tese/IK_MORF/catkin_ws/build && $(MAKE) -f morf_IK/CMakeFiles/IK_controller.dir/build.make morf_IK/CMakeFiles/IK_controller.dir/src/IK_controller.cpp.o
-.PHONY : src/IK_controller.cpp.o
+src/main.cpp.o:
+	cd /home/leonor/tese/IK_MORF/catkin_ws/build && $(MAKE) -f morf_IK/CMakeFiles/main.dir/build.make morf_IK/CMakeFiles/main.dir/src/main.cpp.o
+.PHONY : src/main.cpp.o
 
-src/IK_controller.i: src/IK_controller.cpp.i
+src/main.i: src/main.cpp.i
 
-.PHONY : src/IK_controller.i
+.PHONY : src/main.i
 
 # target to preprocess a source file
-src/IK_controller.cpp.i:
-	cd /home/leonor/tese/IK_MORF/catkin_ws/build && $(MAKE) -f morf_IK/CMakeFiles/IK_controller.dir/build.make morf_IK/CMakeFiles/IK_controller.dir/src/IK_controller.cpp.i
-.PHONY : src/IK_controller.cpp.i
+src/main.cpp.i:
+	cd /home/leonor/tese/IK_MORF/catkin_ws/build && $(MAKE) -f morf_IK/CMakeFiles/main.dir/build.make morf_IK/CMakeFiles/main.dir/src/main.cpp.i
+.PHONY : src/main.cpp.i
 
-src/IK_controller.s: src/IK_controller.cpp.s
+src/main.s: src/main.cpp.s
 
-.PHONY : src/IK_controller.s
+.PHONY : src/main.s
 
 # target to generate assembly for a file
-src/IK_controller.cpp.s:
-	cd /home/leonor/tese/IK_MORF/catkin_ws/build && $(MAKE) -f morf_IK/CMakeFiles/IK_controller.dir/build.make morf_IK/CMakeFiles/IK_controller.dir/src/IK_controller.cpp.s
-.PHONY : src/IK_controller.cpp.s
+src/main.cpp.s:
+	cd /home/leonor/tese/IK_MORF/catkin_ws/build && $(MAKE) -f morf_IK/CMakeFiles/main.dir/build.make morf_IK/CMakeFiles/main.dir/src/main.cpp.s
+.PHONY : src/main.cpp.s
 
 # Help Target
 help:
@@ -530,14 +530,14 @@ help:
 	@echo "... install/strip"
 	@echo "... control"
 	@echo "... coords"
-	@echo "... list_install_components"
-	@echo "... roscpp_generate_messages_py"
 	@echo "... roscpp_generate_messages_eus"
 	@echo "... edit_cache"
 	@echo "... roscpp_generate_messages_lisp"
 	@echo "... rosgraph_msgs_generate_messages_cpp"
 	@echo "... std_msgs_generate_messages_lisp"
 	@echo "... roscpp_generate_messages_cpp"
+	@echo "... install"
+	@echo "... rosgraph_msgs_generate_messages_eus"
 	@echo "... rosgraph_msgs_generate_messages_lisp"
 	@echo "... std_msgs_generate_messages_cpp"
 	@echo "... rosgraph_msgs_generate_messages_nodejs"
@@ -546,18 +546,18 @@ help:
 	@echo "... std_msgs_generate_messages_nodejs"
 	@echo "... roscpp_generate_messages_nodejs"
 	@echo "... std_msgs_generate_messages_py"
-	@echo "... install"
-	@echo "... rosgraph_msgs_generate_messages_eus"
-	@echo "... IK_controller"
+	@echo "... list_install_components"
+	@echo "... roscpp_generate_messages_py"
+	@echo "... main"
 	@echo "... include/controller.o"
 	@echo "... include/controller.i"
 	@echo "... include/controller.s"
 	@echo "... include/coordinates.o"
 	@echo "... include/coordinates.i"
 	@echo "... include/coordinates.s"
-	@echo "... src/IK_controller.o"
-	@echo "... src/IK_controller.i"
-	@echo "... src/IK_controller.s"
+	@echo "... src/main.o"
+	@echo "... src/main.i"
+	@echo "... src/main.s"
 .PHONY : help
 
 

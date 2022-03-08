@@ -1,7 +1,7 @@
-// PARA CORRER
-// . ~/tese/catkin_ws/devel/setup.bash
+// TO RUN
+// . ~/tese/catkin_ws/devel/setup.bash (no longer needed)
 // cd home/leonor/tese/IK_MORF/catkin_ws/devel/lib/morf_IK
-// ./IK_controller
+// ./main
 
 #include <cstdio>
 #include <cstdlib>
@@ -41,10 +41,9 @@ int main(int argc, char **argv)
 
 
     angles FL;
-    FL.get_angles(targetFL);
+    FL.calcIK(targetFL);
     ROS_INFO("%f, %f, %f", FL.th1, FL.th2, FL.th3);
 
-    /* COMM TEST */
 
     ros::Rate loop_rate(10);
     

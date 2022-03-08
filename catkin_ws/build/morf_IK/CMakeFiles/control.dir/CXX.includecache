@@ -15,6 +15,8 @@ sstream
 -
 cmath
 -
+random
+-
 coordinates.hpp
 /home/leonor/tese/IK_MORF/catkin_ws/src/morf_IK/include/coordinates.hpp
 controller.hpp
