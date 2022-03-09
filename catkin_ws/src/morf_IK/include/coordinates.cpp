@@ -7,49 +7,53 @@
 using namespace coords;
 
 
-point point::subtract(point a)
+point coords::subtract(point a, point b)
 {
     point aux;
 
-    aux.x = x-a.x;
-    aux.y = y-a.y;
-    aux.z = z-a.z;
+    aux.x = a.x-b.x;
+    aux.y = a.y-b.y;
+    aux.z = a.z-b.z;
 
     return aux;
 }
 
-point point::sum(point a)
+point coords::sum(point a, point b)
 {
     point aux;
 
-    aux.x = x+a.x;
-    aux.y = y+a.y;
-    aux.z = z+a.z;
+    aux.x = a.x+b.x;
+    aux.y = a.y+b.y;
+    aux.z = a.z+b.z;
 
     return aux;
 }
 
-point point::mult_num(float a)
+point coords::mult_num(point a, float num)
 {
     point aux;
 
-    aux.x = x*a;
-    aux.y = y*a;
-    aux.z = z*a;
+    aux.x = a.x*num;
+    aux.y = a.y*num;
+    aux.z = a.z*num;
 
     return aux;
 }
 
-point point::div_num(float a)
+point coords::div_num(point a, float num)
 {
     point aux;
 
-    aux.x = x/a;
-    aux.y = y/a;
-    aux.z = z/a;
+    aux.x = a.x/num;
+    aux.y = a.y/num;
+    aux.z = a.z/num;
 
     return aux;
 }
+
+
+
+
  
 point point::world2FL() // change coordinates from world frame to front left leg frame
 {

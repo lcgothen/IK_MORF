@@ -198,6 +198,21 @@ coords/fast:
 .PHONY : coords/fast
 
 # Convenience name for target.
+morf_IK/CMakeFiles/mainCPG.dir/rule:
+	cd /home/leonor/tese/IK_MORF/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 morf_IK/CMakeFiles/mainCPG.dir/rule
+.PHONY : morf_IK/CMakeFiles/mainCPG.dir/rule
+
+# Convenience name for target.
+mainCPG: morf_IK/CMakeFiles/mainCPG.dir/rule
+
+.PHONY : mainCPG
+
+# fast build rule for target.
+mainCPG/fast:
+	cd /home/leonor/tese/IK_MORF/catkin_ws/build && $(MAKE) -f morf_IK/CMakeFiles/mainCPG.dir/build.make morf_IK/CMakeFiles/mainCPG.dir/build
+.PHONY : mainCPG/fast
+
+# Convenience name for target.
 morf_IK/CMakeFiles/roscpp_generate_messages_eus.dir/rule:
 	cd /home/leonor/tese/IK_MORF/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 morf_IK/CMakeFiles/roscpp_generate_messages_eus.dir/rule
 .PHONY : morf_IK/CMakeFiles/roscpp_generate_messages_eus.dir/rule
@@ -316,6 +331,21 @@ std_msgs_generate_messages_cpp: morf_IK/CMakeFiles/std_msgs_generate_messages_cp
 std_msgs_generate_messages_cpp/fast:
 	cd /home/leonor/tese/IK_MORF/catkin_ws/build && $(MAKE) -f morf_IK/CMakeFiles/std_msgs_generate_messages_cpp.dir/build.make morf_IK/CMakeFiles/std_msgs_generate_messages_cpp.dir/build
 .PHONY : std_msgs_generate_messages_cpp/fast
+
+# Convenience name for target.
+morf_IK/CMakeFiles/mainIK.dir/rule:
+	cd /home/leonor/tese/IK_MORF/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 morf_IK/CMakeFiles/mainIK.dir/rule
+.PHONY : morf_IK/CMakeFiles/mainIK.dir/rule
+
+# Convenience name for target.
+mainIK: morf_IK/CMakeFiles/mainIK.dir/rule
+
+.PHONY : mainIK
+
+# fast build rule for target.
+mainIK/fast:
+	cd /home/leonor/tese/IK_MORF/catkin_ws/build && $(MAKE) -f morf_IK/CMakeFiles/mainIK.dir/build.make morf_IK/CMakeFiles/mainIK.dir/build
+.PHONY : mainIK/fast
 
 # Convenience name for target.
 morf_IK/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/rule:
@@ -518,6 +548,60 @@ src/main.cpp.s:
 	cd /home/leonor/tese/IK_MORF/catkin_ws/build && $(MAKE) -f morf_IK/CMakeFiles/main.dir/build.make morf_IK/CMakeFiles/main.dir/src/main.cpp.s
 .PHONY : src/main.cpp.s
 
+src/mainCPG.o: src/mainCPG.cpp.o
+
+.PHONY : src/mainCPG.o
+
+# target to build an object file
+src/mainCPG.cpp.o:
+	cd /home/leonor/tese/IK_MORF/catkin_ws/build && $(MAKE) -f morf_IK/CMakeFiles/mainCPG.dir/build.make morf_IK/CMakeFiles/mainCPG.dir/src/mainCPG.cpp.o
+.PHONY : src/mainCPG.cpp.o
+
+src/mainCPG.i: src/mainCPG.cpp.i
+
+.PHONY : src/mainCPG.i
+
+# target to preprocess a source file
+src/mainCPG.cpp.i:
+	cd /home/leonor/tese/IK_MORF/catkin_ws/build && $(MAKE) -f morf_IK/CMakeFiles/mainCPG.dir/build.make morf_IK/CMakeFiles/mainCPG.dir/src/mainCPG.cpp.i
+.PHONY : src/mainCPG.cpp.i
+
+src/mainCPG.s: src/mainCPG.cpp.s
+
+.PHONY : src/mainCPG.s
+
+# target to generate assembly for a file
+src/mainCPG.cpp.s:
+	cd /home/leonor/tese/IK_MORF/catkin_ws/build && $(MAKE) -f morf_IK/CMakeFiles/mainCPG.dir/build.make morf_IK/CMakeFiles/mainCPG.dir/src/mainCPG.cpp.s
+.PHONY : src/mainCPG.cpp.s
+
+src/mainIK.o: src/mainIK.cpp.o
+
+.PHONY : src/mainIK.o
+
+# target to build an object file
+src/mainIK.cpp.o:
+	cd /home/leonor/tese/IK_MORF/catkin_ws/build && $(MAKE) -f morf_IK/CMakeFiles/mainIK.dir/build.make morf_IK/CMakeFiles/mainIK.dir/src/mainIK.cpp.o
+.PHONY : src/mainIK.cpp.o
+
+src/mainIK.i: src/mainIK.cpp.i
+
+.PHONY : src/mainIK.i
+
+# target to preprocess a source file
+src/mainIK.cpp.i:
+	cd /home/leonor/tese/IK_MORF/catkin_ws/build && $(MAKE) -f morf_IK/CMakeFiles/mainIK.dir/build.make morf_IK/CMakeFiles/mainIK.dir/src/mainIK.cpp.i
+.PHONY : src/mainIK.cpp.i
+
+src/mainIK.s: src/mainIK.cpp.s
+
+.PHONY : src/mainIK.s
+
+# target to generate assembly for a file
+src/mainIK.cpp.s:
+	cd /home/leonor/tese/IK_MORF/catkin_ws/build && $(MAKE) -f morf_IK/CMakeFiles/mainIK.dir/build.make morf_IK/CMakeFiles/mainIK.dir/src/mainIK.cpp.s
+.PHONY : src/mainIK.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -530,6 +614,7 @@ help:
 	@echo "... install/strip"
 	@echo "... control"
 	@echo "... coords"
+	@echo "... mainCPG"
 	@echo "... roscpp_generate_messages_eus"
 	@echo "... edit_cache"
 	@echo "... roscpp_generate_messages_lisp"
@@ -540,6 +625,7 @@ help:
 	@echo "... rosgraph_msgs_generate_messages_eus"
 	@echo "... rosgraph_msgs_generate_messages_lisp"
 	@echo "... std_msgs_generate_messages_cpp"
+	@echo "... mainIK"
 	@echo "... rosgraph_msgs_generate_messages_nodejs"
 	@echo "... rosgraph_msgs_generate_messages_py"
 	@echo "... std_msgs_generate_messages_eus"
@@ -558,6 +644,12 @@ help:
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
+	@echo "... src/mainCPG.o"
+	@echo "... src/mainCPG.i"
+	@echo "... src/mainCPG.s"
+	@echo "... src/mainIK.o"
+	@echo "... src/mainIK.i"
+	@echo "... src/mainIK.s"
 .PHONY : help
 
 

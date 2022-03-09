@@ -311,6 +311,19 @@ coords/fast:
 .PHONY : coords/fast
 
 #=============================================================================
+# Target rules for targets named mainCPG
+
+# Build rule for target.
+mainCPG: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 mainCPG
+.PHONY : mainCPG
+
+# fast build rule for target.
+mainCPG/fast:
+	$(MAKE) -f morf_IK/CMakeFiles/mainCPG.dir/build.make morf_IK/CMakeFiles/mainCPG.dir/build
+.PHONY : mainCPG/fast
+
+#=============================================================================
 # Target rules for targets named roscpp_generate_messages_eus
 
 # Build rule for target.
@@ -413,6 +426,19 @@ std_msgs_generate_messages_cpp: cmake_check_build_system
 std_msgs_generate_messages_cpp/fast:
 	$(MAKE) -f morf_IK/CMakeFiles/std_msgs_generate_messages_cpp.dir/build.make morf_IK/CMakeFiles/std_msgs_generate_messages_cpp.dir/build
 .PHONY : std_msgs_generate_messages_cpp/fast
+
+#=============================================================================
+# Target rules for targets named mainIK
+
+# Build rule for target.
+mainIK: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 mainIK
+.PHONY : mainIK
+
+# fast build rule for target.
+mainIK/fast:
+	$(MAKE) -f morf_IK/CMakeFiles/mainIK.dir/build.make morf_IK/CMakeFiles/mainIK.dir/build
+.PHONY : mainIK/fast
 
 #=============================================================================
 # Target rules for targets named rosgraph_msgs_generate_messages_nodejs
@@ -542,6 +568,7 @@ help:
 	@echo "... gtest"
 	@echo "... control"
 	@echo "... coords"
+	@echo "... mainCPG"
 	@echo "... roscpp_generate_messages_eus"
 	@echo "... roscpp_generate_messages_lisp"
 	@echo "... rosgraph_msgs_generate_messages_cpp"
@@ -550,6 +577,7 @@ help:
 	@echo "... rosgraph_msgs_generate_messages_eus"
 	@echo "... rosgraph_msgs_generate_messages_lisp"
 	@echo "... std_msgs_generate_messages_cpp"
+	@echo "... mainIK"
 	@echo "... rosgraph_msgs_generate_messages_nodejs"
 	@echo "... rosgraph_msgs_generate_messages_py"
 	@echo "... std_msgs_generate_messages_eus"
