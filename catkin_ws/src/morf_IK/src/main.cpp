@@ -29,70 +29,119 @@ int main(int argc, char **argv)
     ros::Publisher controller_pub = n.advertise<std_msgs::Float32MultiArray>("joints_target", 1000);
     ros::Subscriber controller_sub = n.subscribe("joint_positions", 1000, &robot::infoCallback, &morf);
 
-    // target coords
-    point target;
+    // target coords for stabilizing with 4 legs
+    point posFL, posFR, stableML, stableMR, stableBL, stableBR;
     
-    target.x = -7.5776e-02;
-    target.y = +1.3090e-01;
-    target.z = -2.5912e-01;
+    posFL.x = 0;//-7.5776e-02;
+    posFL.y = +1.3090e-01;
+    posFL.z = -2.9912e-01;
+
+    stableML.x = -7.5776e-02;
+    stableML.y = +1.7632e-01;
+    stableML.z = -1.6912e-01;
+
+    stableBL.x = -7.5776e-02;
+    stableBL.y = 0.22261;
+    stableBL.z = 0.085760;
+
+    posFR.x = 0;//-7.5776e-02;
+    posFR.y = -1.3090e-01;
+    posFR.z = -2.9912e-01;
+
+    stableMR.x = -7.5776e-02;
+    stableMR.y = -1.7632e-01;
+    stableMR.z = -1.6912e-01;
+
+    stableBR.x = -7.5776e-02;
+    stableBR.y = -0.17579;
+    stableBR.z = 0.085760;
 
     
-    
-    point targetFL = target.morf2FL(); //convert to front left leg frame
+    posFL = posFL.morf2FL(); //convert to front left leg frame
+    stableML = stableML.morf2ML(); //convert to middle left leg frame
+    stableBL = stableBL.morf2BL(); //convert to back left leg frame
+    posFR = posFR.morf2FR(); //convert to front right leg frame
+    stableMR = stableMR.morf2MR(); //convert to middle right leg frame
+    stableBR = stableBR.morf2BR(); //convert to back right leg frame
 
-    ROS_INFO("%f, %f, %f", targetFL.x, targetFL.y, targetFL.z);
+    // ROS_INFO("%f, %f, %f", targetFL.x, targetFL.y, targetFL.z);
 
 
 
-    angles FL;
-    FL.calcIK(targetFL);
-    ROS_INFO("%f, %f, %f", FL.th1, FL.th2, FL.th3);
+    angles FL, FR, ML, MR, BL, BR;
+    FL.calcIK(posFL);
+    ML.calcIK(stableML);
+    BL.calcIK(stableBL);
+    FR.calcIK(posFR);
+    MR.calcIK(stableMR);
+    BR.calcIK(stableBR);
+    ROS_INFO("%f, %f, %f", BL.th1, BL.th2, BL.th3);
 
 
     ros::Rate loop_rate(10);
     
     std_msgs::Float32MultiArray msg;
 
-        while(ros::ok())
-        {
-            msg.data.clear();
-            
-            msg.data.push_back(FL.th1);
-            msg.data.push_back(FL.th2);
-            msg.data.push_back(FL.th3);
+    while(ros::ok())
+    {
+        //ROS_INFO("target: %f, %f, %f\n actual: %f, %f, %f", ML.th1, ML.th2, ML.th3, morf.ML.th1, morf.ML.th2, morf.ML.th3);
+        msg.data.clear();
+        
+        // left leg angles
+        msg.data.push_back(FL.th1);
+        msg.data.push_back(FL.th2);
+        msg.data.push_back(FL.th3);
+        msg.data.push_back(ML.th1);
+        msg.data.push_back(ML.th2);
+        msg.data.push_back(ML.th3);
+        msg.data.push_back(BL.th1);
+        msg.data.push_back(BL.th2);
+        msg.data.push_back(BL.th3);
 
-            // left leg angles
-            /*
-            msg.data.push_back(cpg.FL.th1);
-            msg.data.push_back(cpg.FL.th2);
-            msg.data.push_back(cpg.FL.th3);
-            msg.data.push_back(cpg.ML.th1);
-            msg.data.push_back(cpg.ML.th2);
-            msg.data.push_back(cpg.ML.th3);
-            msg.data.push_back(cpg.BL.th1);
-            msg.data.push_back(cpg.BL.th2);
-            msg.data.push_back(cpg.BL.th3);
 
-            // right leg angles
-            msg.data.push_back(cpg.FR.th1);
-            msg.data.push_back(cpg.FR.th2);
-            msg.data.push_back(cpg.FR.th3);
-            msg.data.push_back(cpg.MR.th1);
-            msg.data.push_back(cpg.MR.th2);
-            msg.data.push_back(cpg.MR.th3);
-            msg.data.push_back(cpg.BR.th1);
-            msg.data.push_back(cpg.BR.th2);
-            msg.data.push_back(cpg.BR.th3);
-            */
+        // right leg angles
+        msg.data.push_back(FR.th1);
+        msg.data.push_back(FR.th2);
+        msg.data.push_back(FR.th3);
+        msg.data.push_back(MR.th1);
+        msg.data.push_back(MR.th2);
+        msg.data.push_back(MR.th3);
+        msg.data.push_back(BR.th1);
+        msg.data.push_back(BR.th2);
+        msg.data.push_back(BR.th3);
 
-            //ROS_INFO("%f, %f, %f", msg.data[0], msg.data[1], msg.data[2]);
+        // left leg angles
+        /*
+        msg.data.push_back(cpg.FL.th1);
+        msg.data.push_back(cpg.FL.th2);
+        msg.data.push_back(cpg.FL.th3);
+        msg.data.push_back(cpg.ML.th1);
+        msg.data.push_back(cpg.ML.th2);
+        msg.data.push_back(cpg.ML.th3);
+        msg.data.push_back(cpg.BL.th1);
+        msg.data.push_back(cpg.BL.th2);
+        msg.data.push_back(cpg.BL.th3);
 
-            controller_pub.publish(msg);
+        // right leg angles
+        msg.data.push_back(cpg.FR.th1);
+        msg.data.push_back(cpg.FR.th2);
+        msg.data.push_back(cpg.FR.th3);
+        msg.data.push_back(cpg.MR.th1);
+        msg.data.push_back(cpg.MR.th2);
+        msg.data.push_back(cpg.MR.th3);
+        msg.data.push_back(cpg.BR.th1);
+        msg.data.push_back(cpg.BR.th2);
+        msg.data.push_back(cpg.BR.th3);
+        */
 
-            ros::spinOnce();
+        //ROS_INFO("%f, %f, %f", msg.data[0], msg.data[1], msg.data[2]);
 
-            loop_rate.sleep();
-        }
+        controller_pub.publish(msg);
+
+        ros::spinOnce();
+
+        loop_rate.sleep();
+    }
 
 
     return 0;

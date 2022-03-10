@@ -39,21 +39,21 @@ void robot::infoCallback(const std_msgs::Float32MultiArray::ConstPtr& msg)
 void angles::calcIK(point target) // calculate angles with IK equations
 {
     float xc1, yc1, zc1;
-    float L0 = 0.01701, L1 = 0.039805, L2 = 0.070074, L3 = 0.11243;
+    float L0 = 0.017011, L1 = 0.039805, L2 = 0.070075, L3=0.11542;// L3 = 0.11243;
     float offset2 = 0.8, offset3 = -2.5;
 
     th1 = atan2(-target.x, target.y);
 
     xc1 = cos(th1)*target.x+sin(th1)*target.y;
     yc1 = -sin(th1)*target.x+cos(th1)*target.y-L1;
-    zc1 = target.z-L0;
+    zc1 = target.z+L0;
 
     // th2 = acos((pow(L3,2)-pow(yc1,2)-pow(zc1,2)-pow(L2,2))/(-2*L2*sqrt(pow(yc1,2)+pow(zc1,2))))+atan2(zc1,yc1)+offset2;
     // th3 = acos((pow(yc1,2)+pow(zc1,2)-pow(L2,2)-pow(L3,2))/(2*L2*L3))+offset3; 
 
-    th3 = -acos((pow(yc1,2)+pow(zc1,2)-pow(L2,2)-pow(L3,2))/(2*L2*L3));//+offset3; 
-    th2 = atan2(zc1,yc1)-atan2(L3*sin(th3),L2+L3*cos(th3))+offset2;
-    th3 = - th3 + offset3;
+    th3 = acos((pow(yc1,2)+pow(zc1,2)-pow(L2,2)-pow(L3,2))/(2*L2*L3));
+    th2 = atan2(zc1,yc1)+atan2(L3*sin(th3),L2+L3*cos(th3))+offset2;
+    th3 += offset3;
 }
 
 void CPG::cyclic()
