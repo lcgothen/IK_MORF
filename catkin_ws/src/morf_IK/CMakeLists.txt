@@ -7,10 +7,14 @@ project(morf_IK)
 ## Find catkin macros and libraries
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
 ## is used, also find other catkin packages
+set(OpenCV_DIR /usr/share/OpenCV/)
 find_package(catkin REQUIRED COMPONENTS
+  OpenCV REQUIRED
   roscpp
   rospy
   std_msgs
+  image_transport
+  cv_bridge
 )
 
 ## System dependencies are found with CMake's conventions
@@ -212,13 +216,16 @@ add_library(coords include/coordinates.cpp)
 add_library(control include/controller.cpp)
 target_link_libraries(main 
                       ${catkin_LIBRARIES}
+                      ${OpenCV_LIBS}
                       coords
                       control)
 target_link_libraries(mainCPG 
                       ${catkin_LIBRARIES}
+                      ${OpenCV_LIBS}
                       coords
                       control)
 target_link_libraries(mainIK
                       ${catkin_LIBRARIES}
+                      ${OpenCV_LIBS}
                       coords
                       control)

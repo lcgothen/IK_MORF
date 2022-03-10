@@ -6,18 +6,36 @@
 #include <cstdio>
 #include <cstdlib>
 #include <ros/ros.h>
+#include <sstream>
+#include <cmath>
+#include <image_transport/image_transport.h>
+#include <opencv2/highgui/highgui.hpp>
+#include <cv_bridge/cv_bridge.h>
+
 #include "std_msgs/Float32.h"
 #include "std_msgs/Float32MultiArray.h"
 #include "std_msgs/String.h"
 
-#include <sstream>
-#include <cmath>
 
 #include "../include/coordinates.hpp"
 #include "../include/controller.hpp"
 using namespace coords;
 using namespace controller;
 
+void imageLeftCallback(const sensor_msgs::ImageConstPtr& msg)
+{
+  try
+  {
+    cv::Mat resized;
+    cv::resize(cv_bridge::toCvShare(msg, "bgr8")->image,resized, cv::Size(msg->width*10,msg->height*10));
+    cv::imshow("view", resized);
+    cv::waitKey(30);
+  }
+  catch (cv_bridge::Exception& e)
+  {
+    ROS_ERROR("Could not convert from '%s' to 'bgr8'.", msg->encoding.c_str());
+  }
+}
 
 int main(int argc, char **argv)
 {
@@ -27,7 +45,11 @@ int main(int argc, char **argv)
     ros::NodeHandle n;
 
     ros::Publisher controller_pub = n.advertise<std_msgs::Float32MultiArray>("joints_target", 1000);
-    ros::Subscriber controller_sub = n.subscribe("joint_positions", 1000, &robot::infoCallback, &morf);
+    ros::Subscriber jointPos_sub = n.subscribe("joint_positions", 1000, &robot::infoCallback, &morf);
+    image_transport::ImageTransport it(n);
+    image_transport::Subscriber imagLeft_sub = it.subscribe("imageLeft", 1, imageLeftCallback);
+
+    cv::namedWindow("view");
 
     // target coords for stabilizing with 4 legs
     point posFL, posFR, stableML, stableMR, stableBL, stableBR;
