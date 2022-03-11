@@ -214,6 +214,9 @@ add_executable(mainCPG src/mainCPG.cpp)
 add_executable(mainIK src/mainIK.cpp)
 add_library(coords include/coordinates.cpp)
 add_library(control include/controller.cpp)
+target_link_libraries(control 
+                      ${catkin_LIBRARIES}
+                      ${OpenCV_LIBS})
 target_link_libraries(main 
                       ${catkin_LIBRARIES}
                       ${OpenCV_LIBS}

@@ -11,6 +11,7 @@
 #include <image_transport/image_transport.h>
 #include <opencv2/highgui/highgui.hpp>
 #include <cv_bridge/cv_bridge.h>
+#include <opencv2/features2d.hpp>
 
 #include "std_msgs/Float32.h"
 #include "std_msgs/Float32MultiArray.h"
@@ -22,24 +23,37 @@
 using namespace coords;
 using namespace controller;
 
-void imageLeftCallback(const sensor_msgs::ImageConstPtr& msg)
+/*void imageLeftCallback(const sensor_msgs::ImageConstPtr& msg)
 {
-  try
-  {
-    cv::Mat resized;
-    cv::resize(cv_bridge::toCvShare(msg, "bgr8")->image,resized, cv::Size(msg->width*10,msg->height*10));
-    cv::imshow("view", resized);
-    cv::waitKey(30);
-  }
-  catch (cv_bridge::Exception& e)
-  {
-    ROS_ERROR("Could not convert from '%s' to 'bgr8'.", msg->encoding.c_str());
-  }
-}
+	try
+	{	
+		// detect features	
+		cv::Ptr<cv::FeatureDetector> detector = cv::ORB::create();
+		std::vector<cv::KeyPoint> keypoints;
+		cv::Mat input = cv_bridge::toCvShare(msg, "bgr8")->image;
+		detector->detect(input, keypoints);
+		
+		// extract descriptors
+		cv::Ptr<cv::DescriptorExtractor> extractor = cv::ORB::create();
+		cv::Mat descriptors;
+		extractor->compute(input, keypoints, descriptors);
+
+		// Add results to image and save
+		cv::Mat output;
+		cv::drawKeypoints(input, keypoints, output);
+		cv::imshow("view", output);
+		cv::waitKey(30);
+	}
+	catch (cv_bridge::Exception& e)
+	{
+		ROS_ERROR("Could not convert from '%s' to 'bgr8'.", msg->encoding.c_str());
+	}
+}*/
 
 int main(int argc, char **argv)
 {
     robot morf;
+	images stereo;
     ros::init(argc, argv, "IK_controller");
 
     ros::NodeHandle n;
@@ -47,9 +61,11 @@ int main(int argc, char **argv)
     ros::Publisher controller_pub = n.advertise<std_msgs::Float32MultiArray>("joints_target", 1000);
     ros::Subscriber jointPos_sub = n.subscribe("joint_positions", 1000, &robot::infoCallback, &morf);
     image_transport::ImageTransport it(n);
-    image_transport::Subscriber imagLeft_sub = it.subscribe("imageLeft", 1, imageLeftCallback);
+    image_transport::Subscriber imageLeft_sub = it.subscribe("imageLeft", 1, &images::imageLeftCallback, &stereo);// imageLeftCallback);
+	image_transport::Subscriber imageRight_sub = it.subscribe("imageRight", 1, &images::imageRightCallback, &stereo);
 
-    cv::namedWindow("view");
+    cv::namedWindow("viewL");
+	cv::namedWindow("viewR");
 
     // target coords for stabilizing with 4 legs
     point posFL, posFR, stableML, stableMR, stableBL, stableBR;
@@ -163,6 +179,9 @@ int main(int argc, char **argv)
         ros::spinOnce();
 
         loop_rate.sleep();
+
+		if(!stereo.imageL.empty() && !stereo.imageR.empty())
+			stereo.match();
     }
 
 

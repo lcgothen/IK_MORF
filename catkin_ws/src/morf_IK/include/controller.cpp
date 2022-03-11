@@ -2,11 +2,15 @@
 #include <cstdlib>
 #include <sstream>
 #include <cmath>
-#include <random>
 #include <ros/ros.h>
 #include "std_msgs/Float32.h"
 #include "std_msgs/Float32MultiArray.h"
 #include "std_msgs/String.h"
+
+#include <image_transport/image_transport.h>
+#include <opencv2/highgui/highgui.hpp>
+#include <cv_bridge/cv_bridge.h>
+#include <opencv2/features2d.hpp>
 
 #include "coordinates.hpp"
 using namespace coords;
@@ -107,4 +111,63 @@ void CPG::walk()
     FL.th1 = oH1;
     FL.th2 = -oH2+offset2;
     FL.th3 = offset3;
+}
+
+
+void images::imageLeftCallback(const sensor_msgs::ImageConstPtr& msg)
+{
+    imageL = cv_bridge::toCvShare(msg, "bgr8")->image;
+}
+
+void images::imageRightCallback(const sensor_msgs::ImageConstPtr& msg)
+{
+    imageR = cv_bridge::toCvShare(msg, "bgr8")->image;
+}
+
+void images::match()
+{
+    // detect features	
+    cv::Ptr<cv::FeatureDetector> detector = cv::ORB::create();
+    std::vector<cv::KeyPoint> keypointsL, keypointsR;
+    detector->detect(imageL, keypointsL);
+    detector->detect(imageR, keypointsR);
+    
+    // extract descriptors
+    cv::Ptr<cv::DescriptorExtractor> extractor = cv::ORB::create();
+    cv::Mat descriptorsL, descriptorsR;
+    extractor->compute(imageL, keypointsL, descriptorsL);
+    extractor->compute(imageR, keypointsR, descriptorsR);
+
+
+    cv::FlannBasedMatcher matcher = cv::FlannBasedMatcher(cv::makePtr<cv::flann::LshIndexParams>(12, 20, 2));
+
+    std::vector< std::vector<cv::DMatch> > knn_matches;
+    if(!descriptorsL.empty() && !descriptorsR.empty())
+    {
+        matcher.knnMatch(descriptorsL, descriptorsR, knn_matches, 2);
+        //-- Filter matches using the Lowe's ratio test
+        const float ratio_thresh = 0.7f;
+        std::vector<cv::DMatch> good_matches;
+        
+        for (size_t i = 0; i < knn_matches.size(); i++)
+        {
+            if(!knn_matches[i].empty() && knn_matches[i][0].distance < ratio_thresh * knn_matches[i][1].distance)
+            {
+                good_matches.push_back(knn_matches[i][0]);
+            }
+        }
+        //-- Draw matches
+        cv::Mat img_matches;
+        drawMatches( imageL, keypointsL, imageR, keypointsR, good_matches, img_matches, cv::Scalar::all(-1),
+                    cv::Scalar::all(-1), std::vector<char>(), cv::DrawMatchesFlags::NOT_DRAW_SINGLE_POINTS );
+        //-- Show detected matches
+        imshow("Good Matches", img_matches );
+
+        cv::Mat output;
+        cv::drawKeypoints(imageL, keypointsL, output);
+        cv::imshow("viewL", output);
+        cv::drawKeypoints(imageR, keypointsR, output);
+        cv::imshow("viewR", output);
+        cv::waitKey(30);
+    }
 }
