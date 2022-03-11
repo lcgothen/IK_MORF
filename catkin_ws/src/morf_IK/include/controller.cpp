@@ -141,27 +141,30 @@ void images::match()
 
     cv::FlannBasedMatcher matcher = cv::FlannBasedMatcher(cv::makePtr<cv::flann::LshIndexParams>(12, 20, 2));
 
-    std::vector< std::vector<cv::DMatch> > knn_matches;
+    std::vector< std::vector<cv::DMatch> > matches;
     if(!descriptorsL.empty() && !descriptorsR.empty())
     {
-        matcher.knnMatch(descriptorsL, descriptorsR, knn_matches, 2);
-        //-- Filter matches using the Lowe's ratio test
-        const float ratio_thresh = 0.7f;
-        std::vector<cv::DMatch> good_matches;
+        matcher.knnMatch(descriptorsL, descriptorsR, matches, 2);
         
-        for (size_t i = 0; i < knn_matches.size(); i++)
+        const float ratio_thresh = 0.6f;
+        std::vector<cv::DMatch> saved_matches;
+        
+        for (int i = 0; i < matches.size(); i++)
         {
-            if(!knn_matches[i].empty() && knn_matches[i][0].distance < ratio_thresh * knn_matches[i][1].distance)
+            // Only save matches according to Lowe's ratio test
+            if(!matches[i].empty() && matches[i][0].distance < ratio_thresh * matches[i][1].distance)
             {
-                good_matches.push_back(knn_matches[i][0]);
+                saved_matches.push_back(matches[i][0]);
             }
         }
-        //-- Draw matches
+        
         cv::Mat img_matches;
-        drawMatches( imageL, keypointsL, imageR, keypointsR, good_matches, img_matches, cv::Scalar::all(-1),
+        drawMatches( imageL, keypointsL, imageR, keypointsR, saved_matches, img_matches, cv::Scalar::all(-1),
                     cv::Scalar::all(-1), std::vector<char>(), cv::DrawMatchesFlags::NOT_DRAW_SINGLE_POINTS );
-        //-- Show detected matches
-        imshow("Good Matches", img_matches );
+        
+        imshow("Matches", img_matches );
+
+        /* End of reference flann */
 
         cv::Mat output;
         cv::drawKeypoints(imageL, keypointsL, output);
@@ -169,5 +172,11 @@ void images::match()
         cv::drawKeypoints(imageR, keypointsR, output);
         cv::imshow("viewR", output);
         cv::waitKey(30);
+
+        for (int i = 0; i < saved_matches.size(); i++)
+        {
+            std::cout << keypointsL[saved_matches[i].queryIdx].pt << std::endl;
+        }
     }
+
 }
