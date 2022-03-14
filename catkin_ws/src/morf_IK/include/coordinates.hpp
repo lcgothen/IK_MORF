@@ -10,7 +10,7 @@ namespace coords
     {
         public:
         float x, y, z;
-        float Ox, Oy, Oz;
+        //float Ox, Oy, Oz;
 
 
         point world2FL(); // change coordinates from world frame to front left leg frame

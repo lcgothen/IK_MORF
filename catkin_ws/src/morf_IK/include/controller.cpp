@@ -79,7 +79,7 @@ void CPG::cyclic()
     oH2 = outputH2*0.3;
 }
 
-void CPG::walk()
+void CPG::walk(images stereo)
 {
     float offset2 = 1.5, offset3 = -2.25/4;
     // back right
@@ -146,25 +146,23 @@ void images::match()
     {
         matcher.knnMatch(descriptorsL, descriptorsR, matches, 2);
         
-        const float ratio_thresh = 0.6f;
-        std::vector<cv::DMatch> saved_matches;
+        const float ratio_thresh = 0.3f;
+        std::vector<cv::DMatch> best_matches;
         
         for (int i = 0; i < matches.size(); i++)
         {
             // Only save matches according to Lowe's ratio test
             if(!matches[i].empty() && matches[i][0].distance < ratio_thresh * matches[i][1].distance)
             {
-                saved_matches.push_back(matches[i][0]);
+                best_matches.push_back(matches[i][0]);
             }
         }
         
         cv::Mat img_matches;
-        drawMatches( imageL, keypointsL, imageR, keypointsR, saved_matches, img_matches, cv::Scalar::all(-1),
-                    cv::Scalar::all(-1), std::vector<char>(), cv::DrawMatchesFlags::NOT_DRAW_SINGLE_POINTS );
+        drawMatches( imageL, keypointsL, imageR, keypointsR, best_matches, img_matches, cv::Scalar::all(-1),
+                    cv::Scalar::all(-1), std::vector<char>(), cv::DrawMatchesFlags::NOT_DRAW_SINGLE_POINTS);
         
-        imshow("Matches", img_matches );
-
-        /* End of reference flann */
+        imshow("Matches", img_matches);
 
         cv::Mat output;
         cv::drawKeypoints(imageL, keypointsL, output);
@@ -173,10 +171,36 @@ void images::match()
         cv::imshow("viewR", output);
         cv::waitKey(30);
 
-        for (int i = 0; i < saved_matches.size(); i++)
+        float avg_x=0, avg_y=0, avg_z=0, width;
+
+        for (int i = 0; i < best_matches.size(); i++)
         {
-            std::cout << keypointsL[saved_matches[i].queryIdx].pt << std::endl;
+            float z = 215*0.06*1/(keypointsL[best_matches[i].queryIdx].pt.x-keypointsR[best_matches[i].trainIdx].pt.x);
+            // std::cout << z << std::endl;
+            avg_x += keypointsL[best_matches[i].queryIdx].pt.x;
+            avg_y += keypointsL[best_matches[i].queryIdx].pt.y;
+            avg_z += z;
         }
+
+        avg_x = avg_x/best_matches.size();
+        avg_y = avg_y/best_matches.size();
+        avg_z = avg_z/best_matches.size();
+
+        width = 2*avg_z*tan(M_PI/6);
+
+        float x,y;
+
+        x = -avg_x/256*width+width/2;
+        y = -avg_y/256*width+width/2;
+
+        if(!isnan(x) && !isnan(y) && !isnan(avg_z))
+        {
+            target.x = x;
+            target.y = y;
+            target.z = avg_z;
+            //std::cout << target.x << " , " << target.y <<  " , " << target.z << std::endl;
+        }
+
     }
 
 }

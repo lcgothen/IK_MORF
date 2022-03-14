@@ -210,8 +210,9 @@ include_directories(
 # catkin_add_nosetests(test)
 
 add_executable(main src/main.cpp)
-add_executable(mainCPG src/mainCPG.cpp)
-add_executable(mainIK src/mainIK.cpp)
+# add_executable(mainCPG src/mainCPG.cpp)
+# add_executable(mainIK src/mainIK.cpp)
+# add_executable(calib src/calibration.cpp)
 add_library(coords include/coordinates.cpp)
 add_library(control include/controller.cpp)
 target_link_libraries(control 
@@ -222,13 +223,18 @@ target_link_libraries(main
                       ${OpenCV_LIBS}
                       coords
                       control)
-target_link_libraries(mainCPG 
-                      ${catkin_LIBRARIES}
-                      ${OpenCV_LIBS}
-                      coords
-                      control)
-target_link_libraries(mainIK
-                      ${catkin_LIBRARIES}
-                      ${OpenCV_LIBS}
-                      coords
-                      control)
+# target_link_libraries(calib 
+#                       ${catkin_LIBRARIES}
+#                       ${OpenCV_LIBS}
+#                       coords
+#                       control)
+# target_link_libraries(mainCPG 
+#                       ${catkin_LIBRARIES}
+#                       ${OpenCV_LIBS}
+#                       coords
+#                       control)
+# target_link_libraries(mainIK
+#                       ${catkin_LIBRARIES}
+#                       ${OpenCV_LIBS}
+#                       coords
+#                       control)

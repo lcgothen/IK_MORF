@@ -30,6 +30,17 @@ namespace controller
         void infoCallback(const std_msgs::Float32MultiArray::ConstPtr& msg);
     };
 
+    class images
+    {
+        public:
+        cv::Mat imageL, imageR;
+        point target;
+
+        void imageLeftCallback(const sensor_msgs::ImageConstPtr& msg);
+        void imageRightCallback(const sensor_msgs::ImageConstPtr& msg);
+        void match();
+    };
+
     class CPG
     {
         public:
@@ -39,16 +50,6 @@ namespace controller
         angles FL, ML, BL, FR, MR, BR;
     
         void cyclic();
-        void walk();
-    };
-
-    class images
-    {
-        public:
-        cv::Mat imageL, imageR;
-
-        void imageLeftCallback(const sensor_msgs::ImageConstPtr& msg);
-        void imageRightCallback(const sensor_msgs::ImageConstPtr& msg);
-        void match();
+        void walk(images stereo);
     };
 }

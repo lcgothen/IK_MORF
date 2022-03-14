@@ -29,6 +29,7 @@ int main(int argc, char **argv)
     robot morf;
 	images stereo;
     ros::init(argc, argv, "IK_controller");
+    bool stabilize=true;
 
     ros::NodeHandle n;
 
@@ -90,43 +91,74 @@ int main(int argc, char **argv)
     ros::Rate loop_rate(10);
     
     std_msgs::Float32MultiArray IK_order;
+    CPG cpg;
 
     while(ros::ok())
     {
+        if(!stereo.imageL.empty() && !stereo.imageR.empty())
+			stereo.match();
+
         //ROS_INFO("target: %f, %f, %f\n actual: %f, %f, %f", ML.th1, ML.th2, ML.th3, morf.ML.th1, morf.ML.th2, morf.ML.th3);
         IK_order.data.clear();
         
-        // left leg angles
-        IK_order.data.push_back(FL.th1);
-        IK_order.data.push_back(FL.th2);
-        IK_order.data.push_back(FL.th3);
-        IK_order.data.push_back(ML.th1);
-        IK_order.data.push_back(ML.th2);
-        IK_order.data.push_back(ML.th3);
-        IK_order.data.push_back(BL.th1);
-        IK_order.data.push_back(BL.th2);
-        IK_order.data.push_back(BL.th3);
+        if(stabilize)
+        {
+            // left leg angles
+            IK_order.data.push_back(FL.th1);
+            IK_order.data.push_back(FL.th2);
+            IK_order.data.push_back(FL.th3);
+            IK_order.data.push_back(ML.th1);
+            IK_order.data.push_back(ML.th2);
+            IK_order.data.push_back(ML.th3);
+            IK_order.data.push_back(BL.th1);
+            IK_order.data.push_back(BL.th2);
+            IK_order.data.push_back(BL.th3);
 
 
-        // right leg angles
-        IK_order.data.push_back(FR.th1);
-        IK_order.data.push_back(FR.th2);
-        IK_order.data.push_back(FR.th3);
-        IK_order.data.push_back(MR.th1);
-        IK_order.data.push_back(MR.th2);
-        IK_order.data.push_back(MR.th3);
-        IK_order.data.push_back(BR.th1);
-        IK_order.data.push_back(BR.th2);
-        IK_order.data.push_back(BR.th3);
+            // right leg angles
+            IK_order.data.push_back(FR.th1);
+            IK_order.data.push_back(FR.th2);
+            IK_order.data.push_back(FR.th3);
+            IK_order.data.push_back(MR.th1);
+            IK_order.data.push_back(MR.th2);
+            IK_order.data.push_back(MR.th3);
+            IK_order.data.push_back(BR.th1);
+            IK_order.data.push_back(BR.th2);
+            IK_order.data.push_back(BR.th3);
+        }
+        else 
+        {
+            cpg.cyclic();
+            cpg.walk(stereo);
+
+            // left leg angles
+            IK_order.data.push_back(cpg.FL.th1);
+            IK_order.data.push_back(cpg.FL.th2);
+            IK_order.data.push_back(cpg.FL.th3);
+            IK_order.data.push_back(cpg.ML.th1);
+            IK_order.data.push_back(cpg.ML.th2);
+            IK_order.data.push_back(cpg.ML.th3);
+            IK_order.data.push_back(cpg.BL.th1);
+            IK_order.data.push_back(cpg.BL.th2);
+            IK_order.data.push_back(cpg.BL.th3);
+
+            // right leg angles
+            IK_order.data.push_back(cpg.FR.th1);
+            IK_order.data.push_back(cpg.FR.th2);
+            IK_order.data.push_back(cpg.FR.th3);
+            IK_order.data.push_back(cpg.MR.th1);
+            IK_order.data.push_back(cpg.MR.th2);
+            IK_order.data.push_back(cpg.MR.th3);
+            IK_order.data.push_back(cpg.BR.th1);
+            IK_order.data.push_back(cpg.BR.th2);
+            IK_order.data.push_back(cpg.BR.th3);
+        }
 
         controller_pub.publish(IK_order);
 
         ros::spinOnce();
 
         loop_rate.sleep();
-
-		if(!stereo.imageL.empty() && !stereo.imageR.empty())
-			stereo.match();
     }
 
 
