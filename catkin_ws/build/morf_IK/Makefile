@@ -498,6 +498,21 @@ std_msgs_generate_messages_cpp/fast:
 .PHONY : std_msgs_generate_messages_cpp/fast
 
 # Convenience name for target.
+morf_IK/CMakeFiles/mainIK.dir/rule:
+	cd /home/leonor/tese/IK_MORF/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 morf_IK/CMakeFiles/mainIK.dir/rule
+.PHONY : morf_IK/CMakeFiles/mainIK.dir/rule
+
+# Convenience name for target.
+mainIK: morf_IK/CMakeFiles/mainIK.dir/rule
+
+.PHONY : mainIK
+
+# fast build rule for target.
+mainIK/fast:
+	cd /home/leonor/tese/IK_MORF/catkin_ws/build && $(MAKE) -f morf_IK/CMakeFiles/mainIK.dir/build.make morf_IK/CMakeFiles/mainIK.dir/build
+.PHONY : mainIK/fast
+
+# Convenience name for target.
 morf_IK/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/rule:
 	cd /home/leonor/tese/IK_MORF/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 morf_IK/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/rule
 .PHONY : morf_IK/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/rule
@@ -668,6 +683,33 @@ src/main.cpp.s:
 	cd /home/leonor/tese/IK_MORF/catkin_ws/build && $(MAKE) -f morf_IK/CMakeFiles/main.dir/build.make morf_IK/CMakeFiles/main.dir/src/main.cpp.s
 .PHONY : src/main.cpp.s
 
+src/mainIK.o: src/mainIK.cpp.o
+
+.PHONY : src/mainIK.o
+
+# target to build an object file
+src/mainIK.cpp.o:
+	cd /home/leonor/tese/IK_MORF/catkin_ws/build && $(MAKE) -f morf_IK/CMakeFiles/mainIK.dir/build.make morf_IK/CMakeFiles/mainIK.dir/src/mainIK.cpp.o
+.PHONY : src/mainIK.cpp.o
+
+src/mainIK.i: src/mainIK.cpp.i
+
+.PHONY : src/mainIK.i
+
+# target to preprocess a source file
+src/mainIK.cpp.i:
+	cd /home/leonor/tese/IK_MORF/catkin_ws/build && $(MAKE) -f morf_IK/CMakeFiles/mainIK.dir/build.make morf_IK/CMakeFiles/mainIK.dir/src/mainIK.cpp.i
+.PHONY : src/mainIK.cpp.i
+
+src/mainIK.s: src/mainIK.cpp.s
+
+.PHONY : src/mainIK.s
+
+# target to generate assembly for a file
+src/mainIK.cpp.s:
+	cd /home/leonor/tese/IK_MORF/catkin_ws/build && $(MAKE) -f morf_IK/CMakeFiles/mainIK.dir/build.make morf_IK/CMakeFiles/mainIK.dir/src/mainIK.cpp.s
+.PHONY : src/mainIK.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -703,6 +745,7 @@ help:
 	@echo "... rosgraph_msgs_generate_messages_eus"
 	@echo "... rosgraph_msgs_generate_messages_lisp"
 	@echo "... std_msgs_generate_messages_cpp"
+	@echo "... mainIK"
 	@echo "... rosgraph_msgs_generate_messages_nodejs"
 	@echo "... rosgraph_msgs_generate_messages_py"
 	@echo "... std_msgs_generate_messages_eus"
@@ -718,6 +761,9 @@ help:
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
+	@echo "... src/mainIK.o"
+	@echo "... src/mainIK.i"
+	@echo "... src/mainIK.s"
 .PHONY : help
 
 

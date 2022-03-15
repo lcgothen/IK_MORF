@@ -571,6 +571,19 @@ std_msgs_generate_messages_cpp/fast:
 .PHONY : std_msgs_generate_messages_cpp/fast
 
 #=============================================================================
+# Target rules for targets named mainIK
+
+# Build rule for target.
+mainIK: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 mainIK
+.PHONY : mainIK
+
+# fast build rule for target.
+mainIK/fast:
+	$(MAKE) -f morf_IK/CMakeFiles/mainIK.dir/build.make morf_IK/CMakeFiles/mainIK.dir/build
+.PHONY : mainIK/fast
+
+#=============================================================================
 # Target rules for targets named rosgraph_msgs_generate_messages_nodejs
 
 # Build rule for target.
@@ -692,6 +705,7 @@ help:
 	@echo "... rosgraph_msgs_generate_messages_eus"
 	@echo "... rosgraph_msgs_generate_messages_lisp"
 	@echo "... std_msgs_generate_messages_cpp"
+	@echo "... mainIK"
 	@echo "... rosgraph_msgs_generate_messages_nodejs"
 	@echo "... rosgraph_msgs_generate_messages_py"
 	@echo "... std_msgs_generate_messages_eus"

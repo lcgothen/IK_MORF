@@ -39,6 +39,8 @@ namespace controller
         void imageLeftCallback(const sensor_msgs::ImageConstPtr& msg);
         void imageRightCallback(const sensor_msgs::ImageConstPtr& msg);
         void match();
+        void blob();
+        float calcHue(float b, float g, float r);
     };
 
     class CPG
@@ -48,6 +50,7 @@ namespace controller
         float outputH2 = 0.001;
         float oH1, oH2;
         angles FL, ML, BL, FR, MR, BR;
+        bool stabilize=true;
     
         void cyclic();
         void walk(images stereo);

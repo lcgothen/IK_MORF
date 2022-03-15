@@ -82,35 +82,40 @@ void CPG::cyclic()
 void CPG::walk(images stereo)
 {
     float offset2 = 1.5, offset3 = -2.25/4;
-    // back right
-    BR.th1 = oH1; 
-    BR.th2 = oH2+offset2; 
-    BR.th3 = offset3; 
+    float d=-stereo.target.x;//-0.03-stereo.target.x;
 
-    // back left
-    BL.th1 = oH1;
-    BL.th2 = -oH2+offset2;
-    BL.th3 = offset3;
-
-    // middle right
-    MR.th1 = -oH1;
-    MR.th2 = -oH2+offset2;
-    MR.th3 = offset3;
+    // front left
+    FL.th1 = oH1*(1+d);
+    FL.th2 = -oH2+offset2;
+    FL.th3 = offset3;
  
     // middle left
-    ML.th1 = -oH1;
+    ML.th1 = -oH1*(1+d);
     ML.th2 = oH2+offset2;
     ML.th3 = offset3;
 
+    // back left
+    BL.th1 = oH1*(1+d);
+    BL.th2 = -oH2+offset2;
+    BL.th3 = offset3;
+
     // front right
-    FR.th1 = oH1;
+    FR.th1 = oH1*(1-d);
     FR.th2 = oH2+offset2;
     FR.th3 = offset3;
 
-    // front left
-    FL.th1 = oH1;
-    FL.th2 = -oH2+offset2;
-    FL.th3 = offset3;
+    // middle right
+    MR.th1 = -oH1*(1-d);
+    MR.th2 = -oH2+offset2;
+    MR.th3 = offset3;
+
+    // back right
+    BR.th1 = oH1*(1-d); 
+    BR.th2 = oH2+offset2; 
+    BR.th3 = offset3; 
+
+    if(stereo.target.z < 0.1)
+        stabilize=true;
 }
 
 
@@ -146,7 +151,7 @@ void images::match()
     {
         matcher.knnMatch(descriptorsL, descriptorsR, matches, 2);
         
-        const float ratio_thresh = 0.3f;
+        const float ratio_thresh = 0.6f;
         std::vector<cv::DMatch> best_matches;
         
         for (int i = 0; i < matches.size(); i++)
@@ -175,7 +180,7 @@ void images::match()
 
         for (int i = 0; i < best_matches.size(); i++)
         {
-            float z = 215*0.06*1/(keypointsL[best_matches[i].queryIdx].pt.x-keypointsR[best_matches[i].trainIdx].pt.x);
+            float z = 125*0.06*1/(keypointsL[best_matches[i].queryIdx].pt.x-keypointsR[best_matches[i].trainIdx].pt.x);
             // std::cout << z << std::endl;
             avg_x += keypointsL[best_matches[i].queryIdx].pt.x;
             avg_y += keypointsL[best_matches[i].queryIdx].pt.y;
@@ -186,7 +191,7 @@ void images::match()
         avg_y = avg_y/best_matches.size();
         avg_z = avg_z/best_matches.size();
 
-        width = 2*avg_z*tan(M_PI/6);
+        width = 2*avg_z*tan(M_PI/4);
 
         float x,y;
 
@@ -198,9 +203,82 @@ void images::match()
             target.x = x;
             target.y = y;
             target.z = avg_z;
-            //std::cout << target.x << " , " << target.y <<  " , " << target.z << std::endl;
+            std::cout << target.x << " , " << target.y <<  " , " << target.z << std::endl;
         }
 
     }
 
+}
+
+float images::calcHue(float b, float g, float r)
+{
+    b = b/255;
+    g = g/255;
+    r = r/255;
+
+    float vmax = std::max(r, std::max(g, b));
+    float vmin = std::min(r, std::min(g, b));
+    float diff = vmax - vmin;
+
+    float h;
+
+    if (vmax == vmin)
+        h = 0;
+    else if (vmax == r)
+        h = 60 * ((g - b)/(vmax - vmin));
+    else if (vmax == g)
+        h = 60 * (2 + (b - r)/(vmax - vmin));
+    else if (vmax == b)
+        h = 60 * (4 + (r - g)/(vmax - vmin));
+
+    if(h<0)
+        h += 360;
+
+    return h;
+}
+
+void images::blob()
+{
+    cv::Mat hsvL;
+    cv::cvtColor(imageL, hsvL, cv::COLOR_BGR2HSV);
+    // cv::inRange(hsvL, cv::Scalar(36, 0, 0), cv::Scalar(86, 255, 255), filteredL);
+    // cv::imshow("viewL", imageL);
+    //cv::imshow("hsvL", hsvL);
+
+    cv::SimpleBlobDetector::Params params;
+    params.filterByArea = true;
+    params.minArea = 0;
+
+
+    cv::Ptr<cv::SimpleBlobDetector> detector = cv::SimpleBlobDetector::create(params);
+    std::vector<cv::KeyPoint> keypointsL, keypointsR;
+    detector->detect(imageL, keypointsL);
+    detector->detect(imageR, keypointsR);
+
+    // cv::Mat output;
+    // cv::drawKeypoints(imageL, keypointsL, output);
+    // cv::imshow("viewL", output);
+    // cv::drawKeypoints(imageR, keypointsR, output);
+    // cv::imshow("viewR", output);
+
+    int closestGreen=0;
+    float hClosest=0;
+    for(int i=0; i<keypointsL.size(); i++)
+    {
+        cv::Vec3b bgrVal = imageL.at<cv::Vec3b>(keypointsL[i].pt);
+        cv::Vec3b bgrClosest = imageL.at<cv::Vec3b>(keypointsL[closestGreen].pt);
+        float h = calcHue(bgrVal[0], bgrVal[1], bgrVal[2]);
+
+        if(abs(h-140)<abs(hClosest-140))
+        {
+            closestGreen=i;
+            hClosest=h;
+        }
+    }
+
+    cv::Mat correct;
+    std::vector<cv::KeyPoint> correctKeypoint = {keypointsL[closestGreen]};
+    cv::drawKeypoints(imageL, correctKeypoint, correct);
+    cv::imshow("correct", correct);
+    cv::waitKey(30);
 }

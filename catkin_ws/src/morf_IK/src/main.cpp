@@ -29,7 +29,6 @@ int main(int argc, char **argv)
     robot morf;
 	images stereo;
     ros::init(argc, argv, "IK_controller");
-    bool stabilize=true;
 
     ros::NodeHandle n;
 
@@ -52,7 +51,7 @@ int main(int argc, char **argv)
     stableML.z = -1.6912e-01;
 
     stableBL.x = -7.5776e-02;
-    stableBL.y = 0.22261;
+    stableBL.y = 0.17579;
     stableBL.z = 0.085760;
 
     posFR.x = 0;//-7.5776e-02;
@@ -96,12 +95,15 @@ int main(int argc, char **argv)
     while(ros::ok())
     {
         if(!stereo.imageL.empty() && !stereo.imageR.empty())
-			stereo.match();
+        {
+            //stereo.match();
+			stereo.blob();
+        }
 
         //ROS_INFO("target: %f, %f, %f\n actual: %f, %f, %f", ML.th1, ML.th2, ML.th3, morf.ML.th1, morf.ML.th2, morf.ML.th3);
         IK_order.data.clear();
         
-        if(stabilize)
+        if(cpg.stabilize)
         {
             // left leg angles
             IK_order.data.push_back(FL.th1);
@@ -126,7 +128,7 @@ int main(int argc, char **argv)
             IK_order.data.push_back(BR.th2);
             IK_order.data.push_back(BR.th3);
         }
-        else 
+        else if(!stereo.imageL.empty() && !stereo.imageR.empty())
         {
             cpg.cyclic();
             cpg.walk(stereo);
@@ -152,6 +154,30 @@ int main(int argc, char **argv)
             IK_order.data.push_back(cpg.BR.th1);
             IK_order.data.push_back(cpg.BR.th2);
             IK_order.data.push_back(cpg.BR.th3);
+        }
+        else
+        {
+            // left leg angles
+            IK_order.data.push_back(0);
+            IK_order.data.push_back(2.024319);
+            IK_order.data.push_back(0);
+            IK_order.data.push_back(0);
+            IK_order.data.push_back(2.024319);
+            IK_order.data.push_back(0);
+            IK_order.data.push_back(0);
+            IK_order.data.push_back(2.024319);
+            IK_order.data.push_back(0);
+
+            // right leg angles
+            IK_order.data.push_back(0);
+            IK_order.data.push_back(2.024319);
+            IK_order.data.push_back(0);
+            IK_order.data.push_back(0);
+            IK_order.data.push_back(2.024319);
+            IK_order.data.push_back(0);
+            IK_order.data.push_back(0);
+            IK_order.data.push_back(2.024319);
+            IK_order.data.push_back(0);
         }
 
         controller_pub.publish(IK_order);
