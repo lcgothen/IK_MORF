@@ -20,6 +20,8 @@ namespace coords
         point morf2FR(); // change coordinates from morf frame to front right leg frame
         point morf2MR(); // change coordinates from morf frame to middle right leg frame
         point morf2BR(); // change coordinates from morf frame to back right leg frame
+
+        point camLeft2morf(); // change coordinates from left camera frame to morf frame
     };
 
     point subtract(point a, point b);

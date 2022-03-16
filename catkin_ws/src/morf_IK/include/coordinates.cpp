@@ -180,3 +180,14 @@ point point::morf2BR() // change coordinates from morf frame to back right leg f
 
     return aux;
 }
+
+point point::camLeft2morf() // change coordinates from left camera frame to morf frame
+{
+    point aux;
+
+    aux.x = y+8.0000e-02;
+    aux.y = x+3.0000e-02;
+    aux.z = -z-2.0222e-01;
+
+    return aux;
+}

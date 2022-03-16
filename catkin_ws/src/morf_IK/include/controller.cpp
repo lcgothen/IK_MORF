@@ -82,40 +82,53 @@ void CPG::cyclic()
 void CPG::walk(images stereo)
 {
     float offset2 = 1.5, offset3 = -2.25/4;
-    float d=-stereo.target.x;//-0.03-stereo.target.x;
+    float d=0.08-1.2*stereo.target.x;//-0.03-stereo.target.x;
+
+
+    if(stereo.target.z < 0.5 && stereo.target.z >= 0 && k>0.8)
+        k=0.8;
+    else if(stereo.target.z < 0.4 && stereo.target.z >= 0 && k>0.6)
+        k=0.6;
+    else if(stereo.target.z < 0.3 && stereo.target.z >= 0 && k>0.4)
+        k=0.4;
+    else if(stereo.target.z < 0.2 && stereo.target.z >= 0 && k>0.2)
+        k=0.2;
+
 
     // front left
-    FL.th1 = oH1*(1+d);
-    FL.th2 = -oH2+offset2;
+    FL.th1 = oH1*(1+d)*k;
+    FL.th2 = -oH2*k+offset2;
     FL.th3 = offset3;
  
     // middle left
-    ML.th1 = -oH1*(1+d);
-    ML.th2 = oH2+offset2;
+    ML.th1 = -oH1*(1+d)*k;
+    ML.th2 = oH2*k+offset2;
     ML.th3 = offset3;
 
     // back left
-    BL.th1 = oH1*(1+d);
-    BL.th2 = -oH2+offset2;
+    BL.th1 = oH1*(1+d)*k;
+    BL.th2 = -oH2*k+offset2;
     BL.th3 = offset3;
 
     // front right
-    FR.th1 = oH1*(1-d);
-    FR.th2 = oH2+offset2;
+    FR.th1 = oH1*(1-d)*k;
+    FR.th2 = oH2*k+offset2;
     FR.th3 = offset3;
 
     // middle right
-    MR.th1 = -oH1*(1-d);
-    MR.th2 = -oH2+offset2;
+    MR.th1 = -oH1*(1-d)*k;
+    MR.th2 = -oH2*k+offset2;
     MR.th3 = offset3;
 
     // back right
-    BR.th1 = oH1*(1-d); 
-    BR.th2 = oH2+offset2; 
+    BR.th1 = oH1*(1-d)*k; 
+    BR.th2 = oH2*k+offset2; 
     BR.th3 = offset3; 
 
-    if(stereo.target.z < 0.1)
+    if(stereo.target.z < 0.1 && stereo.target.z >= 0)
         stabilize=true;
+
+    //std::cout << stereo.target.x << " , " << stereo.target.y <<  " , " << stereo.target.z << std::endl;
 }
 
 
@@ -203,47 +216,18 @@ void images::match()
             target.x = x;
             target.y = y;
             target.z = avg_z;
-            std::cout << target.x << " , " << target.y <<  " , " << target.z << std::endl;
+            // std::cout << target.x << " , " << target.y <<  " , " << target.z << std::endl;
         }
 
     }
 
 }
 
-float images::calcHue(float b, float g, float r)
-{
-    b = b/255;
-    g = g/255;
-    r = r/255;
-
-    float vmax = std::max(r, std::max(g, b));
-    float vmin = std::min(r, std::min(g, b));
-    float diff = vmax - vmin;
-
-    float h;
-
-    if (vmax == vmin)
-        h = 0;
-    else if (vmax == r)
-        h = 60 * ((g - b)/(vmax - vmin));
-    else if (vmax == g)
-        h = 60 * (2 + (b - r)/(vmax - vmin));
-    else if (vmax == b)
-        h = 60 * (4 + (r - g)/(vmax - vmin));
-
-    if(h<0)
-        h += 360;
-
-    return h;
-}
-
 void images::blob()
 {
-    cv::Mat hsvL;
+    cv::Mat hsvL, hsvR;
     cv::cvtColor(imageL, hsvL, cv::COLOR_BGR2HSV);
-    // cv::inRange(hsvL, cv::Scalar(36, 0, 0), cv::Scalar(86, 255, 255), filteredL);
-    // cv::imshow("viewL", imageL);
-    //cv::imshow("hsvL", hsvL);
+    cv::cvtColor(imageR, hsvR, cv::COLOR_BGR2HSV);
 
     cv::SimpleBlobDetector::Params params;
     params.filterByArea = true;
@@ -255,30 +239,98 @@ void images::blob()
     detector->detect(imageL, keypointsL);
     detector->detect(imageR, keypointsR);
 
-    // cv::Mat output;
-    // cv::drawKeypoints(imageL, keypointsL, output);
-    // cv::imshow("viewL", output);
-    // cv::drawKeypoints(imageR, keypointsR, output);
-    // cv::imshow("viewR", output);
+    int closestGreenL=0, closestGreenR=0;
+    float hClosestL=0, hClosestR=0;
 
-    int closestGreen=0;
-    float hClosest=0;
+    float x_avgL=0, y_avgL=0, x_avgR=0, y_avgR=0, quantL=0, quantR=0;
+
     for(int i=0; i<keypointsL.size(); i++)
     {
         cv::Vec3b bgrVal = imageL.at<cv::Vec3b>(keypointsL[i].pt);
-        cv::Vec3b bgrClosest = imageL.at<cv::Vec3b>(keypointsL[closestGreen].pt);
-        float h = calcHue(bgrVal[0], bgrVal[1], bgrVal[2]);
+        cv::Vec3b bgrClosest = imageL.at<cv::Vec3b>(keypointsL[closestGreenL].pt);
 
-        if(abs(h-140)<abs(hClosest-140))
+        cv::Vec3b hsvVal = hsvL.at<cv::Vec3b>(keypointsL[i].pt);
+        float h = hsvVal[0];
+
+        if(abs(h-60)<abs(hClosestL-60))
         {
-            closestGreen=i;
-            hClosest=h;
+            closestGreenL=i;
+            hClosestL=h;
+        }
+
+        if(h>40 && h<80)
+        {
+            x_avgL+=keypointsL[i].pt.x;
+            y_avgL+=keypointsL[i].pt.y;
+            quantL++;
+        }
+
+        //std::cout << h << std::endl;
+    }
+
+    for(int i=0; i<keypointsR.size(); i++)
+    {
+        cv::Vec3b bgrVal = imageR.at<cv::Vec3b>(keypointsR[i].pt);
+        cv::Vec3b bgrClosest = imageR.at<cv::Vec3b>(keypointsR[closestGreenR].pt);
+
+
+        cv::Vec3b hsvVal = hsvR.at<cv::Vec3b>(keypointsR[i].pt);
+        float h = hsvVal[0];
+
+        if(abs(h-60)<abs(hClosestR-60))
+        {
+            closestGreenR=i;
+            hClosestR=h;
+        }
+
+        if(h>40 && h<80)
+        {
+            x_avgR+=keypointsR[i].pt.x;
+            y_avgR+=keypointsR[i].pt.y;
+            quantR++;
         }
     }
 
-    cv::Mat correct;
-    std::vector<cv::KeyPoint> correctKeypoint = {keypointsL[closestGreen]};
-    cv::drawKeypoints(imageL, correctKeypoint, correct);
-    cv::imshow("correct", correct);
-    cv::waitKey(30);
+
+    if(!keypointsL.empty() && !keypointsR.empty())
+    {
+        cv::Mat correct;
+        std::vector<cv::KeyPoint> correctKeypoint = {keypointsL[closestGreenL]};
+        cv::drawKeypoints(imageL, correctKeypoint, correct);
+        cv::imshow("correctL", correct);
+        correctKeypoint = {keypointsR[closestGreenR]};
+        cv::drawKeypoints(imageR, correctKeypoint, correct);
+        cv::imshow("correctR", correct);
+        cv::waitKey(30);
+
+        target.z = 175*0.06*1/(keypointsL[closestGreenL].pt.x-keypointsR[closestGreenR].pt.x);
+
+        float length = 2*target.z*tan(2.3562/2);
+        float width = 800*length/848;
+
+        target.x = -keypointsL[closestGreenL].pt.x/848*length+length/2;
+        target.y = -keypointsL[closestGreenL].pt.y/800*width+width/2;
+
+        if(quantL>0)
+        {
+            x_avgL=x_avgL/quantL;
+            y_avgL=y_avgL/quantL;
+        }
+        if(quantR>0)
+        {
+            x_avgR=x_avgR/quantR;
+            y_avgR=y_avgR/quantR;
+        }
+
+        target_avg.z = 175*0.06*1/(x_avgL-x_avgR);
+
+        length = 2*target_avg.z*tan(2.3562/2);
+        width = 800*length/848;
+
+        target_avg.x = -x_avgL/848*length+length/2;
+        target_avg.y = -y_avgL/800*width+width/2;
+
+        
+        //std::cout << target_avg.x << " , " << target_avg.y << " , " << target_avg.z << std::endl;
+    }
 }
