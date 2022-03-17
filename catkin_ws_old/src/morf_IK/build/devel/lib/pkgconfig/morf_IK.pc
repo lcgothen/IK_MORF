@@ -1,8 +1,0 @@
-prefix=/home/leonor/tese/catkin_ws/src/morf_IK/build/devel
-
-Name: morf_IK
-Description: Description of morf_IK
-Version: 0.0.0
-Cflags: 
-Libs: -L${prefix}/lib 
-Requires: 

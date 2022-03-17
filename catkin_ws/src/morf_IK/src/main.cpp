@@ -33,7 +33,8 @@ int main(int argc, char **argv)
     ros::NodeHandle n;
 
     ros::Publisher controller_pub = n.advertise<std_msgs::Float32MultiArray>("joints_target", 1000);
-    ros::Subscriber jointPos_sub = n.subscribe("joint_positions", 1000, &robot::infoCallback, &morf);
+    ros::Subscriber jointPos_sub = n.subscribe("joint_positions", 1000, &robot::jointPosCallback, &morf);
+    ros::Subscriber forceSens_sub = n.subscribe("force_sensors", 1000, &robot::forceSensCallback, &morf);
     image_transport::ImageTransport it(n);
     image_transport::Subscriber imageLeft_sub = it.subscribe("imageLeft", 1, &images::imageLeftCallback, &stereo);
 	image_transport::Subscriber imageRight_sub = it.subscribe("imageRight", 1, &images::imageRightCallback, &stereo);
@@ -66,7 +67,6 @@ int main(int argc, char **argv)
     stableBR.y = -0.17579;
     stableBR.z = 0.085760;
 
-    
 	// convert to leg frames
     posFL = posFL.morf2FL(); 
     stableML = stableML.morf2ML(); 
@@ -76,7 +76,20 @@ int main(int argc, char **argv)
     stableBR = stableBR.morf2BR(); 
 
 
+    // point auxFL, auxFR;
+
+    // auxFL.x = -7.5776e-02;
+    // auxFL.y = +1.3090e-01;
+    // auxFL.z = -2.9912e-01;
+
+    // auxFR.x = -7.5776e-02;
+    // auxFR.y = -1.3090e-01;
+    // auxFR.z = -2.9912e-01;
+  
+
+
     angles FL, FR, ML, MR, BL, BR;
+    angles auxML, auxMR, auxBL, auxBR;
 	// calculate IK parameters 
     FL.calcIK(posFL);
     ML.calcIK(stableML);
@@ -84,14 +97,31 @@ int main(int argc, char **argv)
     FR.calcIK(posFR);
     MR.calcIK(stableMR);
     BR.calcIK(stableBR);
-    //ROS_INFO("%f, %f, %f", BL.th1, BL.th2, BL.th3);
+
+    auxML.th1=-1.100229;
+    auxML.th2=2.324319;
+    auxML.th3=-0.2;
+    auxMR.th1=1.100229;
+    auxMR.th2=2.324319;
+    auxMR.th3=-0.2;
+
+    auxBL.th1=-0.507609;
+    auxBL.th2=2.224319;
+    auxBL.th3=0;
+    auxBR.th1=0.507609;
+    auxBR.th2=2.224319;
+    auxBR.th3=0;
+
+    ROS_INFO("%f, %f, %f", BL.th1, BL.th2, BL.th3);
 
 
     ros::Rate loop_rate(10);
     
     std_msgs::Float32MultiArray IK_order;
     CPG cpg;
-    bool stabilized=false;
+    bool stabilized=false, inPos=false, done=false;
+    int state=0;
+    point target;
 
     while(ros::ok())
     {
@@ -107,6 +137,311 @@ int main(int argc, char **argv)
         
         if(cpg.stabilize && !stabilized)
         {
+            if(state==0 && morf.FL.th1<FL.th1+0.001 && morf.FL.th1>FL.th1-0.001 && 
+                    morf.FL.th2<FL.th2+0.001 && morf.FL.th2>FL.th2-0.001 &&
+                    morf.FL.th3<FL.th3+0.001 && morf.FL.th3>FL.th3-0.001)
+                state=1;
+            else if(state==1 && morf.BL.th1<auxBL.th1+0.001 && morf.BL.th1>auxBL.th1-0.001 && 
+                    morf.BL.th2<auxBL.th2+0.001 && morf.BL.th2>auxBL.th2-0.001 &&
+                    morf.BL.th3<auxBL.th3+0.001 && morf.BL.th3>auxBL.th3-0.001)
+                state=2;
+            else if(state==2 && morf.BL.th1<BL.th1+0.001 && morf.BL.th1>BL.th1-0.001 && 
+                    morf.BL.th2<BL.th2+0.001 && morf.BL.th2>BL.th2-0.001 &&
+                    morf.BL.th3<BL.th3+0.001 && morf.BL.th3>BL.th3-0.001)
+                state=3;
+            else if(state==3 && morf.ML.th1<auxML.th1+0.001 && morf.ML.th1>auxML.th1-0.001 && 
+                    morf.ML.th2<auxML.th2+0.001 && morf.ML.th2>auxML.th2-0.001 &&
+                    morf.ML.th3<auxML.th3+0.001 && morf.ML.th3>auxML.th3-0.001)
+                state=4;
+            else if(state==4 && morf.ML.th1<ML.th1+0.001 && morf.ML.th1>ML.th1-0.001 && 
+                    morf.ML.th2<ML.th2+0.001 && morf.ML.th2>ML.th2-0.001 &&
+                    morf.ML.th3<ML.th3+0.001 && morf.ML.th3>ML.th3-0.001)
+                state=5;
+            else if(state==5 && morf.FR.th1<FR.th1+0.001 && morf.FR.th1>FR.th1-0.001 && 
+                    morf.FR.th2<FR.th2+0.001 && morf.FR.th2>FR.th2-0.001 &&
+                    morf.FR.th3<FR.th3+0.001 && morf.FR.th3>FR.th3-0.001)
+                state=6;
+            else if(state==6 && morf.BR.th1<auxBR.th1+0.001 && morf.BR.th1>auxBR.th1-0.001 && 
+                    morf.BR.th2<auxBR.th2+0.001 && morf.BR.th2>auxBR.th2-0.001 &&
+                    morf.BR.th3<auxBR.th3+0.001 && morf.BR.th3>auxBR.th3-0.001)
+                state=7;
+            else if(state==7 && morf.BR.th1<BR.th1+0.001 && morf.BR.th1>BR.th1-0.001 && 
+                    morf.BR.th2<BR.th2+0.001 && morf.BR.th2>BR.th2-0.001 &&
+                    morf.BR.th3<BR.th3+0.001 && morf.BR.th3>BR.th3-0.001)
+                state=8;
+            else if(state==8 && morf.MR.th1<auxMR.th1+0.001 && morf.MR.th1>auxMR.th1-0.001 && 
+                    morf.MR.th2<auxMR.th2+0.001 && morf.MR.th2>auxMR.th2-0.001 &&
+                    morf.MR.th3<auxMR.th3+0.001 && morf.MR.th3>auxMR.th3-0.001)
+                state=9;
+            else if(state==9 && morf.MR.th1<MR.th1+0.001 && morf.MR.th1>MR.th1-0.001 && 
+                    morf.MR.th2<MR.th2+0.001 && morf.MR.th2>MR.th2-0.001 &&
+                    morf.MR.th3<MR.th3+0.001 && morf.MR.th3>MR.th3-0.001)
+            {
+                stabilized=true;
+                inPos=false;
+            }
+
+            if(state==0)
+            {
+                // left leg angles
+                IK_order.data.push_back(FL.th1);
+                IK_order.data.push_back(FL.th2);
+                IK_order.data.push_back(FL.th3);
+                IK_order.data.push_back(0);
+                IK_order.data.push_back(2.024319);
+                IK_order.data.push_back(0);
+                IK_order.data.push_back(0);
+                IK_order.data.push_back(2.024319);
+                IK_order.data.push_back(0);
+
+                // right leg angles
+                IK_order.data.push_back(0);
+                IK_order.data.push_back(2.024319);
+                IK_order.data.push_back(0);
+                IK_order.data.push_back(0);
+                IK_order.data.push_back(2.024319);
+                IK_order.data.push_back(0);
+                IK_order.data.push_back(0);
+                IK_order.data.push_back(2.024319);
+                IK_order.data.push_back(0);
+            }
+            else if(state==1)
+            {
+                // left leg angles
+                IK_order.data.push_back(FL.th1);
+                IK_order.data.push_back(FL.th2);
+                IK_order.data.push_back(FL.th3);
+                IK_order.data.push_back(0);
+                IK_order.data.push_back(2.024319);
+                IK_order.data.push_back(0);
+                IK_order.data.push_back(auxBL.th1);
+                IK_order.data.push_back(auxBL.th2);
+                IK_order.data.push_back(auxBL.th3);
+
+
+                // right leg angles
+                IK_order.data.push_back(0);
+                IK_order.data.push_back(2.024319);
+                IK_order.data.push_back(0);
+                IK_order.data.push_back(0);
+                IK_order.data.push_back(2.024319);
+                IK_order.data.push_back(0);
+                IK_order.data.push_back(0);
+                IK_order.data.push_back(2.024319);
+                IK_order.data.push_back(0);
+            }
+            else if(state==2)
+            {
+                // left leg angles
+                IK_order.data.push_back(FL.th1);
+                IK_order.data.push_back(FL.th2);
+                IK_order.data.push_back(FL.th3);
+                IK_order.data.push_back(0);
+                IK_order.data.push_back(2.024319);
+                IK_order.data.push_back(0);
+                IK_order.data.push_back(BL.th1);
+                IK_order.data.push_back(BL.th2);
+                IK_order.data.push_back(BL.th3);
+
+
+                // right leg angles
+                IK_order.data.push_back(0);
+                IK_order.data.push_back(2.024319);
+                IK_order.data.push_back(0);
+                IK_order.data.push_back(0);
+                IK_order.data.push_back(2.024319);
+                IK_order.data.push_back(0);
+                IK_order.data.push_back(0);
+                IK_order.data.push_back(2.024319);
+                IK_order.data.push_back(0);
+            }
+            else if(state==3)
+            {
+                // left leg angles
+                IK_order.data.push_back(FL.th1);
+                IK_order.data.push_back(FL.th2);
+                IK_order.data.push_back(FL.th3);
+                IK_order.data.push_back(auxML.th1);
+                IK_order.data.push_back(auxML.th2);
+                IK_order.data.push_back(auxML.th3);
+                IK_order.data.push_back(BL.th1);
+                IK_order.data.push_back(BL.th2);
+                IK_order.data.push_back(BL.th3);
+
+                // right leg angles
+                IK_order.data.push_back(0);
+                IK_order.data.push_back(2.024319);
+                IK_order.data.push_back(0);
+                IK_order.data.push_back(0);
+                IK_order.data.push_back(2.024319);
+                IK_order.data.push_back(0);
+                IK_order.data.push_back(0);
+                IK_order.data.push_back(2.024319);
+                IK_order.data.push_back(0);
+            }
+            else if(state==4)
+            {
+                // left leg angles
+                IK_order.data.push_back(FL.th1);
+                IK_order.data.push_back(FL.th2);
+                IK_order.data.push_back(FL.th3);
+                IK_order.data.push_back(ML.th1);
+                IK_order.data.push_back(ML.th2);
+                IK_order.data.push_back(ML.th3);
+                IK_order.data.push_back(BL.th1);
+                IK_order.data.push_back(BL.th2);
+                IK_order.data.push_back(BL.th3);
+
+                // right leg angles
+                IK_order.data.push_back(0);
+                IK_order.data.push_back(2.024319);
+                IK_order.data.push_back(0);
+                IK_order.data.push_back(0);
+                IK_order.data.push_back(2.024319);
+                IK_order.data.push_back(0);
+                IK_order.data.push_back(0);
+                IK_order.data.push_back(2.024319);
+                IK_order.data.push_back(0);
+            }
+            else if(state==5)
+            {
+                // left leg angles
+                IK_order.data.push_back(FL.th1);
+                IK_order.data.push_back(FL.th2);
+                IK_order.data.push_back(FL.th3);
+                IK_order.data.push_back(ML.th1);
+                IK_order.data.push_back(ML.th2);
+                IK_order.data.push_back(ML.th3);
+                IK_order.data.push_back(BL.th1);
+                IK_order.data.push_back(BL.th2);
+                IK_order.data.push_back(BL.th3);
+
+
+                // right leg angles
+                IK_order.data.push_back(FR.th1);
+                IK_order.data.push_back(FR.th2);
+                IK_order.data.push_back(FR.th3);
+                IK_order.data.push_back(0);
+                IK_order.data.push_back(2.024319);
+                IK_order.data.push_back(0);
+                IK_order.data.push_back(0);
+                IK_order.data.push_back(2.024319);
+                IK_order.data.push_back(0);
+            }
+            else if(state==6)
+            {
+                // left leg angles
+                IK_order.data.push_back(FL.th1);
+                IK_order.data.push_back(FL.th2);
+                IK_order.data.push_back(FL.th3);
+                IK_order.data.push_back(ML.th1);
+                IK_order.data.push_back(ML.th2);
+                IK_order.data.push_back(ML.th3);
+                IK_order.data.push_back(BL.th1);
+                IK_order.data.push_back(BL.th2);
+                IK_order.data.push_back(BL.th3);
+
+
+                // right leg angles
+                IK_order.data.push_back(FR.th1);
+                IK_order.data.push_back(FR.th2);
+                IK_order.data.push_back(FR.th3);
+                IK_order.data.push_back(0);
+                IK_order.data.push_back(2.024319);
+                IK_order.data.push_back(0);
+                IK_order.data.push_back(auxBR.th1);
+                IK_order.data.push_back(auxBR.th2);
+                IK_order.data.push_back(auxBR.th3);
+            }
+            else if(state==7)
+            {
+                // left leg angles
+                IK_order.data.push_back(FL.th1);
+                IK_order.data.push_back(FL.th2);
+                IK_order.data.push_back(FL.th3);
+                IK_order.data.push_back(ML.th1);
+                IK_order.data.push_back(ML.th2);
+                IK_order.data.push_back(ML.th3);
+                IK_order.data.push_back(BL.th1);
+                IK_order.data.push_back(BL.th2);
+                IK_order.data.push_back(BL.th3);
+
+
+                // right leg angles
+                IK_order.data.push_back(FR.th1);
+                IK_order.data.push_back(FR.th2);
+                IK_order.data.push_back(FR.th3);
+                IK_order.data.push_back(0);
+                IK_order.data.push_back(2.024319);
+                IK_order.data.push_back(0);
+                IK_order.data.push_back(BR.th1);
+                IK_order.data.push_back(BR.th2);
+                IK_order.data.push_back(BR.th3);
+            }
+            else if(state==8)
+            {
+                // left leg angles
+                IK_order.data.push_back(FL.th1);
+                IK_order.data.push_back(FL.th2);
+                IK_order.data.push_back(FL.th3);
+                IK_order.data.push_back(ML.th1);
+                IK_order.data.push_back(ML.th2);
+                IK_order.data.push_back(ML.th3);
+                IK_order.data.push_back(BL.th1);
+                IK_order.data.push_back(BL.th2);
+                IK_order.data.push_back(BL.th3);
+
+
+                // right leg angles
+                IK_order.data.push_back(FR.th1);
+                IK_order.data.push_back(FR.th2);
+                IK_order.data.push_back(FR.th3);
+                IK_order.data.push_back(auxMR.th1);
+                IK_order.data.push_back(auxMR.th2);
+                IK_order.data.push_back(auxMR.th3);
+                IK_order.data.push_back(BR.th1);
+                IK_order.data.push_back(BR.th2);
+                IK_order.data.push_back(BR.th3);
+            }
+            else if(state==9)
+            {
+                // left leg angles
+                IK_order.data.push_back(FL.th1);
+                IK_order.data.push_back(FL.th2);
+                IK_order.data.push_back(FL.th3);
+                IK_order.data.push_back(ML.th1);
+                IK_order.data.push_back(ML.th2);
+                IK_order.data.push_back(ML.th3);
+                IK_order.data.push_back(BL.th1);
+                IK_order.data.push_back(BL.th2);
+                IK_order.data.push_back(BL.th3);
+
+
+                // right leg angles
+                IK_order.data.push_back(FR.th1);
+                IK_order.data.push_back(FR.th2);
+                IK_order.data.push_back(FR.th3);
+                IK_order.data.push_back(MR.th1);
+                IK_order.data.push_back(MR.th2);
+                IK_order.data.push_back(MR.th3);
+                IK_order.data.push_back(BR.th1);
+                IK_order.data.push_back(BR.th2);
+                IK_order.data.push_back(BR.th3);
+            }
+
+            controller_pub.publish(IK_order);
+        }
+        else if(stabilized && !inPos)
+        {
+            target.x=stereo.target_avg.x;
+            target.y=stereo.target_avg.y;
+            target.z=stereo.target_avg.z-0.02;
+
+            posFL = target.camLeft2morf(); 
+            posFL = posFL.morf2FL(); 
+            FL.calcIK(posFL);
+            //ROS_INFO("%f, %f, %f", FL.th1, FL.th2, FL.th3);
+
             // left leg angles
             IK_order.data.push_back(FL.th1);
             IK_order.data.push_back(FL.th2);
@@ -132,29 +467,22 @@ int main(int argc, char **argv)
 
             if(morf.FL.th1<FL.th1+0.001 && morf.FL.th1>FL.th1-0.001 && 
                morf.FL.th2<FL.th2+0.001 && morf.FL.th2>FL.th2-0.001 &&
-               morf.FL.th3<FL.th3+0.001 && morf.FL.th3>FL.th3-0.001 &&
-               morf.ML.th1<ML.th1+0.001 && morf.ML.th1>ML.th1-0.001 && 
-               morf.ML.th2<ML.th2+0.001 && morf.ML.th2>ML.th2-0.001 &&
-               morf.ML.th3<ML.th3+0.001 && morf.ML.th3>ML.th3-0.001 &&
-               morf.BL.th1<BL.th1+0.001 && morf.BL.th1>BL.th1-0.001 && 
-               morf.BL.th2<BL.th2+0.001 && morf.BL.th2>BL.th2-0.001 &&
-               morf.BL.th3<BL.th3+0.001 && morf.BL.th3>BL.th3-0.001 &&
-               morf.FR.th1<FR.th1+0.001 && morf.FR.th1>FR.th1-0.001 && 
-               morf.FR.th2<FR.th2+0.001 && morf.FR.th2>FR.th2-0.001 &&
-               morf.FR.th3<FR.th3+0.001 && morf.FR.th3>FR.th3-0.001 &&
-               morf.MR.th1<MR.th1+0.001 && morf.MR.th1>MR.th1-0.001 && 
-               morf.MR.th2<MR.th2+0.001 && morf.MR.th2>MR.th2-0.001 &&
-               morf.MR.th3<MR.th3+0.001 && morf.MR.th3>MR.th3-0.001 &&
-               morf.BR.th1<BR.th1+0.001 && morf.BR.th1>BR.th1-0.001 && 
-               morf.BR.th2<BR.th2+0.001 && morf.BR.th2>BR.th2-0.001 &&
-               morf.BR.th3<BR.th3+0.001 && morf.BR.th3>BR.th3-0.001)
+               morf.FL.th3<FL.th3+0.001 && morf.FL.th3>FL.th3-0.001)
                {
-                    stabilized=true;
-               }    
+                    inPos=true;
+                    done=false;
+               }
+
+            //std::cout << stereo.target.x << " , " << stereo.target.y <<  " , " << stereo.target.z << std::endl;
+            controller_pub.publish(IK_order);
         }
-        else if(stabilized)
+        else if(stabilized && inPos && !done)
         {
-            posFL = stereo.target_avg.camLeft2morf(); 
+            if(morf.sensFL>0.1)
+                done=true;
+
+            target.z += 0.001;
+            posFL = target.camLeft2morf(); 
             posFL = posFL.morf2FL(); 
             FL.calcIK(posFL);
             //ROS_INFO("%f, %f, %f", FL.th1, FL.th2, FL.th3);
@@ -183,8 +511,9 @@ int main(int argc, char **argv)
             IK_order.data.push_back(BR.th3);
 
             //std::cout << stereo.target.x << " , " << stereo.target.y <<  " , " << stereo.target.z << std::endl;
+            controller_pub.publish(IK_order);
         }
-        else if(!stereo.imageL.empty() && !stereo.imageR.empty())
+        else if(!stereo.imageL.empty() && !stereo.imageR.empty() && !cpg.stabilize)
         {
             cpg.cyclic();
             cpg.walk(stereo);
@@ -212,35 +541,8 @@ int main(int argc, char **argv)
             IK_order.data.push_back(cpg.BR.th3);
 
             stabilized=false;
+            controller_pub.publish(IK_order);
         }
-        else
-        {
-            // left leg angles
-            IK_order.data.push_back(0);
-            IK_order.data.push_back(2.024319);
-            IK_order.data.push_back(0);
-            IK_order.data.push_back(0);
-            IK_order.data.push_back(2.024319);
-            IK_order.data.push_back(0);
-            IK_order.data.push_back(0);
-            IK_order.data.push_back(2.024319);
-            IK_order.data.push_back(0);
-
-            // right leg angles
-            IK_order.data.push_back(0);
-            IK_order.data.push_back(2.024319);
-            IK_order.data.push_back(0);
-            IK_order.data.push_back(0);
-            IK_order.data.push_back(2.024319);
-            IK_order.data.push_back(0);
-            IK_order.data.push_back(0);
-            IK_order.data.push_back(2.024319);
-            IK_order.data.push_back(0);
-
-            stabilized=false;
-        }
-
-        controller_pub.publish(IK_order);
 
         ros::spinOnce();
 

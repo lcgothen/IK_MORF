@@ -18,7 +18,7 @@ using namespace coords;
 #include "controller.hpp"
 using namespace controller;
 
-void robot::infoCallback(const std_msgs::Float32MultiArray::ConstPtr& msg)
+void robot::jointPosCallback(const std_msgs::Float32MultiArray::ConstPtr& msg)
 {
     FL.th1 = msg->data[0];
     FL.th2 = msg->data[1];
@@ -38,6 +38,11 @@ void robot::infoCallback(const std_msgs::Float32MultiArray::ConstPtr& msg)
     BR.th1 = msg->data[15];
     BR.th2 = msg->data[16];
     BR.th3 = msg->data[17];
+}
+
+void robot::forceSensCallback(const std_msgs::Float32MultiArray::ConstPtr& msg)
+{
+    sensFL = msg->data[2];
 }
 
 void angles::calcIK(point target) // calculate angles with IK equations
@@ -85,14 +90,14 @@ void CPG::walk(images stereo)
     float d=0.08-1.2*stereo.target.x;//-0.03-stereo.target.x;
 
 
-    if(stereo.target.z < 0.5 && stereo.target.z >= 0 && k>0.8)
-        k=0.8;
-    else if(stereo.target.z < 0.4 && stereo.target.z >= 0 && k>0.6)
-        k=0.6;
+    if(stereo.target.z < 0.2 && stereo.target.z >= 0 && k>0.2)
+        k=0.2;
     else if(stereo.target.z < 0.3 && stereo.target.z >= 0 && k>0.4)
         k=0.4;
-    else if(stereo.target.z < 0.2 && stereo.target.z >= 0 && k>0.2)
-        k=0.2;
+    else if(stereo.target.z < 0.4 && stereo.target.z >= 0 && k>0.6)
+        k=0.6;
+    else if(stereo.target.z < 0.5 && stereo.target.z >= 0 && k>0.8)
+        k=0.8;
 
 
     // front left
@@ -125,7 +130,7 @@ void CPG::walk(images stereo)
     BR.th2 = oH2*k+offset2; 
     BR.th3 = offset3; 
 
-    if(stereo.target.z < 0.1 && stereo.target.z >= 0)
+    if(stereo.target.z < 0.13 && stereo.target.z >= 0)
         stabilize=true;
 
     //std::cout << stereo.target.x << " , " << stereo.target.y <<  " , " << stereo.target.z << std::endl;

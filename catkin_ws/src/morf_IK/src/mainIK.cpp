@@ -27,7 +27,7 @@ int main(int argc, char **argv)
     ros::NodeHandle n;
 
     ros::Publisher controller_pub = n.advertise<std_msgs::Float32MultiArray>("joints_target", 1000);
-    ros::Subscriber controller_sub = n.subscribe("joint_positions", 1000, &robot::infoCallback, &morf);
+    ros::Subscriber controller_sub = n.subscribe("joint_positions", 1000, &robot::jointPosCallback, &morf);
 
     // target coords
     point target;

@@ -26,8 +26,10 @@ namespace controller
     {
         public:
         angles FL, ML, BL, FR, MR, BR;
+        float sensFL;
 
-        void infoCallback(const std_msgs::Float32MultiArray::ConstPtr& msg);
+        void jointPosCallback(const std_msgs::Float32MultiArray::ConstPtr& msg);
+        void forceSensCallback(const std_msgs::Float32MultiArray::ConstPtr& msg);
     };
 
     class images
