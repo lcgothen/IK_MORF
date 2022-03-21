@@ -76,18 +76,6 @@ int main(int argc, char **argv)
     stableBR = stableBR.morf2BR(); 
 
 
-    // point auxFL, auxFR;
-
-    // auxFL.x = -7.5776e-02;
-    // auxFL.y = +1.3090e-01;
-    // auxFL.z = -2.9912e-01;
-
-    // auxFR.x = -7.5776e-02;
-    // auxFR.y = -1.3090e-01;
-    // auxFR.z = -2.9912e-01;
-  
-
-
     angles FL, FR, ML, MR, BL, BR;
     angles auxML, auxMR, auxBL, auxBR;
 	// calculate IK parameters 
