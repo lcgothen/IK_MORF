@@ -405,961 +405,961 @@ clean: gtest/googlemock/gtest/CMakeFiles/gtest.dir/clean
 .PHONY : clean
 
 #=============================================================================
-# Directory level rules for directory morf_IK
+# Directory level rules for directory morf_ik
 
 # Convenience name for "all" pass in the directory.
-morf_IK/all: morf_IK/CMakeFiles/control.dir/all
-morf_IK/all: morf_IK/CMakeFiles/coords.dir/all
-morf_IK/all: morf_IK/CMakeFiles/main.dir/all
+morf_ik/all: morf_ik/CMakeFiles/control.dir/all
+morf_ik/all: morf_ik/CMakeFiles/coords.dir/all
+morf_ik/all: morf_ik/CMakeFiles/main.dir/all
 
-.PHONY : morf_IK/all
+.PHONY : morf_ik/all
 
 # Convenience name for "clean" pass in the directory.
-morf_IK/clean: morf_IK/CMakeFiles/control.dir/clean
-morf_IK/clean: morf_IK/CMakeFiles/coords.dir/clean
-morf_IK/clean: morf_IK/CMakeFiles/geometry_msgs_generate_messages_py.dir/clean
-morf_IK/clean: morf_IK/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/clean
-morf_IK/clean: morf_IK/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/clean
-morf_IK/clean: morf_IK/CMakeFiles/sensor_msgs_generate_messages_py.dir/clean
-morf_IK/clean: morf_IK/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/clean
-morf_IK/clean: morf_IK/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/clean
-morf_IK/clean: morf_IK/CMakeFiles/main.dir/clean
-morf_IK/clean: morf_IK/CMakeFiles/geometry_msgs_generate_messages_eus.dir/clean
-morf_IK/clean: morf_IK/CMakeFiles/roscpp_generate_messages_py.dir/clean
-morf_IK/clean: morf_IK/CMakeFiles/roscpp_generate_messages_eus.dir/clean
-morf_IK/clean: morf_IK/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/clean
-morf_IK/clean: morf_IK/CMakeFiles/roscpp_generate_messages_lisp.dir/clean
-morf_IK/clean: morf_IK/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/clean
-morf_IK/clean: morf_IK/CMakeFiles/sensor_msgs_generate_messages_eus.dir/clean
-morf_IK/clean: morf_IK/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/clean
-morf_IK/clean: morf_IK/CMakeFiles/std_msgs_generate_messages_lisp.dir/clean
-morf_IK/clean: morf_IK/CMakeFiles/roscpp_generate_messages_cpp.dir/clean
-morf_IK/clean: morf_IK/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/clean
-morf_IK/clean: morf_IK/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/clean
-morf_IK/clean: morf_IK/CMakeFiles/std_msgs_generate_messages_cpp.dir/clean
-morf_IK/clean: morf_IK/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/clean
-morf_IK/clean: morf_IK/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/clean
-morf_IK/clean: morf_IK/CMakeFiles/std_msgs_generate_messages_eus.dir/clean
-morf_IK/clean: morf_IK/CMakeFiles/std_msgs_generate_messages_nodejs.dir/clean
-morf_IK/clean: morf_IK/CMakeFiles/roscpp_generate_messages_nodejs.dir/clean
-morf_IK/clean: morf_IK/CMakeFiles/std_msgs_generate_messages_py.dir/clean
+morf_ik/clean: morf_ik/CMakeFiles/control.dir/clean
+morf_ik/clean: morf_ik/CMakeFiles/coords.dir/clean
+morf_ik/clean: morf_ik/CMakeFiles/geometry_msgs_generate_messages_py.dir/clean
+morf_ik/clean: morf_ik/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/clean
+morf_ik/clean: morf_ik/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/clean
+morf_ik/clean: morf_ik/CMakeFiles/sensor_msgs_generate_messages_py.dir/clean
+morf_ik/clean: morf_ik/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/clean
+morf_ik/clean: morf_ik/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/clean
+morf_ik/clean: morf_ik/CMakeFiles/main.dir/clean
+morf_ik/clean: morf_ik/CMakeFiles/geometry_msgs_generate_messages_eus.dir/clean
+morf_ik/clean: morf_ik/CMakeFiles/roscpp_generate_messages_py.dir/clean
+morf_ik/clean: morf_ik/CMakeFiles/roscpp_generate_messages_eus.dir/clean
+morf_ik/clean: morf_ik/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/clean
+morf_ik/clean: morf_ik/CMakeFiles/roscpp_generate_messages_lisp.dir/clean
+morf_ik/clean: morf_ik/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/clean
+morf_ik/clean: morf_ik/CMakeFiles/sensor_msgs_generate_messages_eus.dir/clean
+morf_ik/clean: morf_ik/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/clean
+morf_ik/clean: morf_ik/CMakeFiles/std_msgs_generate_messages_lisp.dir/clean
+morf_ik/clean: morf_ik/CMakeFiles/roscpp_generate_messages_cpp.dir/clean
+morf_ik/clean: morf_ik/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/clean
+morf_ik/clean: morf_ik/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/clean
+morf_ik/clean: morf_ik/CMakeFiles/std_msgs_generate_messages_cpp.dir/clean
+morf_ik/clean: morf_ik/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/clean
+morf_ik/clean: morf_ik/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/clean
+morf_ik/clean: morf_ik/CMakeFiles/std_msgs_generate_messages_eus.dir/clean
+morf_ik/clean: morf_ik/CMakeFiles/std_msgs_generate_messages_nodejs.dir/clean
+morf_ik/clean: morf_ik/CMakeFiles/roscpp_generate_messages_nodejs.dir/clean
+morf_ik/clean: morf_ik/CMakeFiles/std_msgs_generate_messages_py.dir/clean
 
-.PHONY : morf_IK/clean
+.PHONY : morf_ik/clean
 
 # Convenience name for "preinstall" pass in the directory.
-morf_IK/preinstall:
+morf_ik/preinstall:
 
-.PHONY : morf_IK/preinstall
+.PHONY : morf_ik/preinstall
 
 #=============================================================================
-# Target rules for target morf_IK/CMakeFiles/control.dir
+# Target rules for target morf_ik/CMakeFiles/control.dir
 
 # All Build rule for target.
-morf_IK/CMakeFiles/control.dir/all:
-	$(MAKE) -f morf_IK/CMakeFiles/control.dir/build.make morf_IK/CMakeFiles/control.dir/depend
-	$(MAKE) -f morf_IK/CMakeFiles/control.dir/build.make morf_IK/CMakeFiles/control.dir/build
+morf_ik/CMakeFiles/control.dir/all:
+	$(MAKE) -f morf_ik/CMakeFiles/control.dir/build.make morf_ik/CMakeFiles/control.dir/depend
+	$(MAKE) -f morf_ik/CMakeFiles/control.dir/build.make morf_ik/CMakeFiles/control.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/leonor/tese/IK_MORF/catkin_ws/build/CMakeFiles --progress-num=1,2 "Built target control"
-.PHONY : morf_IK/CMakeFiles/control.dir/all
+.PHONY : morf_ik/CMakeFiles/control.dir/all
 
 # Include target in all.
-all: morf_IK/CMakeFiles/control.dir/all
+all: morf_ik/CMakeFiles/control.dir/all
 
 .PHONY : all
 
 # Build rule for subdir invocation for target.
-morf_IK/CMakeFiles/control.dir/rule: cmake_check_build_system
+morf_ik/CMakeFiles/control.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/leonor/tese/IK_MORF/catkin_ws/build/CMakeFiles 2
-	$(MAKE) -f CMakeFiles/Makefile2 morf_IK/CMakeFiles/control.dir/all
+	$(MAKE) -f CMakeFiles/Makefile2 morf_ik/CMakeFiles/control.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/leonor/tese/IK_MORF/catkin_ws/build/CMakeFiles 0
-.PHONY : morf_IK/CMakeFiles/control.dir/rule
+.PHONY : morf_ik/CMakeFiles/control.dir/rule
 
 # Convenience name for target.
-control: morf_IK/CMakeFiles/control.dir/rule
+control: morf_ik/CMakeFiles/control.dir/rule
 
 .PHONY : control
 
 # clean rule for target.
-morf_IK/CMakeFiles/control.dir/clean:
-	$(MAKE) -f morf_IK/CMakeFiles/control.dir/build.make morf_IK/CMakeFiles/control.dir/clean
-.PHONY : morf_IK/CMakeFiles/control.dir/clean
+morf_ik/CMakeFiles/control.dir/clean:
+	$(MAKE) -f morf_ik/CMakeFiles/control.dir/build.make morf_ik/CMakeFiles/control.dir/clean
+.PHONY : morf_ik/CMakeFiles/control.dir/clean
 
 # clean rule for target.
-clean: morf_IK/CMakeFiles/control.dir/clean
+clean: morf_ik/CMakeFiles/control.dir/clean
 
 .PHONY : clean
 
 #=============================================================================
-# Target rules for target morf_IK/CMakeFiles/coords.dir
+# Target rules for target morf_ik/CMakeFiles/coords.dir
 
 # All Build rule for target.
-morf_IK/CMakeFiles/coords.dir/all:
-	$(MAKE) -f morf_IK/CMakeFiles/coords.dir/build.make morf_IK/CMakeFiles/coords.dir/depend
-	$(MAKE) -f morf_IK/CMakeFiles/coords.dir/build.make morf_IK/CMakeFiles/coords.dir/build
+morf_ik/CMakeFiles/coords.dir/all:
+	$(MAKE) -f morf_ik/CMakeFiles/coords.dir/build.make morf_ik/CMakeFiles/coords.dir/depend
+	$(MAKE) -f morf_ik/CMakeFiles/coords.dir/build.make morf_ik/CMakeFiles/coords.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/leonor/tese/IK_MORF/catkin_ws/build/CMakeFiles --progress-num=3,4 "Built target coords"
-.PHONY : morf_IK/CMakeFiles/coords.dir/all
+.PHONY : morf_ik/CMakeFiles/coords.dir/all
 
 # Include target in all.
-all: morf_IK/CMakeFiles/coords.dir/all
+all: morf_ik/CMakeFiles/coords.dir/all
 
 .PHONY : all
 
 # Build rule for subdir invocation for target.
-morf_IK/CMakeFiles/coords.dir/rule: cmake_check_build_system
+morf_ik/CMakeFiles/coords.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/leonor/tese/IK_MORF/catkin_ws/build/CMakeFiles 2
-	$(MAKE) -f CMakeFiles/Makefile2 morf_IK/CMakeFiles/coords.dir/all
+	$(MAKE) -f CMakeFiles/Makefile2 morf_ik/CMakeFiles/coords.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/leonor/tese/IK_MORF/catkin_ws/build/CMakeFiles 0
-.PHONY : morf_IK/CMakeFiles/coords.dir/rule
+.PHONY : morf_ik/CMakeFiles/coords.dir/rule
 
 # Convenience name for target.
-coords: morf_IK/CMakeFiles/coords.dir/rule
+coords: morf_ik/CMakeFiles/coords.dir/rule
 
 .PHONY : coords
 
 # clean rule for target.
-morf_IK/CMakeFiles/coords.dir/clean:
-	$(MAKE) -f morf_IK/CMakeFiles/coords.dir/build.make morf_IK/CMakeFiles/coords.dir/clean
-.PHONY : morf_IK/CMakeFiles/coords.dir/clean
+morf_ik/CMakeFiles/coords.dir/clean:
+	$(MAKE) -f morf_ik/CMakeFiles/coords.dir/build.make morf_ik/CMakeFiles/coords.dir/clean
+.PHONY : morf_ik/CMakeFiles/coords.dir/clean
 
 # clean rule for target.
-clean: morf_IK/CMakeFiles/coords.dir/clean
+clean: morf_ik/CMakeFiles/coords.dir/clean
 
 .PHONY : clean
 
 #=============================================================================
-# Target rules for target morf_IK/CMakeFiles/geometry_msgs_generate_messages_py.dir
+# Target rules for target morf_ik/CMakeFiles/geometry_msgs_generate_messages_py.dir
 
 # All Build rule for target.
-morf_IK/CMakeFiles/geometry_msgs_generate_messages_py.dir/all:
-	$(MAKE) -f morf_IK/CMakeFiles/geometry_msgs_generate_messages_py.dir/build.make morf_IK/CMakeFiles/geometry_msgs_generate_messages_py.dir/depend
-	$(MAKE) -f morf_IK/CMakeFiles/geometry_msgs_generate_messages_py.dir/build.make morf_IK/CMakeFiles/geometry_msgs_generate_messages_py.dir/build
+morf_ik/CMakeFiles/geometry_msgs_generate_messages_py.dir/all:
+	$(MAKE) -f morf_ik/CMakeFiles/geometry_msgs_generate_messages_py.dir/build.make morf_ik/CMakeFiles/geometry_msgs_generate_messages_py.dir/depend
+	$(MAKE) -f morf_ik/CMakeFiles/geometry_msgs_generate_messages_py.dir/build.make morf_ik/CMakeFiles/geometry_msgs_generate_messages_py.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/leonor/tese/IK_MORF/catkin_ws/build/CMakeFiles --progress-num= "Built target geometry_msgs_generate_messages_py"
-.PHONY : morf_IK/CMakeFiles/geometry_msgs_generate_messages_py.dir/all
+.PHONY : morf_ik/CMakeFiles/geometry_msgs_generate_messages_py.dir/all
 
 # Build rule for subdir invocation for target.
-morf_IK/CMakeFiles/geometry_msgs_generate_messages_py.dir/rule: cmake_check_build_system
+morf_ik/CMakeFiles/geometry_msgs_generate_messages_py.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/leonor/tese/IK_MORF/catkin_ws/build/CMakeFiles 0
-	$(MAKE) -f CMakeFiles/Makefile2 morf_IK/CMakeFiles/geometry_msgs_generate_messages_py.dir/all
+	$(MAKE) -f CMakeFiles/Makefile2 morf_ik/CMakeFiles/geometry_msgs_generate_messages_py.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/leonor/tese/IK_MORF/catkin_ws/build/CMakeFiles 0
-.PHONY : morf_IK/CMakeFiles/geometry_msgs_generate_messages_py.dir/rule
+.PHONY : morf_ik/CMakeFiles/geometry_msgs_generate_messages_py.dir/rule
 
 # Convenience name for target.
-geometry_msgs_generate_messages_py: morf_IK/CMakeFiles/geometry_msgs_generate_messages_py.dir/rule
+geometry_msgs_generate_messages_py: morf_ik/CMakeFiles/geometry_msgs_generate_messages_py.dir/rule
 
 .PHONY : geometry_msgs_generate_messages_py
 
 # clean rule for target.
-morf_IK/CMakeFiles/geometry_msgs_generate_messages_py.dir/clean:
-	$(MAKE) -f morf_IK/CMakeFiles/geometry_msgs_generate_messages_py.dir/build.make morf_IK/CMakeFiles/geometry_msgs_generate_messages_py.dir/clean
-.PHONY : morf_IK/CMakeFiles/geometry_msgs_generate_messages_py.dir/clean
+morf_ik/CMakeFiles/geometry_msgs_generate_messages_py.dir/clean:
+	$(MAKE) -f morf_ik/CMakeFiles/geometry_msgs_generate_messages_py.dir/build.make morf_ik/CMakeFiles/geometry_msgs_generate_messages_py.dir/clean
+.PHONY : morf_ik/CMakeFiles/geometry_msgs_generate_messages_py.dir/clean
 
 # clean rule for target.
-clean: morf_IK/CMakeFiles/geometry_msgs_generate_messages_py.dir/clean
+clean: morf_ik/CMakeFiles/geometry_msgs_generate_messages_py.dir/clean
 
 .PHONY : clean
 
 #=============================================================================
-# Target rules for target morf_IK/CMakeFiles/geometry_msgs_generate_messages_lisp.dir
+# Target rules for target morf_ik/CMakeFiles/geometry_msgs_generate_messages_lisp.dir
 
 # All Build rule for target.
-morf_IK/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/all:
-	$(MAKE) -f morf_IK/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/build.make morf_IK/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/depend
-	$(MAKE) -f morf_IK/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/build.make morf_IK/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/build
+morf_ik/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/all:
+	$(MAKE) -f morf_ik/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/build.make morf_ik/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/depend
+	$(MAKE) -f morf_ik/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/build.make morf_ik/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/leonor/tese/IK_MORF/catkin_ws/build/CMakeFiles --progress-num= "Built target geometry_msgs_generate_messages_lisp"
-.PHONY : morf_IK/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/all
+.PHONY : morf_ik/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/all
 
 # Build rule for subdir invocation for target.
-morf_IK/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/rule: cmake_check_build_system
+morf_ik/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/leonor/tese/IK_MORF/catkin_ws/build/CMakeFiles 0
-	$(MAKE) -f CMakeFiles/Makefile2 morf_IK/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/all
+	$(MAKE) -f CMakeFiles/Makefile2 morf_ik/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/leonor/tese/IK_MORF/catkin_ws/build/CMakeFiles 0
-.PHONY : morf_IK/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/rule
+.PHONY : morf_ik/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/rule
 
 # Convenience name for target.
-geometry_msgs_generate_messages_lisp: morf_IK/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/rule
+geometry_msgs_generate_messages_lisp: morf_ik/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/rule
 
 .PHONY : geometry_msgs_generate_messages_lisp
 
 # clean rule for target.
-morf_IK/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/clean:
-	$(MAKE) -f morf_IK/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/build.make morf_IK/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/clean
-.PHONY : morf_IK/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/clean
+morf_ik/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/clean:
+	$(MAKE) -f morf_ik/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/build.make morf_ik/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/clean
+.PHONY : morf_ik/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/clean
 
 # clean rule for target.
-clean: morf_IK/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/clean
+clean: morf_ik/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/clean
 
 .PHONY : clean
 
 #=============================================================================
-# Target rules for target morf_IK/CMakeFiles/geometry_msgs_generate_messages_cpp.dir
+# Target rules for target morf_ik/CMakeFiles/geometry_msgs_generate_messages_cpp.dir
 
 # All Build rule for target.
-morf_IK/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/all:
-	$(MAKE) -f morf_IK/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/build.make morf_IK/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/depend
-	$(MAKE) -f morf_IK/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/build.make morf_IK/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/build
+morf_ik/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/all:
+	$(MAKE) -f morf_ik/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/build.make morf_ik/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/depend
+	$(MAKE) -f morf_ik/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/build.make morf_ik/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/leonor/tese/IK_MORF/catkin_ws/build/CMakeFiles --progress-num= "Built target geometry_msgs_generate_messages_cpp"
-.PHONY : morf_IK/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/all
+.PHONY : morf_ik/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/all
 
 # Build rule for subdir invocation for target.
-morf_IK/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/rule: cmake_check_build_system
+morf_ik/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/leonor/tese/IK_MORF/catkin_ws/build/CMakeFiles 0
-	$(MAKE) -f CMakeFiles/Makefile2 morf_IK/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/all
+	$(MAKE) -f CMakeFiles/Makefile2 morf_ik/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/leonor/tese/IK_MORF/catkin_ws/build/CMakeFiles 0
-.PHONY : morf_IK/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/rule
+.PHONY : morf_ik/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/rule
 
 # Convenience name for target.
-geometry_msgs_generate_messages_cpp: morf_IK/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/rule
+geometry_msgs_generate_messages_cpp: morf_ik/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/rule
 
 .PHONY : geometry_msgs_generate_messages_cpp
 
 # clean rule for target.
-morf_IK/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/clean:
-	$(MAKE) -f morf_IK/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/build.make morf_IK/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/clean
-.PHONY : morf_IK/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/clean
+morf_ik/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/clean:
+	$(MAKE) -f morf_ik/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/build.make morf_ik/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/clean
+.PHONY : morf_ik/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/clean
 
 # clean rule for target.
-clean: morf_IK/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/clean
+clean: morf_ik/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/clean
 
 .PHONY : clean
 
 #=============================================================================
-# Target rules for target morf_IK/CMakeFiles/sensor_msgs_generate_messages_py.dir
+# Target rules for target morf_ik/CMakeFiles/sensor_msgs_generate_messages_py.dir
 
 # All Build rule for target.
-morf_IK/CMakeFiles/sensor_msgs_generate_messages_py.dir/all:
-	$(MAKE) -f morf_IK/CMakeFiles/sensor_msgs_generate_messages_py.dir/build.make morf_IK/CMakeFiles/sensor_msgs_generate_messages_py.dir/depend
-	$(MAKE) -f morf_IK/CMakeFiles/sensor_msgs_generate_messages_py.dir/build.make morf_IK/CMakeFiles/sensor_msgs_generate_messages_py.dir/build
+morf_ik/CMakeFiles/sensor_msgs_generate_messages_py.dir/all:
+	$(MAKE) -f morf_ik/CMakeFiles/sensor_msgs_generate_messages_py.dir/build.make morf_ik/CMakeFiles/sensor_msgs_generate_messages_py.dir/depend
+	$(MAKE) -f morf_ik/CMakeFiles/sensor_msgs_generate_messages_py.dir/build.make morf_ik/CMakeFiles/sensor_msgs_generate_messages_py.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/leonor/tese/IK_MORF/catkin_ws/build/CMakeFiles --progress-num= "Built target sensor_msgs_generate_messages_py"
-.PHONY : morf_IK/CMakeFiles/sensor_msgs_generate_messages_py.dir/all
+.PHONY : morf_ik/CMakeFiles/sensor_msgs_generate_messages_py.dir/all
 
 # Build rule for subdir invocation for target.
-morf_IK/CMakeFiles/sensor_msgs_generate_messages_py.dir/rule: cmake_check_build_system
+morf_ik/CMakeFiles/sensor_msgs_generate_messages_py.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/leonor/tese/IK_MORF/catkin_ws/build/CMakeFiles 0
-	$(MAKE) -f CMakeFiles/Makefile2 morf_IK/CMakeFiles/sensor_msgs_generate_messages_py.dir/all
+	$(MAKE) -f CMakeFiles/Makefile2 morf_ik/CMakeFiles/sensor_msgs_generate_messages_py.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/leonor/tese/IK_MORF/catkin_ws/build/CMakeFiles 0
-.PHONY : morf_IK/CMakeFiles/sensor_msgs_generate_messages_py.dir/rule
+.PHONY : morf_ik/CMakeFiles/sensor_msgs_generate_messages_py.dir/rule
 
 # Convenience name for target.
-sensor_msgs_generate_messages_py: morf_IK/CMakeFiles/sensor_msgs_generate_messages_py.dir/rule
+sensor_msgs_generate_messages_py: morf_ik/CMakeFiles/sensor_msgs_generate_messages_py.dir/rule
 
 .PHONY : sensor_msgs_generate_messages_py
 
 # clean rule for target.
-morf_IK/CMakeFiles/sensor_msgs_generate_messages_py.dir/clean:
-	$(MAKE) -f morf_IK/CMakeFiles/sensor_msgs_generate_messages_py.dir/build.make morf_IK/CMakeFiles/sensor_msgs_generate_messages_py.dir/clean
-.PHONY : morf_IK/CMakeFiles/sensor_msgs_generate_messages_py.dir/clean
+morf_ik/CMakeFiles/sensor_msgs_generate_messages_py.dir/clean:
+	$(MAKE) -f morf_ik/CMakeFiles/sensor_msgs_generate_messages_py.dir/build.make morf_ik/CMakeFiles/sensor_msgs_generate_messages_py.dir/clean
+.PHONY : morf_ik/CMakeFiles/sensor_msgs_generate_messages_py.dir/clean
 
 # clean rule for target.
-clean: morf_IK/CMakeFiles/sensor_msgs_generate_messages_py.dir/clean
+clean: morf_ik/CMakeFiles/sensor_msgs_generate_messages_py.dir/clean
 
 .PHONY : clean
 
 #=============================================================================
-# Target rules for target morf_IK/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir
+# Target rules for target morf_ik/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir
 
 # All Build rule for target.
-morf_IK/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/all:
-	$(MAKE) -f morf_IK/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/build.make morf_IK/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/depend
-	$(MAKE) -f morf_IK/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/build.make morf_IK/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/build
+morf_ik/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/all:
+	$(MAKE) -f morf_ik/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/build.make morf_ik/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/depend
+	$(MAKE) -f morf_ik/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/build.make morf_ik/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/leonor/tese/IK_MORF/catkin_ws/build/CMakeFiles --progress-num= "Built target sensor_msgs_generate_messages_nodejs"
-.PHONY : morf_IK/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/all
+.PHONY : morf_ik/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/all
 
 # Build rule for subdir invocation for target.
-morf_IK/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/rule: cmake_check_build_system
+morf_ik/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/leonor/tese/IK_MORF/catkin_ws/build/CMakeFiles 0
-	$(MAKE) -f CMakeFiles/Makefile2 morf_IK/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/all
+	$(MAKE) -f CMakeFiles/Makefile2 morf_ik/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/leonor/tese/IK_MORF/catkin_ws/build/CMakeFiles 0
-.PHONY : morf_IK/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/rule
+.PHONY : morf_ik/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/rule
 
 # Convenience name for target.
-sensor_msgs_generate_messages_nodejs: morf_IK/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/rule
+sensor_msgs_generate_messages_nodejs: morf_ik/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/rule
 
 .PHONY : sensor_msgs_generate_messages_nodejs
 
 # clean rule for target.
-morf_IK/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/clean:
-	$(MAKE) -f morf_IK/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/build.make morf_IK/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/clean
-.PHONY : morf_IK/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/clean
+morf_ik/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/clean:
+	$(MAKE) -f morf_ik/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/build.make morf_ik/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/clean
+.PHONY : morf_ik/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/clean
 
 # clean rule for target.
-clean: morf_IK/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/clean
+clean: morf_ik/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/clean
 
 .PHONY : clean
 
 #=============================================================================
-# Target rules for target morf_IK/CMakeFiles/sensor_msgs_generate_messages_lisp.dir
+# Target rules for target morf_ik/CMakeFiles/sensor_msgs_generate_messages_lisp.dir
 
 # All Build rule for target.
-morf_IK/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/all:
-	$(MAKE) -f morf_IK/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/build.make morf_IK/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/depend
-	$(MAKE) -f morf_IK/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/build.make morf_IK/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/build
+morf_ik/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/all:
+	$(MAKE) -f morf_ik/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/build.make morf_ik/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/depend
+	$(MAKE) -f morf_ik/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/build.make morf_ik/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/leonor/tese/IK_MORF/catkin_ws/build/CMakeFiles --progress-num= "Built target sensor_msgs_generate_messages_lisp"
-.PHONY : morf_IK/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/all
+.PHONY : morf_ik/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/all
 
 # Build rule for subdir invocation for target.
-morf_IK/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/rule: cmake_check_build_system
+morf_ik/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/leonor/tese/IK_MORF/catkin_ws/build/CMakeFiles 0
-	$(MAKE) -f CMakeFiles/Makefile2 morf_IK/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/all
+	$(MAKE) -f CMakeFiles/Makefile2 morf_ik/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/leonor/tese/IK_MORF/catkin_ws/build/CMakeFiles 0
-.PHONY : morf_IK/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/rule
+.PHONY : morf_ik/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/rule
 
 # Convenience name for target.
-sensor_msgs_generate_messages_lisp: morf_IK/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/rule
+sensor_msgs_generate_messages_lisp: morf_ik/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/rule
 
 .PHONY : sensor_msgs_generate_messages_lisp
 
 # clean rule for target.
-morf_IK/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/clean:
-	$(MAKE) -f morf_IK/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/build.make morf_IK/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/clean
-.PHONY : morf_IK/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/clean
+morf_ik/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/clean:
+	$(MAKE) -f morf_ik/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/build.make morf_ik/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/clean
+.PHONY : morf_ik/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/clean
 
 # clean rule for target.
-clean: morf_IK/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/clean
+clean: morf_ik/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/clean
 
 .PHONY : clean
 
 #=============================================================================
-# Target rules for target morf_IK/CMakeFiles/main.dir
+# Target rules for target morf_ik/CMakeFiles/main.dir
 
 # All Build rule for target.
-morf_IK/CMakeFiles/main.dir/all: morf_IK/CMakeFiles/control.dir/all
-morf_IK/CMakeFiles/main.dir/all: morf_IK/CMakeFiles/coords.dir/all
-	$(MAKE) -f morf_IK/CMakeFiles/main.dir/build.make morf_IK/CMakeFiles/main.dir/depend
-	$(MAKE) -f morf_IK/CMakeFiles/main.dir/build.make morf_IK/CMakeFiles/main.dir/build
+morf_ik/CMakeFiles/main.dir/all: morf_ik/CMakeFiles/control.dir/all
+morf_ik/CMakeFiles/main.dir/all: morf_ik/CMakeFiles/coords.dir/all
+	$(MAKE) -f morf_ik/CMakeFiles/main.dir/build.make morf_ik/CMakeFiles/main.dir/depend
+	$(MAKE) -f morf_ik/CMakeFiles/main.dir/build.make morf_ik/CMakeFiles/main.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/leonor/tese/IK_MORF/catkin_ws/build/CMakeFiles --progress-num=16,17 "Built target main"
-.PHONY : morf_IK/CMakeFiles/main.dir/all
+.PHONY : morf_ik/CMakeFiles/main.dir/all
 
 # Include target in all.
-all: morf_IK/CMakeFiles/main.dir/all
+all: morf_ik/CMakeFiles/main.dir/all
 
 .PHONY : all
 
 # Build rule for subdir invocation for target.
-morf_IK/CMakeFiles/main.dir/rule: cmake_check_build_system
+morf_ik/CMakeFiles/main.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/leonor/tese/IK_MORF/catkin_ws/build/CMakeFiles 6
-	$(MAKE) -f CMakeFiles/Makefile2 morf_IK/CMakeFiles/main.dir/all
+	$(MAKE) -f CMakeFiles/Makefile2 morf_ik/CMakeFiles/main.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/leonor/tese/IK_MORF/catkin_ws/build/CMakeFiles 0
-.PHONY : morf_IK/CMakeFiles/main.dir/rule
+.PHONY : morf_ik/CMakeFiles/main.dir/rule
 
 # Convenience name for target.
-main: morf_IK/CMakeFiles/main.dir/rule
+main: morf_ik/CMakeFiles/main.dir/rule
 
 .PHONY : main
 
 # clean rule for target.
-morf_IK/CMakeFiles/main.dir/clean:
-	$(MAKE) -f morf_IK/CMakeFiles/main.dir/build.make morf_IK/CMakeFiles/main.dir/clean
-.PHONY : morf_IK/CMakeFiles/main.dir/clean
+morf_ik/CMakeFiles/main.dir/clean:
+	$(MAKE) -f morf_ik/CMakeFiles/main.dir/build.make morf_ik/CMakeFiles/main.dir/clean
+.PHONY : morf_ik/CMakeFiles/main.dir/clean
 
 # clean rule for target.
-clean: morf_IK/CMakeFiles/main.dir/clean
+clean: morf_ik/CMakeFiles/main.dir/clean
 
 .PHONY : clean
 
 #=============================================================================
-# Target rules for target morf_IK/CMakeFiles/geometry_msgs_generate_messages_eus.dir
+# Target rules for target morf_ik/CMakeFiles/geometry_msgs_generate_messages_eus.dir
 
 # All Build rule for target.
-morf_IK/CMakeFiles/geometry_msgs_generate_messages_eus.dir/all:
-	$(MAKE) -f morf_IK/CMakeFiles/geometry_msgs_generate_messages_eus.dir/build.make morf_IK/CMakeFiles/geometry_msgs_generate_messages_eus.dir/depend
-	$(MAKE) -f morf_IK/CMakeFiles/geometry_msgs_generate_messages_eus.dir/build.make morf_IK/CMakeFiles/geometry_msgs_generate_messages_eus.dir/build
+morf_ik/CMakeFiles/geometry_msgs_generate_messages_eus.dir/all:
+	$(MAKE) -f morf_ik/CMakeFiles/geometry_msgs_generate_messages_eus.dir/build.make morf_ik/CMakeFiles/geometry_msgs_generate_messages_eus.dir/depend
+	$(MAKE) -f morf_ik/CMakeFiles/geometry_msgs_generate_messages_eus.dir/build.make morf_ik/CMakeFiles/geometry_msgs_generate_messages_eus.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/leonor/tese/IK_MORF/catkin_ws/build/CMakeFiles --progress-num= "Built target geometry_msgs_generate_messages_eus"
-.PHONY : morf_IK/CMakeFiles/geometry_msgs_generate_messages_eus.dir/all
+.PHONY : morf_ik/CMakeFiles/geometry_msgs_generate_messages_eus.dir/all
 
 # Build rule for subdir invocation for target.
-morf_IK/CMakeFiles/geometry_msgs_generate_messages_eus.dir/rule: cmake_check_build_system
+morf_ik/CMakeFiles/geometry_msgs_generate_messages_eus.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/leonor/tese/IK_MORF/catkin_ws/build/CMakeFiles 0
-	$(MAKE) -f CMakeFiles/Makefile2 morf_IK/CMakeFiles/geometry_msgs_generate_messages_eus.dir/all
+	$(MAKE) -f CMakeFiles/Makefile2 morf_ik/CMakeFiles/geometry_msgs_generate_messages_eus.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/leonor/tese/IK_MORF/catkin_ws/build/CMakeFiles 0
-.PHONY : morf_IK/CMakeFiles/geometry_msgs_generate_messages_eus.dir/rule
+.PHONY : morf_ik/CMakeFiles/geometry_msgs_generate_messages_eus.dir/rule
 
 # Convenience name for target.
-geometry_msgs_generate_messages_eus: morf_IK/CMakeFiles/geometry_msgs_generate_messages_eus.dir/rule
+geometry_msgs_generate_messages_eus: morf_ik/CMakeFiles/geometry_msgs_generate_messages_eus.dir/rule
 
 .PHONY : geometry_msgs_generate_messages_eus
 
 # clean rule for target.
-morf_IK/CMakeFiles/geometry_msgs_generate_messages_eus.dir/clean:
-	$(MAKE) -f morf_IK/CMakeFiles/geometry_msgs_generate_messages_eus.dir/build.make morf_IK/CMakeFiles/geometry_msgs_generate_messages_eus.dir/clean
-.PHONY : morf_IK/CMakeFiles/geometry_msgs_generate_messages_eus.dir/clean
+morf_ik/CMakeFiles/geometry_msgs_generate_messages_eus.dir/clean:
+	$(MAKE) -f morf_ik/CMakeFiles/geometry_msgs_generate_messages_eus.dir/build.make morf_ik/CMakeFiles/geometry_msgs_generate_messages_eus.dir/clean
+.PHONY : morf_ik/CMakeFiles/geometry_msgs_generate_messages_eus.dir/clean
 
 # clean rule for target.
-clean: morf_IK/CMakeFiles/geometry_msgs_generate_messages_eus.dir/clean
+clean: morf_ik/CMakeFiles/geometry_msgs_generate_messages_eus.dir/clean
 
 .PHONY : clean
 
 #=============================================================================
-# Target rules for target morf_IK/CMakeFiles/roscpp_generate_messages_py.dir
+# Target rules for target morf_ik/CMakeFiles/roscpp_generate_messages_py.dir
 
 # All Build rule for target.
-morf_IK/CMakeFiles/roscpp_generate_messages_py.dir/all:
-	$(MAKE) -f morf_IK/CMakeFiles/roscpp_generate_messages_py.dir/build.make morf_IK/CMakeFiles/roscpp_generate_messages_py.dir/depend
-	$(MAKE) -f morf_IK/CMakeFiles/roscpp_generate_messages_py.dir/build.make morf_IK/CMakeFiles/roscpp_generate_messages_py.dir/build
+morf_ik/CMakeFiles/roscpp_generate_messages_py.dir/all:
+	$(MAKE) -f morf_ik/CMakeFiles/roscpp_generate_messages_py.dir/build.make morf_ik/CMakeFiles/roscpp_generate_messages_py.dir/depend
+	$(MAKE) -f morf_ik/CMakeFiles/roscpp_generate_messages_py.dir/build.make morf_ik/CMakeFiles/roscpp_generate_messages_py.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/leonor/tese/IK_MORF/catkin_ws/build/CMakeFiles --progress-num= "Built target roscpp_generate_messages_py"
-.PHONY : morf_IK/CMakeFiles/roscpp_generate_messages_py.dir/all
+.PHONY : morf_ik/CMakeFiles/roscpp_generate_messages_py.dir/all
 
 # Build rule for subdir invocation for target.
-morf_IK/CMakeFiles/roscpp_generate_messages_py.dir/rule: cmake_check_build_system
+morf_ik/CMakeFiles/roscpp_generate_messages_py.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/leonor/tese/IK_MORF/catkin_ws/build/CMakeFiles 0
-	$(MAKE) -f CMakeFiles/Makefile2 morf_IK/CMakeFiles/roscpp_generate_messages_py.dir/all
+	$(MAKE) -f CMakeFiles/Makefile2 morf_ik/CMakeFiles/roscpp_generate_messages_py.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/leonor/tese/IK_MORF/catkin_ws/build/CMakeFiles 0
-.PHONY : morf_IK/CMakeFiles/roscpp_generate_messages_py.dir/rule
+.PHONY : morf_ik/CMakeFiles/roscpp_generate_messages_py.dir/rule
 
 # Convenience name for target.
-roscpp_generate_messages_py: morf_IK/CMakeFiles/roscpp_generate_messages_py.dir/rule
+roscpp_generate_messages_py: morf_ik/CMakeFiles/roscpp_generate_messages_py.dir/rule
 
 .PHONY : roscpp_generate_messages_py
 
 # clean rule for target.
-morf_IK/CMakeFiles/roscpp_generate_messages_py.dir/clean:
-	$(MAKE) -f morf_IK/CMakeFiles/roscpp_generate_messages_py.dir/build.make morf_IK/CMakeFiles/roscpp_generate_messages_py.dir/clean
-.PHONY : morf_IK/CMakeFiles/roscpp_generate_messages_py.dir/clean
+morf_ik/CMakeFiles/roscpp_generate_messages_py.dir/clean:
+	$(MAKE) -f morf_ik/CMakeFiles/roscpp_generate_messages_py.dir/build.make morf_ik/CMakeFiles/roscpp_generate_messages_py.dir/clean
+.PHONY : morf_ik/CMakeFiles/roscpp_generate_messages_py.dir/clean
 
 # clean rule for target.
-clean: morf_IK/CMakeFiles/roscpp_generate_messages_py.dir/clean
+clean: morf_ik/CMakeFiles/roscpp_generate_messages_py.dir/clean
 
 .PHONY : clean
 
 #=============================================================================
-# Target rules for target morf_IK/CMakeFiles/roscpp_generate_messages_eus.dir
+# Target rules for target morf_ik/CMakeFiles/roscpp_generate_messages_eus.dir
 
 # All Build rule for target.
-morf_IK/CMakeFiles/roscpp_generate_messages_eus.dir/all:
-	$(MAKE) -f morf_IK/CMakeFiles/roscpp_generate_messages_eus.dir/build.make morf_IK/CMakeFiles/roscpp_generate_messages_eus.dir/depend
-	$(MAKE) -f morf_IK/CMakeFiles/roscpp_generate_messages_eus.dir/build.make morf_IK/CMakeFiles/roscpp_generate_messages_eus.dir/build
+morf_ik/CMakeFiles/roscpp_generate_messages_eus.dir/all:
+	$(MAKE) -f morf_ik/CMakeFiles/roscpp_generate_messages_eus.dir/build.make morf_ik/CMakeFiles/roscpp_generate_messages_eus.dir/depend
+	$(MAKE) -f morf_ik/CMakeFiles/roscpp_generate_messages_eus.dir/build.make morf_ik/CMakeFiles/roscpp_generate_messages_eus.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/leonor/tese/IK_MORF/catkin_ws/build/CMakeFiles --progress-num= "Built target roscpp_generate_messages_eus"
-.PHONY : morf_IK/CMakeFiles/roscpp_generate_messages_eus.dir/all
+.PHONY : morf_ik/CMakeFiles/roscpp_generate_messages_eus.dir/all
 
 # Build rule for subdir invocation for target.
-morf_IK/CMakeFiles/roscpp_generate_messages_eus.dir/rule: cmake_check_build_system
+morf_ik/CMakeFiles/roscpp_generate_messages_eus.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/leonor/tese/IK_MORF/catkin_ws/build/CMakeFiles 0
-	$(MAKE) -f CMakeFiles/Makefile2 morf_IK/CMakeFiles/roscpp_generate_messages_eus.dir/all
+	$(MAKE) -f CMakeFiles/Makefile2 morf_ik/CMakeFiles/roscpp_generate_messages_eus.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/leonor/tese/IK_MORF/catkin_ws/build/CMakeFiles 0
-.PHONY : morf_IK/CMakeFiles/roscpp_generate_messages_eus.dir/rule
+.PHONY : morf_ik/CMakeFiles/roscpp_generate_messages_eus.dir/rule
 
 # Convenience name for target.
-roscpp_generate_messages_eus: morf_IK/CMakeFiles/roscpp_generate_messages_eus.dir/rule
+roscpp_generate_messages_eus: morf_ik/CMakeFiles/roscpp_generate_messages_eus.dir/rule
 
 .PHONY : roscpp_generate_messages_eus
 
 # clean rule for target.
-morf_IK/CMakeFiles/roscpp_generate_messages_eus.dir/clean:
-	$(MAKE) -f morf_IK/CMakeFiles/roscpp_generate_messages_eus.dir/build.make morf_IK/CMakeFiles/roscpp_generate_messages_eus.dir/clean
-.PHONY : morf_IK/CMakeFiles/roscpp_generate_messages_eus.dir/clean
+morf_ik/CMakeFiles/roscpp_generate_messages_eus.dir/clean:
+	$(MAKE) -f morf_ik/CMakeFiles/roscpp_generate_messages_eus.dir/build.make morf_ik/CMakeFiles/roscpp_generate_messages_eus.dir/clean
+.PHONY : morf_ik/CMakeFiles/roscpp_generate_messages_eus.dir/clean
 
 # clean rule for target.
-clean: morf_IK/CMakeFiles/roscpp_generate_messages_eus.dir/clean
+clean: morf_ik/CMakeFiles/roscpp_generate_messages_eus.dir/clean
 
 .PHONY : clean
 
 #=============================================================================
-# Target rules for target morf_IK/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir
+# Target rules for target morf_ik/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir
 
 # All Build rule for target.
-morf_IK/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/all:
-	$(MAKE) -f morf_IK/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/build.make morf_IK/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/depend
-	$(MAKE) -f morf_IK/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/build.make morf_IK/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/build
+morf_ik/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/all:
+	$(MAKE) -f morf_ik/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/build.make morf_ik/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/depend
+	$(MAKE) -f morf_ik/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/build.make morf_ik/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/leonor/tese/IK_MORF/catkin_ws/build/CMakeFiles --progress-num= "Built target geometry_msgs_generate_messages_nodejs"
-.PHONY : morf_IK/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/all
+.PHONY : morf_ik/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/all
 
 # Build rule for subdir invocation for target.
-morf_IK/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/rule: cmake_check_build_system
+morf_ik/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/leonor/tese/IK_MORF/catkin_ws/build/CMakeFiles 0
-	$(MAKE) -f CMakeFiles/Makefile2 morf_IK/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/all
+	$(MAKE) -f CMakeFiles/Makefile2 morf_ik/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/leonor/tese/IK_MORF/catkin_ws/build/CMakeFiles 0
-.PHONY : morf_IK/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/rule
+.PHONY : morf_ik/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/rule
 
 # Convenience name for target.
-geometry_msgs_generate_messages_nodejs: morf_IK/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/rule
+geometry_msgs_generate_messages_nodejs: morf_ik/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/rule
 
 .PHONY : geometry_msgs_generate_messages_nodejs
 
 # clean rule for target.
-morf_IK/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/clean:
-	$(MAKE) -f morf_IK/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/build.make morf_IK/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/clean
-.PHONY : morf_IK/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/clean
+morf_ik/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/clean:
+	$(MAKE) -f morf_ik/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/build.make morf_ik/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/clean
+.PHONY : morf_ik/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/clean
 
 # clean rule for target.
-clean: morf_IK/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/clean
+clean: morf_ik/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/clean
 
 .PHONY : clean
 
 #=============================================================================
-# Target rules for target morf_IK/CMakeFiles/roscpp_generate_messages_lisp.dir
+# Target rules for target morf_ik/CMakeFiles/roscpp_generate_messages_lisp.dir
 
 # All Build rule for target.
-morf_IK/CMakeFiles/roscpp_generate_messages_lisp.dir/all:
-	$(MAKE) -f morf_IK/CMakeFiles/roscpp_generate_messages_lisp.dir/build.make morf_IK/CMakeFiles/roscpp_generate_messages_lisp.dir/depend
-	$(MAKE) -f morf_IK/CMakeFiles/roscpp_generate_messages_lisp.dir/build.make morf_IK/CMakeFiles/roscpp_generate_messages_lisp.dir/build
+morf_ik/CMakeFiles/roscpp_generate_messages_lisp.dir/all:
+	$(MAKE) -f morf_ik/CMakeFiles/roscpp_generate_messages_lisp.dir/build.make morf_ik/CMakeFiles/roscpp_generate_messages_lisp.dir/depend
+	$(MAKE) -f morf_ik/CMakeFiles/roscpp_generate_messages_lisp.dir/build.make morf_ik/CMakeFiles/roscpp_generate_messages_lisp.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/leonor/tese/IK_MORF/catkin_ws/build/CMakeFiles --progress-num= "Built target roscpp_generate_messages_lisp"
-.PHONY : morf_IK/CMakeFiles/roscpp_generate_messages_lisp.dir/all
+.PHONY : morf_ik/CMakeFiles/roscpp_generate_messages_lisp.dir/all
 
 # Build rule for subdir invocation for target.
-morf_IK/CMakeFiles/roscpp_generate_messages_lisp.dir/rule: cmake_check_build_system
+morf_ik/CMakeFiles/roscpp_generate_messages_lisp.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/leonor/tese/IK_MORF/catkin_ws/build/CMakeFiles 0
-	$(MAKE) -f CMakeFiles/Makefile2 morf_IK/CMakeFiles/roscpp_generate_messages_lisp.dir/all
+	$(MAKE) -f CMakeFiles/Makefile2 morf_ik/CMakeFiles/roscpp_generate_messages_lisp.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/leonor/tese/IK_MORF/catkin_ws/build/CMakeFiles 0
-.PHONY : morf_IK/CMakeFiles/roscpp_generate_messages_lisp.dir/rule
+.PHONY : morf_ik/CMakeFiles/roscpp_generate_messages_lisp.dir/rule
 
 # Convenience name for target.
-roscpp_generate_messages_lisp: morf_IK/CMakeFiles/roscpp_generate_messages_lisp.dir/rule
+roscpp_generate_messages_lisp: morf_ik/CMakeFiles/roscpp_generate_messages_lisp.dir/rule
 
 .PHONY : roscpp_generate_messages_lisp
 
 # clean rule for target.
-morf_IK/CMakeFiles/roscpp_generate_messages_lisp.dir/clean:
-	$(MAKE) -f morf_IK/CMakeFiles/roscpp_generate_messages_lisp.dir/build.make morf_IK/CMakeFiles/roscpp_generate_messages_lisp.dir/clean
-.PHONY : morf_IK/CMakeFiles/roscpp_generate_messages_lisp.dir/clean
+morf_ik/CMakeFiles/roscpp_generate_messages_lisp.dir/clean:
+	$(MAKE) -f morf_ik/CMakeFiles/roscpp_generate_messages_lisp.dir/build.make morf_ik/CMakeFiles/roscpp_generate_messages_lisp.dir/clean
+.PHONY : morf_ik/CMakeFiles/roscpp_generate_messages_lisp.dir/clean
 
 # clean rule for target.
-clean: morf_IK/CMakeFiles/roscpp_generate_messages_lisp.dir/clean
+clean: morf_ik/CMakeFiles/roscpp_generate_messages_lisp.dir/clean
 
 .PHONY : clean
 
 #=============================================================================
-# Target rules for target morf_IK/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir
+# Target rules for target morf_ik/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir
 
 # All Build rule for target.
-morf_IK/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/all:
-	$(MAKE) -f morf_IK/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/build.make morf_IK/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/depend
-	$(MAKE) -f morf_IK/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/build.make morf_IK/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/build
+morf_ik/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/all:
+	$(MAKE) -f morf_ik/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/build.make morf_ik/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/depend
+	$(MAKE) -f morf_ik/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/build.make morf_ik/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/leonor/tese/IK_MORF/catkin_ws/build/CMakeFiles --progress-num= "Built target rosgraph_msgs_generate_messages_cpp"
-.PHONY : morf_IK/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/all
+.PHONY : morf_ik/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/all
 
 # Build rule for subdir invocation for target.
-morf_IK/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/rule: cmake_check_build_system
+morf_ik/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/leonor/tese/IK_MORF/catkin_ws/build/CMakeFiles 0
-	$(MAKE) -f CMakeFiles/Makefile2 morf_IK/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/all
+	$(MAKE) -f CMakeFiles/Makefile2 morf_ik/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/leonor/tese/IK_MORF/catkin_ws/build/CMakeFiles 0
-.PHONY : morf_IK/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/rule
+.PHONY : morf_ik/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/rule
 
 # Convenience name for target.
-rosgraph_msgs_generate_messages_cpp: morf_IK/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/rule
+rosgraph_msgs_generate_messages_cpp: morf_ik/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/rule
 
 .PHONY : rosgraph_msgs_generate_messages_cpp
 
 # clean rule for target.
-morf_IK/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/clean:
-	$(MAKE) -f morf_IK/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/build.make morf_IK/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/clean
-.PHONY : morf_IK/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/clean
+morf_ik/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/clean:
+	$(MAKE) -f morf_ik/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/build.make morf_ik/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/clean
+.PHONY : morf_ik/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/clean
 
 # clean rule for target.
-clean: morf_IK/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/clean
+clean: morf_ik/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/clean
 
 .PHONY : clean
 
 #=============================================================================
-# Target rules for target morf_IK/CMakeFiles/sensor_msgs_generate_messages_eus.dir
+# Target rules for target morf_ik/CMakeFiles/sensor_msgs_generate_messages_eus.dir
 
 # All Build rule for target.
-morf_IK/CMakeFiles/sensor_msgs_generate_messages_eus.dir/all:
-	$(MAKE) -f morf_IK/CMakeFiles/sensor_msgs_generate_messages_eus.dir/build.make morf_IK/CMakeFiles/sensor_msgs_generate_messages_eus.dir/depend
-	$(MAKE) -f morf_IK/CMakeFiles/sensor_msgs_generate_messages_eus.dir/build.make morf_IK/CMakeFiles/sensor_msgs_generate_messages_eus.dir/build
+morf_ik/CMakeFiles/sensor_msgs_generate_messages_eus.dir/all:
+	$(MAKE) -f morf_ik/CMakeFiles/sensor_msgs_generate_messages_eus.dir/build.make morf_ik/CMakeFiles/sensor_msgs_generate_messages_eus.dir/depend
+	$(MAKE) -f morf_ik/CMakeFiles/sensor_msgs_generate_messages_eus.dir/build.make morf_ik/CMakeFiles/sensor_msgs_generate_messages_eus.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/leonor/tese/IK_MORF/catkin_ws/build/CMakeFiles --progress-num= "Built target sensor_msgs_generate_messages_eus"
-.PHONY : morf_IK/CMakeFiles/sensor_msgs_generate_messages_eus.dir/all
+.PHONY : morf_ik/CMakeFiles/sensor_msgs_generate_messages_eus.dir/all
 
 # Build rule for subdir invocation for target.
-morf_IK/CMakeFiles/sensor_msgs_generate_messages_eus.dir/rule: cmake_check_build_system
+morf_ik/CMakeFiles/sensor_msgs_generate_messages_eus.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/leonor/tese/IK_MORF/catkin_ws/build/CMakeFiles 0
-	$(MAKE) -f CMakeFiles/Makefile2 morf_IK/CMakeFiles/sensor_msgs_generate_messages_eus.dir/all
+	$(MAKE) -f CMakeFiles/Makefile2 morf_ik/CMakeFiles/sensor_msgs_generate_messages_eus.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/leonor/tese/IK_MORF/catkin_ws/build/CMakeFiles 0
-.PHONY : morf_IK/CMakeFiles/sensor_msgs_generate_messages_eus.dir/rule
+.PHONY : morf_ik/CMakeFiles/sensor_msgs_generate_messages_eus.dir/rule
 
 # Convenience name for target.
-sensor_msgs_generate_messages_eus: morf_IK/CMakeFiles/sensor_msgs_generate_messages_eus.dir/rule
+sensor_msgs_generate_messages_eus: morf_ik/CMakeFiles/sensor_msgs_generate_messages_eus.dir/rule
 
 .PHONY : sensor_msgs_generate_messages_eus
 
 # clean rule for target.
-morf_IK/CMakeFiles/sensor_msgs_generate_messages_eus.dir/clean:
-	$(MAKE) -f morf_IK/CMakeFiles/sensor_msgs_generate_messages_eus.dir/build.make morf_IK/CMakeFiles/sensor_msgs_generate_messages_eus.dir/clean
-.PHONY : morf_IK/CMakeFiles/sensor_msgs_generate_messages_eus.dir/clean
+morf_ik/CMakeFiles/sensor_msgs_generate_messages_eus.dir/clean:
+	$(MAKE) -f morf_ik/CMakeFiles/sensor_msgs_generate_messages_eus.dir/build.make morf_ik/CMakeFiles/sensor_msgs_generate_messages_eus.dir/clean
+.PHONY : morf_ik/CMakeFiles/sensor_msgs_generate_messages_eus.dir/clean
 
 # clean rule for target.
-clean: morf_IK/CMakeFiles/sensor_msgs_generate_messages_eus.dir/clean
+clean: morf_ik/CMakeFiles/sensor_msgs_generate_messages_eus.dir/clean
 
 .PHONY : clean
 
 #=============================================================================
-# Target rules for target morf_IK/CMakeFiles/sensor_msgs_generate_messages_cpp.dir
+# Target rules for target morf_ik/CMakeFiles/sensor_msgs_generate_messages_cpp.dir
 
 # All Build rule for target.
-morf_IK/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/all:
-	$(MAKE) -f morf_IK/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/build.make morf_IK/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/depend
-	$(MAKE) -f morf_IK/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/build.make morf_IK/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/build
+morf_ik/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/all:
+	$(MAKE) -f morf_ik/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/build.make morf_ik/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/depend
+	$(MAKE) -f morf_ik/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/build.make morf_ik/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/leonor/tese/IK_MORF/catkin_ws/build/CMakeFiles --progress-num= "Built target sensor_msgs_generate_messages_cpp"
-.PHONY : morf_IK/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/all
+.PHONY : morf_ik/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/all
 
 # Build rule for subdir invocation for target.
-morf_IK/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/rule: cmake_check_build_system
+morf_ik/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/leonor/tese/IK_MORF/catkin_ws/build/CMakeFiles 0
-	$(MAKE) -f CMakeFiles/Makefile2 morf_IK/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/all
+	$(MAKE) -f CMakeFiles/Makefile2 morf_ik/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/leonor/tese/IK_MORF/catkin_ws/build/CMakeFiles 0
-.PHONY : morf_IK/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/rule
+.PHONY : morf_ik/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/rule
 
 # Convenience name for target.
-sensor_msgs_generate_messages_cpp: morf_IK/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/rule
+sensor_msgs_generate_messages_cpp: morf_ik/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/rule
 
 .PHONY : sensor_msgs_generate_messages_cpp
 
 # clean rule for target.
-morf_IK/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/clean:
-	$(MAKE) -f morf_IK/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/build.make morf_IK/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/clean
-.PHONY : morf_IK/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/clean
+morf_ik/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/clean:
+	$(MAKE) -f morf_ik/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/build.make morf_ik/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/clean
+.PHONY : morf_ik/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/clean
 
 # clean rule for target.
-clean: morf_IK/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/clean
+clean: morf_ik/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/clean
 
 .PHONY : clean
 
 #=============================================================================
-# Target rules for target morf_IK/CMakeFiles/std_msgs_generate_messages_lisp.dir
+# Target rules for target morf_ik/CMakeFiles/std_msgs_generate_messages_lisp.dir
 
 # All Build rule for target.
-morf_IK/CMakeFiles/std_msgs_generate_messages_lisp.dir/all:
-	$(MAKE) -f morf_IK/CMakeFiles/std_msgs_generate_messages_lisp.dir/build.make morf_IK/CMakeFiles/std_msgs_generate_messages_lisp.dir/depend
-	$(MAKE) -f morf_IK/CMakeFiles/std_msgs_generate_messages_lisp.dir/build.make morf_IK/CMakeFiles/std_msgs_generate_messages_lisp.dir/build
+morf_ik/CMakeFiles/std_msgs_generate_messages_lisp.dir/all:
+	$(MAKE) -f morf_ik/CMakeFiles/std_msgs_generate_messages_lisp.dir/build.make morf_ik/CMakeFiles/std_msgs_generate_messages_lisp.dir/depend
+	$(MAKE) -f morf_ik/CMakeFiles/std_msgs_generate_messages_lisp.dir/build.make morf_ik/CMakeFiles/std_msgs_generate_messages_lisp.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/leonor/tese/IK_MORF/catkin_ws/build/CMakeFiles --progress-num= "Built target std_msgs_generate_messages_lisp"
-.PHONY : morf_IK/CMakeFiles/std_msgs_generate_messages_lisp.dir/all
+.PHONY : morf_ik/CMakeFiles/std_msgs_generate_messages_lisp.dir/all
 
 # Build rule for subdir invocation for target.
-morf_IK/CMakeFiles/std_msgs_generate_messages_lisp.dir/rule: cmake_check_build_system
+morf_ik/CMakeFiles/std_msgs_generate_messages_lisp.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/leonor/tese/IK_MORF/catkin_ws/build/CMakeFiles 0
-	$(MAKE) -f CMakeFiles/Makefile2 morf_IK/CMakeFiles/std_msgs_generate_messages_lisp.dir/all
+	$(MAKE) -f CMakeFiles/Makefile2 morf_ik/CMakeFiles/std_msgs_generate_messages_lisp.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/leonor/tese/IK_MORF/catkin_ws/build/CMakeFiles 0
-.PHONY : morf_IK/CMakeFiles/std_msgs_generate_messages_lisp.dir/rule
+.PHONY : morf_ik/CMakeFiles/std_msgs_generate_messages_lisp.dir/rule
 
 # Convenience name for target.
-std_msgs_generate_messages_lisp: morf_IK/CMakeFiles/std_msgs_generate_messages_lisp.dir/rule
+std_msgs_generate_messages_lisp: morf_ik/CMakeFiles/std_msgs_generate_messages_lisp.dir/rule
 
 .PHONY : std_msgs_generate_messages_lisp
 
 # clean rule for target.
-morf_IK/CMakeFiles/std_msgs_generate_messages_lisp.dir/clean:
-	$(MAKE) -f morf_IK/CMakeFiles/std_msgs_generate_messages_lisp.dir/build.make morf_IK/CMakeFiles/std_msgs_generate_messages_lisp.dir/clean
-.PHONY : morf_IK/CMakeFiles/std_msgs_generate_messages_lisp.dir/clean
+morf_ik/CMakeFiles/std_msgs_generate_messages_lisp.dir/clean:
+	$(MAKE) -f morf_ik/CMakeFiles/std_msgs_generate_messages_lisp.dir/build.make morf_ik/CMakeFiles/std_msgs_generate_messages_lisp.dir/clean
+.PHONY : morf_ik/CMakeFiles/std_msgs_generate_messages_lisp.dir/clean
 
 # clean rule for target.
-clean: morf_IK/CMakeFiles/std_msgs_generate_messages_lisp.dir/clean
+clean: morf_ik/CMakeFiles/std_msgs_generate_messages_lisp.dir/clean
 
 .PHONY : clean
 
 #=============================================================================
-# Target rules for target morf_IK/CMakeFiles/roscpp_generate_messages_cpp.dir
+# Target rules for target morf_ik/CMakeFiles/roscpp_generate_messages_cpp.dir
 
 # All Build rule for target.
-morf_IK/CMakeFiles/roscpp_generate_messages_cpp.dir/all:
-	$(MAKE) -f morf_IK/CMakeFiles/roscpp_generate_messages_cpp.dir/build.make morf_IK/CMakeFiles/roscpp_generate_messages_cpp.dir/depend
-	$(MAKE) -f morf_IK/CMakeFiles/roscpp_generate_messages_cpp.dir/build.make morf_IK/CMakeFiles/roscpp_generate_messages_cpp.dir/build
+morf_ik/CMakeFiles/roscpp_generate_messages_cpp.dir/all:
+	$(MAKE) -f morf_ik/CMakeFiles/roscpp_generate_messages_cpp.dir/build.make morf_ik/CMakeFiles/roscpp_generate_messages_cpp.dir/depend
+	$(MAKE) -f morf_ik/CMakeFiles/roscpp_generate_messages_cpp.dir/build.make morf_ik/CMakeFiles/roscpp_generate_messages_cpp.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/leonor/tese/IK_MORF/catkin_ws/build/CMakeFiles --progress-num= "Built target roscpp_generate_messages_cpp"
-.PHONY : morf_IK/CMakeFiles/roscpp_generate_messages_cpp.dir/all
+.PHONY : morf_ik/CMakeFiles/roscpp_generate_messages_cpp.dir/all
 
 # Build rule for subdir invocation for target.
-morf_IK/CMakeFiles/roscpp_generate_messages_cpp.dir/rule: cmake_check_build_system
+morf_ik/CMakeFiles/roscpp_generate_messages_cpp.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/leonor/tese/IK_MORF/catkin_ws/build/CMakeFiles 0
-	$(MAKE) -f CMakeFiles/Makefile2 morf_IK/CMakeFiles/roscpp_generate_messages_cpp.dir/all
+	$(MAKE) -f CMakeFiles/Makefile2 morf_ik/CMakeFiles/roscpp_generate_messages_cpp.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/leonor/tese/IK_MORF/catkin_ws/build/CMakeFiles 0
-.PHONY : morf_IK/CMakeFiles/roscpp_generate_messages_cpp.dir/rule
+.PHONY : morf_ik/CMakeFiles/roscpp_generate_messages_cpp.dir/rule
 
 # Convenience name for target.
-roscpp_generate_messages_cpp: morf_IK/CMakeFiles/roscpp_generate_messages_cpp.dir/rule
+roscpp_generate_messages_cpp: morf_ik/CMakeFiles/roscpp_generate_messages_cpp.dir/rule
 
 .PHONY : roscpp_generate_messages_cpp
 
 # clean rule for target.
-morf_IK/CMakeFiles/roscpp_generate_messages_cpp.dir/clean:
-	$(MAKE) -f morf_IK/CMakeFiles/roscpp_generate_messages_cpp.dir/build.make morf_IK/CMakeFiles/roscpp_generate_messages_cpp.dir/clean
-.PHONY : morf_IK/CMakeFiles/roscpp_generate_messages_cpp.dir/clean
+morf_ik/CMakeFiles/roscpp_generate_messages_cpp.dir/clean:
+	$(MAKE) -f morf_ik/CMakeFiles/roscpp_generate_messages_cpp.dir/build.make morf_ik/CMakeFiles/roscpp_generate_messages_cpp.dir/clean
+.PHONY : morf_ik/CMakeFiles/roscpp_generate_messages_cpp.dir/clean
 
 # clean rule for target.
-clean: morf_IK/CMakeFiles/roscpp_generate_messages_cpp.dir/clean
+clean: morf_ik/CMakeFiles/roscpp_generate_messages_cpp.dir/clean
 
 .PHONY : clean
 
 #=============================================================================
-# Target rules for target morf_IK/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir
+# Target rules for target morf_ik/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir
 
 # All Build rule for target.
-morf_IK/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/all:
-	$(MAKE) -f morf_IK/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/build.make morf_IK/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/depend
-	$(MAKE) -f morf_IK/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/build.make morf_IK/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/build
+morf_ik/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/all:
+	$(MAKE) -f morf_ik/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/build.make morf_ik/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/depend
+	$(MAKE) -f morf_ik/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/build.make morf_ik/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/leonor/tese/IK_MORF/catkin_ws/build/CMakeFiles --progress-num= "Built target rosgraph_msgs_generate_messages_eus"
-.PHONY : morf_IK/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/all
+.PHONY : morf_ik/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/all
 
 # Build rule for subdir invocation for target.
-morf_IK/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/rule: cmake_check_build_system
+morf_ik/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/leonor/tese/IK_MORF/catkin_ws/build/CMakeFiles 0
-	$(MAKE) -f CMakeFiles/Makefile2 morf_IK/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/all
+	$(MAKE) -f CMakeFiles/Makefile2 morf_ik/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/leonor/tese/IK_MORF/catkin_ws/build/CMakeFiles 0
-.PHONY : morf_IK/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/rule
+.PHONY : morf_ik/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/rule
 
 # Convenience name for target.
-rosgraph_msgs_generate_messages_eus: morf_IK/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/rule
+rosgraph_msgs_generate_messages_eus: morf_ik/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/rule
 
 .PHONY : rosgraph_msgs_generate_messages_eus
 
 # clean rule for target.
-morf_IK/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/clean:
-	$(MAKE) -f morf_IK/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/build.make morf_IK/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/clean
-.PHONY : morf_IK/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/clean
+morf_ik/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/clean:
+	$(MAKE) -f morf_ik/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/build.make morf_ik/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/clean
+.PHONY : morf_ik/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/clean
 
 # clean rule for target.
-clean: morf_IK/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/clean
+clean: morf_ik/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/clean
 
 .PHONY : clean
 
 #=============================================================================
-# Target rules for target morf_IK/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir
+# Target rules for target morf_ik/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir
 
 # All Build rule for target.
-morf_IK/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/all:
-	$(MAKE) -f morf_IK/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/build.make morf_IK/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/depend
-	$(MAKE) -f morf_IK/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/build.make morf_IK/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/build
+morf_ik/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/all:
+	$(MAKE) -f morf_ik/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/build.make morf_ik/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/depend
+	$(MAKE) -f morf_ik/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/build.make morf_ik/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/leonor/tese/IK_MORF/catkin_ws/build/CMakeFiles --progress-num= "Built target rosgraph_msgs_generate_messages_lisp"
-.PHONY : morf_IK/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/all
+.PHONY : morf_ik/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/all
 
 # Build rule for subdir invocation for target.
-morf_IK/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/rule: cmake_check_build_system
+morf_ik/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/leonor/tese/IK_MORF/catkin_ws/build/CMakeFiles 0
-	$(MAKE) -f CMakeFiles/Makefile2 morf_IK/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/all
+	$(MAKE) -f CMakeFiles/Makefile2 morf_ik/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/leonor/tese/IK_MORF/catkin_ws/build/CMakeFiles 0
-.PHONY : morf_IK/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/rule
+.PHONY : morf_ik/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/rule
 
 # Convenience name for target.
-rosgraph_msgs_generate_messages_lisp: morf_IK/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/rule
+rosgraph_msgs_generate_messages_lisp: morf_ik/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/rule
 
 .PHONY : rosgraph_msgs_generate_messages_lisp
 
 # clean rule for target.
-morf_IK/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/clean:
-	$(MAKE) -f morf_IK/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/build.make morf_IK/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/clean
-.PHONY : morf_IK/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/clean
+morf_ik/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/clean:
+	$(MAKE) -f morf_ik/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/build.make morf_ik/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/clean
+.PHONY : morf_ik/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/clean
 
 # clean rule for target.
-clean: morf_IK/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/clean
+clean: morf_ik/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/clean
 
 .PHONY : clean
 
 #=============================================================================
-# Target rules for target morf_IK/CMakeFiles/std_msgs_generate_messages_cpp.dir
+# Target rules for target morf_ik/CMakeFiles/std_msgs_generate_messages_cpp.dir
 
 # All Build rule for target.
-morf_IK/CMakeFiles/std_msgs_generate_messages_cpp.dir/all:
-	$(MAKE) -f morf_IK/CMakeFiles/std_msgs_generate_messages_cpp.dir/build.make morf_IK/CMakeFiles/std_msgs_generate_messages_cpp.dir/depend
-	$(MAKE) -f morf_IK/CMakeFiles/std_msgs_generate_messages_cpp.dir/build.make morf_IK/CMakeFiles/std_msgs_generate_messages_cpp.dir/build
+morf_ik/CMakeFiles/std_msgs_generate_messages_cpp.dir/all:
+	$(MAKE) -f morf_ik/CMakeFiles/std_msgs_generate_messages_cpp.dir/build.make morf_ik/CMakeFiles/std_msgs_generate_messages_cpp.dir/depend
+	$(MAKE) -f morf_ik/CMakeFiles/std_msgs_generate_messages_cpp.dir/build.make morf_ik/CMakeFiles/std_msgs_generate_messages_cpp.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/leonor/tese/IK_MORF/catkin_ws/build/CMakeFiles --progress-num= "Built target std_msgs_generate_messages_cpp"
-.PHONY : morf_IK/CMakeFiles/std_msgs_generate_messages_cpp.dir/all
+.PHONY : morf_ik/CMakeFiles/std_msgs_generate_messages_cpp.dir/all
 
 # Build rule for subdir invocation for target.
-morf_IK/CMakeFiles/std_msgs_generate_messages_cpp.dir/rule: cmake_check_build_system
+morf_ik/CMakeFiles/std_msgs_generate_messages_cpp.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/leonor/tese/IK_MORF/catkin_ws/build/CMakeFiles 0
-	$(MAKE) -f CMakeFiles/Makefile2 morf_IK/CMakeFiles/std_msgs_generate_messages_cpp.dir/all
+	$(MAKE) -f CMakeFiles/Makefile2 morf_ik/CMakeFiles/std_msgs_generate_messages_cpp.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/leonor/tese/IK_MORF/catkin_ws/build/CMakeFiles 0
-.PHONY : morf_IK/CMakeFiles/std_msgs_generate_messages_cpp.dir/rule
+.PHONY : morf_ik/CMakeFiles/std_msgs_generate_messages_cpp.dir/rule
 
 # Convenience name for target.
-std_msgs_generate_messages_cpp: morf_IK/CMakeFiles/std_msgs_generate_messages_cpp.dir/rule
+std_msgs_generate_messages_cpp: morf_ik/CMakeFiles/std_msgs_generate_messages_cpp.dir/rule
 
 .PHONY : std_msgs_generate_messages_cpp
 
 # clean rule for target.
-morf_IK/CMakeFiles/std_msgs_generate_messages_cpp.dir/clean:
-	$(MAKE) -f morf_IK/CMakeFiles/std_msgs_generate_messages_cpp.dir/build.make morf_IK/CMakeFiles/std_msgs_generate_messages_cpp.dir/clean
-.PHONY : morf_IK/CMakeFiles/std_msgs_generate_messages_cpp.dir/clean
+morf_ik/CMakeFiles/std_msgs_generate_messages_cpp.dir/clean:
+	$(MAKE) -f morf_ik/CMakeFiles/std_msgs_generate_messages_cpp.dir/build.make morf_ik/CMakeFiles/std_msgs_generate_messages_cpp.dir/clean
+.PHONY : morf_ik/CMakeFiles/std_msgs_generate_messages_cpp.dir/clean
 
 # clean rule for target.
-clean: morf_IK/CMakeFiles/std_msgs_generate_messages_cpp.dir/clean
+clean: morf_ik/CMakeFiles/std_msgs_generate_messages_cpp.dir/clean
 
 .PHONY : clean
 
 #=============================================================================
-# Target rules for target morf_IK/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir
+# Target rules for target morf_ik/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir
 
 # All Build rule for target.
-morf_IK/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/all:
-	$(MAKE) -f morf_IK/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/build.make morf_IK/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/depend
-	$(MAKE) -f morf_IK/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/build.make morf_IK/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/build
+morf_ik/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/all:
+	$(MAKE) -f morf_ik/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/build.make morf_ik/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/depend
+	$(MAKE) -f morf_ik/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/build.make morf_ik/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/leonor/tese/IK_MORF/catkin_ws/build/CMakeFiles --progress-num= "Built target rosgraph_msgs_generate_messages_nodejs"
-.PHONY : morf_IK/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/all
+.PHONY : morf_ik/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/all
 
 # Build rule for subdir invocation for target.
-morf_IK/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/rule: cmake_check_build_system
+morf_ik/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/leonor/tese/IK_MORF/catkin_ws/build/CMakeFiles 0
-	$(MAKE) -f CMakeFiles/Makefile2 morf_IK/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/all
+	$(MAKE) -f CMakeFiles/Makefile2 morf_ik/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/leonor/tese/IK_MORF/catkin_ws/build/CMakeFiles 0
-.PHONY : morf_IK/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/rule
+.PHONY : morf_ik/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/rule
 
 # Convenience name for target.
-rosgraph_msgs_generate_messages_nodejs: morf_IK/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/rule
+rosgraph_msgs_generate_messages_nodejs: morf_ik/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/rule
 
 .PHONY : rosgraph_msgs_generate_messages_nodejs
 
 # clean rule for target.
-morf_IK/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/clean:
-	$(MAKE) -f morf_IK/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/build.make morf_IK/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/clean
-.PHONY : morf_IK/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/clean
+morf_ik/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/clean:
+	$(MAKE) -f morf_ik/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/build.make morf_ik/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/clean
+.PHONY : morf_ik/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/clean
 
 # clean rule for target.
-clean: morf_IK/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/clean
+clean: morf_ik/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/clean
 
 .PHONY : clean
 
 #=============================================================================
-# Target rules for target morf_IK/CMakeFiles/rosgraph_msgs_generate_messages_py.dir
+# Target rules for target morf_ik/CMakeFiles/rosgraph_msgs_generate_messages_py.dir
 
 # All Build rule for target.
-morf_IK/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/all:
-	$(MAKE) -f morf_IK/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/build.make morf_IK/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/depend
-	$(MAKE) -f morf_IK/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/build.make morf_IK/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/build
+morf_ik/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/all:
+	$(MAKE) -f morf_ik/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/build.make morf_ik/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/depend
+	$(MAKE) -f morf_ik/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/build.make morf_ik/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/leonor/tese/IK_MORF/catkin_ws/build/CMakeFiles --progress-num= "Built target rosgraph_msgs_generate_messages_py"
-.PHONY : morf_IK/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/all
+.PHONY : morf_ik/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/all
 
 # Build rule for subdir invocation for target.
-morf_IK/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/rule: cmake_check_build_system
+morf_ik/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/leonor/tese/IK_MORF/catkin_ws/build/CMakeFiles 0
-	$(MAKE) -f CMakeFiles/Makefile2 morf_IK/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/all
+	$(MAKE) -f CMakeFiles/Makefile2 morf_ik/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/leonor/tese/IK_MORF/catkin_ws/build/CMakeFiles 0
-.PHONY : morf_IK/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/rule
+.PHONY : morf_ik/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/rule
 
 # Convenience name for target.
-rosgraph_msgs_generate_messages_py: morf_IK/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/rule
+rosgraph_msgs_generate_messages_py: morf_ik/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/rule
 
 .PHONY : rosgraph_msgs_generate_messages_py
 
 # clean rule for target.
-morf_IK/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/clean:
-	$(MAKE) -f morf_IK/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/build.make morf_IK/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/clean
-.PHONY : morf_IK/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/clean
+morf_ik/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/clean:
+	$(MAKE) -f morf_ik/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/build.make morf_ik/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/clean
+.PHONY : morf_ik/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/clean
 
 # clean rule for target.
-clean: morf_IK/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/clean
+clean: morf_ik/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/clean
 
 .PHONY : clean
 
 #=============================================================================
-# Target rules for target morf_IK/CMakeFiles/std_msgs_generate_messages_eus.dir
+# Target rules for target morf_ik/CMakeFiles/std_msgs_generate_messages_eus.dir
 
 # All Build rule for target.
-morf_IK/CMakeFiles/std_msgs_generate_messages_eus.dir/all:
-	$(MAKE) -f morf_IK/CMakeFiles/std_msgs_generate_messages_eus.dir/build.make morf_IK/CMakeFiles/std_msgs_generate_messages_eus.dir/depend
-	$(MAKE) -f morf_IK/CMakeFiles/std_msgs_generate_messages_eus.dir/build.make morf_IK/CMakeFiles/std_msgs_generate_messages_eus.dir/build
+morf_ik/CMakeFiles/std_msgs_generate_messages_eus.dir/all:
+	$(MAKE) -f morf_ik/CMakeFiles/std_msgs_generate_messages_eus.dir/build.make morf_ik/CMakeFiles/std_msgs_generate_messages_eus.dir/depend
+	$(MAKE) -f morf_ik/CMakeFiles/std_msgs_generate_messages_eus.dir/build.make morf_ik/CMakeFiles/std_msgs_generate_messages_eus.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/leonor/tese/IK_MORF/catkin_ws/build/CMakeFiles --progress-num= "Built target std_msgs_generate_messages_eus"
-.PHONY : morf_IK/CMakeFiles/std_msgs_generate_messages_eus.dir/all
+.PHONY : morf_ik/CMakeFiles/std_msgs_generate_messages_eus.dir/all
 
 # Build rule for subdir invocation for target.
-morf_IK/CMakeFiles/std_msgs_generate_messages_eus.dir/rule: cmake_check_build_system
+morf_ik/CMakeFiles/std_msgs_generate_messages_eus.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/leonor/tese/IK_MORF/catkin_ws/build/CMakeFiles 0
-	$(MAKE) -f CMakeFiles/Makefile2 morf_IK/CMakeFiles/std_msgs_generate_messages_eus.dir/all
+	$(MAKE) -f CMakeFiles/Makefile2 morf_ik/CMakeFiles/std_msgs_generate_messages_eus.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/leonor/tese/IK_MORF/catkin_ws/build/CMakeFiles 0
-.PHONY : morf_IK/CMakeFiles/std_msgs_generate_messages_eus.dir/rule
+.PHONY : morf_ik/CMakeFiles/std_msgs_generate_messages_eus.dir/rule
 
 # Convenience name for target.
-std_msgs_generate_messages_eus: morf_IK/CMakeFiles/std_msgs_generate_messages_eus.dir/rule
+std_msgs_generate_messages_eus: morf_ik/CMakeFiles/std_msgs_generate_messages_eus.dir/rule
 
 .PHONY : std_msgs_generate_messages_eus
 
 # clean rule for target.
-morf_IK/CMakeFiles/std_msgs_generate_messages_eus.dir/clean:
-	$(MAKE) -f morf_IK/CMakeFiles/std_msgs_generate_messages_eus.dir/build.make morf_IK/CMakeFiles/std_msgs_generate_messages_eus.dir/clean
-.PHONY : morf_IK/CMakeFiles/std_msgs_generate_messages_eus.dir/clean
+morf_ik/CMakeFiles/std_msgs_generate_messages_eus.dir/clean:
+	$(MAKE) -f morf_ik/CMakeFiles/std_msgs_generate_messages_eus.dir/build.make morf_ik/CMakeFiles/std_msgs_generate_messages_eus.dir/clean
+.PHONY : morf_ik/CMakeFiles/std_msgs_generate_messages_eus.dir/clean
 
 # clean rule for target.
-clean: morf_IK/CMakeFiles/std_msgs_generate_messages_eus.dir/clean
+clean: morf_ik/CMakeFiles/std_msgs_generate_messages_eus.dir/clean
 
 .PHONY : clean
 
 #=============================================================================
-# Target rules for target morf_IK/CMakeFiles/std_msgs_generate_messages_nodejs.dir
+# Target rules for target morf_ik/CMakeFiles/std_msgs_generate_messages_nodejs.dir
 
 # All Build rule for target.
-morf_IK/CMakeFiles/std_msgs_generate_messages_nodejs.dir/all:
-	$(MAKE) -f morf_IK/CMakeFiles/std_msgs_generate_messages_nodejs.dir/build.make morf_IK/CMakeFiles/std_msgs_generate_messages_nodejs.dir/depend
-	$(MAKE) -f morf_IK/CMakeFiles/std_msgs_generate_messages_nodejs.dir/build.make morf_IK/CMakeFiles/std_msgs_generate_messages_nodejs.dir/build
+morf_ik/CMakeFiles/std_msgs_generate_messages_nodejs.dir/all:
+	$(MAKE) -f morf_ik/CMakeFiles/std_msgs_generate_messages_nodejs.dir/build.make morf_ik/CMakeFiles/std_msgs_generate_messages_nodejs.dir/depend
+	$(MAKE) -f morf_ik/CMakeFiles/std_msgs_generate_messages_nodejs.dir/build.make morf_ik/CMakeFiles/std_msgs_generate_messages_nodejs.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/leonor/tese/IK_MORF/catkin_ws/build/CMakeFiles --progress-num= "Built target std_msgs_generate_messages_nodejs"
-.PHONY : morf_IK/CMakeFiles/std_msgs_generate_messages_nodejs.dir/all
+.PHONY : morf_ik/CMakeFiles/std_msgs_generate_messages_nodejs.dir/all
 
 # Build rule for subdir invocation for target.
-morf_IK/CMakeFiles/std_msgs_generate_messages_nodejs.dir/rule: cmake_check_build_system
+morf_ik/CMakeFiles/std_msgs_generate_messages_nodejs.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/leonor/tese/IK_MORF/catkin_ws/build/CMakeFiles 0
-	$(MAKE) -f CMakeFiles/Makefile2 morf_IK/CMakeFiles/std_msgs_generate_messages_nodejs.dir/all
+	$(MAKE) -f CMakeFiles/Makefile2 morf_ik/CMakeFiles/std_msgs_generate_messages_nodejs.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/leonor/tese/IK_MORF/catkin_ws/build/CMakeFiles 0
-.PHONY : morf_IK/CMakeFiles/std_msgs_generate_messages_nodejs.dir/rule
+.PHONY : morf_ik/CMakeFiles/std_msgs_generate_messages_nodejs.dir/rule
 
 # Convenience name for target.
-std_msgs_generate_messages_nodejs: morf_IK/CMakeFiles/std_msgs_generate_messages_nodejs.dir/rule
+std_msgs_generate_messages_nodejs: morf_ik/CMakeFiles/std_msgs_generate_messages_nodejs.dir/rule
 
 .PHONY : std_msgs_generate_messages_nodejs
 
 # clean rule for target.
-morf_IK/CMakeFiles/std_msgs_generate_messages_nodejs.dir/clean:
-	$(MAKE) -f morf_IK/CMakeFiles/std_msgs_generate_messages_nodejs.dir/build.make morf_IK/CMakeFiles/std_msgs_generate_messages_nodejs.dir/clean
-.PHONY : morf_IK/CMakeFiles/std_msgs_generate_messages_nodejs.dir/clean
+morf_ik/CMakeFiles/std_msgs_generate_messages_nodejs.dir/clean:
+	$(MAKE) -f morf_ik/CMakeFiles/std_msgs_generate_messages_nodejs.dir/build.make morf_ik/CMakeFiles/std_msgs_generate_messages_nodejs.dir/clean
+.PHONY : morf_ik/CMakeFiles/std_msgs_generate_messages_nodejs.dir/clean
 
 # clean rule for target.
-clean: morf_IK/CMakeFiles/std_msgs_generate_messages_nodejs.dir/clean
+clean: morf_ik/CMakeFiles/std_msgs_generate_messages_nodejs.dir/clean
 
 .PHONY : clean
 
 #=============================================================================
-# Target rules for target morf_IK/CMakeFiles/roscpp_generate_messages_nodejs.dir
+# Target rules for target morf_ik/CMakeFiles/roscpp_generate_messages_nodejs.dir
 
 # All Build rule for target.
-morf_IK/CMakeFiles/roscpp_generate_messages_nodejs.dir/all:
-	$(MAKE) -f morf_IK/CMakeFiles/roscpp_generate_messages_nodejs.dir/build.make morf_IK/CMakeFiles/roscpp_generate_messages_nodejs.dir/depend
-	$(MAKE) -f morf_IK/CMakeFiles/roscpp_generate_messages_nodejs.dir/build.make morf_IK/CMakeFiles/roscpp_generate_messages_nodejs.dir/build
+morf_ik/CMakeFiles/roscpp_generate_messages_nodejs.dir/all:
+	$(MAKE) -f morf_ik/CMakeFiles/roscpp_generate_messages_nodejs.dir/build.make morf_ik/CMakeFiles/roscpp_generate_messages_nodejs.dir/depend
+	$(MAKE) -f morf_ik/CMakeFiles/roscpp_generate_messages_nodejs.dir/build.make morf_ik/CMakeFiles/roscpp_generate_messages_nodejs.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/leonor/tese/IK_MORF/catkin_ws/build/CMakeFiles --progress-num= "Built target roscpp_generate_messages_nodejs"
-.PHONY : morf_IK/CMakeFiles/roscpp_generate_messages_nodejs.dir/all
+.PHONY : morf_ik/CMakeFiles/roscpp_generate_messages_nodejs.dir/all
 
 # Build rule for subdir invocation for target.
-morf_IK/CMakeFiles/roscpp_generate_messages_nodejs.dir/rule: cmake_check_build_system
+morf_ik/CMakeFiles/roscpp_generate_messages_nodejs.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/leonor/tese/IK_MORF/catkin_ws/build/CMakeFiles 0
-	$(MAKE) -f CMakeFiles/Makefile2 morf_IK/CMakeFiles/roscpp_generate_messages_nodejs.dir/all
+	$(MAKE) -f CMakeFiles/Makefile2 morf_ik/CMakeFiles/roscpp_generate_messages_nodejs.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/leonor/tese/IK_MORF/catkin_ws/build/CMakeFiles 0
-.PHONY : morf_IK/CMakeFiles/roscpp_generate_messages_nodejs.dir/rule
+.PHONY : morf_ik/CMakeFiles/roscpp_generate_messages_nodejs.dir/rule
 
 # Convenience name for target.
-roscpp_generate_messages_nodejs: morf_IK/CMakeFiles/roscpp_generate_messages_nodejs.dir/rule
+roscpp_generate_messages_nodejs: morf_ik/CMakeFiles/roscpp_generate_messages_nodejs.dir/rule
 
 .PHONY : roscpp_generate_messages_nodejs
 
 # clean rule for target.
-morf_IK/CMakeFiles/roscpp_generate_messages_nodejs.dir/clean:
-	$(MAKE) -f morf_IK/CMakeFiles/roscpp_generate_messages_nodejs.dir/build.make morf_IK/CMakeFiles/roscpp_generate_messages_nodejs.dir/clean
-.PHONY : morf_IK/CMakeFiles/roscpp_generate_messages_nodejs.dir/clean
+morf_ik/CMakeFiles/roscpp_generate_messages_nodejs.dir/clean:
+	$(MAKE) -f morf_ik/CMakeFiles/roscpp_generate_messages_nodejs.dir/build.make morf_ik/CMakeFiles/roscpp_generate_messages_nodejs.dir/clean
+.PHONY : morf_ik/CMakeFiles/roscpp_generate_messages_nodejs.dir/clean
 
 # clean rule for target.
-clean: morf_IK/CMakeFiles/roscpp_generate_messages_nodejs.dir/clean
+clean: morf_ik/CMakeFiles/roscpp_generate_messages_nodejs.dir/clean
 
 .PHONY : clean
 
 #=============================================================================
-# Target rules for target morf_IK/CMakeFiles/std_msgs_generate_messages_py.dir
+# Target rules for target morf_ik/CMakeFiles/std_msgs_generate_messages_py.dir
 
 # All Build rule for target.
-morf_IK/CMakeFiles/std_msgs_generate_messages_py.dir/all:
-	$(MAKE) -f morf_IK/CMakeFiles/std_msgs_generate_messages_py.dir/build.make morf_IK/CMakeFiles/std_msgs_generate_messages_py.dir/depend
-	$(MAKE) -f morf_IK/CMakeFiles/std_msgs_generate_messages_py.dir/build.make morf_IK/CMakeFiles/std_msgs_generate_messages_py.dir/build
+morf_ik/CMakeFiles/std_msgs_generate_messages_py.dir/all:
+	$(MAKE) -f morf_ik/CMakeFiles/std_msgs_generate_messages_py.dir/build.make morf_ik/CMakeFiles/std_msgs_generate_messages_py.dir/depend
+	$(MAKE) -f morf_ik/CMakeFiles/std_msgs_generate_messages_py.dir/build.make morf_ik/CMakeFiles/std_msgs_generate_messages_py.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/leonor/tese/IK_MORF/catkin_ws/build/CMakeFiles --progress-num= "Built target std_msgs_generate_messages_py"
-.PHONY : morf_IK/CMakeFiles/std_msgs_generate_messages_py.dir/all
+.PHONY : morf_ik/CMakeFiles/std_msgs_generate_messages_py.dir/all
 
 # Build rule for subdir invocation for target.
-morf_IK/CMakeFiles/std_msgs_generate_messages_py.dir/rule: cmake_check_build_system
+morf_ik/CMakeFiles/std_msgs_generate_messages_py.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/leonor/tese/IK_MORF/catkin_ws/build/CMakeFiles 0
-	$(MAKE) -f CMakeFiles/Makefile2 morf_IK/CMakeFiles/std_msgs_generate_messages_py.dir/all
+	$(MAKE) -f CMakeFiles/Makefile2 morf_ik/CMakeFiles/std_msgs_generate_messages_py.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/leonor/tese/IK_MORF/catkin_ws/build/CMakeFiles 0
-.PHONY : morf_IK/CMakeFiles/std_msgs_generate_messages_py.dir/rule
+.PHONY : morf_ik/CMakeFiles/std_msgs_generate_messages_py.dir/rule
 
 # Convenience name for target.
-std_msgs_generate_messages_py: morf_IK/CMakeFiles/std_msgs_generate_messages_py.dir/rule
+std_msgs_generate_messages_py: morf_ik/CMakeFiles/std_msgs_generate_messages_py.dir/rule
 
 .PHONY : std_msgs_generate_messages_py
 
 # clean rule for target.
-morf_IK/CMakeFiles/std_msgs_generate_messages_py.dir/clean:
-	$(MAKE) -f morf_IK/CMakeFiles/std_msgs_generate_messages_py.dir/build.make morf_IK/CMakeFiles/std_msgs_generate_messages_py.dir/clean
-.PHONY : morf_IK/CMakeFiles/std_msgs_generate_messages_py.dir/clean
+morf_ik/CMakeFiles/std_msgs_generate_messages_py.dir/clean:
+	$(MAKE) -f morf_ik/CMakeFiles/std_msgs_generate_messages_py.dir/build.make morf_ik/CMakeFiles/std_msgs_generate_messages_py.dir/clean
+.PHONY : morf_ik/CMakeFiles/std_msgs_generate_messages_py.dir/clean
 
 # clean rule for target.
-clean: morf_IK/CMakeFiles/std_msgs_generate_messages_py.dir/clean
+clean: morf_ik/CMakeFiles/std_msgs_generate_messages_py.dir/clean
 
 .PHONY : clean
 

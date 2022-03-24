@@ -387,6 +387,12 @@ morf_IK_BINARY_DIR:STATIC=/home/leonor/tese/IK_MORF/catkin_ws/build/morf_IK
 //Value Computed by CMake
 morf_IK_SOURCE_DIR:STATIC=/home/leonor/tese/IK_MORF/catkin_ws/src/morf_IK
 
+//Value Computed by CMake
+morf_ik_BINARY_DIR:STATIC=/home/leonor/tese/IK_MORF/catkin_ws/build/morf_ik
+
+//Value Computed by CMake
+morf_ik_SOURCE_DIR:STATIC=/home/leonor/tese/IK_MORF/catkin_ws/src/morf_ik
+
 //The directory containing a CMake configuration file for opencv.
 opencv_DIR:PATH=opencv_DIR-NOTFOUND
 

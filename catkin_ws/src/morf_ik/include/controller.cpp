@@ -240,7 +240,7 @@ void images::blob()
 
 
     cv::Ptr<cv::SimpleBlobDetector> detector = cv::SimpleBlobDetector::create(params);
-    std::vector<cv::KeyPoint> keypointsL, keypointsR;
+    std::vector<cv::KeyPoint> keypointsL, keypointsR, keypointsGreenL, keypointsGreenR;
     detector->detect(imageL, keypointsL);
     detector->detect(imageR, keypointsR);
 
@@ -268,6 +268,7 @@ void images::blob()
             x_avgL+=keypointsL[i].pt.x;
             y_avgL+=keypointsL[i].pt.y;
             quantL++;
+            keypointsGreenL.push_back(keypointsL[i]);
         }
 
         //std::cout << h << std::endl;
@@ -293,6 +294,7 @@ void images::blob()
             x_avgR+=keypointsR[i].pt.x;
             y_avgR+=keypointsR[i].pt.y;
             quantR++;
+            keypointsGreenR.push_back(keypointsR[i]);
         }
     }
 
@@ -301,10 +303,10 @@ void images::blob()
     {
         cv::Mat correct;
         std::vector<cv::KeyPoint> correctKeypoint = {keypointsL[closestGreenL]};
-        cv::drawKeypoints(imageL, correctKeypoint, correct);
+        cv::drawKeypoints(imageL, keypointsGreenL, correct);
         cv::imshow("correctL", correct);
         correctKeypoint = {keypointsR[closestGreenR]};
-        cv::drawKeypoints(imageR, correctKeypoint, correct);
+        cv::drawKeypoints(imageR, keypointsGreenR, correct);
         cv::imshow("correctR", correct);
         cv::waitKey(30);
 

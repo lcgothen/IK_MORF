@@ -131,7 +131,7 @@ endif()
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
   include("/home/leonor/tese/IK_MORF/catkin_ws/build/gtest/cmake_install.cmake")
-  include("/home/leonor/tese/IK_MORF/catkin_ws/build/morf_IK/cmake_install.cmake")
+  include("/home/leonor/tese/IK_MORF/catkin_ws/build/morf_ik/cmake_install.cmake")
 
 endif()
 

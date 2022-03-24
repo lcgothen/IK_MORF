@@ -176,22 +176,22 @@ int main(int argc, char **argv)
                 IK_order.data.push_back(FL.th2);
                 IK_order.data.push_back(FL.th3);
                 IK_order.data.push_back(0);
-                IK_order.data.push_back(2.024319);
+                IK_order.data.push_back(1.3);
+                IK_order.data.push_back(-2.25/4);
                 IK_order.data.push_back(0);
-                IK_order.data.push_back(0);
-                IK_order.data.push_back(2.024319);
-                IK_order.data.push_back(0);
+                IK_order.data.push_back(1.3);
+                IK_order.data.push_back(-2.25/4);
 
                 // right leg angles
                 IK_order.data.push_back(0);
-                IK_order.data.push_back(2.024319);
+                IK_order.data.push_back(1.3);
+                IK_order.data.push_back(-2.25/4);
                 IK_order.data.push_back(0);
+                IK_order.data.push_back(1.3);
+                IK_order.data.push_back(-2.25/4);
                 IK_order.data.push_back(0);
-                IK_order.data.push_back(2.024319);
-                IK_order.data.push_back(0);
-                IK_order.data.push_back(0);
-                IK_order.data.push_back(2.024319);
-                IK_order.data.push_back(0);
+                IK_order.data.push_back(1.3);
+                IK_order.data.push_back(-2.25/4);
             }
             else if(state==1)
             {
@@ -200,8 +200,8 @@ int main(int argc, char **argv)
                 IK_order.data.push_back(FL.th2);
                 IK_order.data.push_back(FL.th3);
                 IK_order.data.push_back(0);
-                IK_order.data.push_back(2.024319);
-                IK_order.data.push_back(0);
+                IK_order.data.push_back(1.3);
+                IK_order.data.push_back(-2.25/4);
                 IK_order.data.push_back(auxBL.th1);
                 IK_order.data.push_back(auxBL.th2);
                 IK_order.data.push_back(auxBL.th3);
@@ -209,14 +209,14 @@ int main(int argc, char **argv)
 
                 // right leg angles
                 IK_order.data.push_back(0);
-                IK_order.data.push_back(2.024319);
+                IK_order.data.push_back(1.3);
+                IK_order.data.push_back(-2.25/4);
                 IK_order.data.push_back(0);
+                IK_order.data.push_back(1.3);
+                IK_order.data.push_back(-2.25/4);
                 IK_order.data.push_back(0);
-                IK_order.data.push_back(2.024319);
-                IK_order.data.push_back(0);
-                IK_order.data.push_back(0);
-                IK_order.data.push_back(2.024319);
-                IK_order.data.push_back(0);
+                IK_order.data.push_back(1.3);
+                IK_order.data.push_back(-2.25/4);
             }
             else if(state==2)
             {
@@ -225,8 +225,8 @@ int main(int argc, char **argv)
                 IK_order.data.push_back(FL.th2);
                 IK_order.data.push_back(FL.th3);
                 IK_order.data.push_back(0);
-                IK_order.data.push_back(2.024319);
-                IK_order.data.push_back(0);
+                IK_order.data.push_back(1.3);
+                IK_order.data.push_back(-2.25/4);
                 IK_order.data.push_back(BL.th1);
                 IK_order.data.push_back(BL.th2);
                 IK_order.data.push_back(BL.th3);
@@ -234,14 +234,14 @@ int main(int argc, char **argv)
 
                 // right leg angles
                 IK_order.data.push_back(0);
-                IK_order.data.push_back(2.024319);
+                IK_order.data.push_back(1.3);
+                IK_order.data.push_back(-2.25/4);
                 IK_order.data.push_back(0);
+                IK_order.data.push_back(1.3);
+                IK_order.data.push_back(-2.25/4);
                 IK_order.data.push_back(0);
-                IK_order.data.push_back(2.024319);
-                IK_order.data.push_back(0);
-                IK_order.data.push_back(0);
-                IK_order.data.push_back(2.024319);
-                IK_order.data.push_back(0);
+                IK_order.data.push_back(1.3);
+                IK_order.data.push_back(-2.25/4);
             }
             else if(state==3)
             {
@@ -258,14 +258,14 @@ int main(int argc, char **argv)
 
                 // right leg angles
                 IK_order.data.push_back(0);
-                IK_order.data.push_back(2.024319);
+                IK_order.data.push_back(1.3);
+                IK_order.data.push_back(-2.25/4);
                 IK_order.data.push_back(0);
+                IK_order.data.push_back(1.3);
+                IK_order.data.push_back(-2.25/4);
                 IK_order.data.push_back(0);
-                IK_order.data.push_back(2.024319);
-                IK_order.data.push_back(0);
-                IK_order.data.push_back(0);
-                IK_order.data.push_back(2.024319);
-                IK_order.data.push_back(0);
+                IK_order.data.push_back(1.3);
+                IK_order.data.push_back(-2.25/4);
             }
             else if(state==4)
             {
@@ -282,14 +282,14 @@ int main(int argc, char **argv)
 
                 // right leg angles
                 IK_order.data.push_back(0);
-                IK_order.data.push_back(2.024319);
+                IK_order.data.push_back(1.3);
+                IK_order.data.push_back(-2.25/4);
                 IK_order.data.push_back(0);
+                IK_order.data.push_back(1.3);
+                IK_order.data.push_back(-2.25/4);
                 IK_order.data.push_back(0);
-                IK_order.data.push_back(2.024319);
-                IK_order.data.push_back(0);
-                IK_order.data.push_back(0);
-                IK_order.data.push_back(2.024319);
-                IK_order.data.push_back(0);
+                IK_order.data.push_back(1.3);
+                IK_order.data.push_back(-2.25/4);
             }
             else if(state==5)
             {
@@ -310,11 +310,11 @@ int main(int argc, char **argv)
                 IK_order.data.push_back(FR.th2);
                 IK_order.data.push_back(FR.th3);
                 IK_order.data.push_back(0);
-                IK_order.data.push_back(2.024319);
+                IK_order.data.push_back(1.3);
+                IK_order.data.push_back(-2.25/4);
                 IK_order.data.push_back(0);
-                IK_order.data.push_back(0);
-                IK_order.data.push_back(2.024319);
-                IK_order.data.push_back(0);
+                IK_order.data.push_back(1.3);
+                IK_order.data.push_back(-2.25/4);
             }
             else if(state==6)
             {
@@ -335,8 +335,8 @@ int main(int argc, char **argv)
                 IK_order.data.push_back(FR.th2);
                 IK_order.data.push_back(FR.th3);
                 IK_order.data.push_back(0);
-                IK_order.data.push_back(2.024319);
-                IK_order.data.push_back(0);
+                IK_order.data.push_back(1.3);
+                IK_order.data.push_back(-2.25/4);
                 IK_order.data.push_back(auxBR.th1);
                 IK_order.data.push_back(auxBR.th2);
                 IK_order.data.push_back(auxBR.th3);
@@ -360,8 +360,8 @@ int main(int argc, char **argv)
                 IK_order.data.push_back(FR.th2);
                 IK_order.data.push_back(FR.th3);
                 IK_order.data.push_back(0);
-                IK_order.data.push_back(2.024319);
-                IK_order.data.push_back(0);
+                IK_order.data.push_back(1.3);
+                IK_order.data.push_back(-2.25/4);
                 IK_order.data.push_back(BR.th1);
                 IK_order.data.push_back(BR.th2);
                 IK_order.data.push_back(BR.th3);
