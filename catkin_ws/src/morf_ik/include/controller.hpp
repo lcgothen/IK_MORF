@@ -51,7 +51,7 @@ namespace controller
         float outputH2 = 0.001;
         float oH1, oH2;
         angles FL, ML, BL, FR, MR, BR;
-        bool stabilize=false;
+        //bool stabilize=false;
         float k=1;
     
         void cyclic();

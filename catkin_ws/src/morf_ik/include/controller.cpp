@@ -130,8 +130,8 @@ void CPG::walk(images stereo)
     BR.th2 = oH2*k+offset2; 
     BR.th3 = offset3; 
 
-    if(stereo.target.z < 0.13 && stereo.target.z >= 0)
-        stabilize=true;
+    // if(stereo.target.z < 0.13 && stereo.target.z >= 0)
+    //     stabilize=true;
 
     //std::cout << stereo.target.x << " , " << stereo.target.y <<  " , " << stereo.target.z << std::endl;
 }
