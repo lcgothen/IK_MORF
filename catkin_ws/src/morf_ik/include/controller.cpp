@@ -65,7 +65,7 @@ void angles::calcIK(point target) // calculate angles with IK equations
     th3 += offset3;
 }
 
-void CPG::cyclic()
+void CPG::cyclic(images stereo)
 {
     float W12 = 0.4; 
     float W21 = -0.4; 
@@ -80,54 +80,54 @@ void CPG::cyclic()
     outputH1 = tanh(activityH1);
     outputH2 = tanh(activityH2);
 
-    oH1 = outputH1*0.3;
-    oH2 = outputH2*0.3;
+    if(stereo.target.z < 0.2 && stereo.target.z >= 0 && k>0.2)
+        k=0.06;
+    else if(stereo.target.z < 0.3 && stereo.target.z >= 0 && k>0.4)
+        k=0.12;
+    else if(stereo.target.z < 0.4 && stereo.target.z >= 0 && k>0.6)
+        k=0.18;
+    else if(stereo.target.z < 0.5 && stereo.target.z >= 0 && k>0.8)
+        k=0.24;
+
+    oH1 = outputH1*k;
+    oH2 = outputH2*k;
 }
 
 void CPG::walk(images stereo)
 {
     float offset2 = 1.5, offset3 = -2.25/4;
-    float d=0.08-1.2*stereo.target.x;//-0.03-stereo.target.x;
-
-
-    if(stereo.target.z < 0.2 && stereo.target.z >= 0 && k>0.2)
-        k=0.2;
-    else if(stereo.target.z < 0.3 && stereo.target.z >= 0 && k>0.4)
-        k=0.4;
-    else if(stereo.target.z < 0.4 && stereo.target.z >= 0 && k>0.6)
-        k=0.6;
-    else if(stereo.target.z < 0.5 && stereo.target.z >= 0 && k>0.8)
-        k=0.8;
+    float d=0.1-stereo.target.x;//0.08-1.2*stereo.target.x;//-0.03-stereo.target.x;
 
 
     // front left
-    FL.th1 = oH1*(1+d)*k;
-    FL.th2 = -oH2*k+offset2;
+    FL.th1 = oH1*(1+d);
+    FL.th2 = -oH2+offset2;
     FL.th3 = offset3;
  
     // middle left
-    ML.th1 = -oH1*(1+d)*k;
-    ML.th2 = oH2*k+offset2;
+    ML.th1 = -oH1*(1+d);
+    ML.th2 = oH2+offset2;
     ML.th3 = offset3;
 
     // back left
-    BL.th1 = oH1*(1+d)*k;
-    BL.th2 = -oH2*k+offset2;
+    BL.th1 = oH1*(1+d);
+    BL.th2 = -oH2+offset2;
     BL.th3 = offset3;
 
+    // right side has the th1 angles inverted because of the orientation of the legs on the robot
     // front right
-    FR.th1 = oH1*(1-d)*k;
-    FR.th2 = oH2*k+offset2;
+    FR.th1 = oH1*(1-d);
+    FR.th2 = oH2+offset2;
     FR.th3 = offset3;
 
     // middle right
-    MR.th1 = -oH1*(1-d)*k;
-    MR.th2 = -oH2*k+offset2;
+    MR.th1 = -oH1*(1-d);
+    MR.th2 = -oH2+offset2;
     MR.th3 = offset3;
 
     // back right
-    BR.th1 = oH1*(1-d)*k; 
-    BR.th2 = oH2*k+offset2; 
+    BR.th1 = oH1*(1-d); 
+    BR.th2 = oH2+offset2; 
     BR.th3 = offset3; 
 
     // if(stereo.target.z < 0.13 && stereo.target.z >= 0)

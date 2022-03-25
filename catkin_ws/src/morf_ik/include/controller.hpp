@@ -52,9 +52,9 @@ namespace controller
         float oH1, oH2;
         angles FL, ML, BL, FR, MR, BR;
         //bool stabilize=false;
-        float k=1;
+        float k=0.3;
     
-        void cyclic();
+        void cyclic(images stereo);
         void walk(images stereo);
     };
 }

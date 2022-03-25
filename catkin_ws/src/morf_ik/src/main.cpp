@@ -167,7 +167,7 @@ int main(int argc, char **argv)
         }
         else if(state==1)
         {
-            cpg.cyclic();
+            cpg.cyclic(stereo);
             cpg.walk(stereo);
 
             // left leg angles
