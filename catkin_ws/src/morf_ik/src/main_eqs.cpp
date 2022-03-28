@@ -1,8 +1,3 @@
-// TO RUN
-// . ~/tese/catkin_ws/devel/setup.bash (no longer needed)
-// cd home/leonor/tese/IK_MORF/catkin_ws/devel/lib/morf_IK
-// ./main
-
 #include <cstdio>
 #include <cstdlib>
 #include <ros/ros.h>
