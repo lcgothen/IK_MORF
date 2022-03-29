@@ -34,17 +34,17 @@ int main(int argc, char **argv)
     const unsigned int num_output = 3;
     const unsigned int num_layers = 4;
     const unsigned int num_neurons_hidden = 15;
-    const unsigned int max_epochs = 5000;
+    const unsigned int max_epochs = 500000;
     const unsigned int epochs_between_reports = 1;
     const float desired_error = (const float) 0.01;
-    const float learning_rate = (const float) 0.5;
+    const float learning_rate = (const float) 0.2;
 
     struct fann *ann = fann_create_standard(num_layers, num_input, num_neurons_hidden, num_neurons_hidden, num_output);
 
     fann_set_activation_function_hidden(ann, FANN_SIGMOID_SYMMETRIC);
     fann_set_activation_function_output(ann, FANN_SIGMOID_SYMMETRIC);
 
-    fann_set_training_algorithm(ann, FANN_TRAIN_INCREMENTAL);
+    fann_set_training_algorithm(ann, FANN_TRAIN_BATCH); //FANN_TRAIN_INCREMENTAL
     fann_set_learning_rate(ann, learning_rate);
     fann_randomize_weights(ann, -1, 1);
 
@@ -67,16 +67,16 @@ int main(int argc, char **argv)
     fann_scale_train(ann, vali);
 
     std::ofstream test_log;
-    test_log.open ("results/vali_02_15_l05.dat"); // naming: vali_numHiddenLayers_numNeuronsHidden.dat
+    test_log.open ("results/batch_02_15_02_5000.dat"); // naming: algorithm_numHiddenLayers_numNeuronsHidden_learningRate_maxEpochs.dat
 
     double error = 0;
     for(int i = 1 ; i <= max_epochs ; i++) {
       error = fann_train_epoch(ann, train);
-      printf("Training Error: %f", error); 
+      printf("Epoch: %d \t Training Error: %f", i, error); 
 
       fann_reset_MSE(ann);
       for(int i = 0 ; i != fann_length_train_data(vali) ; i++ ) {
-        fann_test(ann, fann_get_train_input(vali, i), fann_get_train_input(vali, i));
+        fann_test(ann, fann_get_train_input(vali, i), fann_get_train_output(vali, i));
       }
       test_log << i << "\t" << error << "\t" << fann_get_MSE(ann) << std::endl;
       std::cout << "  \tValidation Error: " << fann_get_MSE(ann) << std::endl;

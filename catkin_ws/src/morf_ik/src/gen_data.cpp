@@ -43,7 +43,7 @@ int main(int argc, char **argv)
 
     int count=0;
 
-    for(int i=0; i<10000; i++)
+    for(int i=0; i<100000; i++)
     {
         point aux_in;
         aux_in.x = x_interval(rand_gen);
@@ -91,7 +91,7 @@ int main(int argc, char **argv)
 
     count=0;
 
-    for(int i=0; i<1000; i++)
+    for(int i=0; i<10000; i++)
     {
         point aux_in;
         aux_in.x = x_interval(rand_gen);
