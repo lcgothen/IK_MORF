@@ -89,7 +89,7 @@ int main(int argc, char **argv)
     float *output = fann_run(ann, input);
     fann_descale_output(ann, output);
 
-    std::cout << "correct: " << FL.th1 << "," << FL.th2 << "," << FL.th3 << "\t";
+    std::cout << "correct: " << FL.th1*180/M_PI << "," << FL.th2*180/M_PI << "," << FL.th3*180/M_PI << "\t";
     std::cout << "nn: " << output[0] << "," << output[1] << "," << output[2] << std::endl;
 
     auxML.th1=-1.100229;

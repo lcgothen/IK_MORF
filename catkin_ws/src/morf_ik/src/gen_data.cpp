@@ -80,8 +80,8 @@ int main(int argc, char **argv)
     for(int i=0; i<count; i++)
     {
         data << input[i].x << " " << input[i].y << " " << input[i].z << "\n";
-        data << output[i].th1 << " " << output[i].th2 << " " << output[i].th3 << "\n";
-        std::cout << i << ": " << output[i].th1 << "," << output[i].th2 << "," << output[i].th3 << std::endl;
+        data << output[i].th1*180/M_PI << " " << output[i].th2*180/M_PI << " " << output[i].th3*180/M_PI << "\n";
+        std::cout << i << ": " << output[i].th1*180/M_PI << "," << output[i].th2*180/M_PI << "," << output[i].th3*180/M_PI << std::endl;
     }
 
     data.close();
@@ -127,8 +127,8 @@ int main(int argc, char **argv)
     for(int i=0; i<count; i++)
     {
         data << input[i].x << " " << input[i].y << " " << input[i].z << "\n";
-        data << output[i].th1 << " " << output[i].th2 << " " << output[i].th3 << "\n";
-        std::cout << i << ": " << output[i].th1 << "," << output[i].th2 << "," << output[i].th3 << std::endl;
+        data << output[i].th1*180/M_PI << " " << output[i].th2*180/M_PI << " " << output[i].th3*180/M_PI << "\n";
+        std::cout << i << ": " << output[i].th1*180/M_PI << "," << output[i].th2*180/M_PI << "," << output[i].th3*180/M_PI << std::endl;
     }
 
     data.close();
