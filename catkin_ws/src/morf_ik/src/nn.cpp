@@ -1,5 +1,6 @@
 // https://leenissen.dk/fann/html/files2/gettingstarted-txt.html
 // https://github.com/MathiasThor/Genetic_ANN_Ludo_player/blob/master/ann_code/main.cpp
+// https://leenissen.dk/fann/html/files2/advancedusage-txt.html
 
 #include <cstdio>
 #include <cstdlib>
@@ -32,15 +33,16 @@ int main(int argc, char **argv)
 {
     const unsigned int num_input = 3;
     const unsigned int num_output = 3;
-    const unsigned int num_layers = 4;
-    const unsigned int num_neurons_hidden = 15;
+    const unsigned int num_layers = 6;
+    const unsigned int num_neurons_hidden = 10;
     const unsigned int max_epochs = 50000;
     const unsigned int epochs_between_reports = 1;
     const float desired_error = (const float) 0.01;
-    const float learning_rate = (const float) 0.01;
+    const float learning_rate = (const float) 0.1;
 
     const uint layers[num_layers] = {num_input, 
-                                    num_neurons_hidden, num_neurons_hidden, 
+                                    num_neurons_hidden, num_neurons_hidden,
+                                    num_neurons_hidden, num_neurons_hidden,
                                     num_output};
 
     struct fann *ann = fann_create_standard_array(num_layers, layers);
@@ -48,7 +50,7 @@ int main(int argc, char **argv)
     fann_set_activation_function_hidden(ann, FANN_SIGMOID_SYMMETRIC);
     fann_set_activation_function_output(ann, FANN_SIGMOID_SYMMETRIC);
 
-    fann_set_training_algorithm(ann, FANN_TRAIN_SARPROP); //FANN_TRAIN_INCREMENTAL, FANN_TRAIN_BATCH, FANN_TRAIN_RPROP, FANN_TRAIN_QUICKPROP, FANN_TRAIN_SARPROP
+    fann_set_training_algorithm(ann, FANN_TRAIN_BATCH); //FANN_TRAIN_INCREMENTAL, FANN_TRAIN_BATCH, FANN_TRAIN_RPROP, FANN_TRAIN_QUICKPROP, FANN_TRAIN_SARPROP
     fann_set_learning_rate(ann, learning_rate);
     fann_randomize_weights(ann, -1, 1);
 
@@ -67,26 +69,30 @@ int main(int argc, char **argv)
     // fann_scale_train(ann, vali);
 
     std::ofstream test_log;
-    test_log.open ("results/sarprop_02_15_001_50000.dat"); // naming: algorithm_numHiddenLayers_numNeuronsHidden_learningRate_maxEpochs.dat
+    test_log.open ("results/batch_04_10_01_50000.dat"); // naming: algorithm_numHiddenLayers_numNeuronsHidden_learningRate_maxEpochs_weights.dat
 
     double error = 0;
     for(int i = 1 ; i <= max_epochs ; i++) {
       error = fann_train_epoch(ann, train);
       printf("Epoch: %d \t Training Error: %f", i, error); 
 
-      fann_reset_MSE(ann);
+      //fann_reset_MSE(ann);
+
+      fann_save(ann, "data/ann.net");
+      struct fann *ann_train = fann_create_from_file("data/ann.net");
+
       for(int i = 0 ; i != fann_length_train_data(vali) ; i++ ) {
-        fann_test(ann, fann_get_train_input(vali, i), fann_get_train_output(vali, i));
+        fann_test(ann_train, fann_get_train_input(vali, i), fann_get_train_output(vali, i));
       }
-      test_log << i << "\t" << error << "\t" << fann_get_MSE(ann) << std::endl;
-      std::cout << "  \tValidation Error: " << fann_get_MSE(ann) << std::endl;
+      test_log << i << "\t" << error << "\t" << fann_get_MSE(ann_train) << std::endl;
+      std::cout << "  \tValidation Error: " << fann_get_MSE(ann_train) << std::endl;
 
       if ( error < desired_error) {
         break;
       }
     }
 
-    fann_save(ann, "data/ann.net");
+    //fann_save(ann, "data/ann.net");
     fann_destroy(ann);
     test_log.close();
 

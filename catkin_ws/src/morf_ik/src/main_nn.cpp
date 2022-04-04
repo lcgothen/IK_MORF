@@ -89,8 +89,16 @@ int main(int argc, char **argv)
     float *output = fann_run(ann, input);
     fann_descale_output(ann, output);
 
-    std::cout << "correct: " << FL.th1*180/M_PI << "," << FL.th2*180/M_PI << "," << FL.th3*180/M_PI << "\t";
+    // std::cout << "correct: " << FL.th1*180/M_PI << "," << FL.th2*180/M_PI << "," << FL.th3*180/M_PI << "\t";
+    std::cout << "correct: " << FL.th1 << "," << FL.th2 << "," << FL.th3 << "\t";
     std::cout << "nn: " << output[0] << "," << output[1] << "," << output[2] << std::endl;
+
+    // FL.th1 = output[0]*M_PI/180;
+    // FL.th2 = output[1]*M_PI/180;
+    // FL.th3 = output[2]*M_PI/180;
+    FL.th1 = output[0];
+    FL.th2 = output[1];
+    FL.th3 = output[2];
 
     auxML.th1=-1.100229;
     auxML.th2=2.324319;
@@ -589,6 +597,36 @@ int main(int argc, char **argv)
             //std::cout << stereo.target.x << " , " << stereo.target.y <<  " , " << stereo.target.z << std::endl;
             controller_pub.publish(IK_order);
         }
+        else if(state==-1)
+        {
+            //stable=true;
+
+            // left leg angles
+            IK_order.data.push_back(FL.th1);
+            IK_order.data.push_back(FL.th2);
+            IK_order.data.push_back(FL.th3);
+            IK_order.data.push_back(ML.th1);
+            IK_order.data.push_back(ML.th2);
+            IK_order.data.push_back(ML.th3);
+            IK_order.data.push_back(BL.th1);
+            IK_order.data.push_back(BL.th2);
+            IK_order.data.push_back(BL.th3);
+
+
+            // right leg angles
+            IK_order.data.push_back(FR.th1);
+            IK_order.data.push_back(FR.th2);
+            IK_order.data.push_back(FR.th3);
+            IK_order.data.push_back(MR.th1);
+            IK_order.data.push_back(MR.th2);
+            IK_order.data.push_back(MR.th3);
+            IK_order.data.push_back(BR.th1);
+            IK_order.data.push_back(BR.th2);
+            IK_order.data.push_back(BR.th3);
+            
+            controller_pub.publish(IK_order);
+        }
+
 
         ros::spinOnce();
 

@@ -108,6 +108,10 @@ int main(int argc, char **argv)
     bool stable=false, inPos=false, done=false;
     int state=0, stable_state=0;
     point target;
+
+    // -110 < th1 < -20
+    // jointValues.at(CF0)=jointLimiter(jointValues.at(CF0), -5, 130);
+    // jointValues.at(FT0)=jointLimiter(jointValues.at(FT0), -80, 0);
     
 
     while(ros::ok())
@@ -519,6 +523,10 @@ int main(int argc, char **argv)
             posFL = posFL.morf2FL(); 
             FL.calcIK(posFL);
 
+            FL.th1=jointLimiter(FL.th1, -110, -20);
+            FL.th2=jointLimiter(FL.th2, -5, 130);
+            FL.th3=jointLimiter(FL.th3, -180, 0);
+
             // left leg angles
             IK_order.data.push_back(FL.th1);
             IK_order.data.push_back(FL.th2);
@@ -550,6 +558,10 @@ int main(int argc, char **argv)
             posFL = target.camLeft2morf(); 
             posFL = posFL.morf2FL(); 
             FL.calcIK(posFL);
+
+            FL.th1=jointLimiter(FL.th1, -110, -20);
+            FL.th2=jointLimiter(FL.th2, -5, 130);
+            FL.th3=jointLimiter(FL.th3, -180, 0);
             //ROS_INFO("%f, %f, %f", FL.th1, FL.th2, FL.th3);
 
             // left leg angles

@@ -18,6 +18,20 @@ using namespace coords;
 #include "controller.hpp"
 using namespace controller;
 
+// limiter function from /gorobots/projects/C-CPGRBFN/CPGRBFN_BBO_v5/neural_controllers/morf/real/neutronController.cpp
+float controller::jointLimiter(float jointValue, float jointMin, float jointMax) 
+{
+    float toRad = M_PI / 180;
+    jointMin = jointMin * toRad;
+    jointMax = jointMax * toRad;
+
+    if(jointValue > jointMax)
+        return jointMax;
+    else if(jointValue < jointMin)
+        return jointMin;
+    else return jointValue;
+}
+
 void robot::jointPosCallback(const std_msgs::Float32MultiArray::ConstPtr& msg)
 {
     FL.th1 = msg->data[0];
@@ -98,42 +112,37 @@ void CPG::walk(images stereo)
     float offset2 = 1.5, offset3 = -2.25/4;
     float d=0.1-stereo.target.x;//0.08-1.2*stereo.target.x;//-0.03-stereo.target.x;
 
-
+    // joint limits from /gorobots/projects/C-CPGRBFN/CPGRBFN_BBO_v5/neural_controllers/morf/real/neutronController.cpp
     // front left
-    FL.th1 = oH1*(1+d);
-    FL.th2 = -oH2+offset2;
+    FL.th1 = jointLimiter(oH1*(1+d), -110, 22);
+    FL.th2 = jointLimiter(-oH2+offset2, -5, 130);
     FL.th3 = offset3;
  
     // middle left
-    ML.th1 = -oH1*(1+d);
-    ML.th2 = oH2+offset2;
+    ML.th1 = jointLimiter(-oH1*(1+d), -22, 22);
+    ML.th2 = jointLimiter(oH2+offset2, -5, 130);
     ML.th3 = offset3;
 
     // back left
-    BL.th1 = oH1*(1+d);
-    BL.th2 = -oH2+offset2;
+    BL.th1 = jointLimiter(oH1*(1+d), -22, 110);
+    BL.th2 = jointLimiter(-oH2+offset2, -5, 130);
     BL.th3 = offset3;
 
     // right side has the th1 angles inverted because of the orientation of the legs on the robot
     // front right
-    FR.th1 = oH1*(1-d);
-    FR.th2 = oH2+offset2;
+    FR.th1 = jointLimiter(oH1*(1-d), -22, 110);
+    FR.th2 = jointLimiter(oH2+offset2, -5, 130);
     FR.th3 = offset3;
 
     // middle right
-    MR.th1 = -oH1*(1-d);
-    MR.th2 = -oH2+offset2;
+    MR.th1 = jointLimiter(-oH1*(1-d), -22, 22);
+    MR.th2 = jointLimiter(-oH2+offset2, -5, 130);
     MR.th3 = offset3;
 
     // back right
-    BR.th1 = oH1*(1-d); 
-    BR.th2 = oH2+offset2; 
+    BR.th1 = jointLimiter(oH1*(1-d), -110, 22);
+    BR.th2 = jointLimiter(oH2+offset2, -5, 130);
     BR.th3 = offset3; 
-
-    // if(stereo.target.z < 0.13 && stereo.target.z >= 0)
-    //     stabilize=true;
-
-    //std::cout << stereo.target.x << " , " << stereo.target.y <<  " , " << stereo.target.z << std::endl;
 }
 
 
@@ -237,6 +246,7 @@ void images::blob()
     cv::SimpleBlobDetector::Params params;
     params.filterByArea = true;
     params.minArea = 0;
+    // params.maxArea = 100;
 
 
     cv::Ptr<cv::SimpleBlobDetector> detector = cv::SimpleBlobDetector::create(params);
@@ -304,13 +314,14 @@ void images::blob()
         cv::Mat correct;
         std::vector<cv::KeyPoint> correctKeypoint = {keypointsL[closestGreenL]};
         cv::drawKeypoints(imageL, keypointsGreenL, correct);
+        //cv::drawKeypoints(imageL, keypointsGreenL, correct, cv::Scalar::all(-1), cv::DrawMatchesFlags::DRAW_RICH_KEYPOINTS);
         cv::imshow("correctL", correct);
         correctKeypoint = {keypointsR[closestGreenR]};
         cv::drawKeypoints(imageR, keypointsGreenR, correct);
         cv::imshow("correctR", correct);
         cv::waitKey(30);
 
-        target.z = 175*0.06*1/(keypointsL[closestGreenL].pt.x-keypointsR[closestGreenR].pt.x);
+        target.z = 175.05*0.06*1/(keypointsL[closestGreenL].pt.x-keypointsR[closestGreenR].pt.x);
 
         float length = 2*target.z*tan(2.3562/2);
         float width = 800*length/848;
@@ -329,7 +340,7 @@ void images::blob()
             y_avgR=y_avgR/quantR;
         }
 
-        target_avg.z = 175*0.06*1/(x_avgL-x_avgR);
+        target_avg.z = 175.05*0.06*1/(x_avgL-x_avgR);
 
         length = 2*target_avg.z*tan(2.3562/2);
         width = 800*length/848;
@@ -338,6 +349,6 @@ void images::blob()
         target_avg.y = -y_avgL/800*width+width/2;
 
         
-        //std::cout << target_avg.x << " , " << target_avg.y << " , " << target_avg.z << std::endl;
+        std::cout << target_avg.x << " , " << target_avg.y << " , " << target_avg.z << std::endl;
     }
 }
