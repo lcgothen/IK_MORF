@@ -45,6 +45,8 @@ int main(int argc, char **argv)
     posFL.y = +1.3090e-01;
     posFL.z = -2.9912e-01;
 
+    // -0.576338 1.8802 -0.485737
+
     stableML.x = -7.5776e-02;
     stableML.y = +1.7632e-01;
     stableML.z = -1.6912e-01;
@@ -85,12 +87,12 @@ int main(int argc, char **argv)
     BR.calcIK(stableBR);
 
     struct fann *ann = fann_create_from_file("data/ann.net");
-    float input[3] = {0, +1.3090e-01, -2.9912e-01};
+    float input[3] = {0.00468838, 0.011445, 0.026022};
     float *output = fann_run(ann, input);
     fann_descale_output(ann, output);
 
     // std::cout << "correct: " << FL.th1*180/M_PI << "," << FL.th2*180/M_PI << "," << FL.th3*180/M_PI << "\t";
-    std::cout << "correct: " << FL.th1 << "," << FL.th2 << "," << FL.th3 << "\t";
+    std::cout << "correct: " << 2.04891 << "," << 2.27202 << "," << -0.705512 << "\t";
     std::cout << "nn: " << output[0] << "," << output[1] << "," << output[2] << std::endl;
 
     // FL.th1 = output[0]*M_PI/180;

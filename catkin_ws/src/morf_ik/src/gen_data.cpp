@@ -35,9 +35,12 @@ int main(int argc, char **argv)
     // -3.8406e-01 <= z <= -1.6912e-01
 
     std::default_random_engine rand_gen(seed);
-    std::uniform_real_distribution<float> x_interval(-7.4826e-02,0.11527);
-    std::uniform_real_distribution<float> y_interval(+6.2794e-02,+3.2290e-01);
-    std::uniform_real_distribution<float> z_interval(-3.8406e-01,-1.6912e-01);
+    // std::uniform_real_distribution<float> x_interval(-7.4826e-02,0.11527);
+    // std::uniform_real_distribution<float> y_interval(+6.2794e-02,+3.2290e-01);
+    // std::uniform_real_distribution<float> z_interval(-3.8406e-01,-1.6912e-01);
+    std::uniform_real_distribution<float> x_interval(-7.4826e-03,0.11527e-01);
+    std::uniform_real_distribution<float> y_interval(+6.2794e-03,+3.2290e-02);
+    std::uniform_real_distribution<float> z_interval(-3.8406e-02,-1.6912e-02);
 
     // create train data
 
@@ -80,8 +83,8 @@ int main(int argc, char **argv)
     for(int i=0; i<count; i++)
     {
         data << input[i].x << " " << input[i].y << " " << input[i].z << "\n";
-        data << output[i].th1*180/M_PI << " " << output[i].th2*180/M_PI << " " << output[i].th3*180/M_PI << "\n";
-        std::cout << i << ": " << output[i].th1*180/M_PI << "," << output[i].th2*180/M_PI << "," << output[i].th3*180/M_PI << std::endl;
+        data << output[i].th1 << " " << output[i].th2<< " " << output[i].th3 << "\n";
+        std::cout << i << ": " << output[i].th1 << "," << output[i].th2 << "," << output[i].th3 << std::endl;
     }
 
     data.close();
@@ -127,8 +130,8 @@ int main(int argc, char **argv)
     for(int i=0; i<count; i++)
     {
         data << input[i].x << " " << input[i].y << " " << input[i].z << "\n";
-        data << output[i].th1*180/M_PI << " " << output[i].th2*180/M_PI << " " << output[i].th3*180/M_PI << "\n";
-        std::cout << i << ": " << output[i].th1*180/M_PI << "," << output[i].th2*180/M_PI << "," << output[i].th3*180/M_PI << std::endl;
+        data << output[i].th1 << " " << output[i].th2 << " " << output[i].th3 << "\n";
+        std::cout << i << ": " << output[i].th1 << "," << output[i].th2 << "," << output[i].th3 << std::endl;
     }
 
     data.close();
