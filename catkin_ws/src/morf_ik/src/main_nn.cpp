@@ -87,12 +87,12 @@ int main(int argc, char **argv)
     BR.calcIK(stableBR);
 
     struct fann *ann = fann_create_from_file("data/ann.net");
-    float input[3] = {0.00468838, 0.011445, 0.026022};
+    float input[3] = {0.199186, -0.0164512, -0.0472204};
     float *output = fann_run(ann, input);
     fann_descale_output(ann, output);
 
     // std::cout << "correct: " << FL.th1*180/M_PI << "," << FL.th2*180/M_PI << "," << FL.th3*180/M_PI << "\t";
-    std::cout << "correct: " << 2.04891 << "," << 2.27202 << "," << -0.705512 << "\t";
+    std::cout << "correct: " << -1.6532 << "," << 1.26729 << "," << -1.46794 << "\t";
     std::cout << "nn: " << output[0] << "," << output[1] << "," << output[2] << std::endl;
 
     // FL.th1 = output[0]*M_PI/180;

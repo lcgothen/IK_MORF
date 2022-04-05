@@ -35,10 +35,10 @@ int main(int argc, char **argv)
     const unsigned int num_output = 3;
     const unsigned int num_layers = 3;
     const unsigned int num_neurons_hidden = 5;
-    const unsigned int max_epochs = 100000;
+    const unsigned int max_epochs = 10000;
     const unsigned int epochs_between_reports = 1;
-    const float desired_error = (const float) 0.01;
-    const float learning_rate = (const float) 0.1;
+    const float desired_error = (const float) 0.029;
+    const float learning_rate = (const float) 0.5;
 
     const uint layers[num_layers] = {num_input, 
                                     num_neurons_hidden,
@@ -46,8 +46,8 @@ int main(int argc, char **argv)
 
     struct fann *ann = fann_create_standard_array(num_layers, layers);
 
-    fann_set_activation_function_hidden(ann, FANN_SIGMOID);
-    fann_set_activation_function_output(ann, FANN_SIGMOID); // FANN_SIGMOID_SYMMETRIC
+    fann_set_activation_function_hidden(ann, FANN_SIGMOID_SYMMETRIC);
+    fann_set_activation_function_output(ann, FANN_SIGMOID_SYMMETRIC); // FANN_SIGMOID_SYMMETRIC
 
     fann_set_training_algorithm(ann, FANN_TRAIN_BATCH); //FANN_TRAIN_INCREMENTAL, FANN_TRAIN_BATCH, FANN_TRAIN_RPROP, FANN_TRAIN_QUICKPROP, FANN_TRAIN_SARPROP
     fann_set_learning_rate(ann, learning_rate);
@@ -56,8 +56,8 @@ int main(int argc, char **argv)
     fann_train_data *train = fann_read_train_from_file("data/train.data");
     fann_train_data *vali = fann_read_train_from_file("data/vali.data");
 
-    fann_set_input_scaling_params(ann, train, 0, 1);
-    fann_set_output_scaling_params(ann, train, 0, 1);
+    fann_set_input_scaling_params(ann, train, -1, 1);
+    fann_set_output_scaling_params(ann, train, -1, 1);
     fann_scale_train(ann, train);
     fann_scale_train(ann, vali);
 
@@ -68,7 +68,7 @@ int main(int argc, char **argv)
     // fann_scale_train(ann, vali);
 
     std::ofstream test_log;
-    test_log.open ("results/batch_01_05_01_100000.dat"); // naming: algorithm_numHiddenLayers_numNeuronsHidden_learningRate_maxEpochs.dat
+    test_log.open ("results/batch_01_05_05_10000.dat"); // naming: algorithm_numHiddenLayers_numNeuronsHidden_learningRate_maxEpochs.dat
 
     double error = 0;
     for(int i = 1 ; i <= max_epochs ; i++) {

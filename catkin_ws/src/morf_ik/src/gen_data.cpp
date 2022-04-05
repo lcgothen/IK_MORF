@@ -34,13 +34,17 @@ int main(int argc, char **argv)
     // +6.2794e-02 <= y <= +3.2290e-01
     // -3.8406e-01 <= z <= -1.6912e-01
 
+    // x_interval = 0.19010
+    // y_interval = 0.26011
+    // z_interval = 0.21494
+
     std::default_random_engine rand_gen(seed);
     // std::uniform_real_distribution<float> x_interval(-7.4826e-02,0.11527);
     // std::uniform_real_distribution<float> y_interval(+6.2794e-02,+3.2290e-01);
     // std::uniform_real_distribution<float> z_interval(-3.8406e-01,-1.6912e-01);
-    std::uniform_real_distribution<float> x_interval(-7.4826e-03,0.11527e-01);
-    std::uniform_real_distribution<float> y_interval(+6.2794e-03,+3.2290e-02);
-    std::uniform_real_distribution<float> z_interval(-3.8406e-02,-1.6912e-02);
+    std::uniform_real_distribution<float> x_interval(-7.4826e-02, -0.027302);
+    std::uniform_real_distribution<float> y_interval(+6.2794e-02,0.12782);
+    std::uniform_real_distribution<float> z_interval(-3.8406e-01,-0.33032);
 
     // create train data
 
@@ -53,24 +57,18 @@ int main(int argc, char **argv)
         aux_in.y = y_interval(rand_gen);
         aux_in.z = z_interval(rand_gen);
 
-        point aux;
-        angles aux_out;
-        aux = aux_in.morf2FL();
-        aux_out.calcIK(aux);
+        point in;
+        angles out;
+        in = aux_in.morf2FL();
+        out.calcIK(in);
 
-        if(!isnan(aux_out.th1) && !isnan(aux_out.th2) && !isnan(aux_out.th3))
+        if(!isnan(out.th1) && !isnan(out.th2) && !isnan(out.th3))
         {
             count++;
-            //std::cout << count << ": " << aux_out.th1 << "," << aux_out.th2 << "," << aux_out.th3 << std::endl;
-            input.push_back(aux_in);
-            // input[i].x = aux_in.x;
-            // input[i].y = aux_in.y;
-            // input[i].z = aux_in.z;
+            //std::cout << count << ": " << out.th1 << "," << out.th2 << "," << out.th3 << std::endl;
+            input.push_back(in);
 
-            output.push_back(aux_out);
-            // output[i].th1 = aux_out.th1;
-            // output[i].th2 = aux_out.th2;
-            // output[i].th3 = aux_out.th3;
+            output.push_back(out);
             //std::cout << count << ": " << output[i].th1 << "," << output[i].th2 << "," << output[i].th3 << std::endl;
         }
     }
@@ -101,24 +99,18 @@ int main(int argc, char **argv)
         aux_in.y = y_interval(rand_gen);
         aux_in.z = z_interval(rand_gen);
 
-        point aux;
-        angles aux_out;
-        aux = aux_in.morf2FL();
-        aux_out.calcIK(aux);
+        point in;
+        angles out;
+        in = aux_in.morf2FL();
+        out.calcIK(in);
 
-        if(!isnan(aux_out.th1) && !isnan(aux_out.th2) && !isnan(aux_out.th3))
+        if(!isnan(out.th1) && !isnan(out.th2) && !isnan(out.th3))
         {
             count++;
-            //std::cout << count << ": " << aux_out.th1 << "," << aux_out.th2 << "," << aux_out.th3 << std::endl;
-            input.push_back(aux_in);
-            // input[i].x = aux_in.x;
-            // input[i].y = aux_in.y;
-            // input[i].z = aux_in.z;
+            //std::cout << count << ": " << out.th1 << "," << out.th2 << "," << out.th3 << std::endl;
+            input.push_back(in);
 
-            output.push_back(aux_out);
-            // output[i].th1 = aux_out.th1;
-            // output[i].th2 = aux_out.th2;
-            // output[i].th3 = aux_out.th3;
+            output.push_back(out);
             //std::cout << count << ": " << output[i].th1 << "," << output[i].th2 << "," << output[i].th3 << std::endl;
         }
     }
@@ -131,7 +123,7 @@ int main(int argc, char **argv)
     {
         data << input[i].x << " " << input[i].y << " " << input[i].z << "\n";
         data << output[i].th1 << " " << output[i].th2 << " " << output[i].th3 << "\n";
-        std::cout << i << ": " << output[i].th1 << "," << output[i].th2 << "," << output[i].th3 << std::endl;
+        //std::cout << i << ": " << output[i].th1 << "," << output[i].th2 << "," << output[i].th3 << std::endl;
     }
 
     data.close();
