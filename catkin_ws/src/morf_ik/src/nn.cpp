@@ -10,6 +10,7 @@
 #include <random>
 #include <fstream>
 #include <vector>
+#include <string>
 #include <image_transport/image_transport.h>
 #include <opencv2/highgui/highgui.hpp>
 #include <cv_bridge/cv_bridge.h>
@@ -21,6 +22,8 @@
 
 #include "floatfann.h"
 #include "fann_cpp.h"
+
+#include <sys/stat.h>
 
 
 #include "../include/coordinates.hpp"
@@ -35,66 +38,143 @@ int main(int argc, char **argv)
     const unsigned int num_output = 3;
     const unsigned int num_layers = 3;
     const unsigned int num_neurons_hidden = 5;
-    const unsigned int max_epochs = 10000;
+    const unsigned int max_epochs = 50000;
     const unsigned int epochs_between_reports = 1;
-    const float desired_error = (const float) 0.029;
-    const float learning_rate = (const float) 0.5;
+    const float desired_error = (const float) 0.03;
+    const float learning_rate = (const float) 0.1;
 
     const uint layers[num_layers] = {num_input, 
                                     num_neurons_hidden,
                                     num_output};
 
-    struct fann *ann = fann_create_standard_array(num_layers, layers);
+    int div=4;
 
-    fann_set_activation_function_hidden(ann, FANN_SIGMOID_SYMMETRIC);
-    fann_set_activation_function_output(ann, FANN_SIGMOID_SYMMETRIC); // FANN_SIGMOID_SYMMETRIC
+    for(int j=0; j<div; j++)
+    {
+        for(int k=0; k<div; k++)
+        {
+            for(int l=0; l<div; l++)
+            {
+              struct fann *ann = fann_create_standard_array(num_layers, layers);
 
-    fann_set_training_algorithm(ann, FANN_TRAIN_BATCH); //FANN_TRAIN_INCREMENTAL, FANN_TRAIN_BATCH, FANN_TRAIN_RPROP, FANN_TRAIN_QUICKPROP, FANN_TRAIN_SARPROP
-    fann_set_learning_rate(ann, learning_rate);
-    fann_randomize_weights(ann, -1, 1);
+              fann_set_activation_function_hidden(ann, FANN_SIGMOID_SYMMETRIC);
+              fann_set_activation_function_output(ann, FANN_SIGMOID_SYMMETRIC); // FANN_SIGMOID_SYMMETRIC
 
-    fann_train_data *train = fann_read_train_from_file("data/train.data");
-    fann_train_data *vali = fann_read_train_from_file("data/vali.data");
+              fann_set_training_algorithm(ann, FANN_TRAIN_BATCH); //FANN_TRAIN_INCREMENTAL, FANN_TRAIN_BATCH, FANN_TRAIN_RPROP, FANN_TRAIN_QUICKPROP, FANN_TRAIN_SARPROP
+              fann_set_learning_rate(ann, learning_rate);
+              fann_randomize_weights(ann, -1, 1);
 
-    fann_set_input_scaling_params(ann, train, -1, 1);
-    fann_set_output_scaling_params(ann, train, -1, 1);
-    fann_scale_train(ann, train);
-    fann_scale_train(ann, vali);
+              std::string filename = "./data/train"+std::to_string(j)+std::to_string(k)+std::to_string(l)+std::string(".data");
 
-    // struct fann *ann = fann_create_from_file("data/ann.net");
+              if (FILE *file = fopen(filename.c_str(), "r")) 
+              {
+                  fclose(file);
+
+                  fann_train_data *train = fann_read_train_from_file(filename.c_str());
+                  fann_train_data *vali = fann_read_train_from_file(filename.c_str());
+
+                  fann_set_input_scaling_params(ann, train, -1, 1);
+                  fann_set_output_scaling_params(ann, train, -1, 1);
+                  fann_scale_train(ann, train);
+                  fann_scale_train(ann, vali);
+
+                  // struct fann *ann = fann_create_from_file("data/ann.net");
+                  // fann_train_data *train = fann_read_train_from_file("data/train.data");
+                  // fann_train_data *vali = fann_read_train_from_file("data/vali.data");
+                  // fann_scale_train(ann, train);
+                  // fann_scale_train(ann, vali);
+
+                  std::string train_name = "batch_01_05_01_50000_03/"; // naming: algorithm_numHiddenLayers_numNeuronsHidden_learningRate_maxEpochs_error.dat
+                  std::string res_name = "results/" + std::string(train_name);
+                  std::string dat_name = "data/" + std::string(train_name);;
+
+                  std::ofstream test_log;
+                  mkdir(res_name.c_str(),0777);
+                  std::string logname = res_name+std::to_string(j)+std::to_string(k)+std::to_string(l)+std::string(".dat");
+                  test_log.open(logname); 
+
+                  double error = 0;
+                  for(int i = 1 ; i <= max_epochs ; i++) {
+                    fann_shuffle_train_data(train); // "This is recommended for incremental training, while it has no influence during batch training."
+                    error = fann_train_epoch(ann, train);
+                    printf("Epoch: %d \t Training Error: %f", i, error); 
+
+                    //fann_reset_MSE(ann);
+                    mkdir(dat_name.c_str(),0777);
+                    std::string ann_name = dat_name+std::to_string(j)+std::to_string(k)+std::to_string(l)+std::string(".net");
+                    fann_save(ann, ann_name.c_str());
+                    struct fann *ann_train = fann_create_from_file(ann_name.c_str());
+
+                    for(int i = 0 ; i != fann_length_train_data(vali) ; i++ ) {
+                      fann_test(ann_train, fann_get_train_input(vali, i), fann_get_train_output(vali, i));
+                    }
+                    test_log << i << "\t" << error << "\t" << fann_get_MSE(ann_train) << std::endl;
+                    std::cout << "  \tValidation Error: " << fann_get_MSE(ann_train) << std::endl;
+
+                    if ( error < desired_error) {
+                      break;
+                    }
+                  }
+
+                  //fann_save(ann, "data/ann.net");
+                  fann_destroy(ann);
+                  test_log.close();
+              } 
+            }
+        }
+    }
+
+    // struct fann *ann = fann_create_standard_array(num_layers, layers);
+
+    // fann_set_activation_function_hidden(ann, FANN_SIGMOID_SYMMETRIC);
+    // fann_set_activation_function_output(ann, FANN_SIGMOID_SYMMETRIC); // FANN_SIGMOID_SYMMETRIC
+
+    // fann_set_training_algorithm(ann, FANN_TRAIN_BATCH); //FANN_TRAIN_INCREMENTAL, FANN_TRAIN_BATCH, FANN_TRAIN_RPROP, FANN_TRAIN_QUICKPROP, FANN_TRAIN_SARPROP
+    // fann_set_learning_rate(ann, learning_rate);
+    // fann_randomize_weights(ann, -1, 1);
+
     // fann_train_data *train = fann_read_train_from_file("data/train.data");
     // fann_train_data *vali = fann_read_train_from_file("data/vali.data");
+
+    // fann_set_input_scaling_params(ann, train, -1, 1);
+    // fann_set_output_scaling_params(ann, train, -1, 1);
     // fann_scale_train(ann, train);
     // fann_scale_train(ann, vali);
 
-    std::ofstream test_log;
-    test_log.open ("results/batch_01_05_05_10000.dat"); // naming: algorithm_numHiddenLayers_numNeuronsHidden_learningRate_maxEpochs.dat
+    // // struct fann *ann = fann_create_from_file("data/ann.net");
+    // // fann_train_data *train = fann_read_train_from_file("data/train.data");
+    // // fann_train_data *vali = fann_read_train_from_file("data/vali.data");
+    // // fann_scale_train(ann, train);
+    // // fann_scale_train(ann, vali);
 
-    double error = 0;
-    for(int i = 1 ; i <= max_epochs ; i++) {
-      fann_shuffle_train_data(train); // "This is recommended for incremental training, while it has no influence during batch training."
-      error = fann_train_epoch(ann, train);
-      printf("Epoch: %d \t Training Error: %f", i, error); 
+    // std::ofstream test_log;
+    // test_log.open ("results/batch_02_04_01_100000_03.dat"); // naming: algorithm_numHiddenLayers_numNeuronsHidden_learningRate_maxEpochs_error.dat
 
-      //fann_reset_MSE(ann);
+    // double error = 0;
+    // for(int i = 1 ; i <= max_epochs ; i++) {
+    //   fann_shuffle_train_data(train); // "This is recommended for incremental training, while it has no influence during batch training."
+    //   error = fann_train_epoch(ann, train);
+    //   printf("Epoch: %d \t Training Error: %f", i, error); 
 
-      fann_save(ann, "data/ann.net");
-      struct fann *ann_train = fann_create_from_file("data/ann.net");
+    //   //fann_reset_MSE(ann);
 
-      for(int i = 0 ; i != fann_length_train_data(vali) ; i++ ) {
-        fann_test(ann_train, fann_get_train_input(vali, i), fann_get_train_output(vali, i));
-      }
-      test_log << i << "\t" << error << "\t" << fann_get_MSE(ann_train) << std::endl;
-      std::cout << "  \tValidation Error: " << fann_get_MSE(ann_train) << std::endl;
+    //   fann_save(ann, "data/ann.net");
+    //   struct fann *ann_train = fann_create_from_file("data/ann.net");
 
-      if ( error < desired_error) {
-        break;
-      }
-    }
+    //   for(int i = 0 ; i != fann_length_train_data(vali) ; i++ ) {
+    //     fann_test(ann_train, fann_get_train_input(vali, i), fann_get_train_output(vali, i));
+    //   }
+    //   test_log << i << "\t" << error << "\t" << fann_get_MSE(ann_train) << std::endl;
+    //   std::cout << "  \tValidation Error: " << fann_get_MSE(ann_train) << std::endl;
 
-    //fann_save(ann, "data/ann.net");
-    fann_destroy(ann);
-    test_log.close();
+    //   if ( error < desired_error) {
+    //     break;
+    //   }
+    // }
+
+    // //fann_save(ann, "data/ann.net");
+    // fann_destroy(ann);
+    // test_log.close();
 
     return 0;
 }
