@@ -23,6 +23,8 @@ std_msgs/Float32MultiArray.h
 /home/leonor/tese/IK_MORF/catkin_ws/src/morf_ik/include/std_msgs/Float32MultiArray.h
 std_msgs/String.h
 /home/leonor/tese/IK_MORF/catkin_ws/src/morf_ik/include/std_msgs/String.h
+string
+-
 image_transport/image_transport.h
 -
 opencv2/highgui/highgui.hpp
@@ -31,6 +33,10 @@ cv_bridge/cv_bridge.h
 -
 opencv2/features2d.hpp
 -
+floatfann.h
+/home/leonor/tese/IK_MORF/catkin_ws/src/morf_ik/include/floatfann.h
+fann_cpp.h
+/home/leonor/tese/IK_MORF/catkin_ws/src/morf_ik/include/fann_cpp.h
 coordinates.hpp
 /home/leonor/tese/IK_MORF/catkin_ws/src/morf_ik/include/coordinates.hpp
 controller.hpp

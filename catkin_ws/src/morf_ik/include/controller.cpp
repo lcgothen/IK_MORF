@@ -6,11 +6,15 @@
 #include "std_msgs/Float32.h"
 #include "std_msgs/Float32MultiArray.h"
 #include "std_msgs/String.h"
+#include <string>
 
 #include <image_transport/image_transport.h>
 #include <opencv2/highgui/highgui.hpp>
 #include <cv_bridge/cv_bridge.h>
 #include <opencv2/features2d.hpp>
+
+#include "floatfann.h"
+#include "fann_cpp.h"
 
 #include "coordinates.hpp"
 using namespace coords;
@@ -77,6 +81,75 @@ void angles::calcIK(point target) // calculate angles with IK equations
     th3 = acos((pow(yc1,2)+pow(zc1,2)-pow(L2,2)-pow(L3,2))/(2*L2*L3));
     th2 = atan2(zc1,yc1)+atan2(L3*sin(th3),L2+L3*cos(th3))+offset2;
     th3 += offset3;
+}
+
+void angles::calcNN(point target, coords::point (coords::point::*morf2leg)(), std::string ann_path)
+{
+    int cubeX=-1, cubeY=-1, cubeZ=-1;
+
+    float x_length = 0.19010;
+    float y_length = 0.26011;
+    float z_length = 0.21494;
+
+    float x_start = -7.4826e-02;
+    float y_start = +6.2794e-02;
+    float z_start = -3.8406e-01;
+
+    int div=4;
+
+    float x_step = x_length/div;
+    float y_step = y_length/div;
+    float z_step = z_length/div;
+
+    for(int j=0; j<div; j++)
+    {
+        if(target.x > x_start && target.x < x_start+x_step)
+        {
+            cubeX=j;
+            break;
+        }
+
+        x_start += x_step;
+    }
+
+    for(int k=0; k<div; k++)
+    {
+        if(target.y > y_start && target.y < y_start+y_step)
+        {
+            cubeY=k;
+            break;
+        }
+
+        y_start += y_step;
+    }
+
+    for(int l=0; l<div; l++)
+    {
+        if(target.z > z_start && target.z < z_start+z_step)
+        {
+            cubeZ=l;
+            break;
+        }
+
+        z_start += z_step;
+    }
+
+    if(cubeX!=-1 && cubeY!=-1 && cubeZ!=-1)
+    {
+        point legTarget = (target.*morf2leg)();
+
+        std::string filename = ann_path+std::to_string(cubeX)+std::to_string(cubeY)+std::to_string(cubeZ)+std::string(".net");
+        struct fann *ann = fann_create_from_file(filename.c_str());
+        float input[3] = {legTarget.x, legTarget.y, legTarget.z};
+        float *output = fann_run(ann, input);
+        fann_descale_output(ann, output);
+
+        th1 = output[0];
+        th2 = output[1];
+        th3 = output[2];
+
+        std::cout << cubeX << " , " << cubeY << " , " << cubeZ << std::endl;
+    }
 }
 
 void CPG::cyclic(images stereo)
@@ -349,6 +422,6 @@ void images::blob()
         target_avg.y = -y_avgL/800*width+width/2;
 
         
-        std::cout << target_avg.x << " , " << target_avg.y << " , " << target_avg.z << std::endl;
+        //std::cout << target_avg.x << " , " << target_avg.y << " , " << target_avg.z << std::endl;
     }
 }

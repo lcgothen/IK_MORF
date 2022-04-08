@@ -17,9 +17,10 @@ namespace controller
     class angles
     {
         public:
-        float th1, th2, th3;
+        float th1=0, th2=2.024319, th3=0;
     
         void calcIK(point target); // calculate angles with IK equations
+        void calcNN(point target, coords::point (coords::point::*morf2leg)(), std::string ann_path); // calculate angles with neural networks
     };
 
     class robot

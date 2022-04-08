@@ -7,6 +7,7 @@
 #include <opencv2/highgui/highgui.hpp>
 #include <cv_bridge/cv_bridge.h>
 #include <opencv2/features2d.hpp>
+#include <string>
 
 #include "std_msgs/Float32.h"
 #include "std_msgs/Float32MultiArray.h"
@@ -78,6 +79,18 @@ int main(int argc, char **argv)
 
     angles FL, FR, ML, MR, BL, BR;
     angles auxML, auxMR, auxBL, auxBR;
+
+    // calculate angles w/ nn
+
+    std::string ann_path = "./data/batch_01_05_01_50000_03/";
+    
+    // FL.calcNN(posFL, &coords::point::morf2FL, ann_path);
+    // ML.calcNN(stableML, &coords::point::morf2ML, ann_path);
+    // BL.calcNN(stableBL, &coords::point::morf2BL, ann_path);
+    // FR.calcNN(posFR, &coords::point::morf2FR, ann_path);
+    // MR.calcNN(stableMR, &coords::point::morf2MR, ann_path);
+    // BR.calcNN(stableBR, &coords::point::morf2BR, ann_path);
+
 	// calculate IK parameters 
     FL.calcIK(posFL);
     ML.calcIK(stableML);
@@ -86,21 +99,21 @@ int main(int argc, char **argv)
     MR.calcIK(stableMR);
     BR.calcIK(stableBR);
 
-    struct fann *ann = fann_create_from_file("data/ann.net");
-    float input[3] = {0.199186, -0.0164512, -0.0472204};
+    struct fann *ann = fann_create_from_file("./data/batch_01_05_01_50000_03/111.net");
+    float input[3] = {0, +1.3090e-01, -2.9912e-01};
     float *output = fann_run(ann, input);
     fann_descale_output(ann, output);
 
     // std::cout << "correct: " << FL.th1*180/M_PI << "," << FL.th2*180/M_PI << "," << FL.th3*180/M_PI << "\t";
-    std::cout << "correct: " << -1.6532 << "," << 1.26729 << "," << -1.46794 << "\t";
+    std::cout << "correct: " << FL.th1 << "," << FL.th2 << "," << FL.th3 << "\t";
     std::cout << "nn: " << output[0] << "," << output[1] << "," << output[2] << std::endl;
 
     // FL.th1 = output[0]*M_PI/180;
     // FL.th2 = output[1]*M_PI/180;
     // FL.th3 = output[2]*M_PI/180;
-    FL.th1 = output[0];
-    FL.th2 = output[1];
-    FL.th3 = output[2];
+    // FL.th1 = output[0];
+    // FL.th2 = output[1];
+    // FL.th3 = output[2];
 
     auxML.th1=-1.100229;
     auxML.th2=2.324319;

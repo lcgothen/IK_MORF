@@ -57,6 +57,8 @@ cv_bridge/cv_bridge.h
 -
 opencv2/features2d.hpp
 -
+string
+-
 std_msgs/Float32.h
 /home/leonor/tese/IK_MORF/catkin_ws/src/morf_ik/src/std_msgs/Float32.h
 std_msgs/Float32MultiArray.h

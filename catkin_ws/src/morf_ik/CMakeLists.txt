@@ -220,7 +220,8 @@ add_library(coords include/coordinates.cpp)
 add_library(control include/controller.cpp)
 target_link_libraries(control 
                       ${catkin_LIBRARIES}
-                      ${OpenCV_LIBS})
+                      ${OpenCV_LIBS}
+                      fann)
 target_link_libraries(main_eqs 
                       ${catkin_LIBRARIES}
                       ${OpenCV_LIBS}
