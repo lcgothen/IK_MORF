@@ -68,6 +68,13 @@ int main(int argc, char **argv)
     stableBR.y = -0.17579;
     stableBR.z = 0.085760;
 
+    std::string ann_path = "./data/batch_02_10_01_50000_04/";
+
+    angles FL, FR, ML, MR, BL, BR;
+    FL.calcNN(posFL, &coords::point::morf2FL, ann_path);
+
+    std::cout << "nn: " << FL.th1 << "," << FL.th2 << "," << FL.th3 << "\t";
+
 	// convert to leg frames
     posFL = posFL.morf2FL(); 
     stableML = stableML.morf2ML(); 
@@ -77,12 +84,11 @@ int main(int argc, char **argv)
     stableBR = stableBR.morf2BR(); 
 
 
-    angles FL, FR, ML, MR, BL, BR;
     angles auxML, auxMR, auxBL, auxBR;
 
     // calculate angles w/ nn
 
-    std::string ann_path = "./data/batch_01_05_01_50000_03/";
+    // std::string ann_path = "./data/batch_01_05_01_50000_03/";
     
     // FL.calcNN(posFL, &coords::point::morf2FL, ann_path);
     // ML.calcNN(stableML, &coords::point::morf2ML, ann_path);
@@ -99,14 +105,14 @@ int main(int argc, char **argv)
     MR.calcIK(stableMR);
     BR.calcIK(stableBR);
 
-    struct fann *ann = fann_create_from_file("./data/batch_01_05_01_50000_03/111.net");
+    struct fann *ann = fann_create_from_file("./data/batch_02_10_01_50000_04/111.net");
     float input[3] = {0, +1.3090e-01, -2.9912e-01};
     float *output = fann_run(ann, input);
     fann_descale_output(ann, output);
 
     // std::cout << "correct: " << FL.th1*180/M_PI << "," << FL.th2*180/M_PI << "," << FL.th3*180/M_PI << "\t";
-    std::cout << "correct: " << FL.th1 << "," << FL.th2 << "," << FL.th3 << "\t";
-    std::cout << "nn: " << output[0] << "," << output[1] << "," << output[2] << std::endl;
+    std::cout << "correct: " << FL.th1 << "," << FL.th2 << "," << FL.th3 << std::endl;;
+    // std::cout << "nn: " << output[0] << "," << output[1] << "," << output[2] << std::endl;
 
     // FL.th1 = output[0]*M_PI/180;
     // FL.th2 = output[1]*M_PI/180;

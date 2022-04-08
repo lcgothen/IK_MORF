@@ -36,18 +36,18 @@ int main(int argc, char **argv)
 {
     const unsigned int num_input = 3;
     const unsigned int num_output = 3;
-    const unsigned int num_layers = 4;
-    const unsigned int num_neurons_hidden = 10;
+    const unsigned int num_layers = 3;
+    const unsigned int num_neurons_hidden = 5;
     const unsigned int max_epochs = 50000;
     const unsigned int epochs_between_reports = 1;
-    const float desired_error = (const float) 0.04;
+    const float desired_error = (const float) 0.03;
     const float learning_rate = (const float) 0.1;
 
     const uint layers[num_layers] = {num_input, 
-                                    num_neurons_hidden, num_neurons_hidden,
+                                    num_neurons_hidden,
                                     num_output};
 
-    int div=4;
+    int div=6;
 
     for(int j=0; j<div; j++)
     {
@@ -84,7 +84,7 @@ int main(int argc, char **argv)
                   // fann_scale_train(ann, train);
                   // fann_scale_train(ann, vali);
 
-                  std::string train_name = "batch_02_10_01_50000_04/"; // naming: algorithm_numHiddenLayers_numNeuronsHidden_learningRate_maxEpochs_error.dat
+                  std::string train_name = "batch_01_05_01_50000_03/"; // naming: algorithm_numHiddenLayers_numNeuronsHidden_learningRate_maxEpochs_error.dat
                   std::string res_name = "results/" + std::string(train_name);
                   std::string dat_name = "data/" + std::string(train_name);;
 

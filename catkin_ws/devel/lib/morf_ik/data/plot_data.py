@@ -7,7 +7,7 @@ from os import path
 
 filepath = "./catkin_ws/devel/lib/morf_ik/data/"
 
-div=4
+div=6
 
 for j in range(div):
     for k in range(div):

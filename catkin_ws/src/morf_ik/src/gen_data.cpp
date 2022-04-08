@@ -47,7 +47,7 @@ int main(int argc, char **argv)
     float y_start = +6.2794e-02;
     float z_start = -3.8406e-01;
 
-    int div=4;
+    int div=6;
 
     float x_step = x_length/div;
     float y_step = y_length/div;
