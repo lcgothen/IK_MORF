@@ -4,7 +4,7 @@ import csv
 import os.path
 from os import path
 
-filepath = "./catkin_ws/devel/lib/morf_ik/results/batch_01_05_01_50000_03_59nn/"
+filepath = "./catkin_ws/devel/lib/morf_ik/results_4div/batch_01_05_01_50000_01_07/"
 
 div=4
 

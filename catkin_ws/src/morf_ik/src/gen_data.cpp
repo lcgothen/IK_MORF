@@ -47,7 +47,7 @@ int main(int argc, char **argv)
     float y_start = +6.2794e-02;
     float z_start = -3.8406e-01;
 
-    int div=6;
+    int div=8;
 
     float x_step = x_length/div;
     float y_step = y_length/div;
@@ -76,7 +76,7 @@ int main(int argc, char **argv)
 
                 int count=0;
 
-                for(int i=0; i<100000; i++)
+                for(int i=0; i<10000; i++)
                 {
                     point aux_in;
                     aux_in.x = x_interval(rand_gen);
@@ -102,7 +102,7 @@ int main(int argc, char **argv)
                 if(count>0)
                 {
                     std::ofstream data;
-                    std::string filename = "./data/train"+std::to_string(j)+std::to_string(k)+std::to_string(l)+std::string(".data");
+                    std::string filename = "./data_8div/vali"+std::to_string(j)+std::to_string(k)+std::to_string(l)+std::string(".data");
                     std::cout << filename << std::endl;
 
                     data.open(filename);

@@ -95,7 +95,7 @@ void angles::calcNN(point target, coords::point (coords::point::*morf2leg)(), st
     float y_start = +6.2794e-02;
     float z_start = -3.8406e-01;
 
-    int div=6;
+    int div=4;
 
     float x_step = x_length/div;
     float y_step = y_length/div;
@@ -141,6 +141,7 @@ void angles::calcNN(point target, coords::point (coords::point::*morf2leg)(), st
         std::string filename = ann_path+std::to_string(cubeX)+std::to_string(cubeY)+std::to_string(cubeZ)+std::string(".net");
         struct fann *ann = fann_create_from_file(filename.c_str());
         float input[3] = {legTarget.x, legTarget.y, legTarget.z};
+        fann_scale_input(ann, input);
         float *output = fann_run(ann, input);
         fann_descale_output(ann, output);
 
