@@ -25,9 +25,6 @@ using namespace controller;
 
 int main(int argc, char **argv)
 {
-    std::vector<point> input;
-    std::vector<angles> output;
-
     std::random_device rand_dev;
     unsigned int seed = rand_dev();
 
@@ -39,15 +36,23 @@ int main(int argc, char **argv)
     // y_interval = 0.26011
     // z_interval = 0.21494
 
-    float x_length = 0.19010;
-    float y_length = 0.26011;
-    float z_length = 0.21494;
+    float x_length = 0.23010;
+    float y_length = 0.30011;
+    float z_length = 0.25494;
 
-    float x_start = -7.4826e-02;
-    float y_start = +6.2794e-02;
-    float z_start = -3.8406e-01;
+    float x_start = -5.4826e-02;
+    float y_start = +8.2794e-02;
+    float z_start = -3.6406e-01;
 
-    int div=8;
+    // float x_length = 0.19010;
+    // float y_length = 0.26011;
+    // float z_length = 0.21494;
+
+    // float x_start = -7.4826e-02;
+    // float y_start = +6.2794e-02;
+    // float z_start = -3.8406e-01;
+
+    int div=5;
 
     float x_step = x_length/div;
     float y_step = y_length/div;
@@ -75,6 +80,8 @@ int main(int argc, char **argv)
                 std::uniform_real_distribution<float> z_interval(z_start, z_start+z_step);
 
                 int count=0;
+                std::vector<point> input;
+                std::vector<angles> output;
 
                 for(int i=0; i<10000; i++)
                 {
@@ -99,10 +106,10 @@ int main(int argc, char **argv)
                     }
                 }
                 
-                if(count>0)
+                if(count>50)
                 {
                     std::ofstream data;
-                    std::string filename = "./data_8div/vali"+std::to_string(j)+std::to_string(k)+std::to_string(l)+std::string(".data");
+                    std::string filename = "./data_5div_bigger/vali"+std::to_string(j)+std::to_string(k)+std::to_string(l)+std::string(".data");
                     std::cout << filename << std::endl;
 
                     data.open(filename);

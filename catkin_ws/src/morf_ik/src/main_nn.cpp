@@ -68,7 +68,7 @@ int main(int argc, char **argv)
     stableBR.y = -0.17579;
     stableBR.z = 0.085760;
 
-    std::string ann_path = "./data_4div/batch_01_05_01_50000_02_07/";
+    std::string ann_path = "./data_5div_bigger/batch_01_05_01_50000_025_09/";
 
     angles FL, FR, ML, MR, BL, BR;
     FL.calcNN(posFL, &coords::point::morf2FL, ann_path);
@@ -76,7 +76,7 @@ int main(int argc, char **argv)
     std::cout << "nn: " << FL.th1 << "," << FL.th2 << "," << FL.th3 << "\t";
 
 	// convert to leg frames
-    posFL = posFL.morf2FL(); 
+    point auxPosFL = posFL.morf2FL();
     stableML = stableML.morf2ML(); 
     stableBL = stableBL.morf2BL(); 
     posFR = posFR.morf2FR(); 
@@ -84,7 +84,7 @@ int main(int argc, char **argv)
     stableBR = stableBR.morf2BR(); 
 
 
-    angles auxML, auxMR, auxBL, auxBR;
+    angles auxFL, auxML, auxMR, auxBL, auxBR;
 
     // calculate angles w/ nn
 
@@ -98,23 +98,17 @@ int main(int argc, char **argv)
     // BR.calcNN(stableBR, &coords::point::morf2BR, ann_path);
 
 	// calculate IK parameters 
-    FL.calcIK(posFL);
+    auxFL.calcIK(auxPosFL);
     ML.calcIK(stableML);
     BL.calcIK(stableBL);
     FR.calcIK(posFR);
     MR.calcIK(stableMR);
     BR.calcIK(stableBR);
 
-    struct fann *ann = fann_create_from_file("./data_4div/batch_01_05_01_50000_01_07/212.net");
-    float input[3] = {0.11798, -0.00343713, -0.0365563};
-    fann_scale_input(ann, input);
-    float *output = fann_run(ann, input);
-    fann_descale_output(ann, output);
-
     // std::cout << "correct: " << FL.th1*180/M_PI << "," << FL.th2*180/M_PI << "," << FL.th3*180/M_PI << "\t";
-    std::cout << "correct: " << FL.th1 << "," << FL.th2 << "," << FL.th3 << std::endl;
+    std::cout << "correct: " << auxFL.th1 << "," << auxFL.th2 << "," << auxFL.th3 << std::endl;
 
-    std::cout << "posFL: " << posFL.x << "," << posFL.y << "," << posFL.z << std::endl;
+    // std::cout << "posFL: " << posFL.x << "," << posFL.y << "," << posFL.z << std::endl;
 
     // std::cout << "nn 212: " << output[0] << "," << output[1] << "," << output[2] << std::endl;
     
@@ -151,8 +145,10 @@ int main(int argc, char **argv)
     std_msgs::Float32MultiArray IK_order;
     CPG cpg;
     bool stable=false, inPos=false, done=false;
-    int state=-1, stable_state=0;
+    int state=0, stable_state=0;
     point target;
+
+    int nearZ=0;
     
 
     while(ros::ok())
@@ -166,9 +162,15 @@ int main(int argc, char **argv)
         //ROS_INFO("target: %f, %f, %f\n actual: %f, %f, %f", ML.th1, ML.th2, ML.th3, morf.ML.th1, morf.ML.th2, morf.ML.th3);
         IK_order.data.clear();
 
+        if(stereo.target.z >= 0.15)
+            nearZ=0;
+        else
+            nearZ++;
+
+
         if(state==0 && !stereo.imageL.empty() && !stereo.imageR.empty())
             state=1;
-        else if(state==1 && stereo.target.z < 0.13 && stereo.target.z >= 0)
+        else if(state==1 && nearZ>=5) // stereo.target.z < 0.13 && stereo.target.z >= 0)
             state=2;
         else if(state==2 && stable)
             state=3;
@@ -558,11 +560,15 @@ int main(int argc, char **argv)
         {
             target.x=stereo.target_avg.x;
             target.y=stereo.target_avg.y;
-            target.z=stereo.target_avg.z-0.02;
+            target.z=stereo.target_avg.z-0.05; //0.02
 
             posFL = target.camLeft2morf(); 
-            posFL = posFL.morf2FL(); 
-            FL.calcIK(posFL);
+            auxPosFL = posFL.morf2FL(); 
+            auxFL.calcIK(posFL);
+            FL.calcNN(posFL, &coords::point::morf2FL, ann_path);
+
+            // std::cout << "nn: " << FL.th1 << "," << FL.th2 << "," << FL.th3 << "\t";
+            // std::cout << "correct: " << auxFL.th1 << "," << auxFL.th2 << "," << auxFL.th3 << std::endl;
 
             // left leg angles
             IK_order.data.push_back(FL.th1);
@@ -593,9 +599,15 @@ int main(int argc, char **argv)
         {
             target.z += 0.001;
             posFL = target.camLeft2morf(); 
-            posFL = posFL.morf2FL(); 
-            FL.calcIK(posFL);
+            auxPosFL = posFL.morf2FL(); 
+            auxFL.calcIK(posFL);
+            FL.calcNN(posFL, &coords::point::morf2FL, ann_path);
             //ROS_INFO("%f, %f, %f", FL.th1, FL.th2, FL.th3);
+
+            std::cout << "posFL: " << posFL.x << "," << posFL.y << "," << posFL.z << std::endl;
+
+            // std::cout << "nn: " << FL.th1 << "," << FL.th2 << "," << FL.th3 << "\t";
+            // std::cout << "correct: " << auxFL.th1 << "," << auxFL.th2 << "," << auxFL.th3 << std::endl;
 
             // left leg angles
             IK_order.data.push_back(FL.th1);
@@ -652,7 +664,8 @@ int main(int argc, char **argv)
             
             controller_pub.publish(IK_order);
         }
-
+        
+        // std::cout << state << std::endl;
 
         ros::spinOnce();
 

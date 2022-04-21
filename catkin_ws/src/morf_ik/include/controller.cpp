@@ -87,15 +87,23 @@ void angles::calcNN(point target, coords::point (coords::point::*morf2leg)(), st
 {
     int cubeX=-1, cubeY=-1, cubeZ=-1;
 
-    float x_length = 0.19010;
-    float y_length = 0.26011;
-    float z_length = 0.21494;
+    // float x_length = 0.19010;
+    // float y_length = 0.26011;
+    // float z_length = 0.21494;
 
-    float x_start = -7.4826e-02;
-    float y_start = +6.2794e-02;
-    float z_start = -3.8406e-01;
+    // float x_start = -7.4826e-02;
+    // float y_start = +6.2794e-02;
+    // float z_start = -3.8406e-01;
 
-    int div=4;
+    float x_length = 0.23010;
+    float y_length = 0.30011;
+    float z_length = 0.25494;
+
+    float x_start = -5.4826e-02;
+    float y_start = +8.2794e-02;
+    float z_start = -3.6406e-01;
+
+    int div=5;
 
     float x_step = x_length/div;
     float y_step = y_length/div;
@@ -149,8 +157,9 @@ void angles::calcNN(point target, coords::point (coords::point::*morf2leg)(), st
         th2 = output[1];
         th3 = output[2];
 
-        std::cout << cubeX << " , " << cubeY << " , " << cubeZ << std::endl;
     }
+    
+    std::cout << cubeX << " , " << cubeY << " , " << cubeZ << std::endl;
 }
 
 void CPG::cyclic(images stereo)
@@ -423,6 +432,6 @@ void images::blob()
         target_avg.y = -y_avgL/800*width+width/2;
 
         
-        //std::cout << target_avg.x << " , " << target_avg.y << " , " << target_avg.z << std::endl;
+        // std::cout << target_avg.x << " , " << target_avg.y << " , " << target_avg.z << std::endl;
     }
 }

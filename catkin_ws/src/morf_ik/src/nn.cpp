@@ -40,14 +40,14 @@ int main(int argc, char **argv)
     const unsigned int num_neurons_hidden = 5;
     const unsigned int max_epochs = 50000;
     const unsigned int epochs_between_reports = 1;
-    const float desired_error = (const float) 0.01;
+    const float desired_error = (const float) 0.025;
     const float learning_rate = (const float) 0.1;
 
     const uint layers[num_layers] = {num_input, 
                                     num_neurons_hidden,
                                     num_output};
 
-    int div=4;
+    int div=5;
 
     for(int j=0; j<div; j++)
     {
@@ -64,8 +64,8 @@ int main(int argc, char **argv)
               fann_set_learning_rate(ann, learning_rate);
               fann_randomize_weights(ann, -1, 1);
 
-              std::string filename = "./data_4div/train"+std::to_string(j)+std::to_string(k)+std::to_string(l)+std::string(".data");
-              std::string filename_vali = "./data_4div/vali"+std::to_string(j)+std::to_string(k)+std::to_string(l)+std::string(".data");
+              std::string filename = "./data_5div_bigger/train"+std::to_string(j)+std::to_string(k)+std::to_string(l)+std::string(".data");
+              std::string filename_vali = "./data_5div_bigger/vali"+std::to_string(j)+std::to_string(k)+std::to_string(l)+std::string(".data");
 
               if (FILE *file = fopen(filename.c_str(), "r")) 
               {
@@ -74,8 +74,8 @@ int main(int argc, char **argv)
                   fann_train_data *train = fann_read_train_from_file(filename.c_str());
                   fann_train_data *vali = fann_read_train_from_file(filename_vali.c_str());
 
-                  fann_set_input_scaling_params(ann, train, -0.7, 0.7);
-                  fann_set_output_scaling_params(ann, train, -0.7, 0.7);
+                  fann_set_input_scaling_params(ann, train, -0.9, 0.9);
+                  fann_set_output_scaling_params(ann, train, -0.9, 0.9);
                   fann_scale_train(ann, train);
                   fann_scale_train(ann, vali);
 
@@ -85,9 +85,9 @@ int main(int argc, char **argv)
                   // fann_scale_train(ann, train);
                   // fann_scale_train(ann, vali);
 
-                  std::string train_name = "batch_01_05_01_50000_01_07/"; // naming: algorithm_numHiddenLayers_numNeuronsHidden_learningRate_maxEpochs_error_scaling.dat
-                  std::string res_name = "results_4div/" + std::string(train_name);
-                  std::string dat_name = "data_4div/" + std::string(train_name);
+                  std::string train_name = "batch_01_05_01_50000_025_09/"; // naming: algorithm_numHiddenLayers_numNeuronsHidden_learningRate_maxEpochs_error_scaling.dat
+                  std::string res_name = "results_5div_bigger/" + std::string(train_name);
+                  std::string dat_name = "data_5div_bigger/" + std::string(train_name);
 
                   std::ofstream test_log;
                   mkdir(res_name.c_str(),0777);
