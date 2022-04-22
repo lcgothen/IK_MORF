@@ -37,10 +37,10 @@ int main(int argc, char **argv)
     const unsigned int num_input = 3;
     const unsigned int num_output = 3;
     const unsigned int num_layers = 3;
-    const unsigned int num_neurons_hidden = 5;
+    const unsigned int num_neurons_hidden = 10;
     const unsigned int max_epochs = 50000;
     const unsigned int epochs_between_reports = 1;
-    const float desired_error = (const float) 0.025;
+    const float desired_error = (const float) 0.02;
     const float learning_rate = (const float) 0.1;
 
     const uint layers[num_layers] = {num_input, 
@@ -64,8 +64,8 @@ int main(int argc, char **argv)
               fann_set_learning_rate(ann, learning_rate);
               fann_randomize_weights(ann, -1, 1);
 
-              std::string filename = "./data_5div_bigger/train"+std::to_string(j)+std::to_string(k)+std::to_string(l)+std::string(".data");
-              std::string filename_vali = "./data_5div_bigger/vali"+std::to_string(j)+std::to_string(k)+std::to_string(l)+std::string(".data");
+              std::string filename = "./neural_networks/data_5div_bigger/train"+std::to_string(j)+std::to_string(k)+std::to_string(l)+std::string(".data");
+              std::string filename_vali = "./neural_networks/data_5div_bigger/vali"+std::to_string(j)+std::to_string(k)+std::to_string(l)+std::string(".data");
 
               if (FILE *file = fopen(filename.c_str(), "r")) 
               {
@@ -85,9 +85,9 @@ int main(int argc, char **argv)
                   // fann_scale_train(ann, train);
                   // fann_scale_train(ann, vali);
 
-                  std::string train_name = "batch_01_05_01_50000_025_09/"; // naming: algorithm_numHiddenLayers_numNeuronsHidden_learningRate_maxEpochs_error_scaling.dat
-                  std::string res_name = "results_5div_bigger/" + std::string(train_name);
-                  std::string dat_name = "data_5div_bigger/" + std::string(train_name);
+                  std::string train_name = "batch_01_10_01_50000_02_09/"; // naming: algorithm_numHiddenLayers_numNeuronsHidden_learningRate_maxEpochs_error_scaling.dat
+                  std::string res_name = "neural_networks/results_5div_bigger/" + std::string(train_name);
+                  std::string dat_name = "neural_networks/data_5div_bigger/" + std::string(train_name);
 
                   std::ofstream test_log;
                   mkdir(res_name.c_str(),0777);

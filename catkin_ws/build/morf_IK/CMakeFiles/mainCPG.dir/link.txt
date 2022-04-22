@@ -1,1 +1,0 @@
-/usr/bin/c++    -rdynamic CMakeFiles/mainCPG.dir/src/mainCPG.cpp.o  -o /home/leonor/tese/IK_MORF/catkin_ws/devel/lib/morf_IK/mainCPG 

@@ -28,19 +28,25 @@ namespace controller
         public:
         angles FL, ML, BL, FR, MR, BR;
         float sensFL;
+        point foot2button;
 
         void jointPosCallback(const std_msgs::Float32MultiArray::ConstPtr& msg);
         void forceSensCallback(const std_msgs::Float32MultiArray::ConstPtr& msg);
+        void foot2buttonPosCallback(const std_msgs::Float32MultiArray::ConstPtr& msg);
     };
 
     class images
     {
         public:
-        cv::Mat imageL, imageR;
+        cv::Mat imageL, imageR, genImg;
         point target, target_avg;
+        int distZ=0; 
+        bool nearZ=false; 
+        float threshZ=0.9;
 
         void imageLeftCallback(const sensor_msgs::ImageConstPtr& msg);
         void imageRightCallback(const sensor_msgs::ImageConstPtr& msg);
+        void generalImgCallback(const sensor_msgs::ImageConstPtr& msg);
         void match();
         void blob();
     };
@@ -55,7 +61,7 @@ namespace controller
         //bool stabilize=false;
         float k=0.3;
     
-        void cyclic(images stereo);
+        void cyclic(images *stereo);
         void walk(images stereo);
     };
 

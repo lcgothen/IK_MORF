@@ -23,8 +23,8 @@ int main(int argc, char **argv)
 {
     robot morf;
 	images stereo;
-    ros::init(argc, argv, "IK_controller");
 
+    ros::init(argc, argv, "IK_controller");
     ros::NodeHandle n;
 
     ros::Publisher controller_pub = n.advertise<std_msgs::Float32MultiArray>("joints_target", 1000);
@@ -33,6 +33,9 @@ int main(int argc, char **argv)
     image_transport::ImageTransport it(n);
     image_transport::Subscriber imageLeft_sub = it.subscribe("imageLeft", 1, &images::imageLeftCallback, &stereo);
 	image_transport::Subscriber imageRight_sub = it.subscribe("imageRight", 1, &images::imageRightCallback, &stereo);
+
+    clock_t init = clock();
+    bool fail = false;
 
 
     // target coords for stabilizing with 4 legs
@@ -127,7 +130,7 @@ int main(int argc, char **argv)
 
         if(state==0 && !stereo.imageL.empty() && !stereo.imageR.empty())
             state=1;
-        else if(state==1 && stereo.target.z < 0.13 && stereo.target.z >= 0)
+        else if(state==1 && stereo.nearZ)
             state=2;
         else if(state==2 && stable)
             state=3;
@@ -137,6 +140,8 @@ int main(int argc, char **argv)
             state=4;
         else if(state==4 && morf.sensFL>0.1)
             state=5;
+        else if(clock()-init>120*CLOCKS_PER_SEC)
+            state=6;
 
         if(state==0)
         {
@@ -166,7 +171,7 @@ int main(int argc, char **argv)
         }
         else if(state==1)
         {
-            cpg.cyclic(stereo);
+            cpg.cyclic(&stereo);
             cpg.walk(stereo);
 
             // left leg angles
@@ -517,7 +522,7 @@ int main(int argc, char **argv)
         {
             target.x=stereo.target_avg.x;
             target.y=stereo.target_avg.y;
-            target.z=stereo.target_avg.z-0.02;
+            target.z=stereo.target_avg.z-0.05;
 
             posFL = target.camLeft2morf(); 
             posFL = posFL.morf2FL(); 
@@ -589,6 +594,15 @@ int main(int argc, char **argv)
 
             //std::cout << stereo.target.x << " , " << stereo.target.y <<  " , " << stereo.target.z << std::endl;
             controller_pub.publish(IK_order);
+        }
+        else if(state==5)
+        {
+            break;
+        }
+        else if(state==6)
+        {
+            fail=true;
+            break;
         }
 
         ros::spinOnce();

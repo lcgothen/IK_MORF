@@ -109,7 +109,7 @@ int main(int argc, char **argv)
                 if(count>50)
                 {
                     std::ofstream data;
-                    std::string filename = "./data_5div_bigger/vali"+std::to_string(j)+std::to_string(k)+std::to_string(l)+std::string(".data");
+                    std::string filename = "./neural_networks/data_5div_bigger/vali"+std::to_string(j)+std::to_string(k)+std::to_string(l)+std::string(".data");
                     std::cout << filename << std::endl;
 
                     data.open(filename);
@@ -135,85 +135,6 @@ int main(int argc, char **argv)
         x_start+=x_step;
     }
 
-    // int count=0;
-
-    // for(int i=0; i<100000; i++)
-    // {
-    //     point aux_in;
-    //     aux_in.x = x_interval(rand_gen);
-    //     aux_in.y = y_interval(rand_gen);
-    //     aux_in.z = z_interval(rand_gen);
-
-    //     point in;
-    //     angles out;
-    //     in = aux_in.morf2FL();
-    //     out.calcIK(in);
-
-    //     if(!isnan(out.th1) && !isnan(out.th2) && !isnan(out.th3))
-    //     {
-    //         count++;
-    //         //std::cout << count << ": " << out.th1 << "," << out.th2 << "," << out.th3 << std::endl;
-    //         input.push_back(in);
-
-    //         output.push_back(out);
-    //         //std::cout << count << ": " << output[i].th1 << "," << output[i].th2 << "," << output[i].th3 << std::endl;
-    //     }
-    // }
-
-    // std::ofstream data;
-    // data.open("data/train.data");
-
-    // data << count << " 3 3\n";
-
-    // for(int i=0; i<count; i++)
-    // {
-    //     data << input[i].x << " " << input[i].y << " " << input[i].z << "\n";
-    //     data << output[i].th1 << " " << output[i].th2<< " " << output[i].th3 << "\n";
-    //     std::cout << i << ": " << output[i].th1 << "," << output[i].th2 << "," << output[i].th3 << std::endl;
-    // }
-
-    // data.close();
-
-
-    // create validation data
-
-    // count=0;
-
-    // for(int i=0; i<10000; i++)
-    // {
-    //     point aux_in;
-    //     aux_in.x = x_interval(rand_gen);
-    //     aux_in.y = y_interval(rand_gen);
-    //     aux_in.z = z_interval(rand_gen);
-
-    //     point in;
-    //     angles out;
-    //     in = aux_in.morf2FL();
-    //     out.calcIK(in);
-
-    //     if(!isnan(out.th1) && !isnan(out.th2) && !isnan(out.th3))
-    //     {
-    //         count++;
-    //         //std::cout << count << ": " << out.th1 << "," << out.th2 << "," << out.th3 << std::endl;
-    //         input.push_back(in);
-
-    //         output.push_back(out);
-    //         //std::cout << count << ": " << output[i].th1 << "," << output[i].th2 << "," << output[i].th3 << std::endl;
-    //     }
-    // }
-
-    // data.open("data/vali.data");
-
-    // data << count << " 3 3\n";
-
-    // for(int i=0; i<count; i++)
-    // {
-    //     data << input[i].x << " " << input[i].y << " " << input[i].z << "\n";
-    //     data << output[i].th1 << " " << output[i].th2 << " " << output[i].th3 << "\n";
-    //     //std::cout << i << ": " << output[i].th1 << "," << output[i].th2 << "," << output[i].th3 << std::endl;
-    // }
-
-    // data.close();
 
     return 0;
 }

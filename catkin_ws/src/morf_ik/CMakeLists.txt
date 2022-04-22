@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.0.2)
+cmake_minimum_required(VERSION 3.16.3)
 project(morf_ik)
 
 ## Compile as C++11, supported in ROS Kinetic and newer
@@ -9,6 +9,10 @@ project(morf_ik)
 ## is used, also find other catkin packages
 set(OpenCV_DIR /usr/share/OpenCV/)
 set(fann_DIR /home/leonor/fann/)
+set(LIBPLUGIN_DIR $ENV{COPPELIASIM_ROOT_DIR}/programming/libPlugin)
+list(APPEND CMAKE_MODULE_PATH /home/leonor/CoppeliaSim/programming/libPlugin/cmake)
+set(CoppeliaSim_DIR ${COPPELIASIM_ROOT_DIR})
+find_package(CoppeliaSim 4.1.0.0 REQUIRED)
 find_package(catkin REQUIRED COMPONENTS
   OpenCV REQUIRED
   roscpp
@@ -18,6 +22,7 @@ find_package(catkin REQUIRED COMPONENTS
   cv_bridge
   fann
 )
+find_package(Boost REQUIRED COMPONENTS system)
 
 ## System dependencies are found with CMake's conventions
 # find_package(Boost REQUIRED COMPONENTS system)
@@ -211,28 +216,83 @@ include_directories(
 ## Add folders to be run by python nosetests
 # catkin_add_nosetests(test)
 
-add_executable(main_eqs src/main_eqs.cpp)
-add_executable(main_nn src/main_nn.cpp)
+# add_executable(main_eqs src/main_eqs.cpp)
+# add_executable(main_nn src/main_nn.cpp)
+# coppeliasim_add_executable(main_eqs_data 
+#     SOURCES
+#     src/main_eqs_data.cpp
+#     ${COPPELIASIM_COMMON_DIR}/shared_memory.c
+#     ${COPPELIASIM_ROOT_DIR}/programming/remoteApi/extApi.c
+#     ${COPPELIASIM_ROOT_DIR}/programming/remoteApi/extApiPlatform.c)
+
+coppeliasim_add_executable(main 
+    SOURCES
+    src/main.cpp
+    ${COPPELIASIM_COMMON_DIR}/shared_memory.c
+    ${COPPELIASIM_ROOT_DIR}/programming/remoteApi/extApi.c
+    ${COPPELIASIM_ROOT_DIR}/programming/remoteApi/extApiPlatform.c)
+# add_executable(main_nn_data src/main_nn_data.cpp)
 add_executable(gen_data src/gen_data.cpp)
 add_executable(nn src/nn.cpp)
 # add_executable(calib src/calibration.cpp)
+
+# target_compile_definitions(main_eqs_data PRIVATE NON_MATLAB_PARSING)
+# target_compile_definitions(main_eqs_data PRIVATE MAX_EXT_API_CONNECTIONS=255)
+# target_include_directories(main_eqs_data PRIVATE ${COPPELIASIM_INCLUDE_DIR})
+# target_include_directories(main_eqs_data PRIVATE ${COPPELIASIM_ROOT_DIR}/programming/remoteApi)
+# target_compile_definitions(main_eqs_data PRIVATE NON_MATLAB_PARSING)
+# target_compile_definitions(main_eqs_data PRIVATE MAX_EXT_API_CONNECTIONS=255)
+# target_include_directories(main_eqs_data PRIVATE ${COPPELIASIM_INCLUDE_DIR})
+# target_include_directories(main_eqs_data PRIVATE ../remoteApi)
+# target_link_libraries(main_eqs_data Boost::system)
+# target_link_libraries(main_eqs_data Threads::Threads rt)
+
+target_compile_definitions(main PRIVATE NON_MATLAB_PARSING)
+target_compile_definitions(main PRIVATE MAX_EXT_API_CONNECTIONS=255)
+target_include_directories(main PRIVATE ${COPPELIASIM_INCLUDE_DIR})
+target_include_directories(main PRIVATE ${COPPELIASIM_ROOT_DIR}/programming/remoteApi)
+target_compile_definitions(main PRIVATE NON_MATLAB_PARSING)
+target_compile_definitions(main PRIVATE MAX_EXT_API_CONNECTIONS=255)
+target_include_directories(main PRIVATE ${COPPELIASIM_INCLUDE_DIR})
+target_include_directories(main PRIVATE ../remoteApi)
+target_link_libraries(main Boost::system)
+target_link_libraries(main Threads::Threads rt)
+
 add_library(coords include/coordinates.cpp)
 add_library(control include/controller.cpp)
+
 target_link_libraries(control 
                       ${catkin_LIBRARIES}
                       ${OpenCV_LIBS}
                       fann)
-target_link_libraries(main_eqs 
-                      ${catkin_LIBRARIES}
-                      ${OpenCV_LIBS}
-                      coords
-                      control)
-target_link_libraries(main_nn 
+target_link_libraries(main 
                       ${catkin_LIBRARIES}
                       ${OpenCV_LIBS}
                       coords
                       control
                       fann)
+# target_link_libraries(main_eqs 
+#                       ${catkin_LIBRARIES}
+#                       ${OpenCV_LIBS}
+#                       coords
+#                       control)
+# target_link_libraries(main_nn 
+#                       ${catkin_LIBRARIES}
+#                       ${OpenCV_LIBS}
+#                       coords
+#                       control
+#                       fann)
+# target_link_libraries(main_eqs_data 
+#                       ${catkin_LIBRARIES}
+#                       ${OpenCV_LIBS}
+#                       coords
+#                       control)
+# target_link_libraries(main_nn_data 
+#                       ${catkin_LIBRARIES}
+#                       ${OpenCV_LIBS}
+#                       coords
+#                       control
+#                       fann)
 target_link_libraries(gen_data 
                       ${catkin_LIBRARIES}
                       ${OpenCV_LIBS}

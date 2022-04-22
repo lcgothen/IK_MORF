@@ -63,24 +63,46 @@ void robot::forceSensCallback(const std_msgs::Float32MultiArray::ConstPtr& msg)
     sensFL = msg->data[2];
 }
 
+void robot::foot2buttonPosCallback(const std_msgs::Float32MultiArray::ConstPtr& msg)
+{
+    foot2button.x = msg->data[0];
+    foot2button.y = msg->data[1];
+    foot2button.z = msg->data[2];
+}
+
 void angles::calcIK(point target) // calculate angles with IK equations
 {
     float xc1, yc1, zc1;
     float L0 = 0.017011, L1 = 0.039805, L2 = 0.070075, L3=0.11542;// L3 = 0.11243;
     float offset2 = 0.8, offset3 = -2.5;
 
-    th1 = atan2(-target.x, target.y);
+    float aux_th1, aux_th2, aux_th3;
 
-    xc1 = cos(th1)*target.x+sin(th1)*target.y;
-    yc1 = -sin(th1)*target.x+cos(th1)*target.y-L1;
+    aux_th1 = atan2(-target.x, target.y);
+
+    xc1 = cos(aux_th1)*target.x+sin(aux_th1)*target.y;
+    yc1 = -sin(aux_th1)*target.x+cos(aux_th1)*target.y-L1;
     zc1 = target.z+L0;
 
     // th2 = acos((pow(L3,2)-pow(yc1,2)-pow(zc1,2)-pow(L2,2))/(-2*L2*sqrt(pow(yc1,2)+pow(zc1,2))))+atan2(zc1,yc1)+offset2;
     // th3 = acos((pow(yc1,2)+pow(zc1,2)-pow(L2,2)-pow(L3,2))/(2*L2*L3))+offset3; 
 
-    th3 = acos((pow(yc1,2)+pow(zc1,2)-pow(L2,2)-pow(L3,2))/(2*L2*L3));
-    th2 = atan2(zc1,yc1)+atan2(L3*sin(th3),L2+L3*cos(th3))+offset2;
-    th3 += offset3;
+    aux_th3 = acos((pow(yc1,2)+pow(zc1,2)-pow(L2,2)-pow(L3,2))/(2*L2*L3));
+    aux_th2 = atan2(zc1,yc1)+atan2(L3*sin(aux_th3),L2+L3*cos(aux_th3))+offset2;
+    aux_th3 += offset3;
+
+    if(!isnan(aux_th1) && !isnan(aux_th2) && !isnan(aux_th3))
+    {
+        th1=aux_th1;
+        th2=aux_th2;
+        th3=aux_th3;
+    }
+    else
+    {
+        th1=-1.33956;
+        th2=2.41989;
+        th3=-0.5121;
+    }
 }
 
 void angles::calcNN(point target, coords::point (coords::point::*morf2leg)(), std::string ann_path)
@@ -162,7 +184,7 @@ void angles::calcNN(point target, coords::point (coords::point::*morf2leg)(), st
     std::cout << cubeX << " , " << cubeY << " , " << cubeZ << std::endl;
 }
 
-void CPG::cyclic(images stereo)
+void CPG::cyclic(images *stereo)
 {
     float W12 = 0.4; 
     float W21 = -0.4; 
@@ -177,14 +199,32 @@ void CPG::cyclic(images stereo)
     outputH1 = tanh(activityH1);
     outputH2 = tanh(activityH2);
 
-    if(stereo.target.z < 0.2 && stereo.target.z >= 0 && k>0.2)
-        k=0.06;
-    else if(stereo.target.z < 0.3 && stereo.target.z >= 0 && k>0.4)
-        k=0.12;
-    else if(stereo.target.z < 0.4 && stereo.target.z >= 0 && k>0.6)
-        k=0.18;
-    else if(stereo.target.z < 0.5 && stereo.target.z >= 0 && k>0.8)
-        k=0.24;
+    if(stereo->target.z >= stereo->threshZ)
+        stereo->distZ=0;
+    else
+        stereo->distZ++;
+
+    if(stereo->distZ>=5)
+    {
+        if(stereo->threshZ<=0.2)
+            stereo->nearZ=true;
+
+        k-=0.05;
+        stereo->threshZ-=0.15;
+        stereo->distZ=0;
+
+        // std::cout << k << " , " << stereo->threshZ << " , " << std::boolalpha << stereo->nearZ << std::endl;
+
+    }
+
+    // if(stereo.target.z < 0.2 && stereo.target.z >= 0 && k>0.2)
+    //     k=0.06;
+    // else if(stereo.target.z < 0.3 && stereo.target.z >= 0 && k>0.4)
+    //     k=0.12;
+    // else if(stereo.target.z < 0.4 && stereo.target.z >= 0 && k>0.6)
+    //     k=0.18;
+    // else if(stereo.target.z < 0.5 && stereo.target.z >= 0 && k>0.8)
+    //     k=0.24;
 
     oH1 = outputH1*k;
     oH2 = outputH2*k;
@@ -228,7 +268,6 @@ void CPG::walk(images stereo)
     BR.th3 = offset3; 
 }
 
-
 void images::imageLeftCallback(const sensor_msgs::ImageConstPtr& msg)
 {
     imageL = cv_bridge::toCvShare(msg, "bgr8")->image;
@@ -237,6 +276,11 @@ void images::imageLeftCallback(const sensor_msgs::ImageConstPtr& msg)
 void images::imageRightCallback(const sensor_msgs::ImageConstPtr& msg)
 {
     imageR = cv_bridge::toCvShare(msg, "bgr8")->image;
+}
+
+void images::generalImgCallback(const sensor_msgs::ImageConstPtr& msg)
+{
+    genImg = cv_bridge::toCvShare(msg, "bgr8")->image;
 }
 
 void images::match()

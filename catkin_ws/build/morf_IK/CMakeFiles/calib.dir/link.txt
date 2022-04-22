@@ -1,1 +1,0 @@
-/usr/bin/c++    -rdynamic CMakeFiles/calib.dir/src/calibration.cpp.o  -o /home/leonor/tese/IK_MORF/catkin_ws/devel/lib/morf_IK/calib 
