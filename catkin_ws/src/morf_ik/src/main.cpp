@@ -11,6 +11,7 @@
 #include <cv_bridge/cv_bridge.h>
 #include <opencv2/features2d.hpp>
 #include <sys/stat.h>
+#include <chrono>
 
 #include "std_msgs/Float32.h"
 #include "std_msgs/Float32MultiArray.h"
@@ -64,7 +65,8 @@ int main(int argc, char **argv)
     resFile.open(resName);
     failFile.open(failName);
 
-    float duration, distance;
+    std::chrono::milliseconds duration;
+    float distance;
     float but_rad = 0.02;
 
     simxInt clientID = simxStart((simxChar*)"127.0.0.1", 19997, true, true, 2000, 5);
@@ -93,9 +95,14 @@ int main(int argc, char **argv)
         image_transport::Subscriber imageRight_sub = it.subscribe("imageRight", 1, &images::imageRightCallback, &stereo);
         image_transport::Subscriber generalImg_sub = it.subscribe("imageGeneral", 1, &images::generalImgCallback, &stereo);
 
-        clock_t init = clock();
+        //time_t init = time(NULL);
+        std::chrono::milliseconds walkingT;
         bool distFail = false, durFail = false;
         //std::cout << simxGetConnectionId(clientID) << std::endl;
+
+        typedef std::chrono::high_resolution_clock Clock;
+        typedef std::chrono::milliseconds milliseconds;
+        Clock::time_point init = Clock::now();
 
         simxStartSimulation(clientID, simx_opmode_oneshot);
 
@@ -191,8 +198,8 @@ int main(int argc, char **argv)
         {
             if(!stereo.imageL.empty() && !stereo.imageR.empty() && !stable)
             {
-                //stereo.match();
-                stereo.blob();
+                stereo.match();
+                //stereo.blob();
             }
 
             //ROS_INFO("target: %f, %f, %f\n actual: %f, %f, %f", ML.th1, ML.th2, ML.th3, morf.ML.th1, morf.ML.th2, morf.ML.th3);
@@ -203,19 +210,26 @@ int main(int argc, char **argv)
             // else
             //     nearZ++;
 
+            // std::cout << state << std::endl;
+
+            duration = std::chrono::duration_cast<milliseconds>(Clock::now() - init); //difftime(time(NULL), init);
+
             if(state==0 && !stereo.imageL.empty() && !stereo.imageR.empty())
                 state=1;
             else if(state==1 && stereo.nearZ)
                 state=2;
             else if(state==2 && stable)
+            {
                 state=3;
+                walkingT = std::chrono::duration_cast<milliseconds>(Clock::now() - init); //difftime(time(NULL), init);
+            }
             else if(state==3 && morf.FL.th1<FL.th1+0.001 && morf.FL.th1>FL.th1-0.001 && 
                     morf.FL.th2<FL.th2+0.001 && morf.FL.th2>FL.th2-0.001 &&
                     morf.FL.th3<FL.th3+0.001 && morf.FL.th3>FL.th3-0.001)
                 state=4;
             else if(state==4 && morf.sensFL>0.1)
                 state=5;
-            else if(clock()-init>120*CLOCKS_PER_SEC)
+            else if(duration.count()>120000)//(clock()-init>120*CLOCKS_PER_SEC)
                 state=6;
 
             if(state==0)
@@ -686,7 +700,6 @@ int main(int argc, char **argv)
             }
             else if(state==5)
             {
-                duration = (clock()-init)/CLOCKS_PER_SEC;
                 distance = sqrt(pow(morf.foot2button.x,2)+pow(morf.foot2button.y,2));
 
                 if(distance > but_rad)
@@ -713,13 +726,13 @@ int main(int argc, char **argv)
 
         if(!durFail && !distFail)
         {
-            std::cout << "Success! " << distance << std::endl;
-            resFile << "trial " << trial << ":\t" << duration << "\t" << distance << "\n";
+            std::cout<< "trial " << trial << ": " << "Success! " << distance << std::endl;
+            resFile << "trial " << trial << ":\t" << duration.count()-walkingT.count() << "\t" << distance << "\n";
         }
         else if(durFail)
         {
             std::cout << "Failed duration!" << std::endl;
-            failFile << "trial " << trial << ":\t" << "duration " << "\t" << duration << "\n";
+            failFile << "trial " << trial << ":\t" << "duration " << "\t" << duration.count() << "\n";
         }
         else
         {

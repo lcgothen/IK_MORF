@@ -181,7 +181,7 @@ void angles::calcNN(point target, coords::point (coords::point::*morf2leg)(), st
 
     }
     
-    std::cout << cubeX << " , " << cubeY << " , " << cubeZ << std::endl;
+    // std::cout << cubeX << " , " << cubeY << " , " << cubeZ << std::endl;
 }
 
 void CPG::cyclic(images *stereo)
@@ -233,7 +233,7 @@ void CPG::cyclic(images *stereo)
 void CPG::walk(images stereo)
 {
     float offset2 = 1.5, offset3 = -2.25/4;
-    float d=0.1-stereo.target.x;//0.08-1.2*stereo.target.x;//-0.03-stereo.target.x;
+    float d=0.07-stereo.target.x;//0.08-1.2*stereo.target.x;//-0.03-stereo.target.x;
 
     // joint limits from /gorobots/projects/C-CPGRBFN/CPGRBFN_BBO_v5/neural_controllers/morf/real/neutronController.cpp
     // front left
@@ -285,6 +285,10 @@ void images::generalImgCallback(const sensor_msgs::ImageConstPtr& msg)
 
 void images::match()
 {
+    cv::Mat hsvL, hsvR;
+    cv::cvtColor(imageL, hsvL, cv::COLOR_BGR2HSV);
+    cv::cvtColor(imageR, hsvR, cv::COLOR_BGR2HSV);
+
     // detect features	
     cv::Ptr<cv::FeatureDetector> detector = cv::ORB::create();
     std::vector<cv::KeyPoint> keypointsL, keypointsR;
@@ -313,7 +317,15 @@ void images::match()
             // Only save matches according to Lowe's ratio test
             if(!matches[i].empty() && matches[i][0].distance < ratio_thresh * matches[i][1].distance)
             {
-                best_matches.push_back(matches[i][0]);
+                cv::Vec3b hsvValL = hsvL.at<cv::Vec3b>(keypointsL[matches[i][0].queryIdx].pt);
+                float hL = hsvValL[0];
+                cv::Vec3b hsvValR = hsvR.at<cv::Vec3b>(keypointsR[matches[i][0].trainIdx].pt);
+                float hR = hsvValR[0];
+
+                if(hL>40 && hL<80 && hR>40 && hR<80)
+                {
+                    best_matches.push_back(matches[i][0]);
+                }
             }
         }
         
@@ -322,19 +334,13 @@ void images::match()
                     cv::Scalar::all(-1), std::vector<char>(), cv::DrawMatchesFlags::NOT_DRAW_SINGLE_POINTS);
         
         imshow("Matches", img_matches);
-
-        cv::Mat output;
-        cv::drawKeypoints(imageL, keypointsL, output);
-        cv::imshow("viewL", output);
-        cv::drawKeypoints(imageR, keypointsR, output);
-        cv::imshow("viewR", output);
         cv::waitKey(30);
 
-        float avg_x=0, avg_y=0, avg_z=0, width;
+        float avg_x=0, avg_y=0, avg_z=0;
 
         for (int i = 0; i < best_matches.size(); i++)
         {
-            float z = 125*0.06*1/(keypointsL[best_matches[i].queryIdx].pt.x-keypointsR[best_matches[i].trainIdx].pt.x);
+            float z = 175.05*0.06*1/(keypointsL[best_matches[i].queryIdx].pt.x-keypointsR[best_matches[i].trainIdx].pt.x);
             // std::cout << z << std::endl;
             avg_x += keypointsL[best_matches[i].queryIdx].pt.x;
             avg_y += keypointsL[best_matches[i].queryIdx].pt.y;
@@ -345,18 +351,22 @@ void images::match()
         avg_y = avg_y/best_matches.size();
         avg_z = avg_z/best_matches.size();
 
-        width = 2*avg_z*tan(M_PI/4);
+        float length = 2*avg_z*tan(2.3562/2);
+        float width = 800*length/848;
 
         float x,y;
-
-        x = -avg_x/256*width+width/2;
-        y = -avg_y/256*width+width/2;
+        x = -avg_x/848*length+length/2;
+        y = -avg_y/800*width+width/2;
 
         if(!isnan(x) && !isnan(y) && !isnan(avg_z))
         {
             target.x = x;
             target.y = y;
             target.z = avg_z;
+
+            target_avg.z = target.z;
+            target_avg.x = target.x;
+            target_avg.y = target.y;
             // std::cout << target.x << " , " << target.y <<  " , " << target.z << std::endl;
         }
 

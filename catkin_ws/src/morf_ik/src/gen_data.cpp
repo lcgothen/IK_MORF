@@ -36,13 +36,21 @@ int main(int argc, char **argv)
     // y_interval = 0.26011
     // z_interval = 0.21494
 
-    float x_length = 0.23010;
-    float y_length = 0.30011;
-    float z_length = 0.25494;
+    // float x_length = 0.23010;
+    // float y_length = 0.30011;
+    // float z_length = 0.25494;
 
-    float x_start = -5.4826e-02;
-    float y_start = +8.2794e-02;
-    float z_start = -3.6406e-01;
+    // float x_start = -5.4826e-02;
+    // float y_start = +8.2794e-02;
+    // float z_start = -3.6406e-01;
+
+    float x_length = 0.25494;
+    float y_length = 0.30011;
+    float z_length = 0.2301;
+
+    float x_start = -0.049776;
+    float y_start = -0.01509;
+    float z_start = -0.0433698;
 
     // float x_length = 0.19010;
     // float y_length = 0.26011;
@@ -51,6 +59,22 @@ int main(int argc, char **argv)
     // float x_start = -7.4826e-02;
     // float y_start = +6.2794e-02;
     // float z_start = -3.8406e-01;
+
+    // point aux, start, finish;
+    // aux.x = x_start;
+    // aux.y = y_start;
+    // aux.z = z_start;
+
+    // start = aux.morf2FL();
+
+    // aux.x = x_start+x_length;
+    // aux.y = y_start+y_length;
+    // aux.z = z_start+z_length;
+
+    // finish = aux.morf2FL();
+
+    // std::cout << start.x << " , " << start.y << " , " << start.z << std::endl;
+    // std::cout << finish.x-start.x << " , " << finish.y-start.y << " , " << finish.z-start.z<< std::endl;
 
     int div=5;
 
@@ -70,11 +94,11 @@ int main(int argc, char **argv)
     for(int j=0; j<div; j++)
     {
         std::uniform_real_distribution<float> x_interval(x_start, x_start+x_step);
-        y_start = +6.2794e-02;
+        y_start = -0.01509; //+6.2794e-02;
         for(int k=0; k<div; k++)
         {
             std::uniform_real_distribution<float> y_interval(y_start, y_start+y_step);
-            z_start = -3.8406e-01;
+            z_start = -0.0433698; //-3.8406e-01;
             for(int l=0; l<div; l++)
             {
                 std::uniform_real_distribution<float> z_interval(z_start, z_start+z_step);
@@ -85,14 +109,14 @@ int main(int argc, char **argv)
 
                 for(int i=0; i<10000; i++)
                 {
-                    point aux_in;
-                    aux_in.x = x_interval(rand_gen);
-                    aux_in.y = y_interval(rand_gen);
-                    aux_in.z = z_interval(rand_gen);
-
                     point in;
+                    in.x = x_interval(rand_gen);
+                    in.y = y_interval(rand_gen);
+                    in.z = z_interval(rand_gen);
+
+                    //point in;
                     angles out;
-                    in = aux_in.morf2FL();
+                    //in = aux_in.morf2FL();
                     out.calcIK(in);
 
                     if(!isnan(out.th1) && !isnan(out.th2) && !isnan(out.th3))
@@ -109,7 +133,7 @@ int main(int argc, char **argv)
                 if(count>50)
                 {
                     std::ofstream data;
-                    std::string filename = "./neural_networks/data_5div_bigger/vali"+std::to_string(j)+std::to_string(k)+std::to_string(l)+std::string(".data");
+                    std::string filename = "./neural_networks/data_5div_direct/train"+std::to_string(j)+std::to_string(k)+std::to_string(l)+std::string(".data");
                     std::cout << filename << std::endl;
 
                     data.open(filename);

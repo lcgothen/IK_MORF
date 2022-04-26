@@ -5,7 +5,7 @@ import csv
 import os.path
 from os import path
 
-filepath = "./catkin_ws/devel/lib/morf_ik/data_5div_bigger/"
+filepath = "./devel/lib/morf_ik/neural_networks/data_5div_direct/"
 
 div=5
 
@@ -38,9 +38,9 @@ ax.scatter(x, y, z)
 ax.set_xlabel('x')
 ax.set_ylabel('y')
 ax.set_zlabel('z')
-plt.savefig(filepath + "all_data.png")
-plt.close()
-# plt.show()
+# plt.savefig(filepath + "all_data.png")
+# plt.close()
+plt.show()
 
 # filename = filepath + "train212.data"
 

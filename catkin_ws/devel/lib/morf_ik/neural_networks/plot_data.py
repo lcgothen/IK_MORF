@@ -5,9 +5,9 @@ import csv
 import os.path
 from os import path
 
-filepath = "./catkin_ws/devel/lib/morf_ik/data_5div_bigger/"
+filepath = "./devel/lib/morf_ik/neural_networks/data_5div_direct/"
 
-div=5
+div=4
 
 for j in range(div):
     for k in range(div):
