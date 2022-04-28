@@ -7,7 +7,7 @@ from os import path
 
 filepath = "./devel/lib/morf_ik/neural_networks/data_5div_direct/"
 
-div=4
+div=5
 
 for j in range(div):
     for k in range(div):

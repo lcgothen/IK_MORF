@@ -22,19 +22,19 @@ quant_eqs = 0
 quant_nn = 0
 
 for row in data_eqs:
-    dur_eqs += float(row[1])/1000
+    dur_eqs += float(row[1])
     dist_eqs += float(row[2])
     quant_eqs+=1
 
 for row in data_nn:
-    dur_nn += float(row[1])/1000
+    dur_nn += float(row[1])
     dist_nn += float(row[2])
     quant_nn+=1
 
 dur = [dur_eqs/quant_eqs, dur_nn/quant_nn]
 dist = [dist_eqs/quant_eqs, dist_nn/quant_nn]
 
-plt.title("Average Trial Duration")
+plt.title("Average Calculations Duration (ns)")
 plt.bar(['IK equations', 'Neural networks'], dur)
 plt.savefig(filepath + "duration.png")
 plt.close()
@@ -60,7 +60,10 @@ for row in data_nn:
     else:
         quant_dur+=1
 
-dist = dist_nn/quant_dist
+if quant_dist>0:
+    dist = dist_nn/quant_dist
+else:
+    dist=0
 
 dist_name = 'Distance \n avg: ' + str(dist)
 

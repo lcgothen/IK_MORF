@@ -109,6 +109,7 @@ void angles::calcNN(point target, coords::point (coords::point::*morf2leg)(), st
 {
     int cubeX=-1, cubeY=-1, cubeZ=-1;
 
+    // smaller - morf
     // float x_length = 0.19010;
     // float y_length = 0.26011;
     // float z_length = 0.21494;
@@ -117,13 +118,23 @@ void angles::calcNN(point target, coords::point (coords::point::*morf2leg)(), st
     // float y_start = +6.2794e-02;
     // float z_start = -3.8406e-01;
 
-    float x_length = 0.23010;
-    float y_length = 0.30011;
-    float z_length = 0.25494;
+    // bigger - morf
+    // float x_length = 0.23010;
+    // float y_length = 0.30011;
+    // float z_length = 0.25494;
 
-    float x_start = -5.4826e-02;
-    float y_start = +8.2794e-02;
-    float z_start = -3.6406e-01;
+    // float x_start = -5.4826e-02;
+    // float y_start = +8.2794e-02;
+    // float z_start = -3.6406e-01;
+
+    // bigger - FL
+    float x_length = -0.25494;
+    float y_length = 0.30011;
+    float z_length = 0.2301;
+
+    float x_start = 0.225164; 
+    float y_start = -0.057090; 
+    float z_start = -0.0433698; 
 
     int div=5;
 
@@ -133,7 +144,7 @@ void angles::calcNN(point target, coords::point (coords::point::*morf2leg)(), st
 
     for(int j=0; j<div; j++)
     {
-        if(target.x > x_start && target.x < x_start+x_step)
+        if(target.x < x_start && target.x > x_start+x_step)
         {
             cubeX=j;
             break;
@@ -166,7 +177,7 @@ void angles::calcNN(point target, coords::point (coords::point::*morf2leg)(), st
 
     if(cubeX!=-1 && cubeY!=-1 && cubeZ!=-1)
     {
-        point legTarget = (target.*morf2leg)();
+        point legTarget = target; // (target.*morf2leg)();
 
         std::string filename = ann_path+std::to_string(cubeX)+std::to_string(cubeY)+std::to_string(cubeZ)+std::string(".net");
         struct fann *ann = fann_create_from_file(filename.c_str());
@@ -181,6 +192,7 @@ void angles::calcNN(point target, coords::point (coords::point::*morf2leg)(), st
 
     }
     
+    // std::cout << target.x << " , " << target.y <<  " , " << target.z << std::endl;
     // std::cout << cubeX << " , " << cubeY << " , " << cubeZ << std::endl;
 }
 

@@ -65,21 +65,14 @@ int main(int argc, char **argv)
     resFile.open(resName);
     failFile.open(failName);
 
-    std::chrono::milliseconds duration;
-    float distance;
-    float but_rad = 0.02;
-
     simxInt clientID = simxStart((simxChar*)"127.0.0.1", 19997, true, true, 2000, 5);
 
     for(int trial=0; trial < n_trials; trial++)
     {
-
-        if(!failFile)
-            std::cout << "file fail" << std::endl;
         robot morf;
         images stereo;
 
-        std::string ann_path = "./neural_networks/data_5div_bigger/batch_01_10_01_50000_025_09/";
+        std::string ann_path = "./neural_networks/data_5div_direct/batch_01_05_01_50000_02_09/";
 
         ros::init(argc, argv, "IK_controller");
         ros::NodeHandle n;
@@ -95,14 +88,19 @@ int main(int argc, char **argv)
         image_transport::Subscriber imageRight_sub = it.subscribe("imageRight", 1, &images::imageRightCallback, &stereo);
         image_transport::Subscriber generalImg_sub = it.subscribe("imageGeneral", 1, &images::generalImgCallback, &stereo);
 
-        //time_t init = time(NULL);
-        std::chrono::milliseconds walkingT;
-        bool distFail = false, durFail = false;
-        //std::cout << simxGetConnectionId(clientID) << std::endl;
 
+        
+        float distance;
+        float but_rad = 0.02;
+        bool distFail = false, durFail = false;
+
+        std::chrono::microseconds duration=std::chrono::microseconds(0);
+        std::chrono::microseconds trial_dur;
+        float num_calcs=0;
         typedef std::chrono::high_resolution_clock Clock;
-        typedef std::chrono::milliseconds milliseconds;
+        typedef std::chrono::microseconds microseconds;
         Clock::time_point init = Clock::now();
+        Clock::time_point init_calc;
 
         simxStartSimulation(clientID, simx_opmode_oneshot);
 
@@ -136,14 +134,20 @@ int main(int argc, char **argv)
         stableBR.z = 0.085760;
 
         // calculate FL angles according to specified algorithm
+        posFL = posFL.morf2FL(); 
         if(type==0)
         {
-            posFL = posFL.morf2FL(); 
+            init_calc = Clock::now();
             FL.calcIK(posFL);
+            duration += std::chrono::duration_cast<microseconds>(Clock::now() - init_calc);
+            num_calcs++;
         }
         else if(type==1)
         {
+            init_calc = Clock::now();
             FL.calcNN(posFL, &coords::point::morf2FL, ann_path);
+            duration += std::chrono::duration_cast<microseconds>(Clock::now() - init_calc);
+            num_calcs++;
         }
 
         // convert to leg frames for the rest of the legs
@@ -212,24 +216,21 @@ int main(int argc, char **argv)
 
             // std::cout << state << std::endl;
 
-            duration = std::chrono::duration_cast<milliseconds>(Clock::now() - init); //difftime(time(NULL), init);
+            trial_dur = std::chrono::duration_cast<microseconds>(Clock::now() - init); //difftime(time(NULL), init);
 
             if(state==0 && !stereo.imageL.empty() && !stereo.imageR.empty())
                 state=1;
             else if(state==1 && stereo.nearZ)
                 state=2;
             else if(state==2 && stable)
-            {
                 state=3;
-                walkingT = std::chrono::duration_cast<milliseconds>(Clock::now() - init); //difftime(time(NULL), init);
-            }
             else if(state==3 && morf.FL.th1<FL.th1+0.001 && morf.FL.th1>FL.th1-0.001 && 
                     morf.FL.th2<FL.th2+0.001 && morf.FL.th2>FL.th2-0.001 &&
                     morf.FL.th3<FL.th3+0.001 && morf.FL.th3>FL.th3-0.001)
                 state=4;
             else if(state==4 && morf.sensFL>0.1)
                 state=5;
-            else if(duration.count()>120000)//(clock()-init>120*CLOCKS_PER_SEC)
+            else if(trial_dur.count()>120000000)//(clock()-init>120*CLOCKS_PER_SEC)
                 state=6;
 
             if(state==0)
@@ -614,14 +615,20 @@ int main(int argc, char **argv)
                 target.z=stereo.target_avg.z-0.05;
 
                 posFL = target.camLeft2morf(); 
+                posFL = posFL.morf2FL(); 
                 if(type==0)
                 {
-                    posFL = posFL.morf2FL(); 
+                    init_calc = Clock::now();
                     FL.calcIK(posFL);
+                    duration += std::chrono::duration_cast<microseconds>(Clock::now() - init_calc);
+                    num_calcs++;
                 }
                 else if(type==1)
                 {
+                    init_calc = Clock::now();
                     FL.calcNN(posFL, &coords::point::morf2FL, ann_path);
+                    duration += std::chrono::duration_cast<microseconds>(Clock::now() - init_calc);
+                    num_calcs++;
                 }
 
                 FL.th1=jointLimiter(FL.th1, -110, -20);
@@ -657,14 +664,20 @@ int main(int argc, char **argv)
             {
                 target.z += 0.001;
                 posFL = target.camLeft2morf(); 
+                posFL = posFL.morf2FL(); 
                 if(type==0)
                 {
-                    posFL = posFL.morf2FL(); 
+                    init_calc = Clock::now();
                     FL.calcIK(posFL);
+                    duration += std::chrono::duration_cast<microseconds>(Clock::now() - init_calc);
+                    num_calcs++;
                 }
                 else if(type==1)
                 {
+                    init_calc = Clock::now();
                     FL.calcNN(posFL, &coords::point::morf2FL, ann_path);
+                    duration += std::chrono::duration_cast<microseconds>(Clock::now() - init_calc);
+                    num_calcs++;
                 }
 
                 FL.th1=jointLimiter(FL.th1, -110, -20);
@@ -727,12 +740,12 @@ int main(int argc, char **argv)
         if(!durFail && !distFail)
         {
             std::cout<< "trial " << trial << ": " << "Success! " << distance << std::endl;
-            resFile << "trial " << trial << ":\t" << duration.count()-walkingT.count() << "\t" << distance << "\n";
+            resFile << "trial " << trial << ":\t" << duration.count()/num_calcs << "\t" << distance << "\n";
         }
         else if(durFail)
         {
             std::cout << "Failed duration!" << std::endl;
-            failFile << "trial " << trial << ":\t" << "duration " << "\t" << duration.count() << "\n";
+            failFile << "trial " << trial << ":\t" << "duration " << "\t" << trial_dur.count() << "\n";
         }
         else
         {
