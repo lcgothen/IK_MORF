@@ -564,6 +564,20 @@ nn/fast:
 .PHONY : nn/fast
 
 # Convenience name for target.
+morf_ik/CMakeFiles/morf_controller_real.dir/rule:
+	cd /home/leonor/tese/IK_MORF/catkin_ws/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 morf_ik/CMakeFiles/morf_controller_real.dir/rule
+.PHONY : morf_ik/CMakeFiles/morf_controller_real.dir/rule
+
+# Convenience name for target.
+morf_controller_real: morf_ik/CMakeFiles/morf_controller_real.dir/rule
+.PHONY : morf_controller_real
+
+# fast build rule for target.
+morf_controller_real/fast:
+	cd /home/leonor/tese/IK_MORF/catkin_ws/build && $(MAKE) $(MAKESILENT) -f morf_ik/CMakeFiles/morf_controller_real.dir/build.make morf_ik/CMakeFiles/morf_controller_real.dir/build
+.PHONY : morf_controller_real/fast
+
+# Convenience name for target.
 morf_ik/CMakeFiles/coords.dir/rule:
 	cd /home/leonor/tese/IK_MORF/catkin_ws/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 morf_ik/CMakeFiles/coords.dir/rule
 .PHONY : morf_ik/CMakeFiles/coords.dir/rule
@@ -783,6 +797,30 @@ src/nn.cpp.s:
 	cd /home/leonor/tese/IK_MORF/catkin_ws/build && $(MAKE) $(MAKESILENT) -f morf_ik/CMakeFiles/nn.dir/build.make morf_ik/CMakeFiles/nn.dir/src/nn.cpp.s
 .PHONY : src/nn.cpp.s
 
+src/test_real.o: src/test_real.cpp.o
+.PHONY : src/test_real.o
+
+# target to build an object file
+src/test_real.cpp.o:
+	cd /home/leonor/tese/IK_MORF/catkin_ws/build && $(MAKE) $(MAKESILENT) -f morf_ik/CMakeFiles/morf_controller_real.dir/build.make morf_ik/CMakeFiles/morf_controller_real.dir/src/test_real.cpp.o
+.PHONY : src/test_real.cpp.o
+
+src/test_real.i: src/test_real.cpp.i
+.PHONY : src/test_real.i
+
+# target to preprocess a source file
+src/test_real.cpp.i:
+	cd /home/leonor/tese/IK_MORF/catkin_ws/build && $(MAKE) $(MAKESILENT) -f morf_ik/CMakeFiles/morf_controller_real.dir/build.make morf_ik/CMakeFiles/morf_controller_real.dir/src/test_real.cpp.i
+.PHONY : src/test_real.cpp.i
+
+src/test_real.s: src/test_real.cpp.s
+.PHONY : src/test_real.s
+
+# target to generate assembly for a file
+src/test_real.cpp.s:
+	cd /home/leonor/tese/IK_MORF/catkin_ws/build && $(MAKE) $(MAKESILENT) -f morf_ik/CMakeFiles/morf_controller_real.dir/build.make morf_ik/CMakeFiles/morf_controller_real.dir/src/test_real.cpp.s
+.PHONY : src/test_real.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -825,6 +863,7 @@ help:
 	@echo "... coords"
 	@echo "... gen_data"
 	@echo "... main"
+	@echo "... morf_controller_real"
 	@echo "... nn"
 	@echo "... home/leonor/CoppeliaSim/programming/common/shared_memory.o"
 	@echo "... home/leonor/CoppeliaSim/programming/common/shared_memory.i"
@@ -850,6 +889,9 @@ help:
 	@echo "... src/nn.o"
 	@echo "... src/nn.i"
 	@echo "... src/nn.s"
+	@echo "... src/test_real.o"
+	@echo "... src/test_real.i"
+	@echo "... src/test_real.s"
 .PHONY : help
 
 

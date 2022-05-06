@@ -5,9 +5,9 @@ import csv
 import os.path
 from os import path
 
-filepath = "./devel/lib/morf_ik/neural_networks/data_4div_direct/"
+filepath = "./devel/lib/morf_ik/neural_networks/data_6div_direct/"
 
-div=5
+div=6
 
 x = []
 y = []

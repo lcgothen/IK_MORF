@@ -72,7 +72,7 @@ int main(int argc, char **argv)
         robot morf;
         images stereo;
 
-        std::string ann_path = "./neural_networks/data_5div_direct/batch_01_05_01_50000_02_09/";
+        std::string ann_path = "./neural_networks/data_5div_direct/batch_01_03_01_50000_02_09/";
 
         ros::init(argc, argv, "IK_controller");
         ros::NodeHandle n;
@@ -106,7 +106,7 @@ int main(int argc, char **argv)
 
         // target coords for stabilizing with 4 legs
         point posFL, posFR, stableML, stableMR, stableBL, stableBR;
-        angles FL, FR, ML, MR, BL, BR;
+        angles FL, FR, ML, MR, BL, BR, auxFL;
         angles auxML, auxMR, auxBL, auxBR;
         
         posFL.x = 0;//-7.5776e-02;
@@ -678,6 +678,7 @@ int main(int argc, char **argv)
                     FL.calcNN(posFL, &coords::point::morf2FL, ann_path);
                     duration += std::chrono::duration_cast<microseconds>(Clock::now() - init_calc);
                     num_calcs++;
+                    auxFL.calcIK(posFL);
                 }
 
                 FL.th1=jointLimiter(FL.th1, -110, -20);
@@ -740,7 +741,14 @@ int main(int argc, char **argv)
         if(!durFail && !distFail)
         {
             std::cout<< "trial " << trial << ": " << "Success! " << distance << std::endl;
-            resFile << "trial " << trial << ":\t" << duration.count()/num_calcs << "\t" << distance << "\n";
+            resFile << "trial " << trial << ":\t" << duration.count()/num_calcs << "\t" << distance;
+
+            if(type==1)
+            {
+                resFile << "\t" << abs(auxFL.th1-FL.th1)/abs(FL.th1)*100 << "\t" << abs(auxFL.th2-FL.th2)/abs(FL.th2)*100 << "\t" << abs(auxFL.th3-FL.th3)/abs(FL.th3)*100;
+            }
+            
+            resFile << "\n";
         }
         else if(durFail)
         {

@@ -99,7 +99,7 @@ int main(int argc, char **argv)
     // std::cout << start.x << " , " << start.y << " , " << start.z << std::endl;
     // std::cout << finish.x-start.x << " , " << finish.y-start.y << " , " << finish.z-start.z<< std::endl;
 
-    int div=4;
+    int div=6;
 
     float x_step = x_length/div;
     float y_step = y_length/div;
@@ -160,7 +160,7 @@ int main(int argc, char **argv)
                 if(count>50)
                 {
                     std::ofstream data;
-                    std::string filename = "./neural_networks/data_4div_direct/train"+std::to_string(j)+std::to_string(k)+std::to_string(l)+std::string(".data");
+                    std::string filename = "./neural_networks/data_6div_direct/vali"+std::to_string(j)+std::to_string(k)+std::to_string(l)+std::string(".data");
                     std::cout << filename << std::endl;
 
                     data.open(filename);

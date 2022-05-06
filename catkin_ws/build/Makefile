@@ -653,6 +653,19 @@ nn/fast:
 .PHONY : nn/fast
 
 #=============================================================================
+# Target rules for targets named morf_controller_real
+
+# Build rule for target.
+morf_controller_real: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 morf_controller_real
+.PHONY : morf_controller_real
+
+# fast build rule for target.
+morf_controller_real/fast:
+	$(MAKE) $(MAKESILENT) -f morf_ik/CMakeFiles/morf_controller_real.dir/build.make morf_ik/CMakeFiles/morf_controller_real.dir/build
+.PHONY : morf_controller_real/fast
+
+#=============================================================================
 # Target rules for targets named coords
 
 # Build rule for target.
@@ -729,6 +742,7 @@ help:
 	@echo "... gtest"
 	@echo "... gtest_main"
 	@echo "... main"
+	@echo "... morf_controller_real"
 	@echo "... nn"
 .PHONY : help
 

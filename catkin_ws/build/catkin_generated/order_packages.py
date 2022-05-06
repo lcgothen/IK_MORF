@@ -2,4 +2,4 @@
 source_root_dir = '/home/leonor/tese/IK_MORF/catkin_ws/src'
 whitelisted_packages = ''.split(';') if '' != '' else []
 blacklisted_packages = ''.split(';') if '' != '' else []
-underlay_workspaces = '/home/leonor/tese/IK_MORF/catkin_ws/devel;/opt/ros/melodic'.split(';') if '/home/leonor/tese/IK_MORF/catkin_ws/devel;/opt/ros/melodic' != '' else []
+underlay_workspaces = '/opt/ros/melodic'.split(';') if '/opt/ros/melodic' != '' else []
