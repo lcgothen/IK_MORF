@@ -87,11 +87,16 @@ int main(int argc, char **argv)
 
     ros::Publisher controller_pub = n.advertise<std_msgs::Float32MultiArray>("multi_joint_command", 1000);
 
+    robot morf;
+    ros::Subscriber jointPos_sub = n.subscribe("joint_positions", 1000, &robot::jointPosCallback, &morf);
+
     ros::Rate loop_rate(10);
     std_msgs::Float32MultiArray IK_order;
 
     while(ros::ok())
     {
+
+        std::cout << morf.FL.th1 << std::endl;
         ROS_INFO("ROS is running");
 
         IK_order.data =    {11, FL.th1, 12, FL.th2, 13, FL.th3,
