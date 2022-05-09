@@ -235,7 +235,7 @@ coppeliasim_add_executable(main
 add_executable(gen_data src/gen_data.cpp)
 add_executable(nn src/nn.cpp)
 # add_executable(calib src/calibration.cpp)
-add_executable(morf_controller_real src/test_real.cpp)
+add_executable(morf_controller_real src/test_real.cpp include/coordinates.cpp include/controller.cpp)
 
 # target_compile_definitions(main_eqs_data PRIVATE NON_MATLAB_PARSING)
 # target_compile_definitions(main_eqs_data PRIVATE MAX_EXT_API_CONNECTIONS=255)

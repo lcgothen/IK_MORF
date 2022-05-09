@@ -136,7 +136,7 @@ void angles::calcNN(point target, coords::point (coords::point::*morf2leg)(), st
     float y_start = -0.057090; 
     float z_start = -0.0433698; 
 
-    int div=5;
+    int div=4;
 
     float x_step = x_length/div;
     float y_step = y_length/div;

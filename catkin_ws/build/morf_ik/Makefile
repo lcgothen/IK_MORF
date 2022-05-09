@@ -682,6 +682,7 @@ include/controller.o: include/controller.cpp.o
 
 # target to build an object file
 include/controller.cpp.o:
+	cd /home/leonor/tese/IK_MORF/catkin_ws/build && $(MAKE) $(MAKESILENT) -f morf_ik/CMakeFiles/morf_controller_real.dir/build.make morf_ik/CMakeFiles/morf_controller_real.dir/include/controller.cpp.o
 	cd /home/leonor/tese/IK_MORF/catkin_ws/build && $(MAKE) $(MAKESILENT) -f morf_ik/CMakeFiles/control.dir/build.make morf_ik/CMakeFiles/control.dir/include/controller.cpp.o
 .PHONY : include/controller.cpp.o
 
@@ -690,6 +691,7 @@ include/controller.i: include/controller.cpp.i
 
 # target to preprocess a source file
 include/controller.cpp.i:
+	cd /home/leonor/tese/IK_MORF/catkin_ws/build && $(MAKE) $(MAKESILENT) -f morf_ik/CMakeFiles/morf_controller_real.dir/build.make morf_ik/CMakeFiles/morf_controller_real.dir/include/controller.cpp.i
 	cd /home/leonor/tese/IK_MORF/catkin_ws/build && $(MAKE) $(MAKESILENT) -f morf_ik/CMakeFiles/control.dir/build.make morf_ik/CMakeFiles/control.dir/include/controller.cpp.i
 .PHONY : include/controller.cpp.i
 
@@ -698,6 +700,7 @@ include/controller.s: include/controller.cpp.s
 
 # target to generate assembly for a file
 include/controller.cpp.s:
+	cd /home/leonor/tese/IK_MORF/catkin_ws/build && $(MAKE) $(MAKESILENT) -f morf_ik/CMakeFiles/morf_controller_real.dir/build.make morf_ik/CMakeFiles/morf_controller_real.dir/include/controller.cpp.s
 	cd /home/leonor/tese/IK_MORF/catkin_ws/build && $(MAKE) $(MAKESILENT) -f morf_ik/CMakeFiles/control.dir/build.make morf_ik/CMakeFiles/control.dir/include/controller.cpp.s
 .PHONY : include/controller.cpp.s
 
@@ -706,6 +709,7 @@ include/coordinates.o: include/coordinates.cpp.o
 
 # target to build an object file
 include/coordinates.cpp.o:
+	cd /home/leonor/tese/IK_MORF/catkin_ws/build && $(MAKE) $(MAKESILENT) -f morf_ik/CMakeFiles/morf_controller_real.dir/build.make morf_ik/CMakeFiles/morf_controller_real.dir/include/coordinates.cpp.o
 	cd /home/leonor/tese/IK_MORF/catkin_ws/build && $(MAKE) $(MAKESILENT) -f morf_ik/CMakeFiles/coords.dir/build.make morf_ik/CMakeFiles/coords.dir/include/coordinates.cpp.o
 .PHONY : include/coordinates.cpp.o
 
@@ -714,6 +718,7 @@ include/coordinates.i: include/coordinates.cpp.i
 
 # target to preprocess a source file
 include/coordinates.cpp.i:
+	cd /home/leonor/tese/IK_MORF/catkin_ws/build && $(MAKE) $(MAKESILENT) -f morf_ik/CMakeFiles/morf_controller_real.dir/build.make morf_ik/CMakeFiles/morf_controller_real.dir/include/coordinates.cpp.i
 	cd /home/leonor/tese/IK_MORF/catkin_ws/build && $(MAKE) $(MAKESILENT) -f morf_ik/CMakeFiles/coords.dir/build.make morf_ik/CMakeFiles/coords.dir/include/coordinates.cpp.i
 .PHONY : include/coordinates.cpp.i
 
@@ -722,6 +727,7 @@ include/coordinates.s: include/coordinates.cpp.s
 
 # target to generate assembly for a file
 include/coordinates.cpp.s:
+	cd /home/leonor/tese/IK_MORF/catkin_ws/build && $(MAKE) $(MAKESILENT) -f morf_ik/CMakeFiles/morf_controller_real.dir/build.make morf_ik/CMakeFiles/morf_controller_real.dir/include/coordinates.cpp.s
 	cd /home/leonor/tese/IK_MORF/catkin_ws/build && $(MAKE) $(MAKESILENT) -f morf_ik/CMakeFiles/coords.dir/build.make morf_ik/CMakeFiles/coords.dir/include/coordinates.cpp.s
 .PHONY : include/coordinates.cpp.s
 
