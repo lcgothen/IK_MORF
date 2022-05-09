@@ -82,10 +82,10 @@ int main(int argc, char **argv)
     MR.calcIK(stableMR);
     BR.calcIK(stableBR);
 
-    ros::init(argc, argv, "morf_hw");
+    ros::init(argc, argv, "IK_controller");
     ros::NodeHandle n;
 
-    ros::Publisher controller_pub = n.advertise<std_msgs::Float32MultiArray>("multi_joint_command", 1000);
+    ros::Publisher controller_pub = n.advertise<std_msgs::Float32MultiArray>("/morf_hw/multi_joint_command", 1000);
 
     robot morf;
     ros::Subscriber jointPos_sub = n.subscribe("joint_positions", 1000, &robot::jointPosCallback, &morf);
