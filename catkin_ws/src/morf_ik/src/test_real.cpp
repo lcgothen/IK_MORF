@@ -96,9 +96,6 @@ int main(int argc, char **argv)
     while(ros::ok())
     {
 
-        std::cout << morf.FL.th1 << std::endl;
-        ROS_INFO("ROS is running");
-
         IK_order.data =    {11, FL.th1, 12, FL.th2, 13, FL.th3,
                             21, ML.th1, 22, ML.th2, 23, ML.th3,
                             31, BL.th1, 32, BL.th2, 33, BL.th3,
