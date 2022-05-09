@@ -56,6 +56,8 @@ void robot::jointPosCallback(const std_msgs::Float32MultiArray::ConstPtr& msg)
     BR.th1 = msg->data[15];
     BR.th2 = msg->data[16];
     BR.th3 = msg->data[17];
+
+    std::cout << "hello" << std::endl;
 }
 
 void robot::forceSensCallback(const std_msgs::Float32MultiArray::ConstPtr& msg)
