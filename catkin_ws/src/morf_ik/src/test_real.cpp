@@ -85,7 +85,7 @@ int main(int argc, char **argv)
     ros::init(argc, argv, "morf_hw");
     ros::NodeHandle n;
 
-    ros::Publisher controller_pub = n.advertise<std_msgs::Float32MultiArray>("multi_joint_commands", 1000);
+    ros::Publisher controller_pub = n.advertise<std_msgs::Float32MultiArray>("multi_joint_command", 1000);
 
     ros::Rate loop_rate(10);
     std_msgs::Float32MultiArray IK_order;
