@@ -20,7 +20,7 @@
 
 
 #include "../include/coordinates.hpp"
-#include "../include/controller.hpp"
+#include "../include/controller_real.hpp"
 using namespace coords;
 using namespace controller;
 

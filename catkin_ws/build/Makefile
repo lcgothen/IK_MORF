@@ -691,6 +691,19 @@ control/fast:
 	$(MAKE) $(MAKESILENT) -f morf_ik/CMakeFiles/control.dir/build.make morf_ik/CMakeFiles/control.dir/build
 .PHONY : control/fast
 
+#=============================================================================
+# Target rules for targets named control_real
+
+# Build rule for target.
+control_real: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 control_real
+.PHONY : control_real
+
+# fast build rule for target.
+control_real/fast:
+	$(MAKE) $(MAKESILENT) -f morf_ik/CMakeFiles/control_real.dir/build.make morf_ik/CMakeFiles/control_real.dir/build
+.PHONY : control_real/fast
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -735,6 +748,7 @@ help:
 	@echo "... std_msgs_generate_messages_py"
 	@echo "... tests"
 	@echo "... control"
+	@echo "... control_real"
 	@echo "... coords"
 	@echo "... gen_data"
 	@echo "... gmock"

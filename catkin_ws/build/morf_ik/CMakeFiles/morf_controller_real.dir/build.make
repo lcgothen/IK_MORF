@@ -97,32 +97,32 @@ morf_ik/CMakeFiles/morf_controller_real.dir/include/coordinates.cpp.s: cmake_for
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/morf_controller_real.dir/include/coordinates.cpp.s"
 	cd /home/leonor/tese/IK_MORF/catkin_ws/build/morf_ik && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/leonor/tese/IK_MORF/catkin_ws/src/morf_ik/include/coordinates.cpp -o CMakeFiles/morf_controller_real.dir/include/coordinates.cpp.s
 
-morf_ik/CMakeFiles/morf_controller_real.dir/include/controller.cpp.o: morf_ik/CMakeFiles/morf_controller_real.dir/flags.make
-morf_ik/CMakeFiles/morf_controller_real.dir/include/controller.cpp.o: /home/leonor/tese/IK_MORF/catkin_ws/src/morf_ik/include/controller.cpp
-morf_ik/CMakeFiles/morf_controller_real.dir/include/controller.cpp.o: morf_ik/CMakeFiles/morf_controller_real.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/leonor/tese/IK_MORF/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object morf_ik/CMakeFiles/morf_controller_real.dir/include/controller.cpp.o"
-	cd /home/leonor/tese/IK_MORF/catkin_ws/build/morf_ik && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT morf_ik/CMakeFiles/morf_controller_real.dir/include/controller.cpp.o -MF CMakeFiles/morf_controller_real.dir/include/controller.cpp.o.d -o CMakeFiles/morf_controller_real.dir/include/controller.cpp.o -c /home/leonor/tese/IK_MORF/catkin_ws/src/morf_ik/include/controller.cpp
+morf_ik/CMakeFiles/morf_controller_real.dir/include/controller_real.cpp.o: morf_ik/CMakeFiles/morf_controller_real.dir/flags.make
+morf_ik/CMakeFiles/morf_controller_real.dir/include/controller_real.cpp.o: /home/leonor/tese/IK_MORF/catkin_ws/src/morf_ik/include/controller_real.cpp
+morf_ik/CMakeFiles/morf_controller_real.dir/include/controller_real.cpp.o: morf_ik/CMakeFiles/morf_controller_real.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/leonor/tese/IK_MORF/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object morf_ik/CMakeFiles/morf_controller_real.dir/include/controller_real.cpp.o"
+	cd /home/leonor/tese/IK_MORF/catkin_ws/build/morf_ik && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT morf_ik/CMakeFiles/morf_controller_real.dir/include/controller_real.cpp.o -MF CMakeFiles/morf_controller_real.dir/include/controller_real.cpp.o.d -o CMakeFiles/morf_controller_real.dir/include/controller_real.cpp.o -c /home/leonor/tese/IK_MORF/catkin_ws/src/morf_ik/include/controller_real.cpp
 
-morf_ik/CMakeFiles/morf_controller_real.dir/include/controller.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/morf_controller_real.dir/include/controller.cpp.i"
-	cd /home/leonor/tese/IK_MORF/catkin_ws/build/morf_ik && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/leonor/tese/IK_MORF/catkin_ws/src/morf_ik/include/controller.cpp > CMakeFiles/morf_controller_real.dir/include/controller.cpp.i
+morf_ik/CMakeFiles/morf_controller_real.dir/include/controller_real.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/morf_controller_real.dir/include/controller_real.cpp.i"
+	cd /home/leonor/tese/IK_MORF/catkin_ws/build/morf_ik && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/leonor/tese/IK_MORF/catkin_ws/src/morf_ik/include/controller_real.cpp > CMakeFiles/morf_controller_real.dir/include/controller_real.cpp.i
 
-morf_ik/CMakeFiles/morf_controller_real.dir/include/controller.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/morf_controller_real.dir/include/controller.cpp.s"
-	cd /home/leonor/tese/IK_MORF/catkin_ws/build/morf_ik && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/leonor/tese/IK_MORF/catkin_ws/src/morf_ik/include/controller.cpp -o CMakeFiles/morf_controller_real.dir/include/controller.cpp.s
+morf_ik/CMakeFiles/morf_controller_real.dir/include/controller_real.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/morf_controller_real.dir/include/controller_real.cpp.s"
+	cd /home/leonor/tese/IK_MORF/catkin_ws/build/morf_ik && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/leonor/tese/IK_MORF/catkin_ws/src/morf_ik/include/controller_real.cpp -o CMakeFiles/morf_controller_real.dir/include/controller_real.cpp.s
 
 # Object files for target morf_controller_real
 morf_controller_real_OBJECTS = \
 "CMakeFiles/morf_controller_real.dir/src/test_real.cpp.o" \
 "CMakeFiles/morf_controller_real.dir/include/coordinates.cpp.o" \
-"CMakeFiles/morf_controller_real.dir/include/controller.cpp.o"
+"CMakeFiles/morf_controller_real.dir/include/controller_real.cpp.o"
 
 # External object files for target morf_controller_real
 morf_controller_real_EXTERNAL_OBJECTS =
 
 /home/leonor/tese/IK_MORF/catkin_ws/devel/lib/morf_ik/morf_controller_real: morf_ik/CMakeFiles/morf_controller_real.dir/src/test_real.cpp.o
 /home/leonor/tese/IK_MORF/catkin_ws/devel/lib/morf_ik/morf_controller_real: morf_ik/CMakeFiles/morf_controller_real.dir/include/coordinates.cpp.o
-/home/leonor/tese/IK_MORF/catkin_ws/devel/lib/morf_ik/morf_controller_real: morf_ik/CMakeFiles/morf_controller_real.dir/include/controller.cpp.o
+/home/leonor/tese/IK_MORF/catkin_ws/devel/lib/morf_ik/morf_controller_real: morf_ik/CMakeFiles/morf_controller_real.dir/include/controller_real.cpp.o
 /home/leonor/tese/IK_MORF/catkin_ws/devel/lib/morf_ik/morf_controller_real: morf_ik/CMakeFiles/morf_controller_real.dir/build.make
 /home/leonor/tese/IK_MORF/catkin_ws/devel/lib/morf_ik/morf_controller_real: /opt/ros/melodic/lib/libimage_transport.so
 /home/leonor/tese/IK_MORF/catkin_ws/devel/lib/morf_ik/morf_controller_real: /opt/ros/melodic/lib/libmessage_filters.so
@@ -156,8 +156,6 @@ morf_controller_real_EXTERNAL_OBJECTS =
 /home/leonor/tese/IK_MORF/catkin_ws/devel/lib/morf_ik/morf_controller_real: /usr/lib/x86_64-linux-gnu/libboost_atomic.so
 /home/leonor/tese/IK_MORF/catkin_ws/devel/lib/morf_ik/morf_controller_real: /usr/lib/x86_64-linux-gnu/libpthread.so
 /home/leonor/tese/IK_MORF/catkin_ws/devel/lib/morf_ik/morf_controller_real: /usr/lib/x86_64-linux-gnu/libconsole_bridge.so.0.4
-/home/leonor/tese/IK_MORF/catkin_ws/devel/lib/morf_ik/morf_controller_real: /home/leonor/tese/IK_MORF/catkin_ws/devel/lib/libcoords.so
-/home/leonor/tese/IK_MORF/catkin_ws/devel/lib/morf_ik/morf_controller_real: /home/leonor/tese/IK_MORF/catkin_ws/devel/lib/libcontrol.so
 /home/leonor/tese/IK_MORF/catkin_ws/devel/lib/morf_ik/morf_controller_real: /usr/lib/x86_64-linux-gnu/libopencv_shape.so.3.2.0
 /home/leonor/tese/IK_MORF/catkin_ws/devel/lib/morf_ik/morf_controller_real: /usr/lib/x86_64-linux-gnu/libopencv_stitching.so.3.2.0
 /home/leonor/tese/IK_MORF/catkin_ws/devel/lib/morf_ik/morf_controller_real: /usr/lib/x86_64-linux-gnu/libopencv_superres.so.3.2.0
@@ -174,63 +172,33 @@ morf_controller_real_EXTERNAL_OBJECTS =
 /home/leonor/tese/IK_MORF/catkin_ws/devel/lib/morf_ik/morf_controller_real: /usr/lib/x86_64-linux-gnu/libopencv_hdf.so.3.2.0
 /home/leonor/tese/IK_MORF/catkin_ws/devel/lib/morf_ik/morf_controller_real: /usr/lib/x86_64-linux-gnu/libopencv_line_descriptor.so.3.2.0
 /home/leonor/tese/IK_MORF/catkin_ws/devel/lib/morf_ik/morf_controller_real: /usr/lib/x86_64-linux-gnu/libopencv_optflow.so.3.2.0
-/home/leonor/tese/IK_MORF/catkin_ws/devel/lib/morf_ik/morf_controller_real: /usr/lib/x86_64-linux-gnu/libopencv_video.so.3.2.0
 /home/leonor/tese/IK_MORF/catkin_ws/devel/lib/morf_ik/morf_controller_real: /usr/lib/x86_64-linux-gnu/libopencv_plot.so.3.2.0
 /home/leonor/tese/IK_MORF/catkin_ws/devel/lib/morf_ik/morf_controller_real: /usr/lib/x86_64-linux-gnu/libopencv_reg.so.3.2.0
 /home/leonor/tese/IK_MORF/catkin_ws/devel/lib/morf_ik/morf_controller_real: /usr/lib/x86_64-linux-gnu/libopencv_saliency.so.3.2.0
 /home/leonor/tese/IK_MORF/catkin_ws/devel/lib/morf_ik/morf_controller_real: /usr/lib/x86_64-linux-gnu/libopencv_stereo.so.3.2.0
 /home/leonor/tese/IK_MORF/catkin_ws/devel/lib/morf_ik/morf_controller_real: /usr/lib/x86_64-linux-gnu/libopencv_structured_light.so.3.2.0
-/home/leonor/tese/IK_MORF/catkin_ws/devel/lib/morf_ik/morf_controller_real: /usr/lib/x86_64-linux-gnu/libopencv_viz.so.3.2.0
-/home/leonor/tese/IK_MORF/catkin_ws/devel/lib/morf_ik/morf_controller_real: /usr/lib/x86_64-linux-gnu/libopencv_phase_unwrapping.so.3.2.0
-/home/leonor/tese/IK_MORF/catkin_ws/devel/lib/morf_ik/morf_controller_real: /usr/lib/x86_64-linux-gnu/libopencv_rgbd.so.3.2.0
 /home/leonor/tese/IK_MORF/catkin_ws/devel/lib/morf_ik/morf_controller_real: /usr/lib/x86_64-linux-gnu/libopencv_surface_matching.so.3.2.0
 /home/leonor/tese/IK_MORF/catkin_ws/devel/lib/morf_ik/morf_controller_real: /usr/lib/x86_64-linux-gnu/libopencv_text.so.3.2.0
 /home/leonor/tese/IK_MORF/catkin_ws/devel/lib/morf_ik/morf_controller_real: /usr/lib/x86_64-linux-gnu/libopencv_ximgproc.so.3.2.0
+/home/leonor/tese/IK_MORF/catkin_ws/devel/lib/morf_ik/morf_controller_real: /usr/lib/x86_64-linux-gnu/libopencv_xobjdetect.so.3.2.0
+/home/leonor/tese/IK_MORF/catkin_ws/devel/lib/morf_ik/morf_controller_real: /usr/lib/x86_64-linux-gnu/libopencv_xphoto.so.3.2.0
+/home/leonor/tese/IK_MORF/catkin_ws/devel/lib/morf_ik/morf_controller_real: /home/leonor/tese/IK_MORF/catkin_ws/devel/lib/libcoords.so
+/home/leonor/tese/IK_MORF/catkin_ws/devel/lib/morf_ik/morf_controller_real: /home/leonor/tese/IK_MORF/catkin_ws/devel/lib/libcontrol_real.so
+/home/leonor/tese/IK_MORF/catkin_ws/devel/lib/morf_ik/morf_controller_real: /usr/lib/x86_64-linux-gnu/libopencv_video.so.3.2.0
+/home/leonor/tese/IK_MORF/catkin_ws/devel/lib/morf_ik/morf_controller_real: /usr/lib/x86_64-linux-gnu/libopencv_viz.so.3.2.0
+/home/leonor/tese/IK_MORF/catkin_ws/devel/lib/morf_ik/morf_controller_real: /usr/lib/x86_64-linux-gnu/libopencv_phase_unwrapping.so.3.2.0
+/home/leonor/tese/IK_MORF/catkin_ws/devel/lib/morf_ik/morf_controller_real: /usr/lib/x86_64-linux-gnu/libopencv_rgbd.so.3.2.0
 /home/leonor/tese/IK_MORF/catkin_ws/devel/lib/morf_ik/morf_controller_real: /usr/lib/x86_64-linux-gnu/libopencv_calib3d.so.3.2.0
 /home/leonor/tese/IK_MORF/catkin_ws/devel/lib/morf_ik/morf_controller_real: /usr/lib/x86_64-linux-gnu/libopencv_features2d.so.3.2.0
 /home/leonor/tese/IK_MORF/catkin_ws/devel/lib/morf_ik/morf_controller_real: /usr/lib/x86_64-linux-gnu/libopencv_flann.so.3.2.0
-/home/leonor/tese/IK_MORF/catkin_ws/devel/lib/morf_ik/morf_controller_real: /usr/lib/x86_64-linux-gnu/libopencv_xobjdetect.so.3.2.0
 /home/leonor/tese/IK_MORF/catkin_ws/devel/lib/morf_ik/morf_controller_real: /usr/lib/x86_64-linux-gnu/libopencv_objdetect.so.3.2.0
 /home/leonor/tese/IK_MORF/catkin_ws/devel/lib/morf_ik/morf_controller_real: /usr/lib/x86_64-linux-gnu/libopencv_ml.so.3.2.0
-/home/leonor/tese/IK_MORF/catkin_ws/devel/lib/morf_ik/morf_controller_real: /usr/lib/x86_64-linux-gnu/libopencv_xphoto.so.3.2.0
 /home/leonor/tese/IK_MORF/catkin_ws/devel/lib/morf_ik/morf_controller_real: /usr/lib/x86_64-linux-gnu/libopencv_highgui.so.3.2.0
 /home/leonor/tese/IK_MORF/catkin_ws/devel/lib/morf_ik/morf_controller_real: /usr/lib/x86_64-linux-gnu/libopencv_photo.so.3.2.0
 /home/leonor/tese/IK_MORF/catkin_ws/devel/lib/morf_ik/morf_controller_real: /usr/lib/x86_64-linux-gnu/libopencv_videoio.so.3.2.0
 /home/leonor/tese/IK_MORF/catkin_ws/devel/lib/morf_ik/morf_controller_real: /usr/lib/x86_64-linux-gnu/libopencv_imgcodecs.so.3.2.0
 /home/leonor/tese/IK_MORF/catkin_ws/devel/lib/morf_ik/morf_controller_real: /usr/lib/x86_64-linux-gnu/libopencv_imgproc.so.3.2.0
 /home/leonor/tese/IK_MORF/catkin_ws/devel/lib/morf_ik/morf_controller_real: /usr/lib/x86_64-linux-gnu/libopencv_core.so.3.2.0
-/home/leonor/tese/IK_MORF/catkin_ws/devel/lib/morf_ik/morf_controller_real: /opt/ros/melodic/lib/libimage_transport.so
-/home/leonor/tese/IK_MORF/catkin_ws/devel/lib/morf_ik/morf_controller_real: /opt/ros/melodic/lib/libmessage_filters.so
-/home/leonor/tese/IK_MORF/catkin_ws/devel/lib/morf_ik/morf_controller_real: /opt/ros/melodic/lib/libclass_loader.so
-/home/leonor/tese/IK_MORF/catkin_ws/devel/lib/morf_ik/morf_controller_real: /usr/lib/libPocoFoundation.so
-/home/leonor/tese/IK_MORF/catkin_ws/devel/lib/morf_ik/morf_controller_real: /usr/lib/x86_64-linux-gnu/libdl.so
-/home/leonor/tese/IK_MORF/catkin_ws/devel/lib/morf_ik/morf_controller_real: /opt/ros/melodic/lib/libroscpp.so
-/home/leonor/tese/IK_MORF/catkin_ws/devel/lib/morf_ik/morf_controller_real: /opt/ros/melodic/lib/libxmlrpcpp.so
-/home/leonor/tese/IK_MORF/catkin_ws/devel/lib/morf_ik/morf_controller_real: /opt/ros/melodic/lib/libroslib.so
-/home/leonor/tese/IK_MORF/catkin_ws/devel/lib/morf_ik/morf_controller_real: /opt/ros/melodic/lib/librospack.so
-/home/leonor/tese/IK_MORF/catkin_ws/devel/lib/morf_ik/morf_controller_real: /usr/lib/x86_64-linux-gnu/libpython2.7.so
-/home/leonor/tese/IK_MORF/catkin_ws/devel/lib/morf_ik/morf_controller_real: /usr/lib/x86_64-linux-gnu/libboost_filesystem.so
-/home/leonor/tese/IK_MORF/catkin_ws/devel/lib/morf_ik/morf_controller_real: /usr/lib/x86_64-linux-gnu/libboost_program_options.so
-/home/leonor/tese/IK_MORF/catkin_ws/devel/lib/morf_ik/morf_controller_real: /usr/lib/x86_64-linux-gnu/libtinyxml2.so
-/home/leonor/tese/IK_MORF/catkin_ws/devel/lib/morf_ik/morf_controller_real: /opt/ros/melodic/lib/libcv_bridge.so
-/home/leonor/tese/IK_MORF/catkin_ws/devel/lib/morf_ik/morf_controller_real: /usr/lib/x86_64-linux-gnu/libopencv_core.so.3.2.0
-/home/leonor/tese/IK_MORF/catkin_ws/devel/lib/morf_ik/morf_controller_real: /usr/lib/x86_64-linux-gnu/libopencv_imgproc.so.3.2.0
-/home/leonor/tese/IK_MORF/catkin_ws/devel/lib/morf_ik/morf_controller_real: /usr/lib/x86_64-linux-gnu/libopencv_imgcodecs.so.3.2.0
-/home/leonor/tese/IK_MORF/catkin_ws/devel/lib/morf_ik/morf_controller_real: /opt/ros/melodic/lib/librosconsole.so
-/home/leonor/tese/IK_MORF/catkin_ws/devel/lib/morf_ik/morf_controller_real: /opt/ros/melodic/lib/librosconsole_log4cxx.so
-/home/leonor/tese/IK_MORF/catkin_ws/devel/lib/morf_ik/morf_controller_real: /opt/ros/melodic/lib/librosconsole_backend_interface.so
-/home/leonor/tese/IK_MORF/catkin_ws/devel/lib/morf_ik/morf_controller_real: /usr/lib/x86_64-linux-gnu/liblog4cxx.so
-/home/leonor/tese/IK_MORF/catkin_ws/devel/lib/morf_ik/morf_controller_real: /usr/lib/x86_64-linux-gnu/libboost_regex.so
-/home/leonor/tese/IK_MORF/catkin_ws/devel/lib/morf_ik/morf_controller_real: /opt/ros/melodic/lib/libroscpp_serialization.so
-/home/leonor/tese/IK_MORF/catkin_ws/devel/lib/morf_ik/morf_controller_real: /opt/ros/melodic/lib/librostime.so
-/home/leonor/tese/IK_MORF/catkin_ws/devel/lib/morf_ik/morf_controller_real: /opt/ros/melodic/lib/libcpp_common.so
-/home/leonor/tese/IK_MORF/catkin_ws/devel/lib/morf_ik/morf_controller_real: /usr/lib/x86_64-linux-gnu/libboost_system.so
-/home/leonor/tese/IK_MORF/catkin_ws/devel/lib/morf_ik/morf_controller_real: /usr/lib/x86_64-linux-gnu/libboost_thread.so
-/home/leonor/tese/IK_MORF/catkin_ws/devel/lib/morf_ik/morf_controller_real: /usr/lib/x86_64-linux-gnu/libboost_chrono.so
-/home/leonor/tese/IK_MORF/catkin_ws/devel/lib/morf_ik/morf_controller_real: /usr/lib/x86_64-linux-gnu/libboost_date_time.so
-/home/leonor/tese/IK_MORF/catkin_ws/devel/lib/morf_ik/morf_controller_real: /usr/lib/x86_64-linux-gnu/libboost_atomic.so
-/home/leonor/tese/IK_MORF/catkin_ws/devel/lib/morf_ik/morf_controller_real: /usr/lib/x86_64-linux-gnu/libpthread.so
-/home/leonor/tese/IK_MORF/catkin_ws/devel/lib/morf_ik/morf_controller_real: /usr/lib/x86_64-linux-gnu/libconsole_bridge.so.0.4
 /home/leonor/tese/IK_MORF/catkin_ws/devel/lib/morf_ik/morf_controller_real: morf_ik/CMakeFiles/morf_controller_real.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/leonor/tese/IK_MORF/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable /home/leonor/tese/IK_MORF/catkin_ws/devel/lib/morf_ik/morf_controller_real"
 	cd /home/leonor/tese/IK_MORF/catkin_ws/build/morf_ik && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/morf_controller_real.dir/link.txt --verbose=$(VERBOSE)

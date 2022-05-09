@@ -605,6 +605,20 @@ control/fast:
 	cd /home/leonor/tese/IK_MORF/catkin_ws/build && $(MAKE) $(MAKESILENT) -f morf_ik/CMakeFiles/control.dir/build.make morf_ik/CMakeFiles/control.dir/build
 .PHONY : control/fast
 
+# Convenience name for target.
+morf_ik/CMakeFiles/control_real.dir/rule:
+	cd /home/leonor/tese/IK_MORF/catkin_ws/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 morf_ik/CMakeFiles/control_real.dir/rule
+.PHONY : morf_ik/CMakeFiles/control_real.dir/rule
+
+# Convenience name for target.
+control_real: morf_ik/CMakeFiles/control_real.dir/rule
+.PHONY : control_real
+
+# fast build rule for target.
+control_real/fast:
+	cd /home/leonor/tese/IK_MORF/catkin_ws/build && $(MAKE) $(MAKESILENT) -f morf_ik/CMakeFiles/control_real.dir/build.make morf_ik/CMakeFiles/control_real.dir/build
+.PHONY : control_real/fast
+
 home/leonor/CoppeliaSim/programming/common/shared_memory.o: home/leonor/CoppeliaSim/programming/common/shared_memory.c.o
 .PHONY : home/leonor/CoppeliaSim/programming/common/shared_memory.o
 
@@ -682,7 +696,6 @@ include/controller.o: include/controller.cpp.o
 
 # target to build an object file
 include/controller.cpp.o:
-	cd /home/leonor/tese/IK_MORF/catkin_ws/build && $(MAKE) $(MAKESILENT) -f morf_ik/CMakeFiles/morf_controller_real.dir/build.make morf_ik/CMakeFiles/morf_controller_real.dir/include/controller.cpp.o
 	cd /home/leonor/tese/IK_MORF/catkin_ws/build && $(MAKE) $(MAKESILENT) -f morf_ik/CMakeFiles/control.dir/build.make morf_ik/CMakeFiles/control.dir/include/controller.cpp.o
 .PHONY : include/controller.cpp.o
 
@@ -691,7 +704,6 @@ include/controller.i: include/controller.cpp.i
 
 # target to preprocess a source file
 include/controller.cpp.i:
-	cd /home/leonor/tese/IK_MORF/catkin_ws/build && $(MAKE) $(MAKESILENT) -f morf_ik/CMakeFiles/morf_controller_real.dir/build.make morf_ik/CMakeFiles/morf_controller_real.dir/include/controller.cpp.i
 	cd /home/leonor/tese/IK_MORF/catkin_ws/build && $(MAKE) $(MAKESILENT) -f morf_ik/CMakeFiles/control.dir/build.make morf_ik/CMakeFiles/control.dir/include/controller.cpp.i
 .PHONY : include/controller.cpp.i
 
@@ -700,9 +712,35 @@ include/controller.s: include/controller.cpp.s
 
 # target to generate assembly for a file
 include/controller.cpp.s:
-	cd /home/leonor/tese/IK_MORF/catkin_ws/build && $(MAKE) $(MAKESILENT) -f morf_ik/CMakeFiles/morf_controller_real.dir/build.make morf_ik/CMakeFiles/morf_controller_real.dir/include/controller.cpp.s
 	cd /home/leonor/tese/IK_MORF/catkin_ws/build && $(MAKE) $(MAKESILENT) -f morf_ik/CMakeFiles/control.dir/build.make morf_ik/CMakeFiles/control.dir/include/controller.cpp.s
 .PHONY : include/controller.cpp.s
+
+include/controller_real.o: include/controller_real.cpp.o
+.PHONY : include/controller_real.o
+
+# target to build an object file
+include/controller_real.cpp.o:
+	cd /home/leonor/tese/IK_MORF/catkin_ws/build && $(MAKE) $(MAKESILENT) -f morf_ik/CMakeFiles/morf_controller_real.dir/build.make morf_ik/CMakeFiles/morf_controller_real.dir/include/controller_real.cpp.o
+	cd /home/leonor/tese/IK_MORF/catkin_ws/build && $(MAKE) $(MAKESILENT) -f morf_ik/CMakeFiles/control_real.dir/build.make morf_ik/CMakeFiles/control_real.dir/include/controller_real.cpp.o
+.PHONY : include/controller_real.cpp.o
+
+include/controller_real.i: include/controller_real.cpp.i
+.PHONY : include/controller_real.i
+
+# target to preprocess a source file
+include/controller_real.cpp.i:
+	cd /home/leonor/tese/IK_MORF/catkin_ws/build && $(MAKE) $(MAKESILENT) -f morf_ik/CMakeFiles/morf_controller_real.dir/build.make morf_ik/CMakeFiles/morf_controller_real.dir/include/controller_real.cpp.i
+	cd /home/leonor/tese/IK_MORF/catkin_ws/build && $(MAKE) $(MAKESILENT) -f morf_ik/CMakeFiles/control_real.dir/build.make morf_ik/CMakeFiles/control_real.dir/include/controller_real.cpp.i
+.PHONY : include/controller_real.cpp.i
+
+include/controller_real.s: include/controller_real.cpp.s
+.PHONY : include/controller_real.s
+
+# target to generate assembly for a file
+include/controller_real.cpp.s:
+	cd /home/leonor/tese/IK_MORF/catkin_ws/build && $(MAKE) $(MAKESILENT) -f morf_ik/CMakeFiles/morf_controller_real.dir/build.make morf_ik/CMakeFiles/morf_controller_real.dir/include/controller_real.cpp.s
+	cd /home/leonor/tese/IK_MORF/catkin_ws/build && $(MAKE) $(MAKESILENT) -f morf_ik/CMakeFiles/control_real.dir/build.make morf_ik/CMakeFiles/control_real.dir/include/controller_real.cpp.s
+.PHONY : include/controller_real.cpp.s
 
 include/coordinates.o: include/coordinates.cpp.o
 .PHONY : include/coordinates.o
@@ -866,6 +904,7 @@ help:
 	@echo "... std_msgs_generate_messages_nodejs"
 	@echo "... std_msgs_generate_messages_py"
 	@echo "... control"
+	@echo "... control_real"
 	@echo "... coords"
 	@echo "... gen_data"
 	@echo "... main"
@@ -883,6 +922,9 @@ help:
 	@echo "... include/controller.o"
 	@echo "... include/controller.i"
 	@echo "... include/controller.s"
+	@echo "... include/controller_real.o"
+	@echo "... include/controller_real.i"
+	@echo "... include/controller_real.s"
 	@echo "... include/coordinates.o"
 	@echo "... include/coordinates.i"
 	@echo "... include/coordinates.s"
