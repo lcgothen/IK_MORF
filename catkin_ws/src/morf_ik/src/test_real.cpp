@@ -82,7 +82,7 @@ int main(int argc, char **argv)
     MR.calcIK(stableMR);
     BR.calcIK(stableBR);
 
-    ros::init(argc, argv, "dynamixel_ros_driver");
+    ros::init(argc, argv, "morf_hw/dynamixel_ros_driver");
     ros::NodeHandle n;
 
     ros::Publisher controller_pub = n.advertise<std_msgs::Float32MultiArray>("multi_joint_commands", 1000);
