@@ -82,7 +82,7 @@ int main(int argc, char **argv)
     MR.calcIK(stableMR);
     BR.calcIK(stableBR);
 
-    ros::init(argc, argv, "IK_controller");
+    ros::init(argc, argv, "morf_hw");
     ros::NodeHandle n;
 
     ros::Publisher controller_pub = n.advertise<std_msgs::Float32MultiArray>("multi_joint_command", 1000);
