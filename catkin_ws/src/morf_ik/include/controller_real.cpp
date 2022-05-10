@@ -283,7 +283,7 @@ void CPG::walk(images stereo)
 void images::imageLeftCallback(const sensor_msgs::ImageConstPtr& msg)
 {
     cv::Mat gray = cv_bridge::toCvShare(msg, "bgr8")->image;
-    cv::cvtColor(gray, imageL, cv::COLOR_GRAY2RGB);
+    cv::applyColorMap(gray, imageL, cv::COLORMAP_JET);
     
     imwrite("imageL.png", imageL);
 }
