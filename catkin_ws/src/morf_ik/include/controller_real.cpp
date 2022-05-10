@@ -291,6 +291,9 @@ void images::imageLeftCallback(const sensor_msgs::ImageConstPtr& msg)
     params.minArea = 0;
     params.filterByCircularity = true;
     params.minCircularity = 0.9;
+    params.filterByArea = true;
+    params.minArea = 1500;
+
 
     // params.maxArea = 100;
 
