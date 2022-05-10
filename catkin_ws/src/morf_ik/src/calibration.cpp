@@ -23,8 +23,8 @@ using namespace controller;
 
 int main(int argc, char **argv)
 {
-    int l=4, w=4;
-    float size=1/30;
+    int l=8, w=6;
+    float size=2;
 
     std::vector<cv::Point3f> posXadrez;
     for(int i=0; i<w; i++)
@@ -38,10 +38,10 @@ int main(int argc, char **argv)
 
     cv::Mat imgL, imgR;
 
-    for(int i=0; i<5; i++)
+    for(int i=0; i<10; i++)
     {
-        imgL = cv::imread("/home/leonor/tese/IK_MORF/catkin_ws/devel/lib/morf_IK/calib_imgs/L0"+std::to_string(i+1)+".jpg");
-        imgR = cv::imread("/home/leonor/tese/IK_MORF/catkin_ws/devel/lib/morf_IK/calib_imgs/R0"+std::to_string(i+1)+".jpg");
+        imgL = cv::imread("/home/leonor/tese/IK_MORF/catkin_ws/devel/lib/morf_ik/calib_imgs/L"+std::to_string(i+1)+".jpg");
+        imgR = cv::imread("/home/leonor/tese/IK_MORF/catkin_ws/devel/lib/morf_ik/calib_imgs/R"+std::to_string(i+1)+".jpg");
 
         std::vector<cv::Point2f> cornersL, cornersR;
         bool doneL = cv::findChessboardCorners(imgL, cv::Size(l,w), cornersL);

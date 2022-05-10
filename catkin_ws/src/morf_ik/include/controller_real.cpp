@@ -283,29 +283,29 @@ void CPG::walk(images stereo)
 void images::imageLeftCallback(const sensor_msgs::ImageConstPtr& msg)
 {
     imageL = cv_bridge::toCvShare(msg, "bgr8")->image;
-    // cv::Mat gray = cv_bridge::toCvShare(msg, "bgr8")->image;
-    // cv::applyColorMap(gray, imageL, cv::COLORMAP_HSV);
-
-    cv::SimpleBlobDetector::Params params;
-    params.filterByArea = true;
-    params.minArea = 0;
-    params.filterByCircularity = true;
-    params.minCircularity = 0.9;
-    params.filterByArea = true;
-    params.minArea = 1000;
+    imwrite("imageL.png", imageL);
 
 
-    // params.maxArea = 100;
+    // cv::SimpleBlobDetector::Params params;
+    // params.filterByArea = true;
+    // params.minArea = 0;
+    // params.filterByCircularity = true;
+    // params.minCircularity = 0.9;
+    // params.filterByArea = true;
+    // params.minArea = 1000;
 
 
-    cv::Ptr<cv::SimpleBlobDetector> detector = cv::SimpleBlobDetector::create(params);
-    std::vector<cv::KeyPoint> keypointsL;
-    detector->detect(imageL, keypointsL);
+    // // params.maxArea = 100;
 
-    cv::Mat imgKey;
-    cv::drawKeypoints( imageL, keypointsL, imgKey, cv::Scalar(0,0,255), cv::DrawMatchesFlags::DRAW_RICH_KEYPOINTS );
+
+    // cv::Ptr<cv::SimpleBlobDetector> detector = cv::SimpleBlobDetector::create(params);
+    // std::vector<cv::KeyPoint> keypointsL;
+    // detector->detect(imageL, keypointsL);
+
+    // cv::Mat imgKey;
+    // cv::drawKeypoints( imageL, keypointsL, imgKey, cv::Scalar(0,0,255), cv::DrawMatchesFlags::DRAW_RICH_KEYPOINTS );
     
-    imwrite("imageL.png", imgKey);
+    // imwrite("imageL.png", imgKey);
 }
 
 void images::imageRightCallback(const sensor_msgs::ImageConstPtr& msg)

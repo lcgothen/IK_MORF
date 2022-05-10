@@ -653,6 +653,19 @@ nn/fast:
 .PHONY : nn/fast
 
 #=============================================================================
+# Target rules for targets named calib
+
+# Build rule for target.
+calib: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 calib
+.PHONY : calib
+
+# fast build rule for target.
+calib/fast:
+	$(MAKE) $(MAKESILENT) -f morf_ik/CMakeFiles/calib.dir/build.make morf_ik/CMakeFiles/calib.dir/build
+.PHONY : calib/fast
+
+#=============================================================================
 # Target rules for targets named morf_controller_real
 
 # Build rule for target.
@@ -747,6 +760,7 @@ help:
 	@echo "... std_msgs_generate_messages_nodejs"
 	@echo "... std_msgs_generate_messages_py"
 	@echo "... tests"
+	@echo "... calib"
 	@echo "... control"
 	@echo "... control_real"
 	@echo "... coords"

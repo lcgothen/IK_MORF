@@ -564,6 +564,20 @@ nn/fast:
 .PHONY : nn/fast
 
 # Convenience name for target.
+morf_ik/CMakeFiles/calib.dir/rule:
+	cd /home/leonor/tese/IK_MORF/catkin_ws/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 morf_ik/CMakeFiles/calib.dir/rule
+.PHONY : morf_ik/CMakeFiles/calib.dir/rule
+
+# Convenience name for target.
+calib: morf_ik/CMakeFiles/calib.dir/rule
+.PHONY : calib
+
+# fast build rule for target.
+calib/fast:
+	cd /home/leonor/tese/IK_MORF/catkin_ws/build && $(MAKE) $(MAKESILENT) -f morf_ik/CMakeFiles/calib.dir/build.make morf_ik/CMakeFiles/calib.dir/build
+.PHONY : calib/fast
+
+# Convenience name for target.
 morf_ik/CMakeFiles/morf_controller_real.dir/rule:
 	cd /home/leonor/tese/IK_MORF/catkin_ws/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 morf_ik/CMakeFiles/morf_controller_real.dir/rule
 .PHONY : morf_ik/CMakeFiles/morf_controller_real.dir/rule
@@ -769,6 +783,30 @@ include/coordinates.cpp.s:
 	cd /home/leonor/tese/IK_MORF/catkin_ws/build && $(MAKE) $(MAKESILENT) -f morf_ik/CMakeFiles/coords.dir/build.make morf_ik/CMakeFiles/coords.dir/include/coordinates.cpp.s
 .PHONY : include/coordinates.cpp.s
 
+src/calibration.o: src/calibration.cpp.o
+.PHONY : src/calibration.o
+
+# target to build an object file
+src/calibration.cpp.o:
+	cd /home/leonor/tese/IK_MORF/catkin_ws/build && $(MAKE) $(MAKESILENT) -f morf_ik/CMakeFiles/calib.dir/build.make morf_ik/CMakeFiles/calib.dir/src/calibration.cpp.o
+.PHONY : src/calibration.cpp.o
+
+src/calibration.i: src/calibration.cpp.i
+.PHONY : src/calibration.i
+
+# target to preprocess a source file
+src/calibration.cpp.i:
+	cd /home/leonor/tese/IK_MORF/catkin_ws/build && $(MAKE) $(MAKESILENT) -f morf_ik/CMakeFiles/calib.dir/build.make morf_ik/CMakeFiles/calib.dir/src/calibration.cpp.i
+.PHONY : src/calibration.cpp.i
+
+src/calibration.s: src/calibration.cpp.s
+.PHONY : src/calibration.s
+
+# target to generate assembly for a file
+src/calibration.cpp.s:
+	cd /home/leonor/tese/IK_MORF/catkin_ws/build && $(MAKE) $(MAKESILENT) -f morf_ik/CMakeFiles/calib.dir/build.make morf_ik/CMakeFiles/calib.dir/src/calibration.cpp.s
+.PHONY : src/calibration.cpp.s
+
 src/gen_data.o: src/gen_data.cpp.o
 .PHONY : src/gen_data.o
 
@@ -903,6 +941,7 @@ help:
 	@echo "... std_msgs_generate_messages_lisp"
 	@echo "... std_msgs_generate_messages_nodejs"
 	@echo "... std_msgs_generate_messages_py"
+	@echo "... calib"
 	@echo "... control"
 	@echo "... control_real"
 	@echo "... coords"
@@ -928,6 +967,9 @@ help:
 	@echo "... include/coordinates.o"
 	@echo "... include/coordinates.i"
 	@echo "... include/coordinates.s"
+	@echo "... src/calibration.o"
+	@echo "... src/calibration.i"
+	@echo "... src/calibration.s"
 	@echo "... src/gen_data.o"
 	@echo "... src/gen_data.i"
 	@echo "... src/gen_data.s"
