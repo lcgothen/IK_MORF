@@ -289,6 +289,9 @@ void images::imageLeftCallback(const sensor_msgs::ImageConstPtr& msg)
     cv::SimpleBlobDetector::Params params;
     params.filterByArea = true;
     params.minArea = 0;
+    params.filterByCircularity = true;
+    params.minCircularity = 0.9;
+
     // params.maxArea = 100;
 
 
