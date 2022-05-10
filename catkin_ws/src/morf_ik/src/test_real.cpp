@@ -33,6 +33,19 @@ N_TRIALS: number of trials
 
 ******************************************************/
 
+void imageCallback(const sensor_msgs::ImageConstPtr& msg)
+{
+  try
+  {
+    cv::imshow("view", cv_bridge::toCvShare(msg, "bgr8")->image);
+    cv::waitKey(30);
+  }
+  catch (cv_bridge::Exception& e)
+  {
+    ROS_ERROR("Could not convert from '%s' to 'bgr8'.", msg->encoding.c_str());
+  }
+}
+
 
 int main(int argc, char **argv)
 {
@@ -90,8 +103,15 @@ int main(int argc, char **argv)
     image_transport::ImageTransport it(n);
 
     ros::Publisher controller_pub = n.advertise<std_msgs::Float32MultiArray>("/morf_hw/multi_joint_command", 1000);
-    image_transport::Subscriber imageLeft_sub = it.subscribe("/camera/fisheye1/image_raw", 1, &images::imageLeftCallback, &stereo);
-    image_transport::Subscriber imageRight_sub = it.subscribe("/camera/fisheye2/image_raw", 1, &images::imageRightCallback, &stereo);
+    // image_transport::Subscriber imageLeft_sub = it.subscribe("/camera/fisheye1/image_raw", 1, &images::imageLeftCallback, &stereo);
+    // image_transport::Subscriber imageRight_sub = it.subscribe("/camera/fisheye2/image_raw", 1, &images::imageRightCallback, &stereo);
+
+
+    cv::namedWindow("view");
+
+    image_transport::Subscriber sub = it.subscribe("/camera/fisheye1/image_raw", 1, imageCallback);
+    ros::spin();
+    //cv::destroyWindow("view");
 
 
     ros::Rate loop_rate(10);
