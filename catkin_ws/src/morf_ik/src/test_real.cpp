@@ -33,22 +33,6 @@ N_TRIALS: number of trials
 
 ******************************************************/
 
-void imageCallback(const sensor_msgs::ImageConstPtr& msg)
-{
-    std::cout << "got this far" << std::endl;
-  try
-  {
-    // cv::imshow("view", cv_bridge::toCvShare(msg, "bgr8")->image);
-    // std::cout << "received image" << std::endl;
-    // cv::waitKey(30);
-    imwrite("imageL.png", cv_bridge::toCvShare(msg, "bgr8")->image);
-  }
-  catch (cv_bridge::Exception& e)
-  {
-    ROS_ERROR("Could not convert from '%s' to 'bgr8'.", msg->encoding.c_str());
-  }
-}
-
 
 int main(int argc, char **argv)
 {
@@ -103,22 +87,11 @@ int main(int argc, char **argv)
 
     ros::init(argc, argv, "IK_controller");
     ros::NodeHandle n;
-    std::cout << "not here" << std::endl;
     image_transport::ImageTransport it(n);
-    std::cout << "not here either" << std::endl;
 
     ros::Publisher controller_pub = n.advertise<std_msgs::Float32MultiArray>("/morf_hw/multi_joint_command", 1000);
-    // image_transport::Subscriber imageLeft_sub = it.subscribe("/camera/fisheye1/image_raw", 1, &images::imageLeftCallback, &stereo);
-    // image_transport::Subscriber imageRight_sub = it.subscribe("/camera/fisheye2/image_raw", 1, &images::imageRightCallback, &stereo);
-
-
-    // cv::namedWindow("view");
-    std::cout << "not here either 2" << std::endl;
-
-    image_transport::Subscriber sub = it.subscribe("/camera/fisheye1/image_raw", 1, imageCallback);
-    std::cout << "or here" << std::endl;
-    ros::spin();
-    //cv::destroyWindow("view");
+    image_transport::Subscriber imageLeft_sub = it.subscribe("/camera/fisheye1/image_raw", 1, &images::imageLeftCallback, &stereo);
+    image_transport::Subscriber imageRight_sub = it.subscribe("/camera/fisheye2/image_raw", 1, &images::imageRightCallback, &stereo);
 
 
     ros::Rate loop_rate(10);

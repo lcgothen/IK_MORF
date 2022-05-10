@@ -283,18 +283,13 @@ void CPG::walk(images stereo)
 void images::imageLeftCallback(const sensor_msgs::ImageConstPtr& msg)
 {
     imageL = cv_bridge::toCvShare(msg, "bgr8")->image;
-    //imwrite("imageL.png", imageL);
-    cv::imshow("imageL", imageL);
-    std::cout << "helloL" << std::endl;
-    cv::waitKey(30);
+    imwrite("imageL.png", imageL);
 }
 
 void images::imageRightCallback(const sensor_msgs::ImageConstPtr& msg)
 {
     imageR = cv_bridge::toCvShare(msg, "bgr8")->image;
-    // imwrite("imageR.png", imageR);
-    // cv::imshow("imageR", imageR);
-    // std::cout << "helloR" << std::endl;
+    imwrite("imageR.png", imageR);
 }
 
 void images::generalImgCallback(const sensor_msgs::ImageConstPtr& msg)
