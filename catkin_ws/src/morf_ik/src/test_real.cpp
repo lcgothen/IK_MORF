@@ -38,9 +38,10 @@ void imageCallback(const sensor_msgs::ImageConstPtr& msg)
     std::cout << "got this far" << std::endl;
   try
   {
-    cv::imshow("view", cv_bridge::toCvShare(msg, "bgr8")->image);
-    std::cout << "received image" << std::endl;
-    cv::waitKey(30);
+    // cv::imshow("view", cv_bridge::toCvShare(msg, "bgr8")->image);
+    // std::cout << "received image" << std::endl;
+    // cv::waitKey(30);
+    imwrite("imageL.png", cv_bridge::toCvShare(msg, "bgr8")->image);
   }
   catch (cv_bridge::Exception& e)
   {
@@ -111,7 +112,7 @@ int main(int argc, char **argv)
     // image_transport::Subscriber imageRight_sub = it.subscribe("/camera/fisheye2/image_raw", 1, &images::imageRightCallback, &stereo);
 
 
-    cv::namedWindow("view");
+    // cv::namedWindow("view");
     std::cout << "not here either 2" << std::endl;
 
     image_transport::Subscriber sub = it.subscribe("/camera/fisheye1/image_raw", 1, imageCallback);
