@@ -90,8 +90,8 @@ int main(int argc, char **argv)
     image_transport::ImageTransport it(n);
 
     ros::Publisher controller_pub = n.advertise<std_msgs::Float32MultiArray>("/morf_hw/multi_joint_command", 1000);
-    image_transport::Subscriber imageLeft_sub = it.subscribe("imageLeft", 1, &images::imageLeftCallback, &stereo);
-    image_transport::Subscriber imageRight_sub = it.subscribe("imageRight", 1, &images::imageRightCallback, &stereo);
+    image_transport::Subscriber imageLeft_sub = it.subscribe("/camera/fisheye1/image_raw", 1, &images::imageLeftCallback, &stereo);
+    image_transport::Subscriber imageRight_sub = it.subscribe("/camera/fisheye2/image_raw", 1, &images::imageRightCallback, &stereo);
 
 
     ros::Rate loop_rate(10);
