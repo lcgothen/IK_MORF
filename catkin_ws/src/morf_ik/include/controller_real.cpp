@@ -303,7 +303,7 @@ void images::imageLeftCallback(const sensor_msgs::ImageConstPtr& msg)
     detector->detect(imageL, keypointsL);
 
     cv::Mat imgKey;
-    cv::drawKeypoints(imageL, keypointsL, imgKey);
+    cv::drawKeypoints( imageL, keypointsL, imgKey, cv::Scalar(0,0,255), cv::DrawMatchesFlags::DRAW_RICH_KEYPOINTS );
     
     imwrite("imageL.png", imgKey);
 }
