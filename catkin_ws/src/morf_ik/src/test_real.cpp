@@ -104,6 +104,7 @@ int main(int argc, char **argv)
     ros::NodeHandle n;
     std::cout << "not here" << std::endl;
     image_transport::ImageTransport it(n);
+    std::cout << "not here either" << std::endl;
 
     ros::Publisher controller_pub = n.advertise<std_msgs::Float32MultiArray>("/morf_hw/multi_joint_command", 1000);
     // image_transport::Subscriber imageLeft_sub = it.subscribe("/camera/fisheye1/image_raw", 1, &images::imageLeftCallback, &stereo);
@@ -111,7 +112,7 @@ int main(int argc, char **argv)
 
 
     cv::namedWindow("view");
-    std::cout << "not here either" << std::endl;
+    std::cout << "not here either 2" << std::endl;
 
     image_transport::Subscriber sub = it.subscribe("/camera/fisheye1/image_raw", 1, imageCallback);
     std::cout << "or here" << std::endl;
