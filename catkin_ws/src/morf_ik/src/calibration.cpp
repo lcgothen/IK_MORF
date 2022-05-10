@@ -30,7 +30,7 @@ int main(int argc, char **argv)
     for(int i=0; i<w; i++)
     {
         for(int j=0; j<l; j++)
-        posXadrez.push_back(cv::Point3f(i*size,j*size,0));
+            posXadrez.push_back(cv::Point3f(i*size,j*size,0));
     }
 
     std::vector<std::vector<cv::Point3f>> good_points;

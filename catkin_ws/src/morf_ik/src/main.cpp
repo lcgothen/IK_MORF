@@ -72,7 +72,7 @@ int main(int argc, char **argv)
         robot morf;
         images stereo;
 
-        std::string ann_path = "./neural_networks/data_4div_direct/batch_02_05_01_50000_02_09/";
+        std::string ann_path = "./neural_networks/data_4div_direct/batch_01_10_01_50000_02_09/";
 
         ros::init(argc, argv, "IK_controller");
         ros::NodeHandle n;

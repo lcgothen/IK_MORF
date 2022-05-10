@@ -56,8 +56,6 @@ void robot::jointPosCallback(const std_msgs::Float32MultiArray::ConstPtr& msg)
     BR.th1 = msg->data[15];
     BR.th2 = msg->data[16];
     BR.th3 = msg->data[17];
-
-    std::cout << "hello" << std::endl;
 }
 
 void robot::forceSensCallback(const std_msgs::Float32MultiArray::ConstPtr& msg)
@@ -285,11 +283,13 @@ void CPG::walk(images stereo)
 void images::imageLeftCallback(const sensor_msgs::ImageConstPtr& msg)
 {
     imageL = cv_bridge::toCvShare(msg, "bgr8")->image;
+    imwrite("imageL.png", imageL);
 }
 
 void images::imageRightCallback(const sensor_msgs::ImageConstPtr& msg)
 {
     imageR = cv_bridge::toCvShare(msg, "bgr8")->image;
+    imwrite("imageR.png", imageR);
 }
 
 void images::generalImgCallback(const sensor_msgs::ImageConstPtr& msg)

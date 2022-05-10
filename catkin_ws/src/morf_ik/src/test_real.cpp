@@ -82,13 +82,17 @@ int main(int argc, char **argv)
     MR.calcIK(stableMR);
     BR.calcIK(stableBR);
 
+    robot morf;
+    images stereo;
+
     ros::init(argc, argv, "IK_controller");
     ros::NodeHandle n;
+    image_transport::ImageTransport it(n);
 
     ros::Publisher controller_pub = n.advertise<std_msgs::Float32MultiArray>("/morf_hw/multi_joint_command", 1000);
+    image_transport::Subscriber imageLeft_sub = it.subscribe("imageLeft", 1, &images::imageLeftCallback, &stereo);
+    image_transport::Subscriber imageRight_sub = it.subscribe("imageRight", 1, &images::imageRightCallback, &stereo);
 
-    robot morf;
-    ros::Subscriber jointPos_sub = n.subscribe("joint_positions", 1000, &robot::jointPosCallback, &morf);
 
     ros::Rate loop_rate(10);
     std_msgs::Float32MultiArray IK_order;
