@@ -282,10 +282,24 @@ void CPG::walk(images stereo)
 
 void images::imageLeftCallback(const sensor_msgs::ImageConstPtr& msg)
 {
-    cv::Mat gray = cv_bridge::toCvShare(msg, "bgr8")->image;
-    cv::applyColorMap(gray, imageL, cv::COLORMAP_HSV);
+    imageL = cv_bridge::toCvShare(msg, "bgr8")->image;
+    // cv::Mat gray = cv_bridge::toCvShare(msg, "bgr8")->image;
+    // cv::applyColorMap(gray, imageL, cv::COLORMAP_HSV);
+
+    cv::SimpleBlobDetector::Params params;
+    params.filterByArea = true;
+    params.minArea = 0;
+    // params.maxArea = 100;
+
+
+    cv::Ptr<cv::SimpleBlobDetector> detector = cv::SimpleBlobDetector::create(params);
+    std::vector<cv::KeyPoint> keypointsL;
+    detector->detect(imageL, keypointsL);
+
+    cv::Mat imgKey;
+    cv::drawKeypoints(imageL, keypointsL, imgKey);
     
-    imwrite("imageL.png", imageL);
+    imwrite("imageL.png", imgKey);
 }
 
 void images::imageRightCallback(const sensor_msgs::ImageConstPtr& msg)
