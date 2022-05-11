@@ -419,12 +419,12 @@ void images::blob()
     params.minArea = 800;
     params.filterByCircularity = true;
     params.minCircularity = 0.8;
-    params.maxCircularity = 1.1;
+    params.maxCircularity = 1.0;
 
 
 
     cv::Ptr<cv::SimpleBlobDetector> detector = cv::SimpleBlobDetector::create(params);
-    std::vector<cv::KeyPoint> keypointsL, keypointsR, keypointsGreenL, keypointsGreenR;
+    std::vector<cv::KeyPoint> keypointsL, keypointsR;
     detector->detect(imageL, keypointsL);
     detector->detect(imageR, keypointsR);
 
