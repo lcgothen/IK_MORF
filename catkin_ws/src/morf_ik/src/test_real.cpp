@@ -99,17 +99,31 @@ int main(int argc, char **argv)
 
     while(ros::ok())
     {
-        if(!stereo.imageL.empty() && !stereo.imageR.empty())
+        if(!stereo.imageL.empty() && !stereo.imageR.empty() && !stereo.nearZ)
         {
             stereo.blob();
         }
+        else if(stereo.nearZ)
+        {
+            posFL = stereo.target.camLeft2morf(); 
+            posFL = posFL.morf2FL(); 
+            FL.calcIK(posFL);
 
-        IK_order.data =    {11, FL.th1, 12, FL.th2, 13, FL.th3,
-                            21, ML.th1, 22, ML.th2, 23, ML.th3,
-                            31, BL.th1, 32, BL.th2, 33, BL.th3,
-                            41, FR.th1, 42, FR.th2, 43, FR.th3,
-                            51, MR.th1, 52, MR.th2, 53, MR.th3,
-                            61, BR.th1, 62, BR.th2, 63, BR.th3};
+            IK_order.data =    {11, FL.th1, 12, FL.th2, 13, FL.th3,
+                                21, ML.th1, 22, ML.th2, 23, ML.th3,
+                                31, BL.th1, 32, BL.th2, 33, BL.th3,
+                                41, FR.th1, 42, FR.th2, 43, FR.th3,
+                                51, MR.th1, 52, MR.th2, 53, MR.th3,
+                                61, BR.th1, 62, BR.th2, 63, BR.th3};
+        }
+
+        // IK_order.data =    {11, FL.th1, 12, FL.th2, 13, FL.th3,
+        //                     21, ML.th1, 22, ML.th2, 23, ML.th3,
+        //                     31, BL.th1, 32, BL.th2, 33, BL.th3,
+        //                     41, FR.th1, 42, FR.th2, 43, FR.th3,
+        //                     51, MR.th1, 52, MR.th2, 53, MR.th3,
+        //                     61, BR.th1, 62, BR.th2, 63, BR.th3};
+
 
         controller_pub.publish(IK_order);
         ros::spinOnce();
