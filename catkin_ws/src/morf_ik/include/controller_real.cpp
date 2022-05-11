@@ -395,7 +395,7 @@ void images::blob()
 {
     cv::Mat undistortedL, undistortedR;
 
-    cv::Mat cameraMatrixL, distCoeffsL, cameraMatrixR, distCoeffsR, RL, RR;
+    cv::Mat cameraMatrixL, distCoeffsL, cameraMatrixR, distCoeffsR, RL, RR, newMatrixL, newMatrixR;
     cv::FileStorage matrixFile("matrices.yml", cv::FileStorage::READ);
     matrixFile["cameraMatrixL"] >> cameraMatrixL;
     matrixFile["distCoeffsL"] >> distCoeffsL;
@@ -403,15 +403,17 @@ void images::blob()
     matrixFile["distCoeffsR"] >> distCoeffsR;
     matrixFile["RL"] >> RL;
     matrixFile["RR"] >> RR;
+    matrixFile["newMatrixL"] >> newMatrixL;
+    matrixFile["newMatrixR"] >> newMatrixR;
 
     cv::Mat map1, map2;
 
     std::cout << cameraMatrixL << std::endl;
 
-    cv::fisheye::initUndistortRectifyMap(cameraMatrixL, distCoeffsL, RL, cameraMatrixL, imageL.size(), CV_16SC2, map1, map2);
+    cv::fisheye::initUndistortRectifyMap(cameraMatrixL, distCoeffsL, RL, newMatrixL, imageL.size(), CV_16SC2, map1, map2);
     cv::remap(imageL, imageL, map1, map2, cv::INTER_LINEAR, cv::BORDER_CONSTANT);
 
-    cv::fisheye::initUndistortRectifyMap(cameraMatrixR, distCoeffsR, RR, cameraMatrixR, imageR.size(), CV_16SC2, map1, map2);
+    cv::fisheye::initUndistortRectifyMap(cameraMatrixR, distCoeffsR, RR, newMatrixR, imageR.size(), CV_16SC2, map1, map2);
     cv::remap(imageR, imageR, map1, map2, cv::INTER_LINEAR, cv::BORDER_CONSTANT);
 
     cv::SimpleBlobDetector::Params params;

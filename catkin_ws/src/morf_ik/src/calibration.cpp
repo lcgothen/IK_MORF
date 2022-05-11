@@ -102,13 +102,23 @@ int main(int argc, char **argv)
 
     cv::fisheye::stereoRectify(cameraMatrixL, distCoeffsL, cameraMatrixR, distCoeffsR, imgL.size(), R, T, RL, RR, PL, PR, Q, 0, newImageSize);
 
+    cv::Mat newMatrixL = cameraMatrixL.clone();
+    newMatrixL.at<double>(0,0) *= 0.6; 
+    newMatrixL.at<double>(1,1) *= 0.6; 
+
+    cv::Mat newMatrixR = cameraMatrixR.clone();
+    newMatrixR.at<double>(0,0) *= 0.6; 
+    newMatrixR.at<double>(1,1) *= 0.6; 
+
     cv::FileStorage matrixFile("matrices.yml", cv::FileStorage::WRITE);
     matrixFile << "cameraMatrixL" << cameraMatrixL;
     matrixFile << "distCoeffsL" << distCoeffsL;
     matrixFile << "RL" << RL;
+    matrixFile << "newMatrixL" << newMatrixL;
     matrixFile << "cameraMatrixR" << cameraMatrixR;
     matrixFile << "distCoeffsR" << distCoeffsR;
     matrixFile << "RR" << RR;
+    matrixFile << "newMatrixR" << newMatrixR;
 
     // cv::fisheye::initUndistortRectifyMap(cameraMatrixL, distCoeffsL, RL, PL, imgL.size(), CV_16SC2, map1, map2);
 
@@ -117,13 +127,6 @@ int main(int argc, char **argv)
     // std::cout << RL << std::endl;
     // std::cout << PL << std::endl;
 
-    cv::Mat newMatrixL = cameraMatrixL.clone();
-    newMatrixL.at<double>(0,0) *= 0.6; 
-    newMatrixL.at<double>(1,1) *= 0.6; 
-
-    cv::Mat newMatrixR = cameraMatrixR.clone();
-    newMatrixR.at<double>(0,0) *= 0.6; 
-    newMatrixR.at<double>(1,1) *= 0.6; 
 
     // std::cout << newMatrixL << std::endl;
 
