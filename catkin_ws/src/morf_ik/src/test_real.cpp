@@ -99,6 +99,10 @@ int main(int argc, char **argv)
 
     while(ros::ok())
     {
+        if(!stereo.imageL.empty() && !stereo.imageR.empty())
+        {
+            stereo.blob();
+        }
 
         IK_order.data =    {11, FL.th1, 12, FL.th2, 13, FL.th3,
                             21, ML.th1, 22, ML.th2, 23, ML.th3,

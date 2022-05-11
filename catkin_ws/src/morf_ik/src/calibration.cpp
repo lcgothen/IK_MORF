@@ -38,9 +38,8 @@ int main(int argc, char **argv)
 
     cv::Mat imgL, imgR;
 
-    for(int i=0; i<5; i++)
+    for(int i=0; i<6; i++)
     {
-        // std::cout << i << std::endl;
         imgL = cv::imread("/home/leonor/tese/IK_MORF/catkin_ws/devel/lib/morf_ik/calib_imgs/L"+std::to_string(i)+".png");
         imgR = cv::imread("/home/leonor/tese/IK_MORF/catkin_ws/devel/lib/morf_ik/calib_imgs/R"+std::to_string(i)+".png");
 
@@ -63,8 +62,9 @@ int main(int argc, char **argv)
             all_cornersR.push_back(cornersR_d);
         }
 
+        // std::cout << i << std::endl;
         // cv::imshow("imgL",imgL);
-	    // cv::waitKey(30);
+	    // cv::waitKey(0);
 
     }
 
@@ -91,7 +91,9 @@ int main(int argc, char **argv)
     cv::Mat map1, map2;
     cv::Size newImageSize;
 
-    cv::Mat undistortedL;
+    cv::Mat undistortedL, undistortedR;
+    imgL = cv::imread("/home/leonor/tese/IK_MORF/catkin_ws/devel/lib/morf_ik/calib_imgs/L1.png");
+    imgR = cv::imread("/home/leonor/tese/IK_MORF/catkin_ws/devel/lib/morf_ik/calib_imgs/R1.png");
 
     cv::fisheye::stereoRectify(cameraMatrixL, distCoeffsL, cameraMatrixR, distCoeffsR, imgL.size(), R, T, RL, RR, PL, PR, Q, 0);
 
@@ -103,13 +105,18 @@ int main(int argc, char **argv)
     std::cout << PL << std::endl;
 
     cv::fisheye::initUndistortRectifyMap(cameraMatrixL, distCoeffsL, RL, cameraMatrixL, imgL.size(), CV_16SC2, map1, map2);
-
     cv::remap(imgL, undistortedL, map1, map2, cv::INTER_LINEAR, cv::BORDER_CONSTANT);
+
+    cv::fisheye::initUndistortRectifyMap(cameraMatrixR, distCoeffsR, RR, cameraMatrixR, imgR.size(), CV_16SC2, map1, map2);
+    cv::remap(imgR, undistortedR, map1, map2, cv::INTER_LINEAR, cv::BORDER_CONSTANT);
+
+    
     
     // //cv::fisheye::undistortImage(imgL, undistortedL, cameraMatrixL, distCoeffsL);
 
     // // std::cout << undistortedL << std::endl;
-    cv::imwrite("undistorted.png", undistortedL);
+    cv::imwrite("undistortedL.png", undistortedL);
+    cv::imwrite("undistortedR.png", undistortedR);
 
 
 
