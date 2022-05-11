@@ -1180,6 +1180,10 @@ morf_ik/CMakeFiles/control_real.dir/include/controller_real.cpp.o: /home/leonor/
   /usr/include/opencv2/flann/miniflann.hpp \
   /usr/include/opencv2/flann/defines.h \
   /usr/include/opencv2/flann/config.h \
+  /usr/include/opencv2/calib3d/calib3d.hpp \
+  /usr/include/opencv2/calib3d.hpp \
+  /usr/include/opencv2/core/affine.hpp \
+  /usr/include/opencv2/calib3d/calib3d_c.h \
   /usr/local/include/floatfann.h \
   /usr/local/include/fann.h \
   /usr/local/include/fann_error.h \
@@ -1211,6 +1215,8 @@ morf_ik/CMakeFiles/control_real.dir/include/controller_real.cpp.o: /home/leonor/
 /usr/local/include/fann.h:
 
 /usr/local/include/floatfann.h:
+
+/usr/include/opencv2/core/affine.hpp:
 
 /usr/include/opencv2/flann/config.h:
 
@@ -1997,6 +2003,8 @@ morf_ik/CMakeFiles/control_real.dir/include/controller_real.cpp.o: /home/leonor/
 /usr/include/boost/mpl/assert.hpp:
 
 /usr/include/boost/mpl/aux_/preprocessed/gcc/minus.hpp:
+
+/usr/include/opencv2/calib3d.hpp:
 
 /usr/include/c++/7/climits:
 
@@ -3154,6 +3162,8 @@ morf_ik/CMakeFiles/control_real.dir/include/controller_real.cpp.o: /home/leonor/
 
 /usr/include/boost/mpl/list/aux_/O1_size.hpp:
 
+/usr/include/opencv2/calib3d/calib3d_c.h:
+
 /usr/include/boost/preprocessor/seq/transform.hpp:
 
 /usr/include/boost/mpl/list/aux_/begin_end.hpp:
@@ -3415,6 +3425,8 @@ morf_ik/CMakeFiles/control_real.dir/include/controller_real.cpp.o: /home/leonor/
 /usr/include/boost/mpl/aux_/config/msvc_typename.hpp:
 
 /usr/include/boost/mpl/vector/vector20.hpp:
+
+/usr/include/opencv2/calib3d/calib3d.hpp:
 
 /opt/ros/melodic/include/sensor_msgs/Image.h:
 

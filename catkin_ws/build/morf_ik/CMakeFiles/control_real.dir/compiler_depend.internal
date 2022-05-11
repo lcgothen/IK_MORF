@@ -1181,6 +1181,10 @@ morf_ik/CMakeFiles/control_real.dir/include/controller_real.cpp.o
  /usr/include/opencv2/flann/miniflann.hpp
  /usr/include/opencv2/flann/defines.h
  /usr/include/opencv2/flann/config.h
+ /usr/include/opencv2/calib3d/calib3d.hpp
+ /usr/include/opencv2/calib3d.hpp
+ /usr/include/opencv2/core/affine.hpp
+ /usr/include/opencv2/calib3d/calib3d_c.h
  /usr/local/include/floatfann.h
  /usr/local/include/fann.h
  /usr/local/include/fann_error.h
