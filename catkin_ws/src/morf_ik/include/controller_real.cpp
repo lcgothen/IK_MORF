@@ -412,7 +412,7 @@ void images::blob()
     cv::drawKeypoints(imageL, keypointsL, imgKey, cv::Scalar(0,0,255), cv::DrawMatchesFlags::DRAW_RICH_KEYPOINTS );
     imwrite("imageL.png", imgKey);
     cv::drawKeypoints(imageR, keypointsR, imgKey, cv::Scalar(0,0,255), cv::DrawMatchesFlags::DRAW_RICH_KEYPOINTS );
-    imwrite("imageL.png", imgKey);
+    imwrite("imageR.png", imgKey);
 
 
     if(!keypointsL.empty() && !keypointsR.empty())
