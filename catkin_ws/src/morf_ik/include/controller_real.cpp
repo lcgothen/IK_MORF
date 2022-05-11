@@ -416,9 +416,9 @@ void images::blob()
 
     cv::SimpleBlobDetector::Params params;
     params.filterByArea = true;
-    params.minArea = 800;
+    params.minArea = 1200;
     params.filterByCircularity = true;
-    params.minCircularity = 0.8;
+    params.minCircularity = 0.7;
     params.maxCircularity = 1.0;
 
 
