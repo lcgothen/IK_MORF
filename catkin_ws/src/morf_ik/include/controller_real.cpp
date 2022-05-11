@@ -410,17 +410,17 @@ void images::blob()
 
     std::cout << cameraMatrixL << std::endl;
 
-    cv::fisheye::initUndistortRectifyMap(cameraMatrixL, distCoeffsL, RL, newMatrixL, imageL.size(), CV_16SC2, map1, map2);
-    cv::remap(imageL, imageL, map1, map2, cv::INTER_LINEAR, cv::BORDER_CONSTANT);
+    // cv::fisheye::initUndistortRectifyMap(cameraMatrixL, distCoeffsL, RL, newMatrixL, imageL.size(), CV_16SC2, map1, map2);
+    // cv::remap(imageL, imageL, map1, map2, cv::INTER_LINEAR, cv::BORDER_CONSTANT);
 
-    cv::fisheye::initUndistortRectifyMap(cameraMatrixR, distCoeffsR, RR, newMatrixR, imageR.size(), CV_16SC2, map1, map2);
-    cv::remap(imageR, imageR, map1, map2, cv::INTER_LINEAR, cv::BORDER_CONSTANT);
+    // cv::fisheye::initUndistortRectifyMap(cameraMatrixR, distCoeffsR, RR, newMatrixR, imageR.size(), CV_16SC2, map1, map2);
+    // cv::remap(imageR, imageR, map1, map2, cv::INTER_LINEAR, cv::BORDER_CONSTANT);
 
     cv::SimpleBlobDetector::Params params;
     params.filterByArea = true;
     params.minArea = 1200;
     params.filterByCircularity = true;
-    params.minCircularity = 0.7;
+    params.minCircularity = 0.6;
     params.maxCircularity = 1.0;
 
 
