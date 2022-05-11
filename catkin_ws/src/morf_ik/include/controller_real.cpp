@@ -420,8 +420,9 @@ void images::blob()
     params.filterByArea = true;
     params.minArea = 1200;
     params.filterByCircularity = true;
-    params.minCircularity = 0.4;
-    params.maxCircularity = 1.0;
+    params.minCircularity = 0.9;
+    params.filterByInertia = true;
+    params.minInertiaRatio = 0.5;
 
 
 
