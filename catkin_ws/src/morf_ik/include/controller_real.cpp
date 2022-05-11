@@ -417,12 +417,12 @@ void images::blob()
     // cv::remap(imageR, imageR, map1, map2, cv::INTER_LINEAR, cv::BORDER_CONSTANT);
 
     cv::SimpleBlobDetector::Params params;
-    params.filterByArea = true;
-    params.minArea = 500;
+    // params.filterByArea = true;
+    // params.minArea = 500;
     params.filterByCircularity = true;
     params.minCircularity = 0.2;
-    params.filterByInertia = true;
-    params.minInertiaRatio = 0.2;
+    // params.filterByInertia = true;
+    // params.minInertiaRatio = 0.2;
 
 
 
