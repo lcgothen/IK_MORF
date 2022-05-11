@@ -23,25 +23,26 @@ using namespace controller;
 
 int main(int argc, char **argv)
 {
-    int l=8, w=6;
+    int l=5, w=7;
     float size=2;
 
-    std::vector<cv::Point3f> posXadrez;
+    std::vector<cv::Point3d> posXadrez;
     for(int i=0; i<w; i++)
     {
         for(int j=0; j<l; j++)
-            posXadrez.push_back(cv::Point3f(i*size,j*size,0));
+            posXadrez.push_back(cv::Point3d(i*size,j*size,0));
     }
 
-    std::vector<std::vector<cv::Point3f>> good_points;
-    std::vector<std::vector<cv::Point2f>> all_cornersL, all_cornersR;
+    std::vector<std::vector<cv::Point3d>> real_points;
+    std::vector<std::vector<cv::Point2d>> all_cornersL, all_cornersR;
 
     cv::Mat imgL, imgR;
 
-    for(int i=0; i<10; i++)
+    for(int i=0; i<5; i++)
     {
-        imgL = cv::imread("/home/leonor/tese/IK_MORF/catkin_ws/devel/lib/morf_ik/calib_imgs/L"+std::to_string(i+1)+".jpg");
-        imgR = cv::imread("/home/leonor/tese/IK_MORF/catkin_ws/devel/lib/morf_ik/calib_imgs/R"+std::to_string(i+1)+".jpg");
+        // std::cout << i << std::endl;
+        imgL = cv::imread("/home/leonor/tese/IK_MORF/catkin_ws/devel/lib/morf_ik/calib_imgs/L"+std::to_string(i)+".png");
+        imgR = cv::imread("/home/leonor/tese/IK_MORF/catkin_ws/devel/lib/morf_ik/calib_imgs/R"+std::to_string(i)+".png");
 
         std::vector<cv::Point2f> cornersL, cornersR;
         bool doneL = cv::findChessboardCorners(imgL, cv::Size(l,w), cornersL);
@@ -50,11 +51,16 @@ int main(int argc, char **argv)
         if(doneL && doneR)
         {
             // cv::drawChessboardCorners(imgL, cv::Size(l,w), cornersL, doneL);
-            good_points.push_back(posXadrez);
-            all_cornersL.push_back(cornersL);
-            all_cornersR.push_back(cornersR);
+            std::vector<cv::Point2d> cornersL_d, cornersR_d;
+            for(int j=0; j<cornersL.size(); j++)
+            {
+                cornersL_d.push_back(cv::Point2d((double)cornersL[j].x, (double)cornersL[j].y));
+                cornersR_d.push_back(cv::Point2d((double)cornersR[j].x, (double)cornersR[j].y));
+            }
 
-            std::cout << i << std::endl;
+            real_points.push_back(posXadrez);
+            all_cornersL.push_back(cornersL_d);
+            all_cornersR.push_back(cornersR_d);
         }
 
         // cv::imshow("imgL",imgL);
@@ -62,44 +68,49 @@ int main(int argc, char **argv)
 
     }
 
-        cv::Mat cameraMatrixL, cameraMatrixR, distCoeffsL, distCoeffsR, R, T, E, F;
+    cv::Mat cameraMatrixL, cameraMatrixR, distCoeffsL, distCoeffsR, R, T, E, F;
+    int flag = 0;
+    flag |= cv::fisheye::CALIB_RECOMPUTE_EXTRINSIC;
+    flag |= cv::fisheye::CALIB_CHECK_COND;
+    flag |= cv::fisheye::CALIB_FIX_SKEW;
 
-        cv::stereoCalibrate(good_points, all_cornersL, all_cornersR, cameraMatrixL, distCoeffsL, cameraMatrixR, distCoeffsR, cv::Size(imgL.rows,imgL.cols), R, T, E, F);
+    cv::fisheye::stereoCalibrate(real_points, all_cornersL, all_cornersR, cameraMatrixL, distCoeffsL, cameraMatrixR, distCoeffsR, imgL.size(), R, T, flag);
 
-        std::cout << cameraMatrixL << std::endl;
-        std::cout << F << std::endl;
+    // std::vector<cv::Mat> rvecs, tvecs;
+    // cv::fisheye::calibrate(real_points, all_cornersL, imgL.size(), cameraMatrixL, distCoeffsL, rvecs, tvecs, flag);
+	
 
 
+    std::cout << cameraMatrixL << std::endl;
+    std::cout << distCoeffsL << std::endl;
+    // std::cout << cameraMatrixR << std::endl;
+    // std::cout << R << std::endl;
+    // std::cout << T << std::endl;
 
-    /*robot morf;
-	images stereo;
-    ros::init(argc, argv, "IK_controller");
+    cv::Mat RL, RR, PL, PR, Q;
+    cv::Mat map1, map2;
+    cv::Size newImageSize;
 
-    ros::NodeHandle n;
+    cv::Mat undistortedL;
 
-    ros::Publisher controller_pub = n.advertise<std_msgs::Float32MultiArray>("joints_target", 1000);
-    ros::Subscriber jointPos_sub = n.subscribe("joint_positions", 1000, &robot::infoCallback, &morf);
-    image_transport::ImageTransport it(n);
-    image_transport::Subscriber imageLeft_sub = it.subscribe("imageLeft", 1, &images::imageLeftCallback, &stereo);
-	image_transport::Subscriber imageRight_sub = it.subscribe("imageRight", 1, &images::imageRightCallback, &stereo);
+    cv::fisheye::stereoRectify(cameraMatrixL, distCoeffsL, cameraMatrixR, distCoeffsR, imgL.size(), R, T, RL, RR, PL, PR, Q, 0);
 
-    ros::Rate loop_rate(10);
+    // cv::fisheye::initUndistortRectifyMap(cameraMatrixL, distCoeffsL, RL, PL, imgL.size(), CV_16SC2, map1, map2);
 
-    while(ros::ok())
-    {
-        ros::spinOnce();
+    // cv::fisheye::estimateNewCameraMatrixForUndistortRectify(cameraMatrixL, distCoeffsL, imgL.size(), RL, PL);
 
-        loop_rate.sleep();
+    std::cout << RL << std::endl;
+    std::cout << PL << std::endl;
 
-		if(!stereo.imageL.empty() && !stereo.imageR.empty())
-		{
-            cv::imshow("viewL", stereo.imageL);
-            cv::imshow("viewR", stereo.imageR);
-            cv::waitKey(30);
-            imwrite("calib_imgs/L05.jpg", stereo.imageL);
-            imwrite("calib_imgs/R05.jpg", stereo.imageR);
-        }
-    }*/
+    cv::fisheye::initUndistortRectifyMap(cameraMatrixL, distCoeffsL, RL, cameraMatrixL, imgL.size(), CV_16SC2, map1, map2);
+
+    cv::remap(imgL, undistortedL, map1, map2, cv::INTER_LINEAR, cv::BORDER_CONSTANT);
+    
+    // //cv::fisheye::undistortImage(imgL, undistortedL, cameraMatrixL, distCoeffsL);
+
+    // // std::cout << undistortedL << std::endl;
+    cv::imwrite("undistorted.png", undistortedL);
+
 
 
     return 0;
