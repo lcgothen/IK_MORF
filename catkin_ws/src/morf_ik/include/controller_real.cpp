@@ -417,10 +417,15 @@ void images::blob()
 
     if(!keypointsL.empty() && !keypointsR.empty())
     {
-        target.z = 175.05*0.06*1/(keypointsL[0].pt.x-keypointsR[0].pt.x);
+        float f=285.1086327575645; //focal_length
 
-        float length = 2*target.z*tan(2.3562/2);
-        float width = 800*length/848;
+        target.z = f*0.06*1/(keypointsL[0].pt.x-keypointsR[0].pt.x);
+
+        float fov_x = 2*atan2(848/2, f);
+        float fov_y = 2*atan2(800/2, f);
+
+        float length = 2*target.z*tan(fov_x/2);
+        float width = 2*target.z*tan(fov_y/2);
 
         target.x = -keypointsL[0].pt.x/848*length+length/2;
         target.y = -keypointsL[0].pt.y/800*width+width/2;
