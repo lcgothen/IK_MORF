@@ -49,6 +49,10 @@ int main(int argc, char **argv)
 
         if(doneL && doneR)
         {
+            // cv::TermCriteria criteria(CV_TERMCRIT_EPS | CV_TERMCRIT_ITER, 30, 0.001);
+            // cv::cornerSubPix(imgL, cornersL, cv::Size(5,5), cv::Size(-1,-1), criteria);
+            // cv::cornerSubPix(imgR, cornersR, cv::Size(5,5), cv::Size(-1,-1), criteria);
+
             // cv::drawChessboardCorners(imgL, cv::Size(l,w), cornersL, doneL);
             std::vector<cv::Point2d> cornersL_d, cornersR_d;
             for(int j=0; j<cornersL.size(); j++)
@@ -81,21 +85,22 @@ int main(int argc, char **argv)
 	
 
 
-    std::cout << cameraMatrixL << std::endl;
-    std::cout << distCoeffsL << std::endl;
+    // std::cout << cameraMatrixL << std::endl;
+    // std::cout << distCoeffsL << std::endl;
     // std::cout << cameraMatrixR << std::endl;
     // std::cout << R << std::endl;
     // std::cout << T << std::endl;
 
     cv::Mat RL, RR, PL, PR, Q;
     cv::Mat map1, map2;
-    cv::Size newImageSize;
+    cv::Size newImageSize = cv::Size(imgL.cols, imgL.rows);
 
     cv::Mat undistortedL, undistortedR;
     imgL = cv::imread("/home/leonor/tese/IK_MORF/catkin_ws/devel/lib/morf_ik/calib_imgs/imageL.png");
-    imgR = cv::imread("/home/leonor/tese/IK_MORF/catkin_ws/devel/lib/morf_ik/calib_imgs/R1.png");
+    imgR = cv::imread("/home/leonor/tese/IK_MORF/catkin_ws/devel/lib/morf_ik/calib_imgs/imageR.png");
 
-    cv::fisheye::stereoRectify(cameraMatrixL, distCoeffsL, cameraMatrixR, distCoeffsR, imgL.size(), R, T, RL, RR, PL, PR, Q, 0);
+
+    cv::fisheye::stereoRectify(cameraMatrixL, distCoeffsL, cameraMatrixR, distCoeffsR, imgL.size(), R, T, RL, RR, PL, PR, Q, 0, newImageSize);
 
     cv::FileStorage matrixFile("matrices.yml", cv::FileStorage::WRITE);
     matrixFile << "cameraMatrixL" << cameraMatrixL;
@@ -109,13 +114,26 @@ int main(int argc, char **argv)
 
     // cv::fisheye::estimateNewCameraMatrixForUndistortRectify(cameraMatrixL, distCoeffsL, imgL.size(), RL, PL);
 
-    std::cout << RL << std::endl;
-    std::cout << PL << std::endl;
+    // std::cout << RL << std::endl;
+    // std::cout << PL << std::endl;
 
-    cv::fisheye::initUndistortRectifyMap(cameraMatrixL, distCoeffsL, RL, cameraMatrixL, imgL.size(), CV_16SC2, map1, map2);
+    cv::Mat newMatrixL = cameraMatrixL.clone();
+    newMatrixL.at<double>(0,0) *= 0.6; 
+    newMatrixL.at<double>(1,1) *= 0.6; 
+
+    cv::Mat newMatrixR = cameraMatrixR.clone();
+    newMatrixR.at<double>(0,0) *= 0.6; 
+    newMatrixR.at<double>(1,1) *= 0.6; 
+
+    // std::cout << newMatrixL << std::endl;
+
+
+    cv::Mat I = cv::Mat::eye(3, 3, cv::DataType<double>::type);
+
+    cv::fisheye::initUndistortRectifyMap(cameraMatrixL, distCoeffsL, I, newMatrixL, imgL.size(), CV_16SC2, map1, map2);
     cv::remap(imgL, undistortedL, map1, map2, cv::INTER_LINEAR, cv::BORDER_CONSTANT);
 
-    cv::fisheye::initUndistortRectifyMap(cameraMatrixR, distCoeffsR, RR, cameraMatrixR, imgR.size(), CV_16SC2, map1, map2);
+    cv::fisheye::initUndistortRectifyMap(cameraMatrixR, distCoeffsR, RR, newMatrixR, imgR.size(), CV_16SC2, map1, map2);
     cv::remap(imgR, undistortedR, map1, map2, cv::INTER_LINEAR, cv::BORDER_CONSTANT);
 
     
