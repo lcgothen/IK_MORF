@@ -12,6 +12,9 @@
 #include <opencv2/highgui/highgui.hpp>
 #include <cv_bridge/cv_bridge.h>
 #include <opencv2/features2d.hpp>
+#include <opencv2/features2d.hpp>
+#include <opencv2/calib3d/calib3d.hpp>
+#include <opencv2/imgproc/imgproc.hpp>
 
 #include "floatfann.h"
 #include "fann_cpp.h"
@@ -390,15 +393,30 @@ void images::match()
 
 void images::blob()
 {
-    cv::Mat hsvL, hsvR;
-    cv::cvtColor(imageL, hsvL, cv::COLOR_BGR2HSV);
-    cv::cvtColor(imageR, hsvR, cv::COLOR_BGR2HSV);
+    cv::Mat undistortedL, undistortedR;
+
+    cv::Mat cameraMatrixL, distCoeffsL, cameraMatrixR, distCoeffsR, RL, RR;
+    cv::FileStorage matrixFile("matrices.yml", cv::FileStorage::READ);
+    matrixFile["cameraMatrixL"] >> cameraMatrixL;
+    matrixFile["distCoeffsL"] >> distCoeffsL;
+    matrixFile["cameraMatrixR"] >> cameraMatrixR;
+    matrixFile["distCoeffsR"] >> distCoeffsR;
+    matrixFile["RL"] >> RL;
+    matrixFile["RR"] >> RR;
+
+    cv::Mat map1, map2;
+
+    cv::fisheye::initUndistortRectifyMap(cameraMatrixL, distCoeffsL, RL, cameraMatrixL, imageL.size(), CV_16SC2, map1, map2);
+    cv::remap(imageL, imageL, map1, map2, cv::INTER_LINEAR, cv::BORDER_CONSTANT);
+
+    cv::fisheye::initUndistortRectifyMap(cameraMatrixR, distCoeffsR, RR, cameraMatrixR, imageR.size(), CV_16SC2, map1, map2);
+    cv::remap(imageR, imageR, map1, map2, cv::INTER_LINEAR, cv::BORDER_CONSTANT);
 
     cv::SimpleBlobDetector::Params params;
     params.filterByArea = true;
     params.minArea = 1000;
     params.filterByCircularity = true;
-    params.minCircularity = 0.7;
+    params.minCircularity = 0.9;
 
 
 

@@ -97,6 +97,14 @@ int main(int argc, char **argv)
 
     cv::fisheye::stereoRectify(cameraMatrixL, distCoeffsL, cameraMatrixR, distCoeffsR, imgL.size(), R, T, RL, RR, PL, PR, Q, 0);
 
+    cv::FileStorage matrixFile("matrices.yml", cv::FileStorage::WRITE);
+    matrixFile << "cameraMatrixL" << cameraMatrixL;
+    matrixFile << "distCoeffsL" << distCoeffsL;
+    matrixFile << "RL" << RL;
+    matrixFile << "cameraMatrixR" << cameraMatrixR;
+    matrixFile << "distCoeffsR" << distCoeffsR;
+    matrixFile << "RR" << RR;
+
     // cv::fisheye::initUndistortRectifyMap(cameraMatrixL, distCoeffsL, RL, PL, imgL.size(), CV_16SC2, map1, map2);
 
     // cv::fisheye::estimateNewCameraMatrixForUndistortRectify(cameraMatrixL, distCoeffsL, imgL.size(), RL, PL);

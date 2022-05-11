@@ -44,6 +44,7 @@ namespace controller
         bool nearZ=false; 
         float threshZ=0.9;
 
+        void init();
         void imageLeftCallback(const sensor_msgs::ImageConstPtr& msg);
         void imageRightCallback(const sensor_msgs::ImageConstPtr& msg);
         void generalImgCallback(const sensor_msgs::ImageConstPtr& msg);
