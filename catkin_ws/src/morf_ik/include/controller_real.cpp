@@ -406,6 +406,8 @@ void images::blob()
 
     cv::Mat map1, map2;
 
+    std::cout << cameraMatrixL << std::endl;
+
     cv::fisheye::initUndistortRectifyMap(cameraMatrixL, distCoeffsL, RL, cameraMatrixL, imageL.size(), CV_16SC2, map1, map2);
     std::cout << "hello" << std::endl;
     cv::remap(imageL, imageL, map1, map2, cv::INTER_LINEAR, cv::BORDER_CONSTANT);
