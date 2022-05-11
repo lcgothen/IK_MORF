@@ -419,8 +419,8 @@ void images::blob()
     cv::SimpleBlobDetector::Params params;
     params.filterByArea = true;
     params.minArea = 500;
-    params.filterByCircularity = true;
-    params.minCircularity = 0.2;
+    // params.filterByCircularity = true;
+    // params.minCircularity = 0.2;
     // params.filterByInertia = true;
     // params.minInertiaRatio = 0.3;
 
