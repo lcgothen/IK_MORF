@@ -92,7 +92,7 @@ int main(int argc, char **argv)
     cv::Size newImageSize;
 
     cv::Mat undistortedL, undistortedR;
-    imgL = cv::imread("/home/leonor/tese/IK_MORF/catkin_ws/devel/lib/morf_ik/calib_imgs/L1.png");
+    imgL = cv::imread("/home/leonor/tese/IK_MORF/catkin_ws/devel/lib/morf_ik/calib_imgs/imageL.png");
     imgR = cv::imread("/home/leonor/tese/IK_MORF/catkin_ws/devel/lib/morf_ik/calib_imgs/R1.png");
 
     cv::fisheye::stereoRectify(cameraMatrixL, distCoeffsL, cameraMatrixR, distCoeffsR, imgL.size(), R, T, RL, RR, PL, PR, Q, 0);
