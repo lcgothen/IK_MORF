@@ -99,6 +99,7 @@ int main(int argc, char **argv)
 
     while(ros::ok())
     {
+        std::cout << stereo.nearZ << std::endl;
         if(!stereo.imageL.empty() && !stereo.imageR.empty() && !stereo.nearZ)
         {
             stereo.blob();
