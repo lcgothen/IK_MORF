@@ -1197,6 +1197,6 @@ morf_ik/CMakeFiles/control_real.dir/include/controller_real.cpp.o
  /usr/local/include/fann_cpp.h
  /usr/local/include/fann_data_cpp.h
  /usr/local/include/fann_training_data_cpp.h
- /home/leonor/tese/IK_MORF/catkin_ws/src/morf_ik/include/coordinates.hpp
+ /home/leonor/tese/IK_MORF/catkin_ws/src/morf_ik/include/coordinates_real.hpp
  /home/leonor/tese/IK_MORF/catkin_ws/src/morf_ik/include/controller_real.hpp
 

@@ -99,7 +99,8 @@ int main(int argc, char **argv)
 
     while(ros::ok())
     {
-        std::cout << stereo.nearZ << std::endl;
+        //std::cout << stereo.nearZ << std::endl;
+        IK_order.data.clear();
         if(!stereo.imageL.empty() && !stereo.imageR.empty() && !stereo.nearZ)
         {
             stereo.blob();

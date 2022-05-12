@@ -1196,7 +1196,7 @@ morf_ik/CMakeFiles/control_real.dir/include/controller_real.cpp.o: /home/leonor/
   /usr/local/include/fann_cpp.h \
   /usr/local/include/fann_data_cpp.h \
   /usr/local/include/fann_training_data_cpp.h \
-  /home/leonor/tese/IK_MORF/catkin_ws/src/morf_ik/include/coordinates.hpp \
+  /home/leonor/tese/IK_MORF/catkin_ws/src/morf_ik/include/coordinates_real.hpp \
   /home/leonor/tese/IK_MORF/catkin_ws/src/morf_ik/include/controller_real.hpp
 
 
@@ -2354,8 +2354,6 @@ morf_ik/CMakeFiles/control_real.dir/include/controller_real.cpp.o: /home/leonor/
 
 /usr/include/x86_64-linux-gnu/bits/select.h:
 
-/home/leonor/tese/IK_MORF/catkin_ws/src/morf_ik/include/coordinates.hpp:
-
 /usr/include/boost/mpl/aux_/config/adl.hpp:
 
 /usr/include/c++/7/bits/locale_classes.h:
@@ -3115,6 +3113,8 @@ morf_ik/CMakeFiles/control_real.dir/include/controller_real.cpp.o: /home/leonor/
 /usr/include/boost/mpl/aux_/preprocessed/gcc/advance_forward.hpp:
 
 /usr/include/boost/preprocessor/tuple/rem.hpp:
+
+/home/leonor/tese/IK_MORF/catkin_ws/src/morf_ik/include/coordinates_real.hpp:
 
 /usr/include/boost/preprocessor/tuple/detail/is_single_return.hpp:
 

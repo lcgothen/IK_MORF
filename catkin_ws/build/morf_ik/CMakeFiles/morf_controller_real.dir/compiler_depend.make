@@ -1196,7 +1196,7 @@ morf_ik/CMakeFiles/morf_controller_real.dir/include/controller_real.cpp.o: /home
   /usr/local/include/fann_cpp.h \
   /usr/local/include/fann_data_cpp.h \
   /usr/local/include/fann_training_data_cpp.h \
-  /home/leonor/tese/IK_MORF/catkin_ws/src/morf_ik/include/coordinates.hpp \
+  /home/leonor/tese/IK_MORF/catkin_ws/src/morf_ik/include/coordinates_real.hpp \
   /home/leonor/tese/IK_MORF/catkin_ws/src/morf_ik/include/controller_real.hpp
 
 morf_ik/CMakeFiles/morf_controller_real.dir/include/coordinates_real.cpp.o: /home/leonor/tese/IK_MORF/catkin_ws/src/morf_ik/include/coordinates_real.cpp \
@@ -2582,7 +2582,7 @@ morf_ik/CMakeFiles/morf_controller_real.dir/src/test_real.cpp.o: /home/leonor/te
   /opt/ros/melodic/include/std_msgs/MultiArrayLayout.h \
   /opt/ros/melodic/include/std_msgs/MultiArrayDimension.h \
   /opt/ros/melodic/include/std_msgs/String.h \
-  /home/leonor/tese/IK_MORF/catkin_ws/src/morf_ik/include/coordinates.hpp \
+  /home/leonor/tese/IK_MORF/catkin_ws/src/morf_ik/include/coordinates_real.hpp \
   /home/leonor/tese/IK_MORF/catkin_ws/src/morf_ik/include/controller_real.hpp
 
 
@@ -3761,8 +3761,6 @@ morf_ik/CMakeFiles/morf_controller_real.dir/src/test_real.cpp.o: /home/leonor/te
 /usr/include/opencv2/core.hpp:
 
 /usr/include/x86_64-linux-gnu/bits/select.h:
-
-/home/leonor/tese/IK_MORF/catkin_ws/src/morf_ik/include/coordinates.hpp:
 
 /usr/include/boost/mpl/aux_/config/adl.hpp:
 

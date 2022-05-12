@@ -99,6 +99,7 @@ void angles::calcIK(point target) // calculate angles with IK equations
         th1=aux_th1;
         th2=aux_th2;
         th3=aux_th3;
+        std::cout << "at least one invalud angle" << std::endl;
     }
     else
     {
@@ -408,7 +409,7 @@ void images::blob()
 
     cv::Mat map1, map2;
 
-    std::cout << cameraMatrixL << std::endl;
+    // std::cout << cameraMatrixL << std::endl;
 
     cv::fisheye::initUndistortRectifyMap(cameraMatrixL, distCoeffsL, RL, newMatrixL, imageL.size(), CV_16SC2, map1, map2);
     cv::remap(imageL, imageL, map1, map2, cv::INTER_LINEAR, cv::BORDER_CONSTANT);
