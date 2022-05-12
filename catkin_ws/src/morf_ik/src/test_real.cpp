@@ -41,9 +41,9 @@ int main(int argc, char **argv)
     angles FL, FR, ML, MR, BL, BR;
     angles auxML, auxMR, auxBL, auxBR;
     
-    // posFL.x = 0;//-7.5776e-02;
-    // posFL.y = +1.3090e-01;
-    // posFL.z = -2.9912e-01;
+    posFL.x = 0;//-7.5776e-02;
+    posFL.y = +1.3090e-01;
+    posFL.z = -2.9912e-01;
 
     stableML.x = -7.5776e-02;
     stableML.y = +1.7632e-01;
@@ -67,7 +67,7 @@ int main(int argc, char **argv)
 
 
     // convert to leg frames
-    // posFL = posFL.morf2FL(); 
+    posFL = posFL.morf2FL(); 
     stableML = stableML.morf2ML(); 
     stableBL = stableBL.morf2BL(); 
     posFR = posFR.morf2FR(); 
@@ -75,7 +75,7 @@ int main(int argc, char **argv)
     stableBR = stableBR.morf2BR(); 
 
     // calculate IK parameters
-    // FL.calcIK(posFL);
+    FL.calcIK(posFL);
     ML.calcIK(stableML);
     BL.calcIK(stableBL);
     FR.calcIK(posFR);
@@ -90,6 +90,10 @@ int main(int argc, char **argv)
     image_transport::ImageTransport it(n);
 
     ros::Publisher controller_pub = n.advertise<std_msgs::Float32MultiArray>("/morf_hw/multi_joint_command", 1000);
+
+    ros::Subscriber jointPos_sub = n.subscribe("/morf_hw/joint_positions", 1000, &robot::jointPosCallback, &morf);
+    ros::Subscriber forceSens_sub = n.subscribe("/morf_hw/joint_torques", 1000, &robot::forceSensCallback, &morf);
+
     image_transport::Subscriber imageLeft_sub = it.subscribe("/camera/fisheye1/image_raw", 1, &images::imageLeftCallback, &stereo);
     image_transport::Subscriber imageRight_sub = it.subscribe("/camera/fisheye2/image_raw", 1, &images::imageRightCallback, &stereo);
 
