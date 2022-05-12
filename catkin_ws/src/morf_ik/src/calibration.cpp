@@ -128,7 +128,7 @@ int main(int argc, char **argv)
     // std::cout << PL << std::endl;
 
 
-    // std::cout << newMatrixL << std::endl;
+    std::cout << newMatrixL << std::endl;
 
 
     cv::Mat I = cv::Mat::eye(3, 3, cv::DataType<double>::type);

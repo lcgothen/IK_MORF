@@ -447,7 +447,7 @@ void images::blob()
 
     if(!keypointsL.empty() && !keypointsR.empty())
     {
-        float f=285.1086327575645; //focal_length
+        float f=171.0651796545387; //focal_length
 
         target.z = f*0.064*1/(keypointsL[0].pt.x-keypointsR[0].pt.x);
 
