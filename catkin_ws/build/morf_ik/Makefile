@@ -168,7 +168,6 @@ preinstall/fast:
 
 # clear depends
 depend:
-	cd /home/leonor/tese/IK_MORF/catkin_ws/build && $(CMAKE_COMMAND) -P /home/leonor/tese/IK_MORF/catkin_ws/build/CMakeFiles/VerifyGlobs.cmake
 	cd /home/leonor/tese/IK_MORF/catkin_ws/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
@@ -620,34 +619,6 @@ control/fast:
 	cd /home/leonor/tese/IK_MORF/catkin_ws/build && $(MAKE) $(MAKESILENT) -f morf_ik/CMakeFiles/control.dir/build.make morf_ik/CMakeFiles/control.dir/build
 .PHONY : control/fast
 
-# Convenience name for target.
-morf_ik/CMakeFiles/coords_real.dir/rule:
-	cd /home/leonor/tese/IK_MORF/catkin_ws/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 morf_ik/CMakeFiles/coords_real.dir/rule
-.PHONY : morf_ik/CMakeFiles/coords_real.dir/rule
-
-# Convenience name for target.
-coords_real: morf_ik/CMakeFiles/coords_real.dir/rule
-.PHONY : coords_real
-
-# fast build rule for target.
-coords_real/fast:
-	cd /home/leonor/tese/IK_MORF/catkin_ws/build && $(MAKE) $(MAKESILENT) -f morf_ik/CMakeFiles/coords_real.dir/build.make morf_ik/CMakeFiles/coords_real.dir/build
-.PHONY : coords_real/fast
-
-# Convenience name for target.
-morf_ik/CMakeFiles/control_real.dir/rule:
-	cd /home/leonor/tese/IK_MORF/catkin_ws/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 morf_ik/CMakeFiles/control_real.dir/rule
-.PHONY : morf_ik/CMakeFiles/control_real.dir/rule
-
-# Convenience name for target.
-control_real: morf_ik/CMakeFiles/control_real.dir/rule
-.PHONY : control_real
-
-# fast build rule for target.
-control_real/fast:
-	cd /home/leonor/tese/IK_MORF/catkin_ws/build && $(MAKE) $(MAKESILENT) -f morf_ik/CMakeFiles/control_real.dir/build.make morf_ik/CMakeFiles/control_real.dir/build
-.PHONY : control_real/fast
-
 home/leonor/CoppeliaSim/programming/common/shared_memory.o: home/leonor/CoppeliaSim/programming/common/shared_memory.c.o
 .PHONY : home/leonor/CoppeliaSim/programming/common/shared_memory.o
 
@@ -750,7 +721,6 @@ include/controller_real.o: include/controller_real.cpp.o
 # target to build an object file
 include/controller_real.cpp.o:
 	cd /home/leonor/tese/IK_MORF/catkin_ws/build && $(MAKE) $(MAKESILENT) -f morf_ik/CMakeFiles/morf_controller_real.dir/build.make morf_ik/CMakeFiles/morf_controller_real.dir/include/controller_real.cpp.o
-	cd /home/leonor/tese/IK_MORF/catkin_ws/build && $(MAKE) $(MAKESILENT) -f morf_ik/CMakeFiles/control_real.dir/build.make morf_ik/CMakeFiles/control_real.dir/include/controller_real.cpp.o
 .PHONY : include/controller_real.cpp.o
 
 include/controller_real.i: include/controller_real.cpp.i
@@ -759,7 +729,6 @@ include/controller_real.i: include/controller_real.cpp.i
 # target to preprocess a source file
 include/controller_real.cpp.i:
 	cd /home/leonor/tese/IK_MORF/catkin_ws/build && $(MAKE) $(MAKESILENT) -f morf_ik/CMakeFiles/morf_controller_real.dir/build.make morf_ik/CMakeFiles/morf_controller_real.dir/include/controller_real.cpp.i
-	cd /home/leonor/tese/IK_MORF/catkin_ws/build && $(MAKE) $(MAKESILENT) -f morf_ik/CMakeFiles/control_real.dir/build.make morf_ik/CMakeFiles/control_real.dir/include/controller_real.cpp.i
 .PHONY : include/controller_real.cpp.i
 
 include/controller_real.s: include/controller_real.cpp.s
@@ -768,7 +737,6 @@ include/controller_real.s: include/controller_real.cpp.s
 # target to generate assembly for a file
 include/controller_real.cpp.s:
 	cd /home/leonor/tese/IK_MORF/catkin_ws/build && $(MAKE) $(MAKESILENT) -f morf_ik/CMakeFiles/morf_controller_real.dir/build.make morf_ik/CMakeFiles/morf_controller_real.dir/include/controller_real.cpp.s
-	cd /home/leonor/tese/IK_MORF/catkin_ws/build && $(MAKE) $(MAKESILENT) -f morf_ik/CMakeFiles/control_real.dir/build.make morf_ik/CMakeFiles/control_real.dir/include/controller_real.cpp.s
 .PHONY : include/controller_real.cpp.s
 
 include/coordinates.o: include/coordinates.cpp.o
@@ -801,7 +769,6 @@ include/coordinates_real.o: include/coordinates_real.cpp.o
 # target to build an object file
 include/coordinates_real.cpp.o:
 	cd /home/leonor/tese/IK_MORF/catkin_ws/build && $(MAKE) $(MAKESILENT) -f morf_ik/CMakeFiles/morf_controller_real.dir/build.make morf_ik/CMakeFiles/morf_controller_real.dir/include/coordinates_real.cpp.o
-	cd /home/leonor/tese/IK_MORF/catkin_ws/build && $(MAKE) $(MAKESILENT) -f morf_ik/CMakeFiles/coords_real.dir/build.make morf_ik/CMakeFiles/coords_real.dir/include/coordinates_real.cpp.o
 .PHONY : include/coordinates_real.cpp.o
 
 include/coordinates_real.i: include/coordinates_real.cpp.i
@@ -810,7 +777,6 @@ include/coordinates_real.i: include/coordinates_real.cpp.i
 # target to preprocess a source file
 include/coordinates_real.cpp.i:
 	cd /home/leonor/tese/IK_MORF/catkin_ws/build && $(MAKE) $(MAKESILENT) -f morf_ik/CMakeFiles/morf_controller_real.dir/build.make morf_ik/CMakeFiles/morf_controller_real.dir/include/coordinates_real.cpp.i
-	cd /home/leonor/tese/IK_MORF/catkin_ws/build && $(MAKE) $(MAKESILENT) -f morf_ik/CMakeFiles/coords_real.dir/build.make morf_ik/CMakeFiles/coords_real.dir/include/coordinates_real.cpp.i
 .PHONY : include/coordinates_real.cpp.i
 
 include/coordinates_real.s: include/coordinates_real.cpp.s
@@ -819,7 +785,6 @@ include/coordinates_real.s: include/coordinates_real.cpp.s
 # target to generate assembly for a file
 include/coordinates_real.cpp.s:
 	cd /home/leonor/tese/IK_MORF/catkin_ws/build && $(MAKE) $(MAKESILENT) -f morf_ik/CMakeFiles/morf_controller_real.dir/build.make morf_ik/CMakeFiles/morf_controller_real.dir/include/coordinates_real.cpp.s
-	cd /home/leonor/tese/IK_MORF/catkin_ws/build && $(MAKE) $(MAKESILENT) -f morf_ik/CMakeFiles/coords_real.dir/build.make morf_ik/CMakeFiles/coords_real.dir/include/coordinates_real.cpp.s
 .PHONY : include/coordinates_real.cpp.s
 
 src/calibration.o: src/calibration.cpp.o
@@ -982,9 +947,7 @@ help:
 	@echo "... std_msgs_generate_messages_py"
 	@echo "... calib"
 	@echo "... control"
-	@echo "... control_real"
 	@echo "... coords"
-	@echo "... coords_real"
 	@echo "... gen_data"
 	@echo "... main"
 	@echo "... morf_controller_real"
@@ -1036,7 +999,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /home/leonor/tese/IK_MORF/catkin_ws/build && $(CMAKE_COMMAND) -P /home/leonor/tese/IK_MORF/catkin_ws/build/CMakeFiles/VerifyGlobs.cmake
 	cd /home/leonor/tese/IK_MORF/catkin_ws/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

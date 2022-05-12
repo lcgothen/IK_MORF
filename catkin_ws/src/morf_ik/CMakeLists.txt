@@ -225,8 +225,6 @@ include_directories(
 #     ${COPPELIASIM_ROOT_DIR}/programming/remoteApi/extApi.c
 #     ${COPPELIASIM_ROOT_DIR}/programming/remoteApi/extApiPlatform.c)
 
-file(GLOB fann_real CONFIGURE_DEPENDS "/home/leonor/fann/*")
-
 coppeliasim_add_executable(main 
     SOURCES
     src/main.cpp
@@ -237,18 +235,8 @@ coppeliasim_add_executable(main
 add_executable(gen_data src/gen_data.cpp)
 add_executable(nn src/nn.cpp)
 add_executable(calib src/calibration.cpp)
-add_executable(morf_controller_real src/test_real.cpp include/coordinates_real.cpp include/controller_real.cpp ${fann_real})
+add_executable(morf_controller_real src/test_real.cpp include/coordinates_real.cpp include/controller_real.cpp)
 
-# target_compile_definitions(main_eqs_data PRIVATE NON_MATLAB_PARSING)
-# target_compile_definitions(main_eqs_data PRIVATE MAX_EXT_API_CONNECTIONS=255)
-# target_include_directories(main_eqs_data PRIVATE ${COPPELIASIM_INCLUDE_DIR})
-# target_include_directories(main_eqs_data PRIVATE ${COPPELIASIM_ROOT_DIR}/programming/remoteApi)
-# target_compile_definitions(main_eqs_data PRIVATE NON_MATLAB_PARSING)
-# target_compile_definitions(main_eqs_data PRIVATE MAX_EXT_API_CONNECTIONS=255)
-# target_include_directories(main_eqs_data PRIVATE ${COPPELIASIM_INCLUDE_DIR})
-# target_include_directories(main_eqs_data PRIVATE ../remoteApi)
-# target_link_libraries(main_eqs_data Boost::system)
-# target_link_libraries(main_eqs_data Threads::Threads rt)
 
 target_compile_definitions(main PRIVATE NON_MATLAB_PARSING)
 target_compile_definitions(main PRIVATE MAX_EXT_API_CONNECTIONS=255)
@@ -265,9 +253,6 @@ add_library(coords include/coordinates.cpp)
 add_library(control include/controller.cpp)
 
 
-add_library(coords_real include/coordinates_real.cpp)
-add_library(control_real include/controller_real.cpp)
-
 target_link_libraries(control 
                       ${catkin_LIBRARIES}
                       ${OpenCV_LIBS}
@@ -281,31 +266,7 @@ target_link_libraries(main
 target_link_libraries(morf_controller_real 
                       ${catkin_LIBRARIES}
                       ${OpenCV_LIBS}
-                      coords_real
-                      control_real
                       fann)
-# target_link_libraries(main_eqs 
-#                       ${catkin_LIBRARIES}
-#                       ${OpenCV_LIBS}
-#                       coords
-#                       control)
-# target_link_libraries(main_nn 
-#                       ${catkin_LIBRARIES}
-#                       ${OpenCV_LIBS}
-#                       coords
-#                       control
-#                       fann)
-# target_link_libraries(main_eqs_data 
-#                       ${catkin_LIBRARIES}
-#                       ${OpenCV_LIBS}
-#                       coords
-#                       control)
-# target_link_libraries(main_nn_data 
-#                       ${catkin_LIBRARIES}
-#                       ${OpenCV_LIBS}
-#                       coords
-#                       control
-#                       fann)
 target_link_libraries(gen_data 
                       ${catkin_LIBRARIES}
                       ${OpenCV_LIBS}

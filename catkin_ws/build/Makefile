@@ -168,7 +168,6 @@ preinstall/fast:
 
 # clear depends
 depend:
-	$(CMAKE_COMMAND) -P /home/leonor/tese/IK_MORF/catkin_ws/build/CMakeFiles/VerifyGlobs.cmake
 	$(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
@@ -705,32 +704,6 @@ control/fast:
 	$(MAKE) $(MAKESILENT) -f morf_ik/CMakeFiles/control.dir/build.make morf_ik/CMakeFiles/control.dir/build
 .PHONY : control/fast
 
-#=============================================================================
-# Target rules for targets named coords_real
-
-# Build rule for target.
-coords_real: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 coords_real
-.PHONY : coords_real
-
-# fast build rule for target.
-coords_real/fast:
-	$(MAKE) $(MAKESILENT) -f morf_ik/CMakeFiles/coords_real.dir/build.make morf_ik/CMakeFiles/coords_real.dir/build
-.PHONY : coords_real/fast
-
-#=============================================================================
-# Target rules for targets named control_real
-
-# Build rule for target.
-control_real: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 control_real
-.PHONY : control_real
-
-# fast build rule for target.
-control_real/fast:
-	$(MAKE) $(MAKESILENT) -f morf_ik/CMakeFiles/control_real.dir/build.make morf_ik/CMakeFiles/control_real.dir/build
-.PHONY : control_real/fast
-
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -776,9 +749,7 @@ help:
 	@echo "... tests"
 	@echo "... calib"
 	@echo "... control"
-	@echo "... control_real"
 	@echo "... coords"
-	@echo "... coords_real"
 	@echo "... gen_data"
 	@echo "... gmock"
 	@echo "... gmock_main"
@@ -798,7 +769,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	$(CMAKE_COMMAND) -P /home/leonor/tese/IK_MORF/catkin_ws/build/CMakeFiles/VerifyGlobs.cmake
 	$(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

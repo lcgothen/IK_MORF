@@ -182,8 +182,6 @@ morf_controller_real_EXTERNAL_OBJECTS =
 /home/leonor/tese/IK_MORF/catkin_ws/devel/lib/morf_ik/morf_controller_real: /usr/lib/x86_64-linux-gnu/libopencv_ximgproc.so.3.2.0
 /home/leonor/tese/IK_MORF/catkin_ws/devel/lib/morf_ik/morf_controller_real: /usr/lib/x86_64-linux-gnu/libopencv_xobjdetect.so.3.2.0
 /home/leonor/tese/IK_MORF/catkin_ws/devel/lib/morf_ik/morf_controller_real: /usr/lib/x86_64-linux-gnu/libopencv_xphoto.so.3.2.0
-/home/leonor/tese/IK_MORF/catkin_ws/devel/lib/morf_ik/morf_controller_real: /home/leonor/tese/IK_MORF/catkin_ws/devel/lib/libcoords_real.so
-/home/leonor/tese/IK_MORF/catkin_ws/devel/lib/morf_ik/morf_controller_real: /home/leonor/tese/IK_MORF/catkin_ws/devel/lib/libcontrol_real.so
 /home/leonor/tese/IK_MORF/catkin_ws/devel/lib/morf_ik/morf_controller_real: /usr/lib/x86_64-linux-gnu/libopencv_video.so.3.2.0
 /home/leonor/tese/IK_MORF/catkin_ws/devel/lib/morf_ik/morf_controller_real: /usr/lib/x86_64-linux-gnu/libopencv_viz.so.3.2.0
 /home/leonor/tese/IK_MORF/catkin_ws/devel/lib/morf_ik/morf_controller_real: /usr/lib/x86_64-linux-gnu/libopencv_phase_unwrapping.so.3.2.0
