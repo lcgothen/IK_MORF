@@ -8,7 +8,7 @@ project(morf_ik)
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
 ## is used, also find other catkin packages
 set(OpenCV_DIR /usr/share/OpenCV/)
-set(fann_DIR /home/leonor/fann/)
+set(fann_DIR ${CMAKE_CURRENT_SOURCE_DIR}/../fann/)
 set(LIBPLUGIN_DIR $ENV{COPPELIASIM_ROOT_DIR}/programming/libPlugin)
 list(APPEND CMAKE_MODULE_PATH /home/leonor/CoppeliaSim/programming/libPlugin/cmake)
 set(CoppeliaSim_DIR ${COPPELIASIM_ROOT_DIR})
@@ -237,7 +237,7 @@ coppeliasim_add_executable(main
 add_executable(gen_data src/gen_data.cpp)
 add_executable(nn src/nn.cpp)
 add_executable(calib src/calibration.cpp)
-add_executable(morf_controller_real src/test_real.cpp include/coordinates_real.cpp include/controller_real.cpp ${fann_real})
+add_executable(morf_controller_real src/test_real.cpp include/coordinates_real.cpp include/controller_real.cpp)
 
 
 target_compile_definitions(main PRIVATE NON_MATLAB_PARSING)
