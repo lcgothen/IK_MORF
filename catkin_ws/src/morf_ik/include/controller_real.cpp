@@ -114,96 +114,96 @@ void angles::calcIK(point target) // calculate angles with IK equations
     }
 }
 
-// void angles::calcNN(point target, coords::point (coords::point::*morf2leg)(), std::string ann_path)
-// {
-//     int cubeX=-1, cubeY=-1, cubeZ=-1;
+void angles::calcNN(point target, coords::point (coords::point::*morf2leg)(), std::string ann_path)
+{
+    int cubeX=-1, cubeY=-1, cubeZ=-1;
 
-//     // smaller - morf
-//     // float x_length = 0.19010;
-//     // float y_length = 0.26011;
-//     // float z_length = 0.21494;
+    // smaller - morf
+    // float x_length = 0.19010;
+    // float y_length = 0.26011;
+    // float z_length = 0.21494;
 
-//     // float x_start = -7.4826e-02;
-//     // float y_start = +6.2794e-02;
-//     // float z_start = -3.8406e-01;
+    // float x_start = -7.4826e-02;
+    // float y_start = +6.2794e-02;
+    // float z_start = -3.8406e-01;
 
-//     // bigger - morf
-//     // float x_length = 0.23010;
-//     // float y_length = 0.30011;
-//     // float z_length = 0.25494;
+    // bigger - morf
+    // float x_length = 0.23010;
+    // float y_length = 0.30011;
+    // float z_length = 0.25494;
 
-//     // float x_start = -5.4826e-02;
-//     // float y_start = +8.2794e-02;
-//     // float z_start = -3.6406e-01;
+    // float x_start = -5.4826e-02;
+    // float y_start = +8.2794e-02;
+    // float z_start = -3.6406e-01;
 
-//     // bigger - FL
-//     float x_length = -0.25494;
-//     float y_length = 0.30011;
-//     float z_length = 0.2301;
+    // bigger - FL
+    float x_length = -0.25494;
+    float y_length = 0.30011;
+    float z_length = 0.2301;
 
-//     float x_start = 0.225164; 
-//     float y_start = -0.057090; 
-//     float z_start = -0.0433698; 
+    float x_start = 0.225164; 
+    float y_start = -0.057090; 
+    float z_start = -0.0433698; 
 
-//     int div=4;
+    int div=4;
 
-//     float x_step = x_length/div;
-//     float y_step = y_length/div;
-//     float z_step = z_length/div;
+    float x_step = x_length/div;
+    float y_step = y_length/div;
+    float z_step = z_length/div;
 
-//     for(int j=0; j<div; j++)
-//     {
-//         if(target.x < x_start && target.x > x_start+x_step)
-//         {
-//             cubeX=j;
-//             break;
-//         }
+    for(int j=0; j<div; j++)
+    {
+        if(target.x < x_start && target.x > x_start+x_step)
+        {
+            cubeX=j;
+            break;
+        }
 
-//         x_start += x_step;
-//     }
+        x_start += x_step;
+    }
 
-//     for(int k=0; k<div; k++)
-//     {
-//         if(target.y > y_start && target.y < y_start+y_step)
-//         {
-//             cubeY=k;
-//             break;
-//         }
+    for(int k=0; k<div; k++)
+    {
+        if(target.y > y_start && target.y < y_start+y_step)
+        {
+            cubeY=k;
+            break;
+        }
 
-//         y_start += y_step;
-//     }
+        y_start += y_step;
+    }
 
-//     for(int l=0; l<div; l++)
-//     {
-//         if(target.z > z_start && target.z < z_start+z_step)
-//         {
-//             cubeZ=l;
-//             break;
-//         }
+    for(int l=0; l<div; l++)
+    {
+        if(target.z > z_start && target.z < z_start+z_step)
+        {
+            cubeZ=l;
+            break;
+        }
 
-//         z_start += z_step;
-//     }
+        z_start += z_step;
+    }
 
-//     if(cubeX!=-1 && cubeY!=-1 && cubeZ!=-1)
-//     {
-//         point legTarget = target; // (target.*morf2leg)();
+    if(cubeX!=-1 && cubeY!=-1 && cubeZ!=-1)
+    {
+        point legTarget = target; // (target.*morf2leg)();
 
-//         std::string filename = ann_path+std::to_string(cubeX)+std::to_string(cubeY)+std::to_string(cubeZ)+std::string(".net");
-//         struct fann *ann = fann_create_from_file(filename.c_str());
-//         float input[3] = {legTarget.x, legTarget.y, legTarget.z};
-//         fann_scale_input(ann, input);
-//         float *output = fann_run(ann, input);
-//         fann_descale_output(ann, output);
+        std::string filename = ann_path+std::to_string(cubeX)+std::to_string(cubeY)+std::to_string(cubeZ)+std::string(".net");
+        struct fann *ann = fann_create_from_file(filename.c_str());
+        float input[3] = {legTarget.x, legTarget.y, legTarget.z};
+        fann_scale_input(ann, input);
+        float *output = fann_run(ann, input);
+        fann_descale_output(ann, output);
 
-//         th1 = output[0];
-//         th2 = output[1];
-//         th3 = output[2];
+        th1 = output[0];
+        th2 = output[1];
+        th3 = output[2];
 
-//     }
+    }
     
-//     // std::cout << target.x << " , " << target.y <<  " , " << target.z << std::endl;
-//     // std::cout << cubeX << " , " << cubeY << " , " << cubeZ << std::endl;
-// }
+    // std::cout << target.x << " , " << target.y <<  " , " << target.z << std::endl;
+    // std::cout << cubeX << " , " << cubeY << " , " << cubeZ << std::endl;
+}
 
 void CPG::cyclic(images *stereo)
 {
