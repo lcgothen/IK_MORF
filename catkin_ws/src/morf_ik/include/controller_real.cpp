@@ -99,7 +99,8 @@ void angles::calcIK(point target) // calculate angles with IK equations
         th1=aux_th1;
         th2=aux_th2;
         th3=aux_th3;
-        std::cout << "at least one invalud angle" << std::endl;
+        
+        std::cout << th1 << " , " << th2 <<  " , " << th3 << std::endl;
     }
     else
     {
