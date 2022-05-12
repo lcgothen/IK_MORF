@@ -97,14 +97,16 @@ int main(int argc, char **argv)
     ros::Rate loop_rate(10);
     std_msgs::Float32MultiArray IK_order;
 
+    bool done=false;
+
     while(ros::ok())
     {
         //std::cout << stereo.nearZ << std::endl;
-        if(!stereo.imageL.empty() && !stereo.imageR.empty() && !stereo.nearZ)
+        if(!stereo.imageL.empty() && !stereo.imageR.empty() && !stereo.nearZ && !done)
         {
             stereo.blob();
         }
-        else if(stereo.nearZ)
+        else if(stereo.nearZ && !done)
         {
             posFL = stereo.target.camLeft2morf(); 
             posFL = posFL.morf2FL(); 
@@ -118,6 +120,7 @@ int main(int argc, char **argv)
                                 51, MR.th1, 52, MR.th2, 53, MR.th3,
                                 61, BR.th1, 62, BR.th2, 63, BR.th3};
             controller_pub.publish(IK_order);
+            done = true;
         }
 
         // IK_order.data =    {11, FL.th1, 12, FL.th2, 13, FL.th3,
