@@ -67,6 +67,7 @@
 /home/leonor/tese/IK_MORF/catkin_ws/build/morf_ik/CMakeFiles/morf_controller_real.dir
 /home/leonor/tese/IK_MORF/catkin_ws/build/morf_ik/CMakeFiles/coords.dir
 /home/leonor/tese/IK_MORF/catkin_ws/build/morf_ik/CMakeFiles/control.dir
+/home/leonor/tese/IK_MORF/catkin_ws/build/morf_ik/CMakeFiles/coords_real.dir
 /home/leonor/tese/IK_MORF/catkin_ws/build/morf_ik/CMakeFiles/control_real.dir
 /home/leonor/tese/IK_MORF/catkin_ws/build/morf_ik/CMakeFiles/test.dir
 /home/leonor/tese/IK_MORF/catkin_ws/build/morf_ik/CMakeFiles/edit_cache.dir

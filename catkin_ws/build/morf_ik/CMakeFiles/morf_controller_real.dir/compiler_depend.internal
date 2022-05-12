@@ -1200,8 +1200,8 @@ morf_ik/CMakeFiles/morf_controller_real.dir/include/controller_real.cpp.o
  /home/leonor/tese/IK_MORF/catkin_ws/src/morf_ik/include/coordinates.hpp
  /home/leonor/tese/IK_MORF/catkin_ws/src/morf_ik/include/controller_real.hpp
 
-morf_ik/CMakeFiles/morf_controller_real.dir/include/coordinates.cpp.o
- /home/leonor/tese/IK_MORF/catkin_ws/src/morf_ik/include/coordinates.cpp
+morf_ik/CMakeFiles/morf_controller_real.dir/include/coordinates_real.cpp.o
+ /home/leonor/tese/IK_MORF/catkin_ws/src/morf_ik/include/coordinates_real.cpp
  /usr/include/stdc-predef.h
  /usr/include/c++/7/cstdio
  /usr/include/x86_64-linux-gnu/c++/7/bits/c++config.h
@@ -1394,7 +1394,7 @@ morf_ik/CMakeFiles/morf_controller_real.dir/include/coordinates.cpp.o
  /usr/include/c++/7/tr1/poly_hermite.tcc
  /usr/include/c++/7/tr1/poly_laguerre.tcc
  /usr/include/c++/7/tr1/riemann_zeta.tcc
- /home/leonor/tese/IK_MORF/catkin_ws/src/morf_ik/include/coordinates.hpp
+ /home/leonor/tese/IK_MORF/catkin_ws/src/morf_ik/include/coordinates_real.hpp
 
 morf_ik/CMakeFiles/morf_controller_real.dir/src/test_real.cpp.o
  /home/leonor/tese/IK_MORF/catkin_ws/src/morf_ik/src/test_real.cpp

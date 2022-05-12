@@ -9,13 +9,13 @@ set(CMAKE_DEPENDS_LANGUAGES
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/home/leonor/tese/IK_MORF/catkin_ws/src/morf_ik/include/controller_real.cpp" "morf_ik/CMakeFiles/morf_controller_real.dir/include/controller_real.cpp.o" "gcc" "morf_ik/CMakeFiles/morf_controller_real.dir/include/controller_real.cpp.o.d"
-  "/home/leonor/tese/IK_MORF/catkin_ws/src/morf_ik/include/coordinates.cpp" "morf_ik/CMakeFiles/morf_controller_real.dir/include/coordinates.cpp.o" "gcc" "morf_ik/CMakeFiles/morf_controller_real.dir/include/coordinates.cpp.o.d"
+  "/home/leonor/tese/IK_MORF/catkin_ws/src/morf_ik/include/coordinates_real.cpp" "morf_ik/CMakeFiles/morf_controller_real.dir/include/coordinates_real.cpp.o" "gcc" "morf_ik/CMakeFiles/morf_controller_real.dir/include/coordinates_real.cpp.o.d"
   "/home/leonor/tese/IK_MORF/catkin_ws/src/morf_ik/src/test_real.cpp" "morf_ik/CMakeFiles/morf_controller_real.dir/src/test_real.cpp.o" "gcc" "morf_ik/CMakeFiles/morf_controller_real.dir/src/test_real.cpp.o.d"
   )
 
 # Targets to which this target links.
 set(CMAKE_TARGET_LINKED_INFO_FILES
-  "/home/leonor/tese/IK_MORF/catkin_ws/build/morf_ik/CMakeFiles/coords.dir/DependInfo.cmake"
+  "/home/leonor/tese/IK_MORF/catkin_ws/build/morf_ik/CMakeFiles/coords_real.dir/DependInfo.cmake"
   "/home/leonor/tese/IK_MORF/catkin_ws/build/morf_ik/CMakeFiles/control_real.dir/DependInfo.cmake"
   )
 

@@ -705,6 +705,19 @@ control/fast:
 .PHONY : control/fast
 
 #=============================================================================
+# Target rules for targets named coords_real
+
+# Build rule for target.
+coords_real: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 coords_real
+.PHONY : coords_real
+
+# fast build rule for target.
+coords_real/fast:
+	$(MAKE) $(MAKESILENT) -f morf_ik/CMakeFiles/coords_real.dir/build.make morf_ik/CMakeFiles/coords_real.dir/build
+.PHONY : coords_real/fast
+
+#=============================================================================
 # Target rules for targets named control_real
 
 # Build rule for target.
@@ -764,6 +777,7 @@ help:
 	@echo "... control"
 	@echo "... control_real"
 	@echo "... coords"
+	@echo "... coords_real"
 	@echo "... gen_data"
 	@echo "... gmock"
 	@echo "... gmock_main"

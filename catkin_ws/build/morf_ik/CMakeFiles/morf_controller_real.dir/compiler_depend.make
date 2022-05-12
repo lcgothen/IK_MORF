@@ -1199,7 +1199,7 @@ morf_ik/CMakeFiles/morf_controller_real.dir/include/controller_real.cpp.o: /home
   /home/leonor/tese/IK_MORF/catkin_ws/src/morf_ik/include/coordinates.hpp \
   /home/leonor/tese/IK_MORF/catkin_ws/src/morf_ik/include/controller_real.hpp
 
-morf_ik/CMakeFiles/morf_controller_real.dir/include/coordinates.cpp.o: /home/leonor/tese/IK_MORF/catkin_ws/src/morf_ik/include/coordinates.cpp \
+morf_ik/CMakeFiles/morf_controller_real.dir/include/coordinates_real.cpp.o: /home/leonor/tese/IK_MORF/catkin_ws/src/morf_ik/include/coordinates_real.cpp \
   /usr/include/stdc-predef.h \
   /usr/include/c++/7/cstdio \
   /usr/include/x86_64-linux-gnu/c++/7/bits/c++config.h \
@@ -1392,7 +1392,7 @@ morf_ik/CMakeFiles/morf_controller_real.dir/include/coordinates.cpp.o: /home/leo
   /usr/include/c++/7/tr1/poly_hermite.tcc \
   /usr/include/c++/7/tr1/poly_laguerre.tcc \
   /usr/include/c++/7/tr1/riemann_zeta.tcc \
-  /home/leonor/tese/IK_MORF/catkin_ws/src/morf_ik/include/coordinates.hpp
+  /home/leonor/tese/IK_MORF/catkin_ws/src/morf_ik/include/coordinates_real.hpp
 
 morf_ik/CMakeFiles/morf_controller_real.dir/src/test_real.cpp.o: /home/leonor/tese/IK_MORF/catkin_ws/src/morf_ik/src/test_real.cpp \
   /usr/include/stdc-predef.h \
@@ -2596,8 +2596,6 @@ morf_ik/CMakeFiles/morf_controller_real.dir/src/test_real.cpp.o: /home/leonor/te
 
 /usr/include/x86_64-linux-gnu/c++/7/bits/basic_file.h:
 
-/home/leonor/tese/IK_MORF/catkin_ws/src/morf_ik/include/coordinates.cpp:
-
 /usr/local/include/fann_training_data_cpp.h:
 
 /usr/local/include/fann_data_cpp.h:
@@ -3519,6 +3517,8 @@ morf_ik/CMakeFiles/morf_controller_real.dir/src/test_real.cpp.o: /home/leonor/te
 /usr/include/locale.h:
 
 /usr/include/c++/7/bits/ostream_insert.h:
+
+/home/leonor/tese/IK_MORF/catkin_ws/src/morf_ik/include/coordinates_real.cpp:
 
 /usr/include/c++/7/debug/debug.h:
 
@@ -4523,6 +4523,8 @@ morf_ik/CMakeFiles/morf_controller_real.dir/src/test_real.cpp.o: /home/leonor/te
 /usr/include/boost/mpl/aux_/preprocessed/gcc/advance_forward.hpp:
 
 /usr/include/boost/preprocessor/tuple/rem.hpp:
+
+/home/leonor/tese/IK_MORF/catkin_ws/src/morf_ik/include/coordinates_real.hpp:
 
 /usr/include/boost/preprocessor/tuple/detail/is_single_return.hpp:
 

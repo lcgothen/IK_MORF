@@ -235,7 +235,7 @@ coppeliasim_add_executable(main
 add_executable(gen_data src/gen_data.cpp)
 add_executable(nn src/nn.cpp)
 add_executable(calib src/calibration.cpp)
-add_executable(morf_controller_real src/test_real.cpp include/coordinates.cpp include/controller_real.cpp )
+add_executable(morf_controller_real src/test_real.cpp include/coordinates_real.cpp include/controller_real.cpp )
 
 # target_compile_definitions(main_eqs_data PRIVATE NON_MATLAB_PARSING)
 # target_compile_definitions(main_eqs_data PRIVATE MAX_EXT_API_CONNECTIONS=255)
@@ -263,6 +263,7 @@ add_library(coords include/coordinates.cpp)
 add_library(control include/controller.cpp)
 
 
+add_library(coords_real include/coordinates_real.cpp)
 add_library(control_real include/controller_real.cpp)
 
 target_link_libraries(control 
@@ -278,7 +279,7 @@ target_link_libraries(main
 target_link_libraries(morf_controller_real 
                       ${catkin_LIBRARIES}
                       ${OpenCV_LIBS}
-                      coords
+                      coords_real
                       control_real)
 # target_link_libraries(main_eqs 
 #                       ${catkin_LIBRARIES}
