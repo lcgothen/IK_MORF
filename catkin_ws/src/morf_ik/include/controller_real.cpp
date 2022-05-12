@@ -107,6 +107,8 @@ void angles::calcIK(point target) // calculate angles with IK equations
         th1=-1.33956;
         th2=2.41989;
         th3=-0.5121;
+
+        std::cout << "at least one invalid angle" << std::endl;
     }
 }
 
@@ -456,7 +458,7 @@ void images::blob()
         target.x = -keypointsL[0].pt.x/848*length+length/2;
         target.y = -keypointsL[0].pt.y/800*width+width/2;
 
-        std::cout << target.x << " , " << target.y << " , " << target.z << std::endl;
+        //std::cout << target.x << " , " << target.y << " , " << target.z << std::endl;
         nearZ=true;
     }
 }
