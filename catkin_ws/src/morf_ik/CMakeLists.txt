@@ -8,7 +8,7 @@ project(morf_ik)
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
 ## is used, also find other catkin packages
 set(OpenCV_DIR /usr/share/OpenCV/)
-set(fann_DIR ${CMAKE_CURRENT_SOURCE_DIR}/../fann/)
+set(fann_DIR ~/leonor/fann/)
 set(LIBPLUGIN_DIR $ENV{COPPELIASIM_ROOT_DIR}/programming/libPlugin)
 list(APPEND CMAKE_MODULE_PATH /home/leonor/CoppeliaSim/programming/libPlugin/cmake)
 set(CoppeliaSim_DIR ${COPPELIASIM_ROOT_DIR})
