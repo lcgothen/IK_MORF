@@ -94,7 +94,7 @@ void angles::calcIK(point target) // calculate angles with IK equations
     aux_th2 = atan2(zc1,yc1)+atan2(L3*sin(aux_th3),L2+L3*cos(aux_th3))+offset2;
     aux_th3 += offset3;
 
-    std::cout << target.x << " , " << target.y << " , " << target.z << std::endl;
+    // std::cout << target.x << " , " << target.y << " , " << target.z << std::endl;
 
     if(!isnan(aux_th1) && !isnan(aux_th2) && !isnan(aux_th3))
     {
@@ -102,7 +102,7 @@ void angles::calcIK(point target) // calculate angles with IK equations
         th2=aux_th2;
         th3=aux_th3;
         
-        std::cout << th1 << " , " << th2 <<  " , " << th3 << std::endl;
+        // std::cout << th1 << " , " << th2 <<  " , " << th3 << std::endl;
     }
     else
     {
@@ -460,7 +460,7 @@ void images::blob()
         target.x = -keypointsL[0].pt.x/848*length+length/2;
         target.y = -keypointsL[0].pt.y/800*width+width/2;
 
-        //std::cout << target.x << " , " << target.y << " , " << target.z << std::endl;
+        std::cout << target.x << " , " << target.y << " , " << target.z << std::endl;
         nearZ=true;
     }
 }
