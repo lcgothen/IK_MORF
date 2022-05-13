@@ -189,6 +189,12 @@ int main(int argc, char **argv)
         Clock::time_point init = Clock::now();
         Clock::time_point init_calc;
 
+        if(!stereo.imageL.empty() && !stereo.imageR.empty() && !stable)
+        {
+            // stereo.match();
+            stereo.blob();
+        }
+
 
         if(state==0 && !stereo.imageL.empty() && !stereo.imageR.empty())
             state=1;
