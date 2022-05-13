@@ -231,7 +231,7 @@ void CPG::cyclic(images *stereo)
             stereo->nearZ=true;
 
         k-=0.05;
-        stereo->threshZ-=0.1;
+        stereo->threshZ-=0.15;
         stereo->distZ=0;
 
         // std::cout << k << " , " << stereo->threshZ << " , " << std::boolalpha << stereo->nearZ << std::endl;
@@ -239,7 +239,7 @@ void CPG::cyclic(images *stereo)
     }
 
     oH1 = outputH1*k;
-    oH2 = (outputH2-0.2)*k;
+    oH2 = outputH2*k;
 }
 
 void CPG::walk(images stereo)
