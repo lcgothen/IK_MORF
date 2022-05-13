@@ -394,9 +394,9 @@ int main(int argc, char **argv)
         }
         else if(state==3)
         {
-            target.x=stereo.target_avg.x;
-            target.y=stereo.target_avg.y;
-            target.z=stereo.target_avg.z-0.05;
+            target.x=stereo.target.x;
+            target.y=stereo.target.y;
+            target.z=stereo.target.z-0.05;
 
             posFL = target.camLeft2morf(); 
             posFL = posFL.morf2FL(); 
