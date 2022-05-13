@@ -184,7 +184,7 @@ int main(int argc, char **argv)
         float distance;
         float but_rad = 0.02;
         bool distFail = false, durFail = false;
-        float margin = 0.06;
+        float margin = 0.1;
 
         std::chrono::microseconds duration=std::chrono::microseconds(0);
         std::chrono::microseconds trial_dur;
