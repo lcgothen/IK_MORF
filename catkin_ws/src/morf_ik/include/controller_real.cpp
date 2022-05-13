@@ -253,7 +253,7 @@ void CPG::cyclic(images *stereo)
 
 void CPG::walk(images stereo)
 {
-    float offset2 = 1.5, offset3 = -2.25/4;
+    float offset2 = 1.5, offset3 = -2.25/3;
     float d=0.07-stereo.target.x;//0.08-1.2*stereo.target.x;//-0.03-stereo.target.x;
 
     // joint limits from /gorobots/projects/C-CPGRBFN/CPGRBFN_BBO_v5/neural_controllers/morf/real/neutronController.cpp
