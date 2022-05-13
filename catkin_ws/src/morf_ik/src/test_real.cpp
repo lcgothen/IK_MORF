@@ -192,7 +192,6 @@ int main(int argc, char **argv)
         if(!stereo.imageL.empty() && !stereo.imageR.empty() && !stable)
         {
             // stereo.match();
-            std::cout << "hello" << std::endl;
             stereo.blob();
         }
 

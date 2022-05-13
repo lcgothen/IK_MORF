@@ -59,11 +59,13 @@ void robot::jointPosCallback(const std_msgs::Float32MultiArray::ConstPtr& msg)
     BR.th1 = msg->data[15];
     BR.th2 = msg->data[16];
     BR.th3 = msg->data[17];
+    std::cout << "olá joint pos" << std::endl;
 }
 
 void robot::forceSensCallback(const std_msgs::Float32MultiArray::ConstPtr& msg)
 {
     sensFL = msg->data[2];
+    std::cout << "olá joint torque" << std::endl;
 }
 
 void robot::foot2buttonPosCallback(const std_msgs::Float32MultiArray::ConstPtr& msg)
