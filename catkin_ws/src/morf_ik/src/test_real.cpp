@@ -180,6 +180,7 @@ int main(int argc, char **argv)
         float distance;
         float but_rad = 0.02;
         bool distFail = false, durFail = false;
+        float margin = 0.06;
 
         std::chrono::microseconds duration=std::chrono::microseconds(0);
         std::chrono::microseconds trial_dur;
@@ -202,9 +203,9 @@ int main(int argc, char **argv)
             state=2;
         else if(state==2 && stable)
             state=3;
-        else if(state==3 && morf.FL.th1<FL.th1+0.001 && morf.FL.th1>FL.th1-0.001 && 
-                morf.FL.th2<FL.th2+0.001 && morf.FL.th2>FL.th2-0.001 &&
-                morf.FL.th3<FL.th3+0.001 && morf.FL.th3>FL.th3-0.001)
+        else if(state==3 && morf.FL.th1<FL.th1+margin && morf.FL.th1>FL.th1-margin && 
+                morf.FL.th2<FL.th2+margin && morf.FL.th2>FL.th2-margin &&
+                morf.FL.th3<FL.th3+margin && morf.FL.th3>FL.th3-margin)
             state=4;
         else if(state==4 && morf.sensFL>0.1)
             state=5;
@@ -238,49 +239,49 @@ int main(int argc, char **argv)
         }
         else if(state==2)
         {
-            if(stable_state==0 && morf.FL.th1<FL.th1+0.001 && morf.FL.th1>FL.th1-0.001 && 
-                    morf.FL.th2<FL.th2+0.001 && morf.FL.th2>FL.th2-0.001 &&
-                    morf.FL.th3<FL.th3+0.001 && morf.FL.th3>FL.th3-0.001)
+            if(stable_state==0 && morf.FL.th1<FL.th1+margin && morf.FL.th1>FL.th1-margin && 
+                    morf.FL.th2<FL.th2+margin && morf.FL.th2>FL.th2-margin &&
+                    morf.FL.th3<FL.th3+margin && morf.FL.th3>FL.th3-margin)
                 stable_state=1;
-            else if(stable_state==1 && morf.BL.th1<auxBL.th1+0.001 && morf.BL.th1>auxBL.th1-0.001 && 
-                    morf.BL.th2<auxBL.th2+0.001 && morf.BL.th2>auxBL.th2-0.001 &&
-                    morf.BL.th3<auxBL.th3+0.001 && morf.BL.th3>auxBL.th3-0.001)
+            else if(stable_state==1 && morf.BL.th1<auxBL.th1+margin && morf.BL.th1>auxBL.th1-margin && 
+                    morf.BL.th2<auxBL.th2+margin && morf.BL.th2>auxBL.th2-margin &&
+                    morf.BL.th3<auxBL.th3+margin && morf.BL.th3>auxBL.th3-margin)
                 stable_state=2;
-            else if(stable_state==2 && morf.BL.th1<BL.th1+0.001 && morf.BL.th1>BL.th1-0.001 && 
-                    morf.BL.th2<BL.th2+0.001 && morf.BL.th2>BL.th2-0.001 &&
-                    morf.BL.th3<BL.th3+0.001 && morf.BL.th3>BL.th3-0.001)
+            else if(stable_state==2 && morf.BL.th1<BL.th1+margin && morf.BL.th1>BL.th1-margin && 
+                    morf.BL.th2<BL.th2+margin && morf.BL.th2>BL.th2-margin &&
+                    morf.BL.th3<BL.th3+margin && morf.BL.th3>BL.th3-margin)
                 stable_state=3;
-            else if(stable_state==3 && morf.ML.th1<auxML.th1+0.001 && morf.ML.th1>auxML.th1-0.001 && 
-                    morf.ML.th2<auxML.th2+0.001 && morf.ML.th2>auxML.th2-0.001 &&
-                    morf.ML.th3<auxML.th3+0.001 && morf.ML.th3>auxML.th3-0.001)
+            else if(stable_state==3 && morf.ML.th1<auxML.th1+margin && morf.ML.th1>auxML.th1-margin && 
+                    morf.ML.th2<auxML.th2+margin && morf.ML.th2>auxML.th2-margin &&
+                    morf.ML.th3<auxML.th3+margin && morf.ML.th3>auxML.th3-margin)
                 stable_state=4;
-            else if(stable_state==4 && morf.ML.th1<ML.th1+0.001 && morf.ML.th1>ML.th1-0.001 && 
-                    morf.ML.th2<ML.th2+0.001 && morf.ML.th2>ML.th2-0.001 &&
-                    morf.ML.th3<ML.th3+0.001 && morf.ML.th3>ML.th3-0.001)
+            else if(stable_state==4 && morf.ML.th1<ML.th1+margin && morf.ML.th1>ML.th1-margin && 
+                    morf.ML.th2<ML.th2+margin && morf.ML.th2>ML.th2-margin &&
+                    morf.ML.th3<ML.th3+margin && morf.ML.th3>ML.th3-margin)
                 stable_state=5;
-            else if(stable_state==5 && morf.FR.th1<auxFR.th1+0.001 && morf.FR.th1>auxFR.th1-0.001 && 
-                    morf.FR.th2<auxFR.th2+0.001 && morf.FR.th2>auxFR.th2-0.001 &&
-                    morf.FR.th3<auxFR.th3+0.001 && morf.FR.th3>auxFR.th3-0.001)
+            else if(stable_state==5 && morf.FR.th1<auxFR.th1+margin && morf.FR.th1>auxFR.th1-margin && 
+                    morf.FR.th2<auxFR.th2+margin && morf.FR.th2>auxFR.th2-margin &&
+                    morf.FR.th3<auxFR.th3+margin && morf.FR.th3>auxFR.th3-margin)
                 stable_state=6;
-            else if(stable_state==6 && morf.FR.th1<FR.th1+0.001 && morf.FR.th1>FR.th1-0.001 && 
-                    morf.FR.th2<FR.th2+0.001 && morf.FR.th2>FR.th2-0.001 &&
-                    morf.FR.th3<FR.th3+0.001 && morf.FR.th3>FR.th3-0.001)
+            else if(stable_state==6 && morf.FR.th1<FR.th1+margin && morf.FR.th1>FR.th1-margin && 
+                    morf.FR.th2<FR.th2+margin && morf.FR.th2>FR.th2-margin &&
+                    morf.FR.th3<FR.th3+margin && morf.FR.th3>FR.th3-margin)
                 stable_state=7;
-            else if(stable_state==7 && morf.BR.th1<auxBR.th1+0.001 && morf.BR.th1>auxBR.th1-0.001 && 
-                    morf.BR.th2<auxBR.th2+0.001 && morf.BR.th2>auxBR.th2-0.001 &&
-                    morf.BR.th3<auxBR.th3+0.001 && morf.BR.th3>auxBR.th3-0.001)
+            else if(stable_state==7 && morf.BR.th1<auxBR.th1+margin && morf.BR.th1>auxBR.th1-margin && 
+                    morf.BR.th2<auxBR.th2+margin && morf.BR.th2>auxBR.th2-margin &&
+                    morf.BR.th3<auxBR.th3+margin && morf.BR.th3>auxBR.th3-margin)
                 stable_state=8;
-            else if(stable_state==8 && morf.BR.th1<BR.th1+0.001 && morf.BR.th1>BR.th1-0.001 && 
-                    morf.BR.th2<BR.th2+0.001 && morf.BR.th2>BR.th2-0.001 &&
-                    morf.BR.th3<BR.th3+0.001 && morf.BR.th3>BR.th3-0.001)
+            else if(stable_state==8 && morf.BR.th1<BR.th1+margin && morf.BR.th1>BR.th1-margin && 
+                    morf.BR.th2<BR.th2+margin && morf.BR.th2>BR.th2-margin &&
+                    morf.BR.th3<BR.th3+margin && morf.BR.th3>BR.th3-margin)
                 stable_state=9;
-            else if(stable_state==9 && morf.MR.th1<auxMR.th1+0.001 && morf.MR.th1>auxMR.th1-0.001 && 
-                    morf.MR.th2<auxMR.th2+0.001 && morf.MR.th2>auxMR.th2-0.001 &&
-                    morf.MR.th3<auxMR.th3+0.001 && morf.MR.th3>auxMR.th3-0.001)
+            else if(stable_state==9 && morf.MR.th1<auxMR.th1+margin && morf.MR.th1>auxMR.th1-margin && 
+                    morf.MR.th2<auxMR.th2+margin && morf.MR.th2>auxMR.th2-margin &&
+                    morf.MR.th3<auxMR.th3+margin && morf.MR.th3>auxMR.th3-margin)
                 stable_state=10;
-            else if(stable_state==10 && morf.MR.th1<MR.th1+0.001 && morf.MR.th1>MR.th1-0.001 && 
-                    morf.MR.th2<MR.th2+0.001 && morf.MR.th2>MR.th2-0.001 &&
-                    morf.MR.th3<MR.th3+0.001 && morf.MR.th3>MR.th3-0.001)
+            else if(stable_state==10 && morf.MR.th1<MR.th1+margin && morf.MR.th1>MR.th1-margin && 
+                    morf.MR.th2<MR.th2+margin && morf.MR.th2>MR.th2-margin &&
+                    morf.MR.th3<MR.th3+margin && morf.MR.th3>MR.th3-margin)
                 stable_state=11;
 
             IK_order.data.clear();
