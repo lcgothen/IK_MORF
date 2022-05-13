@@ -452,6 +452,5 @@ void images::blob()
         target.y = -keypointsL[0].pt.y/800*width+width/2;
 
         std::cout << target.x << " , " << target.y << " , " << target.z << std::endl;
-        nearZ=true;
     }
 }
