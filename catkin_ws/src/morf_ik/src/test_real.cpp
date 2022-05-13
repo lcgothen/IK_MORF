@@ -91,6 +91,10 @@ int main(int argc, char **argv)
     default_.th2=2.024319;
     default_.th3=0;
 
+    auxFL.th1=-1.338374;
+    auxFL.th2=2.429317;
+    auxFL.th3=-0.503011;
+
     auxML.th1=-1.100229;
     auxML.th2=2.324319;
     auxML.th3=-0.2;
@@ -239,56 +243,60 @@ int main(int argc, char **argv)
         }
         else if(state==2)
         {
-            if(stable_state==0 && morf.FL.th1<FL.th1+margin && morf.FL.th1>FL.th1-margin && 
+            if(stable_state==0 && morf.FL.th1<auxFL.th1+margin && morf.FL.th1>auxFL.th1-margin && 
+                    morf.FL.th2<auxFL.th2+margin && morf.FL.th2>auxFL.th2-margin &&
+                    morf.FL.th3<auxFL.th3+margin && morf.FL.th3>auxFL.th3-margin)
+                stable_state=1;
+            else if(stable_state==1 && morf.FL.th1<FL.th1+margin && morf.FL.th1>FL.th1-margin && 
                     morf.FL.th2<FL.th2+margin && morf.FL.th2>FL.th2-margin &&
                     morf.FL.th3<FL.th3+margin && morf.FL.th3>FL.th3-margin)
-                stable_state=1;
-            else if(stable_state==1 && morf.BL.th1<auxBL.th1+margin && morf.BL.th1>auxBL.th1-margin && 
+                stable_state=2;
+            else if(stable_state==2 && morf.BL.th1<auxBL.th1+margin && morf.BL.th1>auxBL.th1-margin && 
                     morf.BL.th2<auxBL.th2+margin && morf.BL.th2>auxBL.th2-margin &&
                     morf.BL.th3<auxBL.th3+margin && morf.BL.th3>auxBL.th3-margin)
-                stable_state=2;
-            else if(stable_state==2 && morf.BL.th1<BL.th1+margin && morf.BL.th1>BL.th1-margin && 
+                stable_state=3;
+            else if(stable_state==3 && morf.BL.th1<BL.th1+margin && morf.BL.th1>BL.th1-margin && 
                     morf.BL.th2<BL.th2+margin && morf.BL.th2>BL.th2-margin &&
                     morf.BL.th3<BL.th3+margin && morf.BL.th3>BL.th3-margin)
-                stable_state=3;
-            else if(stable_state==3 && morf.ML.th1<auxML.th1+margin && morf.ML.th1>auxML.th1-margin && 
+                stable_state=4;
+            else if(stable_state==4 && morf.ML.th1<auxML.th1+margin && morf.ML.th1>auxML.th1-margin && 
                     morf.ML.th2<auxML.th2+margin && morf.ML.th2>auxML.th2-margin &&
                     morf.ML.th3<auxML.th3+margin && morf.ML.th3>auxML.th3-margin)
-                stable_state=4;
-            else if(stable_state==4 && morf.ML.th1<ML.th1+margin && morf.ML.th1>ML.th1-margin && 
+                stable_state=5;
+            else if(stable_state==5 && morf.ML.th1<ML.th1+margin && morf.ML.th1>ML.th1-margin && 
                     morf.ML.th2<ML.th2+margin && morf.ML.th2>ML.th2-margin &&
                     morf.ML.th3<ML.th3+margin && morf.ML.th3>ML.th3-margin)
-                stable_state=5;
-            else if(stable_state==5 && morf.FR.th1<auxFR.th1+margin && morf.FR.th1>auxFR.th1-margin && 
+                stable_state=6;
+            else if(stable_state==6 && morf.FR.th1<auxFR.th1+margin && morf.FR.th1>auxFR.th1-margin && 
                     morf.FR.th2<auxFR.th2+margin && morf.FR.th2>auxFR.th2-margin &&
                     morf.FR.th3<auxFR.th3+margin && morf.FR.th3>auxFR.th3-margin)
-                stable_state=6;
-            else if(stable_state==6 && morf.FR.th1<FR.th1+margin && morf.FR.th1>FR.th1-margin && 
+                stable_state=7;
+            else if(stable_state==7 && morf.FR.th1<FR.th1+margin && morf.FR.th1>FR.th1-margin && 
                     morf.FR.th2<FR.th2+margin && morf.FR.th2>FR.th2-margin &&
                     morf.FR.th3<FR.th3+margin && morf.FR.th3>FR.th3-margin)
-                stable_state=7;
-            else if(stable_state==7 && morf.BR.th1<auxBR.th1+margin && morf.BR.th1>auxBR.th1-margin && 
+                stable_state=8;
+            else if(stable_state==8 && morf.BR.th1<auxBR.th1+margin && morf.BR.th1>auxBR.th1-margin && 
                     morf.BR.th2<auxBR.th2+margin && morf.BR.th2>auxBR.th2-margin &&
                     morf.BR.th3<auxBR.th3+margin && morf.BR.th3>auxBR.th3-margin)
-                stable_state=8;
-            else if(stable_state==8 && morf.BR.th1<BR.th1+margin && morf.BR.th1>BR.th1-margin && 
+                stable_state=9;
+            else if(stable_state==9 && morf.BR.th1<BR.th1+margin && morf.BR.th1>BR.th1-margin && 
                     morf.BR.th2<BR.th2+margin && morf.BR.th2>BR.th2-margin &&
                     morf.BR.th3<BR.th3+margin && morf.BR.th3>BR.th3-margin)
-                stable_state=9;
-            else if(stable_state==9 && morf.MR.th1<auxMR.th1+margin && morf.MR.th1>auxMR.th1-margin && 
+                stable_state=10;
+            else if(stable_state==10 && morf.MR.th1<auxMR.th1+margin && morf.MR.th1>auxMR.th1-margin && 
                     morf.MR.th2<auxMR.th2+margin && morf.MR.th2>auxMR.th2-margin &&
                     morf.MR.th3<auxMR.th3+margin && morf.MR.th3>auxMR.th3-margin)
-                stable_state=10;
-            else if(stable_state==10 && morf.MR.th1<MR.th1+margin && morf.MR.th1>MR.th1-margin && 
+                stable_state=11;
+            else if(stable_state==11 && morf.MR.th1<MR.th1+margin && morf.MR.th1>MR.th1-margin && 
                     morf.MR.th2<MR.th2+margin && morf.MR.th2>MR.th2-margin &&
                     morf.MR.th3<MR.th3+margin && morf.MR.th3>MR.th3-margin)
-                stable_state=11;
+                stable_state=12;
 
             IK_order.data.clear();
 
             if(stable_state==0)
             {
-                IK_order.data =    {11, FL.th1, 12, FL.th2, 13, FL.th3,
+                IK_order.data =    {11, auxFL.th1, 12, auxFL.th2, 13, auxFL.th3,
                                     21, 0, 22, default_.th2, 23, default_.th3,
                                     31, 0, 32, default_.th2, 33, default_.th3,
                                     41, 0, 42, default_.th2, 43, default_.th3,
@@ -299,7 +307,7 @@ int main(int argc, char **argv)
             {
                 IK_order.data =    {11, FL.th1, 12, FL.th2, 13, FL.th3,
                                     21, 0, 22, default_.th2, 23, default_.th3,
-                                    31, auxBL.th1, 32, auxBL.th2, 33, auxBL.th3,
+                                    31, 0, 32, default_.th2, 33, default_.th3,
                                     41, 0, 42, default_.th2, 43, default_.th3,
                                     51, 0, 52, default_.th2, 53, default_.th3,
                                     61, 0, 62, default_.th2, 63, default_.th3};
@@ -308,7 +316,7 @@ int main(int argc, char **argv)
             {
                 IK_order.data =    {11, FL.th1, 12, FL.th2, 13, FL.th3,
                                     21, 0, 22, default_.th2, 23, default_.th3,
-                                    31, BL.th1, 32, BL.th2, 33, BL.th3,
+                                    31, auxBL.th1, 32, auxBL.th2, 33, auxBL.th3,
                                     41, 0, 42, default_.th2, 43, default_.th3,
                                     51, 0, 52, default_.th2, 53, default_.th3,
                                     61, 0, 62, default_.th2, 63, default_.th3};
@@ -316,7 +324,7 @@ int main(int argc, char **argv)
             else if(stable_state==3)
             {
                 IK_order.data =    {11, FL.th1, 12, FL.th2, 13, FL.th3,
-                                    21, auxML.th1, 22, auxML.th2, 23, auxML.th3,
+                                    21, 0, 22, default_.th2, 23, default_.th3,
                                     31, BL.th1, 32, BL.th2, 33, BL.th3,
                                     41, 0, 42, default_.th2, 43, default_.th3,
                                     51, 0, 52, default_.th2, 53, default_.th3,
@@ -325,7 +333,7 @@ int main(int argc, char **argv)
             else if(stable_state==4)
             {
                 IK_order.data =    {11, FL.th1, 12, FL.th2, 13, FL.th3,
-                                    21, ML.th1, 22, ML.th2, 23, ML.th3,
+                                    21, auxML.th1, 22, auxML.th2, 23, auxML.th3,
                                     31, BL.th1, 32, BL.th2, 33, BL.th3,
                                     41, 0, 42, default_.th2, 43, default_.th3,
                                     51, 0, 52, default_.th2, 53, default_.th3,
@@ -336,7 +344,7 @@ int main(int argc, char **argv)
                 IK_order.data =    {11, FL.th1, 12, FL.th2, 13, FL.th3,
                                     21, ML.th1, 22, ML.th2, 23, ML.th3,
                                     31, BL.th1, 32, BL.th2, 33, BL.th3,
-                                    41, auxFR.th1, 42, auxFR.th2, 43, auxFR.th3,
+                                    41, 0, 42, default_.th2, 43, default_.th3,
                                     51, 0, 52, default_.th2, 53, default_.th3,
                                     61, 0, 62, default_.th2, 63, default_.th3};
             }
@@ -345,7 +353,7 @@ int main(int argc, char **argv)
                 IK_order.data =    {11, FL.th1, 12, FL.th2, 13, FL.th3,
                                     21, ML.th1, 22, ML.th2, 23, ML.th3,
                                     31, BL.th1, 32, BL.th2, 33, BL.th3,
-                                    41, FR.th1, 42, FR.th2, 43, FR.th3,
+                                    41, auxFR.th1, 42, auxFR.th2, 43, auxFR.th3,
                                     51, 0, 52, default_.th2, 53, default_.th3,
                                     61, 0, 62, default_.th2, 63, default_.th3};
             }
@@ -356,7 +364,7 @@ int main(int argc, char **argv)
                                     31, BL.th1, 32, BL.th2, 33, BL.th3,
                                     41, FR.th1, 42, FR.th2, 43, FR.th3,
                                     51, 0, 52, default_.th2, 53, default_.th3,
-                                    61, auxBR.th1, 62, auxBR.th2, 63, auxBR.th3};
+                                    61, 0, 62, default_.th2, 63, default_.th3};
             }
             else if(stable_state==8)
             {
@@ -365,7 +373,7 @@ int main(int argc, char **argv)
                                     31, BL.th1, 32, BL.th2, 33, BL.th3,
                                     41, FR.th1, 42, FR.th2, 43, FR.th3,
                                     51, 0, 52, default_.th2, 53, default_.th3,
-                                    61, BR.th1, 62, BR.th2, 63, BR.th3};
+                                    61, auxBR.th1, 62, auxBR.th2, 63, auxBR.th3};
             }
             else if(stable_state==9)
             {
@@ -373,7 +381,7 @@ int main(int argc, char **argv)
                                     21, ML.th1, 22, ML.th2, 23, ML.th3,
                                     31, BL.th1, 32, BL.th2, 33, BL.th3,
                                     41, FR.th1, 42, FR.th2, 43, FR.th3,
-                                    51, auxMR.th1, 52, auxMR.th2, 53, auxMR.th3,
+                                    51, 0, 52, default_.th2, 53, default_.th3,
                                     61, BR.th1, 62, BR.th2, 63, BR.th3};
             }
             else if(stable_state==10)
@@ -382,10 +390,19 @@ int main(int argc, char **argv)
                                     21, ML.th1, 22, ML.th2, 23, ML.th3,
                                     31, BL.th1, 32, BL.th2, 33, BL.th3,
                                     41, FR.th1, 42, FR.th2, 43, FR.th3,
-                                    51, MR.th1, 52, MR.th2, 53, MR.th3,
+                                    51, auxMR.th1, 52, auxMR.th2, 53, auxMR.th3,
                                     61, BR.th1, 62, BR.th2, 63, BR.th3};
             }
             else if(stable_state==11)
+            {
+                IK_order.data =    {11, FL.th1, 12, FL.th2, 13, FL.th3,
+                                    21, ML.th1, 22, ML.th2, 23, ML.th3,
+                                    31, BL.th1, 32, BL.th2, 33, BL.th3,
+                                    41, FR.th1, 42, FR.th2, 43, FR.th3,
+                                    51, MR.th1, 52, MR.th2, 53, MR.th3,
+                                    61, BR.th1, 62, BR.th2, 63, BR.th3};
+            }
+            else if(stable_state==12)
             {
                 stable=true;
 
