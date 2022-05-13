@@ -43,7 +43,7 @@ int main(int argc, char **argv)
     angles FL, FR, ML, MR, BL, BR;
     angles auxFL, auxML, auxBL, auxFR, auxMR, auxBR;
     
-    posFL.x = 0;//-7.5776e-02;
+    posFL.x = -7.5776e-02;
     posFL.y = +1.3090e-01;
     posFL.z = -2.9912e-01;
 
