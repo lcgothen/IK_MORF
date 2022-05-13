@@ -238,15 +238,6 @@ void CPG::cyclic(images *stereo)
 
     }
 
-    // if(stereo.target.z < 0.2 && stereo.target.z >= 0 && k>0.2)
-    //     k=0.06;
-    // else if(stereo.target.z < 0.3 && stereo.target.z >= 0 && k>0.4)
-    //     k=0.12;
-    // else if(stereo.target.z < 0.4 && stereo.target.z >= 0 && k>0.6)
-    //     k=0.18;
-    // else if(stereo.target.z < 0.5 && stereo.target.z >= 0 && k>0.8)
-    //     k=0.24;
-
     oH1 = outputH1*k;
     oH2 = outputH2*k;
 }
