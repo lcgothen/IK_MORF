@@ -63,7 +63,7 @@ void robot::jointPosCallback(const std_msgs::Float32MultiArray::ConstPtr& msg)
 
 void robot::forceSensCallback(const std_msgs::Float32MultiArray::ConstPtr& msg)
 {
-    sensFL = msg->data[2];
+    sensFL = msg->data[0];
 }
 
 void robot::foot2buttonPosCallback(const std_msgs::Float32MultiArray::ConstPtr& msg)

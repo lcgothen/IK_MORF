@@ -228,7 +228,7 @@ int main(int argc, char **argv)
                     morf.FL.th2<FL.th2+0.001 && morf.FL.th2>FL.th2-0.001 &&
                     morf.FL.th3<FL.th3+0.001 && morf.FL.th3>FL.th3-0.001)
                 state=4;
-            else if(state==4 && morf.sensFL>0.1)
+            else if(state==4 && morf.sensFL>0.03)
                 state=5;
             else if(trial_dur.count()>120000000)//(clock()-init>120*CLOCKS_PER_SEC)
                 state=6;
