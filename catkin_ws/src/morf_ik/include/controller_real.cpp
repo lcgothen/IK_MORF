@@ -227,7 +227,7 @@ void CPG::cyclic(images *stereo)
 
     if(stereo->distZ>=2)
     {
-        if(stereo->threshZ<=0.15)
+        if(stereo->threshZ<=0.2)
             stereo->nearZ=true;
 
         k-=0.05;
