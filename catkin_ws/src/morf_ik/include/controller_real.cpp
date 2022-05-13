@@ -220,23 +220,23 @@ void CPG::cyclic(images *stereo)
     outputH1 = tanh(activityH1);
     outputH2 = tanh(activityH2);
 
-    if(stereo->target.z >= stereo->threshZ)
-        stereo->distZ=0;
-    else
-        stereo->distZ++;
+    // if(stereo->target.z >= stereo->threshZ)
+    //     stereo->distZ=0;
+    // else
+    //     stereo->distZ++;
 
-    if(stereo->distZ>=5)
-    {
-        if(stereo->threshZ<=0.2)
-            stereo->nearZ=true;
+    // if(stereo->distZ>=5)
+    // {
+    //     if(stereo->threshZ<=0.2)
+    //         stereo->nearZ=true;
 
-        k-=0.05;
-        stereo->threshZ-=0.15;
-        stereo->distZ=0;
+    //     k-=0.05;
+    //     stereo->threshZ-=0.15;
+    //     stereo->distZ=0;
 
-        // std::cout << k << " , " << stereo->threshZ << " , " << std::boolalpha << stereo->nearZ << std::endl;
+    //     // std::cout << k << " , " << stereo->threshZ << " , " << std::boolalpha << stereo->nearZ << std::endl;
 
-    }
+    // }
 
     // if(stereo.target.z < 0.2 && stereo.target.z >= 0 && k>0.2)
     //     k=0.06;
