@@ -9,7 +9,7 @@ namespace coords
     class point
     {
         public:
-        float x, y, z;
+        float x, y, z=10000;
         //float Ox, Oy, Oz;
 
 
