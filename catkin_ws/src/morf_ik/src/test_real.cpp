@@ -483,6 +483,8 @@ int main(int argc, char **argv)
         //     break;
         // }
 
+        std::cout << state << std::endl;
+
 
         
         ros::spinOnce();
