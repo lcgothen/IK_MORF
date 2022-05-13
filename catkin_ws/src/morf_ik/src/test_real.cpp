@@ -483,7 +483,7 @@ int main(int argc, char **argv)
         //     break;
         // }
 
-        std::cout << state << std::endl;
+        std::cout << state << " , " << stereo.target.z << std::endl;
 
 
         
