@@ -254,11 +254,11 @@ void CPG::cyclic(images *stereo)
 void CPG::walk(images stereo)
 {
     float offset2 = 1.5, offset3 = -2.25/2;
-    float d=0.07-stereo.target.x;//0.08-1.2*stereo.target.x;//-0.03-stereo.target.x;
+    float d=0;//0.07-stereo.target.x;
 
     // joint limits from /gorobots/projects/C-CPGRBFN/CPGRBFN_BBO_v5/neural_controllers/morf/real/neutronController.cpp
     // front left
-    FL.th1 = jointLimiter(oH1*(1+d), -105, 17);
+    FL.th1 = jointLimiter(oH1*(1+d), -17, 17);
     FL.th2 = jointLimiter(-oH2+offset2, -5, 130);
     FL.th3 = offset3;
  
@@ -268,13 +268,13 @@ void CPG::walk(images stereo)
     ML.th3 = offset3;
 
     // back left
-    BL.th1 = jointLimiter(oH1*(1+d), -17, 105);
+    BL.th1 = jointLimiter(oH1*(1+d), -17, 17);
     BL.th2 = jointLimiter(-oH2+offset2, -5, 130);
     BL.th3 = offset3;
 
     // right side has the th1 angles inverted because of the orientation of the legs on the robot
     // front right
-    FR.th1 = jointLimiter(oH1*(1-d), -17, 105);
+    FR.th1 = jointLimiter(oH1*(1-d), -17, 17);
     FR.th2 = jointLimiter(oH2+offset2, -5, 130);
     FR.th3 = offset3;
 
@@ -284,7 +284,7 @@ void CPG::walk(images stereo)
     MR.th3 = offset3;
 
     // back right
-    BR.th1 = jointLimiter(oH1*(1-d), -105, 17);
+    BR.th1 = jointLimiter(oH1*(1-d), -17, 17);
     BR.th2 = jointLimiter(oH2+offset2, -5, 130);
     BR.th3 = offset3; 
 }
