@@ -227,11 +227,11 @@ void CPG::cyclic(images *stereo)
 
     if(stereo->distZ>=2)
     {
-        if(stereo->threshZ<=0.15)
+        if(stereo->threshZ<=0.2)
             stereo->nearZ=true;
 
         k-=0.04;
-        stereo->threshZ-=0.155;
+        stereo->threshZ-=0.15;
         stereo->distZ=0;
 
         // std::cout << k << " , " << stereo->threshZ << " , " << std::boolalpha << stereo->nearZ << std::endl;
@@ -440,7 +440,7 @@ void images::blob()
     {
         float f=171.0651796545387; //focal_length
 
-        target.z = f*0.064*1/(keypointsL[0].pt.x-keypointsR[0].pt.x);
+        target.z = f*0.06*1/(keypointsL[0].pt.x-keypointsR[0].pt.x);
 
         float fov_x = 2*atan2(848/2, f);
         float fov_y = 2*atan2(800/2, f);
