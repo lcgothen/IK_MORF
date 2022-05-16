@@ -440,7 +440,7 @@ void images::blob()
     {
         float f=171.0651796545387; //focal_length
 
-        target.z = f*0.07*1/(keypointsL[0].pt.x-keypointsR[0].pt.x);
+        target.z = f*0.065*1/(keypointsL[0].pt.x-keypointsR[0].pt.x);
 
         float fov_x = 2*atan2(848/2, f);
         float fov_y = 2*atan2(800/2, f);
