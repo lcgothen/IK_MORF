@@ -227,11 +227,11 @@ void CPG::cyclic(images *stereo)
 
     if(stereo->distZ>=2)
     {
-        if(stereo->threshZ<=0.2)
+        if(stereo->threshZ<=0.15)
             stereo->nearZ=true;
 
         k-=0.04;
-        stereo->threshZ-=0.15;
+        stereo->threshZ-=0.155;
         stereo->distZ=0;
 
         // std::cout << k << " , " << stereo->threshZ << " , " << std::boolalpha << stereo->nearZ << std::endl;
