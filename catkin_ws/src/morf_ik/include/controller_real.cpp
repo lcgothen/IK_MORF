@@ -440,18 +440,13 @@ void images::blob()
     {
         float f=171.0651796545387; //focal_length
 
-        target.z = f*0.065*1/(keypointsL[0].pt.x-keypointsR[0].pt.x);
+        target.z = f*0.06/(keypointsL[0].pt.x-keypointsR[0].pt.x);
 
-        // float fov_x = 2*atan2(848/2, f);
-        // float fov_y = 2*atan2(800/2, f);
+        float fov_x = 2*atan2(848/2, f);
+        float fov_y = 2*atan2(800/2, f);
 
-        // float width = 2*target.z*tan(fov_x/2);
-        // // float height = 2*target.z*tan(fov_y/2);
-        // float height = 800*width/848;
-
-        float fov=173*M_PI/180; // diagonal fov from camera datasheet
-        float d = 2*target.z*tan(fov);
-        float width = d/sqrt((1+pow(800/848,2)));
+        float width = 2*target.z*tan(fov_x/2);
+        // float height = 2*target.z*tan(fov_y/2);
         float height = 800*width/848;
 
         target.x = -keypointsL[0].pt.x/848*width+width/2;
