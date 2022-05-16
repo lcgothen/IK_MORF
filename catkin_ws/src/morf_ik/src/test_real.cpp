@@ -26,17 +26,22 @@ using namespace controller;
 
 /********************* USAGE *************************
 
-./main TYPE N_TRIALS
+./main TYPE
 
 TYPE_: 0 means equations, 1 means neural network
-N_TRIALS: number of trials
 
 ******************************************************/
 
 
 int main(int argc, char **argv)
 {
-    int type = 0;
+    if(argc < 3)
+    {
+        std::cout << "./main TYPE" << std::endl;
+        exit(EXIT_FAILURE);
+    }
+
+    int type = std::stoi(argv[1]);
 
     // target coords for stabilizing with 4 legs
     point posFL, stableFR, stableML, stableMR, stableBL, stableBR;
@@ -123,7 +128,7 @@ int main(int argc, char **argv)
     int state=0, stable_state=0;
     point target;
 
-    std::string ann_path = "./neural_networks/data_4div_direct/batch_01_10_01_50000_02_09/";
+    std::string ann_path = "./neural_networks/nn/";
 
     ros::init(argc, argv, "IK_controller");
     ros::NodeHandle n;
