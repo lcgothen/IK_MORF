@@ -442,15 +442,20 @@ void images::blob()
 
         target.z = f*0.065*1/(keypointsL[0].pt.x-keypointsR[0].pt.x);
 
-        float fov_x = 2*atan2(848/2, f);
-        float fov_y = 2*atan2(800/2, f);
+        // float fov_x = 2*atan2(848/2, f);
+        // float fov_y = 2*atan2(800/2, f);
 
-        float length = 2*target.z*tan(fov_x/2);
-        // float width = 2*target.z*tan(fov_y/2);
-        float width = 800*length/848;
+        // float width = 2*target.z*tan(fov_x/2);
+        // // float height = 2*target.z*tan(fov_y/2);
+        // float height = 800*width/848;
 
-        target.x = -keypointsL[0].pt.x/848*length+length/2;
-        target.y = -keypointsL[0].pt.y/800*width+width/2;
+        float fov=173*M_PI/180; // diagonal fov from camera datasheet
+        float d = 2*target.z*tan(fov);
+        float width = d/sqrt((1+pow(800/848,2)));
+        float height = 800*width/848;
+
+        target.x = -keypointsL[0].pt.x/848*width+width/2;
+        target.y = -keypointsL[0].pt.y/800*height+height/2;
 
         std::cout << target.x << " , " << target.y << " , " << target.z << std::endl;
     }
