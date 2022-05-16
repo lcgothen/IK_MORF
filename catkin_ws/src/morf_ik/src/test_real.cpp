@@ -128,7 +128,7 @@ int main(int argc, char **argv)
     int state=0, stable_state=0;
     point target;
 
-    std::string ann_path = "./neural_networks/nn/";
+    std::string ann_path = "./neural_networks/";
 
     ros::init(argc, argv, "IK_controller");
     ros::NodeHandle n;
