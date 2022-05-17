@@ -69,29 +69,78 @@ include morf_ik/CMakeFiles/gen_data.dir/progress.make
 # Include the compile flags for this target's objects.
 include morf_ik/CMakeFiles/gen_data.dir/flags.make
 
-morf_ik/CMakeFiles/gen_data.dir/src/gen_data.cpp.o: morf_ik/CMakeFiles/gen_data.dir/flags.make
-morf_ik/CMakeFiles/gen_data.dir/src/gen_data.cpp.o: /home/leonor/tese/IK_MORF/catkin_ws/src/morf_ik/src/gen_data.cpp
-morf_ik/CMakeFiles/gen_data.dir/src/gen_data.cpp.o: morf_ik/CMakeFiles/gen_data.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/leonor/tese/IK_MORF/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object morf_ik/CMakeFiles/gen_data.dir/src/gen_data.cpp.o"
-	cd /home/leonor/tese/IK_MORF/catkin_ws/build/morf_ik && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT morf_ik/CMakeFiles/gen_data.dir/src/gen_data.cpp.o -MF CMakeFiles/gen_data.dir/src/gen_data.cpp.o.d -o CMakeFiles/gen_data.dir/src/gen_data.cpp.o -c /home/leonor/tese/IK_MORF/catkin_ws/src/morf_ik/src/gen_data.cpp
+morf_ik/CMakeFiles/gen_data.dir/src/gen_data_sim.cpp.o: morf_ik/CMakeFiles/gen_data.dir/flags.make
+morf_ik/CMakeFiles/gen_data.dir/src/gen_data_sim.cpp.o: /home/leonor/tese/IK_MORF/catkin_ws/src/morf_ik/src/gen_data_sim.cpp
+morf_ik/CMakeFiles/gen_data.dir/src/gen_data_sim.cpp.o: morf_ik/CMakeFiles/gen_data.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/leonor/tese/IK_MORF/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object morf_ik/CMakeFiles/gen_data.dir/src/gen_data_sim.cpp.o"
+	cd /home/leonor/tese/IK_MORF/catkin_ws/build/morf_ik && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT morf_ik/CMakeFiles/gen_data.dir/src/gen_data_sim.cpp.o -MF CMakeFiles/gen_data.dir/src/gen_data_sim.cpp.o.d -o CMakeFiles/gen_data.dir/src/gen_data_sim.cpp.o -c /home/leonor/tese/IK_MORF/catkin_ws/src/morf_ik/src/gen_data_sim.cpp
 
-morf_ik/CMakeFiles/gen_data.dir/src/gen_data.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/gen_data.dir/src/gen_data.cpp.i"
-	cd /home/leonor/tese/IK_MORF/catkin_ws/build/morf_ik && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/leonor/tese/IK_MORF/catkin_ws/src/morf_ik/src/gen_data.cpp > CMakeFiles/gen_data.dir/src/gen_data.cpp.i
+morf_ik/CMakeFiles/gen_data.dir/src/gen_data_sim.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/gen_data.dir/src/gen_data_sim.cpp.i"
+	cd /home/leonor/tese/IK_MORF/catkin_ws/build/morf_ik && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/leonor/tese/IK_MORF/catkin_ws/src/morf_ik/src/gen_data_sim.cpp > CMakeFiles/gen_data.dir/src/gen_data_sim.cpp.i
 
-morf_ik/CMakeFiles/gen_data.dir/src/gen_data.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/gen_data.dir/src/gen_data.cpp.s"
-	cd /home/leonor/tese/IK_MORF/catkin_ws/build/morf_ik && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/leonor/tese/IK_MORF/catkin_ws/src/morf_ik/src/gen_data.cpp -o CMakeFiles/gen_data.dir/src/gen_data.cpp.s
+morf_ik/CMakeFiles/gen_data.dir/src/gen_data_sim.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/gen_data.dir/src/gen_data_sim.cpp.s"
+	cd /home/leonor/tese/IK_MORF/catkin_ws/build/morf_ik && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/leonor/tese/IK_MORF/catkin_ws/src/morf_ik/src/gen_data_sim.cpp -o CMakeFiles/gen_data.dir/src/gen_data_sim.cpp.s
+
+morf_ik/CMakeFiles/gen_data.dir/home/leonor/CoppeliaSim/programming/common/shared_memory.c.o: morf_ik/CMakeFiles/gen_data.dir/flags.make
+morf_ik/CMakeFiles/gen_data.dir/home/leonor/CoppeliaSim/programming/common/shared_memory.c.o: /home/leonor/CoppeliaSim/programming/common/shared_memory.c
+morf_ik/CMakeFiles/gen_data.dir/home/leonor/CoppeliaSim/programming/common/shared_memory.c.o: morf_ik/CMakeFiles/gen_data.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/leonor/tese/IK_MORF/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object morf_ik/CMakeFiles/gen_data.dir/home/leonor/CoppeliaSim/programming/common/shared_memory.c.o"
+	cd /home/leonor/tese/IK_MORF/catkin_ws/build/morf_ik && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT morf_ik/CMakeFiles/gen_data.dir/home/leonor/CoppeliaSim/programming/common/shared_memory.c.o -MF CMakeFiles/gen_data.dir/home/leonor/CoppeliaSim/programming/common/shared_memory.c.o.d -o CMakeFiles/gen_data.dir/home/leonor/CoppeliaSim/programming/common/shared_memory.c.o -c /home/leonor/CoppeliaSim/programming/common/shared_memory.c
+
+morf_ik/CMakeFiles/gen_data.dir/home/leonor/CoppeliaSim/programming/common/shared_memory.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/gen_data.dir/home/leonor/CoppeliaSim/programming/common/shared_memory.c.i"
+	cd /home/leonor/tese/IK_MORF/catkin_ws/build/morf_ik && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/leonor/CoppeliaSim/programming/common/shared_memory.c > CMakeFiles/gen_data.dir/home/leonor/CoppeliaSim/programming/common/shared_memory.c.i
+
+morf_ik/CMakeFiles/gen_data.dir/home/leonor/CoppeliaSim/programming/common/shared_memory.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/gen_data.dir/home/leonor/CoppeliaSim/programming/common/shared_memory.c.s"
+	cd /home/leonor/tese/IK_MORF/catkin_ws/build/morf_ik && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/leonor/CoppeliaSim/programming/common/shared_memory.c -o CMakeFiles/gen_data.dir/home/leonor/CoppeliaSim/programming/common/shared_memory.c.s
+
+morf_ik/CMakeFiles/gen_data.dir/home/leonor/CoppeliaSim/programming/remoteApi/extApi.c.o: morf_ik/CMakeFiles/gen_data.dir/flags.make
+morf_ik/CMakeFiles/gen_data.dir/home/leonor/CoppeliaSim/programming/remoteApi/extApi.c.o: /home/leonor/CoppeliaSim/programming/remoteApi/extApi.c
+morf_ik/CMakeFiles/gen_data.dir/home/leonor/CoppeliaSim/programming/remoteApi/extApi.c.o: morf_ik/CMakeFiles/gen_data.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/leonor/tese/IK_MORF/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object morf_ik/CMakeFiles/gen_data.dir/home/leonor/CoppeliaSim/programming/remoteApi/extApi.c.o"
+	cd /home/leonor/tese/IK_MORF/catkin_ws/build/morf_ik && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT morf_ik/CMakeFiles/gen_data.dir/home/leonor/CoppeliaSim/programming/remoteApi/extApi.c.o -MF CMakeFiles/gen_data.dir/home/leonor/CoppeliaSim/programming/remoteApi/extApi.c.o.d -o CMakeFiles/gen_data.dir/home/leonor/CoppeliaSim/programming/remoteApi/extApi.c.o -c /home/leonor/CoppeliaSim/programming/remoteApi/extApi.c
+
+morf_ik/CMakeFiles/gen_data.dir/home/leonor/CoppeliaSim/programming/remoteApi/extApi.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/gen_data.dir/home/leonor/CoppeliaSim/programming/remoteApi/extApi.c.i"
+	cd /home/leonor/tese/IK_MORF/catkin_ws/build/morf_ik && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/leonor/CoppeliaSim/programming/remoteApi/extApi.c > CMakeFiles/gen_data.dir/home/leonor/CoppeliaSim/programming/remoteApi/extApi.c.i
+
+morf_ik/CMakeFiles/gen_data.dir/home/leonor/CoppeliaSim/programming/remoteApi/extApi.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/gen_data.dir/home/leonor/CoppeliaSim/programming/remoteApi/extApi.c.s"
+	cd /home/leonor/tese/IK_MORF/catkin_ws/build/morf_ik && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/leonor/CoppeliaSim/programming/remoteApi/extApi.c -o CMakeFiles/gen_data.dir/home/leonor/CoppeliaSim/programming/remoteApi/extApi.c.s
+
+morf_ik/CMakeFiles/gen_data.dir/home/leonor/CoppeliaSim/programming/remoteApi/extApiPlatform.c.o: morf_ik/CMakeFiles/gen_data.dir/flags.make
+morf_ik/CMakeFiles/gen_data.dir/home/leonor/CoppeliaSim/programming/remoteApi/extApiPlatform.c.o: /home/leonor/CoppeliaSim/programming/remoteApi/extApiPlatform.c
+morf_ik/CMakeFiles/gen_data.dir/home/leonor/CoppeliaSim/programming/remoteApi/extApiPlatform.c.o: morf_ik/CMakeFiles/gen_data.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/leonor/tese/IK_MORF/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object morf_ik/CMakeFiles/gen_data.dir/home/leonor/CoppeliaSim/programming/remoteApi/extApiPlatform.c.o"
+	cd /home/leonor/tese/IK_MORF/catkin_ws/build/morf_ik && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT morf_ik/CMakeFiles/gen_data.dir/home/leonor/CoppeliaSim/programming/remoteApi/extApiPlatform.c.o -MF CMakeFiles/gen_data.dir/home/leonor/CoppeliaSim/programming/remoteApi/extApiPlatform.c.o.d -o CMakeFiles/gen_data.dir/home/leonor/CoppeliaSim/programming/remoteApi/extApiPlatform.c.o -c /home/leonor/CoppeliaSim/programming/remoteApi/extApiPlatform.c
+
+morf_ik/CMakeFiles/gen_data.dir/home/leonor/CoppeliaSim/programming/remoteApi/extApiPlatform.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/gen_data.dir/home/leonor/CoppeliaSim/programming/remoteApi/extApiPlatform.c.i"
+	cd /home/leonor/tese/IK_MORF/catkin_ws/build/morf_ik && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/leonor/CoppeliaSim/programming/remoteApi/extApiPlatform.c > CMakeFiles/gen_data.dir/home/leonor/CoppeliaSim/programming/remoteApi/extApiPlatform.c.i
+
+morf_ik/CMakeFiles/gen_data.dir/home/leonor/CoppeliaSim/programming/remoteApi/extApiPlatform.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/gen_data.dir/home/leonor/CoppeliaSim/programming/remoteApi/extApiPlatform.c.s"
+	cd /home/leonor/tese/IK_MORF/catkin_ws/build/morf_ik && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/leonor/CoppeliaSim/programming/remoteApi/extApiPlatform.c -o CMakeFiles/gen_data.dir/home/leonor/CoppeliaSim/programming/remoteApi/extApiPlatform.c.s
 
 # Object files for target gen_data
 gen_data_OBJECTS = \
-"CMakeFiles/gen_data.dir/src/gen_data.cpp.o"
+"CMakeFiles/gen_data.dir/src/gen_data_sim.cpp.o" \
+"CMakeFiles/gen_data.dir/home/leonor/CoppeliaSim/programming/common/shared_memory.c.o" \
+"CMakeFiles/gen_data.dir/home/leonor/CoppeliaSim/programming/remoteApi/extApi.c.o" \
+"CMakeFiles/gen_data.dir/home/leonor/CoppeliaSim/programming/remoteApi/extApiPlatform.c.o"
 
 # External object files for target gen_data
 gen_data_EXTERNAL_OBJECTS =
 
-/home/leonor/tese/IK_MORF/catkin_ws/devel/lib/morf_ik/gen_data: morf_ik/CMakeFiles/gen_data.dir/src/gen_data.cpp.o
+/home/leonor/tese/IK_MORF/catkin_ws/devel/lib/morf_ik/gen_data: morf_ik/CMakeFiles/gen_data.dir/src/gen_data_sim.cpp.o
+/home/leonor/tese/IK_MORF/catkin_ws/devel/lib/morf_ik/gen_data: morf_ik/CMakeFiles/gen_data.dir/home/leonor/CoppeliaSim/programming/common/shared_memory.c.o
+/home/leonor/tese/IK_MORF/catkin_ws/devel/lib/morf_ik/gen_data: morf_ik/CMakeFiles/gen_data.dir/home/leonor/CoppeliaSim/programming/remoteApi/extApi.c.o
+/home/leonor/tese/IK_MORF/catkin_ws/devel/lib/morf_ik/gen_data: morf_ik/CMakeFiles/gen_data.dir/home/leonor/CoppeliaSim/programming/remoteApi/extApiPlatform.c.o
 /home/leonor/tese/IK_MORF/catkin_ws/devel/lib/morf_ik/gen_data: morf_ik/CMakeFiles/gen_data.dir/build.make
+/home/leonor/tese/IK_MORF/catkin_ws/devel/lib/morf_ik/gen_data: /usr/lib/x86_64-linux-gnu/libboost_system.so
 /home/leonor/tese/IK_MORF/catkin_ws/devel/lib/morf_ik/gen_data: /opt/ros/melodic/lib/libimage_transport.so
 /home/leonor/tese/IK_MORF/catkin_ws/devel/lib/morf_ik/gen_data: /opt/ros/melodic/lib/libmessage_filters.so
 /home/leonor/tese/IK_MORF/catkin_ws/devel/lib/morf_ik/gen_data: /opt/ros/melodic/lib/libclass_loader.so
@@ -200,7 +249,7 @@ gen_data_EXTERNAL_OBJECTS =
 /home/leonor/tese/IK_MORF/catkin_ws/devel/lib/morf_ik/gen_data: /usr/lib/x86_64-linux-gnu/libpthread.so
 /home/leonor/tese/IK_MORF/catkin_ws/devel/lib/morf_ik/gen_data: /usr/lib/x86_64-linux-gnu/libconsole_bridge.so.0.4
 /home/leonor/tese/IK_MORF/catkin_ws/devel/lib/morf_ik/gen_data: morf_ik/CMakeFiles/gen_data.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/leonor/tese/IK_MORF/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable /home/leonor/tese/IK_MORF/catkin_ws/devel/lib/morf_ik/gen_data"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/leonor/tese/IK_MORF/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX executable /home/leonor/tese/IK_MORF/catkin_ws/devel/lib/morf_ik/gen_data"
 	cd /home/leonor/tese/IK_MORF/catkin_ws/build/morf_ik && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/gen_data.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

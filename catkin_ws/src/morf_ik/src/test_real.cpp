@@ -35,7 +35,7 @@ TYPE_: 0 means equations, 1 means neural network
 
 int main(int argc, char **argv)
 {
-    if(argc < 3)
+    if(argc < 2)
     {
         std::cout << "./main TYPE" << std::endl;
         exit(EXIT_FAILURE);

@@ -225,7 +225,6 @@ include_directories(
 #     ${COPPELIASIM_ROOT_DIR}/programming/remoteApi/extApi.c
 #     ${COPPELIASIM_ROOT_DIR}/programming/remoteApi/extApiPlatform.c)
 
-file(GLOB fann_real CONFIGURE_DEPENDS "*.so" "*.so.2")
 
 coppeliasim_add_executable(main 
     SOURCES
@@ -234,7 +233,13 @@ coppeliasim_add_executable(main
     ${COPPELIASIM_ROOT_DIR}/programming/remoteApi/extApi.c
     ${COPPELIASIM_ROOT_DIR}/programming/remoteApi/extApiPlatform.c)
 # add_executable(main_nn_data src/main_nn_data.cpp)
-add_executable(gen_data src/gen_data.cpp)
+# add_executable(gen_data src/gen_data_ik.cpp)
+coppeliasim_add_executable(gen_data 
+    SOURCES
+    src/gen_data_sim.cpp
+    ${COPPELIASIM_COMMON_DIR}/shared_memory.c
+    ${COPPELIASIM_ROOT_DIR}/programming/remoteApi/extApi.c
+    ${COPPELIASIM_ROOT_DIR}/programming/remoteApi/extApiPlatform.c)
 add_executable(nn src/nn.cpp)
 add_executable(calib src/calibration.cpp)
 add_executable(morf_controller_real src/test_real.cpp include/coordinates_real.cpp include/controller_real.cpp)
@@ -250,6 +255,17 @@ target_include_directories(main PRIVATE ${COPPELIASIM_INCLUDE_DIR})
 target_include_directories(main PRIVATE ../remoteApi)
 target_link_libraries(main Boost::system)
 target_link_libraries(main Threads::Threads rt)
+
+target_compile_definitions(gen_data PRIVATE NON_MATLAB_PARSING)
+target_compile_definitions(gen_data PRIVATE MAX_EXT_API_CONNECTIONS=255)
+target_include_directories(gen_data PRIVATE ${COPPELIASIM_INCLUDE_DIR})
+target_include_directories(gen_data PRIVATE ${COPPELIASIM_ROOT_DIR}/programming/remoteApi)
+target_compile_definitions(gen_data PRIVATE NON_MATLAB_PARSING)
+target_compile_definitions(gen_data PRIVATE MAX_EXT_API_CONNECTIONS=255)
+target_include_directories(gen_data PRIVATE ${COPPELIASIM_INCLUDE_DIR})
+target_include_directories(gen_data PRIVATE ../remoteApi)
+target_link_libraries(gen_data Boost::system)
+target_link_libraries(gen_data Threads::Threads rt)
 
 add_library(coords include/coordinates.cpp)
 add_library(control include/controller.cpp)
