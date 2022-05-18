@@ -458,15 +458,17 @@ void images::blob()
 
         target.z = f*0.06/(keypointsL[0].pt.x-keypointsR[0].pt.x);
 
-        float fov_x = 2*atan2(848/2, f);
-        float fov_y = 2*atan2(800/2, f);
+        float fov_x = 848/newMatrixL.at<double>(0,2)*atan2(newMatrixL.at<double>(0,2), f);
+        float fov_y = 800/newMatrixL.at<double>(1,2)*atan2(newMatrixL.at<double>(1,2), f);
 
         float width = 2*target.z*tan(fov_x/2);
-        // float height = 2*target.z*tan(fov_y/2);
-        float height = 800*width/848;
+        float height = 2*target.z*tan(fov_y/2);
+        // float height = 800*width/848;
 
-        target.x = -keypointsL[0].pt.x/848*width + newMatrixL.at<double>(0,2)/848*width; 
-        target.y = -keypointsL[0].pt.y/800*height + newMatrixL.at<double>(1,2)/800*height; 
+        // target.x = -keypointsL[0].pt.x/848*width + newMatrixL.at<double>(0,2)/848*width; 
+        // target.y = -keypointsL[0].pt.y/800*height + newMatrixL.at<double>(1,2)/800*height;
+        target.x = -keypointsL[0].pt.x/848*width+width/2;
+        target.y = -keypointsL[0].pt.y/800*height+height/2; 
 
         std::cout << target.x << " , " << target.y << " , " << target.z << std::endl;
     }
