@@ -5,7 +5,8 @@ import csv
 import os.path
 from os import path
 
-filepath = "./devel/lib/morf_ik/neural_networks/data_6div_direct/"
+filepath = "./devel/lib/morf_ik/babbling_data/"
+# filepath = "./devel/lib/morf_ik/neural_networks/data_6div_direct/"
 
 div=6
 
@@ -16,7 +17,8 @@ z = []
 for j in range(div):
     for k in range(div):
         for l in range(div):
-            filename = filepath + "train" + str(j) + str(k) + str(l) + ".data"
+            filename = filepath + str(j) + str(k) + str(l) + ".data"
+            # filename = filepath + "train" + str(j) + str(k) + str(l) + ".data"
 
             if path.exists(filename):
                 reader = csv.reader(open(filename), delimiter=" ")
@@ -38,9 +40,9 @@ ax.scatter(x, y, z)
 ax.set_xlabel('x')
 ax.set_ylabel('y')
 ax.set_zlabel('z')
+plt.show()
 plt.savefig(filepath + "all_data.png")
 plt.close()
-# plt.show()
 
 # filename = filepath + "train212.data"
 
