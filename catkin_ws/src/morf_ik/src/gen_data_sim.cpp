@@ -83,7 +83,7 @@ int main(int argc, char **argv)
     simxStartSimulation(clientID, simx_opmode_oneshot);
     
     // create train data
-    for(int i=0; i<500000; i++)
+    for(int i=0; i<10000; i++)
     {
         state = 0;
 
