@@ -127,8 +127,12 @@ int main(int argc, char **argv)
     // std::cout << RL << std::endl;
     // std::cout << PL << std::endl;
 
-
+    // std::cout << cameraMatrixL << std::endl;
     std::cout << newMatrixL << std::endl;
+
+    std::cout << newMatrixL.at<double>(0,0) << std::endl;
+    std::cout << newMatrixL.at<double>(0,2) << std::endl;
+    std::cout << newMatrixL.at<double>(1,2) << std::endl;
 
 
     cv::Mat I = cv::Mat::eye(3, 3, cv::DataType<double>::type);
