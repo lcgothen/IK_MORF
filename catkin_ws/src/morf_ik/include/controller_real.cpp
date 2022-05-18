@@ -454,9 +454,9 @@ void images::blob()
         // target.y = -keypointsL[0].pt.y/800*height+height/2;
 
         float f=newMatrixL.at<double>(0,0); //focal_length
-        std::cout << f << std::endl;
+        // std::cout << f << std::endl;
 
-        target.z = f*0.064/(keypointsL[0].pt.x-keypointsR[0].pt.x);
+        target.z = f*0.06/(keypointsL[0].pt.x-keypointsR[0].pt.x);
 
         float fov_x = 848/newMatrixL.at<double>(0,2)*atan2(newMatrixL.at<double>(0,2), f);
         float fov_y = 800/newMatrixL.at<double>(1,2)*atan2(newMatrixL.at<double>(1,2), f);
