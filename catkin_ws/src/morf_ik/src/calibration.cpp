@@ -102,13 +102,14 @@ int main(int argc, char **argv)
 
     cv::fisheye::stereoRectify(cameraMatrixL, distCoeffsL, cameraMatrixR, distCoeffsR, imgL.size(), R, T, RL, RR, PL, PR, Q, 0, newImageSize);
 
+
     cv::Mat newMatrixL = cameraMatrixL.clone();
-    newMatrixL.at<double>(0,0) *= 0.6; 
-    newMatrixL.at<double>(1,1) *= 0.6; 
+    newMatrixL.at<double>(0,0) *= 0.4; 
+    newMatrixL.at<double>(1,1) *= 0.4; 
 
     cv::Mat newMatrixR = cameraMatrixR.clone();
-    newMatrixR.at<double>(0,0) *= 0.6; 
-    newMatrixR.at<double>(1,1) *= 0.6; 
+    newMatrixR.at<double>(0,0) *= 0.4; 
+    newMatrixR.at<double>(1,1) *= 0.4; 
 
     cv::FileStorage matrixFile("matrices.yml", cv::FileStorage::WRITE);
     matrixFile << "cameraMatrixL" << cameraMatrixL;
@@ -127,7 +128,7 @@ int main(int argc, char **argv)
     // std::cout << RL << std::endl;
     std::cout << T << std::endl;
 
-    std::cout << cameraMatrixL << std::endl;
+    // std::cout << newMatrixL.at<double>(0,2) << std::endl;
     std::cout << newMatrixL << std::endl;
 
 
