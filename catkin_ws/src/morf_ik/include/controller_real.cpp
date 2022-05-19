@@ -461,10 +461,10 @@ void images::blob()
         float fov_x = atan2(newMatrixL.at<double>(0,2), f);
         float fov_y = atan2(newMatrixL.at<double>(1,2), f);
 
-        float width = 848/newMatrixL.at<double>(0,2)*target.z*tan(fov_x);
+        float width = 848/(848-newMatrixL.at<double>(0,2))*target.z*tan(fov_x);
         float height = 800/(800-newMatrixL.at<double>(1,2))*target.z*tan(fov_y);
 
-        target.x = -keypointsL[0].pt.x/848*width + newMatrixL.at<double>(0,2)/848*width; 
+        target.x = -keypointsL[0].pt.x/848*width + (848-newMatrixL.at<double>(0,2))/848*width; 
         target.y = -keypointsL[0].pt.y/800*height + (800-newMatrixL.at<double>(1,2))/800*height;
 
         // float height = 800*width/848;
