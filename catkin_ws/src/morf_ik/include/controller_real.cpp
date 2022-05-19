@@ -453,31 +453,22 @@ void images::blob()
         // target.x = -keypointsL[0].pt.x/848*width+newMatrixL.at<double>(0,2)/848*width; //width/2;
         // target.y = -keypointsL[0].pt.y/800*height+newMatrixL.at<double>(1,2)/800*height; //height/2
 
-        float f=newMatrixL.at<double>(0,0); //focal_length
+        float fx=newMatrixL.at<double>(0,0); //focal_length x
+        float fy=newMatrixL.at<double>(1,1); //focal_length x
         // std::cout << f << std::endl;
 
-        target.z = f*0.07/(keypointsL[0].pt.x-keypointsR[0].pt.x);
+        target.z = abs(fx-fy)/2*0.065/(keypointsL[0].pt.x-keypointsR[0].pt.x);
 
-        // float fov_x = 848/newMatrixL.at<double>(0,2)*atan2(newMatrixL.at<double>(0,2), f);
-        // float fov_y = 800/newMatrixL.at<double>(1,2)*atan2(newMatrixL.at<double>(1,2), f);
+        float fov_x = atan2(newMatrixL.at<double>(0,2), fx);
+        float fov_y = atan2(newMatrixL.at<double>(1,2), fy);
 
-        // float width = 2*target.z*tan(fov_x/2);
-        // float height = 2*target.z*tan(fov_y/2);
+        float width = 848/newMatrixL.at<double>(0,2)*target.z*tan(fov_x);
+        float height = 800/newMatrixL.at<double>(1,2)*target.z*tan(fov_y);
 
-        // target.x = -keypointsL[0].pt.x/848*width + newMatrixL.at<double>(0,2)/848*width; 
-        // target.y = -keypointsL[0].pt.y/800*height + newMatrixL.at<double>(1,2)/800*height;
+        target.x = -keypointsL[0].pt.x/848*width + newMatrixL.at<double>(0,2)/848*width; 
+        target.y = -keypointsL[0].pt.y/800*height + newMatrixL.at<double>(1,2)/800*height;
 
         // float height = 800*width/848;
-
-        float diag_pix = sqrt(pow(848,2)+pow(800,2));
-        float diag_fov = 173; // from datasheet
-        float diag = 2*target.z*tan(diag_fov/2);
-
-        float width = 848*diag/diag_pix;
-        float height = 800*diag/diag_pix;
-
-        target.x = -keypointsL[0].pt.x/848*width + width/2; 
-        target.y = -keypointsL[0].pt.y/800*height + height/2;
 
 
         std::cout << target.x << " , " << target.y << " , " << target.z << std::endl;
