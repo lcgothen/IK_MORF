@@ -453,20 +453,19 @@ void images::blob()
         // target.x = -keypointsL[0].pt.x/848*width+newMatrixL.at<double>(0,2)/848*width; //width/2;
         // target.y = -keypointsL[0].pt.y/800*height+newMatrixL.at<double>(1,2)/800*height; //height/2
 
-        float fx=newMatrixL.at<double>(0,0); //focal_length x
-        float fy=newMatrixL.at<double>(1,1); //focal_length x
+        float f=newMatrixL.at<double>(0,0); //focal_length
         // std::cout << f << std::endl;
 
-        target.z = (fx+fy)/2*0.065/(keypointsL[0].pt.x-keypointsR[0].pt.x);
+        target.z = f*0.07/(keypointsL[0].pt.x-keypointsR[0].pt.x);
 
-        float fov_x = atan2(newMatrixL.at<double>(0,2), fx);
-        float fov_y = atan2(newMatrixL.at<double>(1,2), fy);
+        float fov_x = atan2(newMatrixL.at<double>(0,2), f);
+        float fov_y = atan2(newMatrixL.at<double>(1,2), f);
 
         float width = 848/newMatrixL.at<double>(0,2)*target.z*tan(fov_x);
-        float height = 800/newMatrixL.at<double>(1,2)*target.z*tan(fov_y);
+        float height = 800/(800-newMatrixL.at<double>(1,2))*target.z*tan(fov_y);
 
         target.x = -keypointsL[0].pt.x/848*width + newMatrixL.at<double>(0,2)/848*width; 
-        target.y = -keypointsL[0].pt.y/800*height + newMatrixL.at<double>(1,2)/800*height;
+        target.y = -keypointsL[0].pt.y/800*height + (800-newMatrixL.at<double>(1,2))/800*height;
 
         // float height = 800*width/848;
 
