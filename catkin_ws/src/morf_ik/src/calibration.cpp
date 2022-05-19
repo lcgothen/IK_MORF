@@ -104,12 +104,12 @@ int main(int argc, char **argv)
 
 
     cv::Mat newMatrixL = cameraMatrixL.clone();
-    newMatrixL.at<double>(0,0) *= 0.4; 
-    newMatrixL.at<double>(1,1) *= 0.4; 
+    newMatrixL.at<double>(0,0) *= 0.6; 
+    newMatrixL.at<double>(1,1) *= 0.6; 
 
     cv::Mat newMatrixR = cameraMatrixR.clone();
-    newMatrixR.at<double>(0,0) *= 0.4; 
-    newMatrixR.at<double>(1,1) *= 0.4; 
+    newMatrixR.at<double>(0,0) *= 0.6; 
+    newMatrixR.at<double>(1,1) *= 0.6; 
 
     cv::FileStorage matrixFile("matrices.yml", cv::FileStorage::WRITE);
     matrixFile << "cameraMatrixL" << cameraMatrixL;
@@ -126,7 +126,9 @@ int main(int argc, char **argv)
     // cv::fisheye::estimateNewCameraMatrixForUndistortRectify(cameraMatrixL, distCoeffsL, imgL.size(), RL, PL);
 
     // std::cout << RL << std::endl;
-    std::cout << T << std::endl;
+    float f=newMatrixL.at<double>(0,0);
+    std::cout << 848/newMatrixL.at<double>(0,2)*atan2(newMatrixL.at<double>(0,2), f)*180/M_PI << std::endl;
+    std::cout << 800/newMatrixL.at<double>(1,2)*atan2(newMatrixL.at<double>(1,2), f)*180/M_PI << std::endl;
 
     // std::cout << newMatrixL.at<double>(0,2) << std::endl;
     std::cout << newMatrixL << std::endl;

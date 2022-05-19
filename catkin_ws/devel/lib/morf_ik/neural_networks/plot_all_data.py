@@ -6,33 +6,43 @@ import os.path
 from os import path
 
 filepath = "./devel/lib/morf_ik/babbling_data/"
+filename = "./devel/lib/morf_ik/babbling_data/input.data"
 # filepath = "./devel/lib/morf_ik/neural_networks/data_6div_direct/"
 
-div=6
+# div=6
 
 x = []
 y = []
 z = []
 
-for j in range(div):
-    for k in range(div):
-        for l in range(div):
-            filename = filepath + str(j) + str(k) + str(l) + ".data"
-            # filename = filepath + "train" + str(j) + str(k) + str(l) + ".data"
+# for j in range(div):
+#     for k in range(div):
+#         for l in range(div):
+#             filename = filepath + str(j) + str(k) + str(l) + ".data"
+#             # filename = filepath + "train" + str(j) + str(k) + str(l) + ".data"
 
-            if path.exists(filename):
-                reader = csv.reader(open(filename), delimiter=" ")
-                data = list(reader)
+#             if path.exists(filename):
+#                 reader = csv.reader(open(filename), delimiter=" ")
+#                 data = list(reader)
 
-                i=0
+#                 i=0
 
-                for row in data:
-                    if i % 2 != 0:
-                        x.append(float(row[0]))
-                        y.append(float(row[1]))
-                        z.append(float(row[2]))
+#                 for row in data:
+#                     if i % 2 != 0:
+#                         x.append(float(row[0]))
+#                         y.append(float(row[1]))
+#                         z.append(float(row[2]))
                         
-                    i+=1
+#                     i+=1
+
+reader = csv.reader(open(filename), delimiter=" ")
+data = list(reader)
+
+for row in data:
+    x.append(float(row[0]))
+    y.append(float(row[1]))
+    z.append(float(row[2]))
+
 
 fig = plt.figure()
 ax = plt.axes(projection='3d')

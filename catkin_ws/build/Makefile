@@ -640,6 +640,19 @@ gen_data/fast:
 .PHONY : gen_data/fast
 
 #=============================================================================
+# Target rules for targets named sort_data
+
+# Build rule for target.
+sort_data: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 sort_data
+.PHONY : sort_data
+
+# fast build rule for target.
+sort_data/fast:
+	$(MAKE) $(MAKESILENT) -f morf_ik/CMakeFiles/sort_data.dir/build.make morf_ik/CMakeFiles/sort_data.dir/build
+.PHONY : sort_data/fast
+
+#=============================================================================
 # Target rules for targets named nn
 
 # Build rule for target.
@@ -758,6 +771,7 @@ help:
 	@echo "... main"
 	@echo "... morf_controller_real"
 	@echo "... nn"
+	@echo "... sort_data"
 .PHONY : help
 
 

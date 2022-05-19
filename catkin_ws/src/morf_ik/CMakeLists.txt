@@ -240,6 +240,7 @@ coppeliasim_add_executable(gen_data
     ${COPPELIASIM_COMMON_DIR}/shared_memory.c
     ${COPPELIASIM_ROOT_DIR}/programming/remoteApi/extApi.c
     ${COPPELIASIM_ROOT_DIR}/programming/remoteApi/extApiPlatform.c)
+add_executable(sort_data src/sort_data_sim.cpp)
 add_executable(nn src/nn.cpp)
 add_executable(calib src/calibration.cpp)
 add_executable(morf_controller_real src/test_real.cpp include/coordinates_real.cpp include/controller_real.cpp)
@@ -286,6 +287,11 @@ target_link_libraries(morf_controller_real
                       ${OpenCV_LIBS}
                       fann)
 target_link_libraries(gen_data 
+                      ${catkin_LIBRARIES}
+                      ${OpenCV_LIBS}
+                      coords
+                      control)
+target_link_libraries(sort_data 
                       ${catkin_LIBRARIES}
                       ${OpenCV_LIBS}
                       coords
