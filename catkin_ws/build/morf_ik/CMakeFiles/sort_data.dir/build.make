@@ -69,28 +69,28 @@ include morf_ik/CMakeFiles/sort_data.dir/progress.make
 # Include the compile flags for this target's objects.
 include morf_ik/CMakeFiles/sort_data.dir/flags.make
 
-morf_ik/CMakeFiles/sort_data.dir/src/sort_data_sim.cpp.o: morf_ik/CMakeFiles/sort_data.dir/flags.make
-morf_ik/CMakeFiles/sort_data.dir/src/sort_data_sim.cpp.o: /home/leonor/tese/IK_MORF/catkin_ws/src/morf_ik/src/sort_data_sim.cpp
-morf_ik/CMakeFiles/sort_data.dir/src/sort_data_sim.cpp.o: morf_ik/CMakeFiles/sort_data.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/leonor/tese/IK_MORF/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object morf_ik/CMakeFiles/sort_data.dir/src/sort_data_sim.cpp.o"
-	cd /home/leonor/tese/IK_MORF/catkin_ws/build/morf_ik && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT morf_ik/CMakeFiles/sort_data.dir/src/sort_data_sim.cpp.o -MF CMakeFiles/sort_data.dir/src/sort_data_sim.cpp.o.d -o CMakeFiles/sort_data.dir/src/sort_data_sim.cpp.o -c /home/leonor/tese/IK_MORF/catkin_ws/src/morf_ik/src/sort_data_sim.cpp
+morf_ik/CMakeFiles/sort_data.dir/src/sort_data.cpp.o: morf_ik/CMakeFiles/sort_data.dir/flags.make
+morf_ik/CMakeFiles/sort_data.dir/src/sort_data.cpp.o: /home/leonor/tese/IK_MORF/catkin_ws/src/morf_ik/src/sort_data.cpp
+morf_ik/CMakeFiles/sort_data.dir/src/sort_data.cpp.o: morf_ik/CMakeFiles/sort_data.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/leonor/tese/IK_MORF/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object morf_ik/CMakeFiles/sort_data.dir/src/sort_data.cpp.o"
+	cd /home/leonor/tese/IK_MORF/catkin_ws/build/morf_ik && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT morf_ik/CMakeFiles/sort_data.dir/src/sort_data.cpp.o -MF CMakeFiles/sort_data.dir/src/sort_data.cpp.o.d -o CMakeFiles/sort_data.dir/src/sort_data.cpp.o -c /home/leonor/tese/IK_MORF/catkin_ws/src/morf_ik/src/sort_data.cpp
 
-morf_ik/CMakeFiles/sort_data.dir/src/sort_data_sim.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/sort_data.dir/src/sort_data_sim.cpp.i"
-	cd /home/leonor/tese/IK_MORF/catkin_ws/build/morf_ik && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/leonor/tese/IK_MORF/catkin_ws/src/morf_ik/src/sort_data_sim.cpp > CMakeFiles/sort_data.dir/src/sort_data_sim.cpp.i
+morf_ik/CMakeFiles/sort_data.dir/src/sort_data.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/sort_data.dir/src/sort_data.cpp.i"
+	cd /home/leonor/tese/IK_MORF/catkin_ws/build/morf_ik && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/leonor/tese/IK_MORF/catkin_ws/src/morf_ik/src/sort_data.cpp > CMakeFiles/sort_data.dir/src/sort_data.cpp.i
 
-morf_ik/CMakeFiles/sort_data.dir/src/sort_data_sim.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/sort_data.dir/src/sort_data_sim.cpp.s"
-	cd /home/leonor/tese/IK_MORF/catkin_ws/build/morf_ik && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/leonor/tese/IK_MORF/catkin_ws/src/morf_ik/src/sort_data_sim.cpp -o CMakeFiles/sort_data.dir/src/sort_data_sim.cpp.s
+morf_ik/CMakeFiles/sort_data.dir/src/sort_data.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/sort_data.dir/src/sort_data.cpp.s"
+	cd /home/leonor/tese/IK_MORF/catkin_ws/build/morf_ik && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/leonor/tese/IK_MORF/catkin_ws/src/morf_ik/src/sort_data.cpp -o CMakeFiles/sort_data.dir/src/sort_data.cpp.s
 
 # Object files for target sort_data
 sort_data_OBJECTS = \
-"CMakeFiles/sort_data.dir/src/sort_data_sim.cpp.o"
+"CMakeFiles/sort_data.dir/src/sort_data.cpp.o"
 
 # External object files for target sort_data
 sort_data_EXTERNAL_OBJECTS =
 
-/home/leonor/tese/IK_MORF/catkin_ws/devel/lib/morf_ik/sort_data: morf_ik/CMakeFiles/sort_data.dir/src/sort_data_sim.cpp.o
+/home/leonor/tese/IK_MORF/catkin_ws/devel/lib/morf_ik/sort_data: morf_ik/CMakeFiles/sort_data.dir/src/sort_data.cpp.o
 /home/leonor/tese/IK_MORF/catkin_ws/devel/lib/morf_ik/sort_data: morf_ik/CMakeFiles/sort_data.dir/build.make
 /home/leonor/tese/IK_MORF/catkin_ws/devel/lib/morf_ik/sort_data: /opt/ros/melodic/lib/libimage_transport.so
 /home/leonor/tese/IK_MORF/catkin_ws/devel/lib/morf_ik/sort_data: /opt/ros/melodic/lib/libmessage_filters.so

@@ -78,19 +78,24 @@ int main(int argc, char **argv)
 
     std_msgs::Float32MultiArray IK_order;
 
-    int state = 0, num = 40;
-    float margin = 0.01, step_th1 = 90/num, step_th2 = 135/num, step_th3 = 179/num;
+    simxInt clientID = simxStart((simxChar*)"127.0.0.1", 19997, true, true, 2000, 5);
+
+    int state = 0;
+    float num = 40;
+    float margin = 0.01, step_th1 = 70/num*M_PI/180, step_th2 = 135/num*M_PI/180, step_th3 = 179/num*M_PI/180;
     
     // create train data
     for(int i=0; i<num; i++)
     {
+        simxStartSimulation(clientID, simx_opmode_oneshot);
+        sleep(1);
         for(int j=0; j<num; j++)
         {
             for(int k=0; k<num; k++)
             {
                 state = 0;
 
-                while(state!=3)
+                while(state!=2)
                 {
                     std::cout << "foot2leg: " << foot2leg.x << " " << foot2leg.y << " " << foot2leg.z << std::endl;
                     std::cout << "morf.FL: " << morf.FL.th1 << " , " << morf.FL.th2 << " , " << morf.FL.th3 << std::endl;
@@ -131,12 +136,6 @@ int main(int argc, char **argv)
 
                         // input.push_back(foot2leg);
                         // output.push_back(morf.FL);
-                    }
-                    else if(state==2)
-                    {
-                        // input.push_back(foot2leg);
-                        // output.push_back(morf.FL); 
-
 
                         allInputFile.open(allInputFile_name,  std::ios_base::app | std::ios_base::in);
                         allOutputFile.open(allOutputFile_name,  std::ios_base::app | std::ios_base::in);
@@ -147,6 +146,21 @@ int main(int argc, char **argv)
                         allInputFile.close();
                         allOutputFile.close();
                     }
+                    // else if(state==2)
+                    // {
+                    //     // input.push_back(foot2leg);
+                    //     // output.push_back(morf.FL); 
+
+
+                    //     allInputFile.open(allInputFile_name,  std::ios_base::app | std::ios_base::in);
+                    //     allOutputFile.open(allOutputFile_name,  std::ios_base::app | std::ios_base::in);
+
+                    //     allInputFile << foot2leg.x << " " << foot2leg.y << " " << foot2leg.z << "\n";
+                    //     allOutputFile << morf.FL.th1 << " " << morf.FL.th2<< " " << morf.FL.th3 << "\n";
+
+                    //     allInputFile.close();
+                    //     allOutputFile.close();
+                    // }
 
                     if(state == 0)
                         state = 1;
@@ -161,16 +175,24 @@ int main(int argc, char **argv)
                     loop_rate.sleep();
                 }
 
-                FL.th3 += step_th3*M_PI/180;
+                if(k<num-1)
+                    FL.th3 += step_th3;
             }
 
-            FL.th2 += step_th2*M_PI/180;
+            if(j<num-1)
+                FL.th2 += step_th2;
+
             step_th3 = -step_th3;
         }
 
-        FL.th1 += step_th1*M_PI/180;
+        FL.th1 += step_th1;
         step_th2 = -step_th2;
+
+        simxStopSimulation(clientID, simx_opmode_oneshot);
+        sleep(1);
     }
+
+    simxFinish(clientID);
 
 
 

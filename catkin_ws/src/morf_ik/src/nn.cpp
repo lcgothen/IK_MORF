@@ -64,8 +64,8 @@ int main(int argc, char **argv)
               fann_set_learning_rate(ann, learning_rate);
               fann_randomize_weights(ann, -1, 1);
 
-              std::string filename = "./babbling_data/"+std::to_string(j)+std::to_string(k)+std::to_string(l)+std::string(".data");
-              std::string filename_vali = "./babbling_data/"+std::to_string(j)+std::to_string(k)+std::to_string(l)+std::string(".data");
+              std::string filename = "./babbling_data/5div/"+std::to_string(j)+std::to_string(k)+std::to_string(l)+std::string(".data");
+              std::string filename_vali = "./babbling_data/5div/"+std::to_string(j)+std::to_string(k)+std::to_string(l)+std::string(".data");
 
               if (FILE *file = fopen(filename.c_str(), "r")) 
               {

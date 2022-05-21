@@ -640,6 +640,19 @@ gen_data/fast:
 .PHONY : gen_data/fast
 
 #=============================================================================
+# Target rules for targets named gen_data_ik
+
+# Build rule for target.
+gen_data_ik: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 gen_data_ik
+.PHONY : gen_data_ik
+
+# fast build rule for target.
+gen_data_ik/fast:
+	$(MAKE) $(MAKESILENT) -f morf_ik/CMakeFiles/gen_data_ik.dir/build.make morf_ik/CMakeFiles/gen_data_ik.dir/build
+.PHONY : gen_data_ik/fast
+
+#=============================================================================
 # Target rules for targets named sort_data
 
 # Build rule for target.
@@ -690,6 +703,19 @@ morf_controller_real: cmake_check_build_system
 morf_controller_real/fast:
 	$(MAKE) $(MAKESILENT) -f morf_ik/CMakeFiles/morf_controller_real.dir/build.make morf_ik/CMakeFiles/morf_controller_real.dir/build
 .PHONY : morf_controller_real/fast
+
+#=============================================================================
+# Target rules for targets named gen_data_real
+
+# Build rule for target.
+gen_data_real: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 gen_data_real
+.PHONY : gen_data_real
+
+# fast build rule for target.
+gen_data_real/fast:
+	$(MAKE) $(MAKESILENT) -f morf_ik/CMakeFiles/gen_data_real.dir/build.make morf_ik/CMakeFiles/gen_data_real.dir/build
+.PHONY : gen_data_real/fast
 
 #=============================================================================
 # Target rules for targets named coords
@@ -764,6 +790,8 @@ help:
 	@echo "... control"
 	@echo "... coords"
 	@echo "... gen_data"
+	@echo "... gen_data_ik"
+	@echo "... gen_data_real"
 	@echo "... gmock"
 	@echo "... gmock_main"
 	@echo "... gtest"
