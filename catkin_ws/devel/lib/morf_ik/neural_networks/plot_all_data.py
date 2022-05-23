@@ -6,7 +6,7 @@ import os.path
 from os import path
 
 filepath = "./devel/lib/morf_ik/babbling_data/"
-filename = "./devel/lib/morf_ik/babbling_data/input.data"
+filename = "./devel/lib/morf_ik/babbling_data/aux2.data"
 # filepath = "./devel/lib/morf_ik/neural_networks/data_6div_direct/"
 
 # div=6
@@ -43,15 +43,19 @@ for row in data:
     y.append(float(row[1]))
     z.append(float(row[2]))
 
+# xx, yy = np.meshgrid(np.linspace(-0.001, 0.0002), np.linspace(-0.05, 0.25))
+# zz = xx*yy*0-0.05
+
 
 fig = plt.figure()
 ax = plt.axes(projection='3d')
 ax.scatter(x, y, z)
+# ax.plot_surface(xx, yy, zz)
 ax.set_xlabel('x')
 ax.set_ylabel('y')
 ax.set_zlabel('z')
 # plt.show()
-plt.savefig(filepath + "all_data.png")
+plt.savefig(filepath + "data2.png")
 plt.close()
 
 # filename = filepath + "train212.data"

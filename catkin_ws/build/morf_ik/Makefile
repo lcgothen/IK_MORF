@@ -578,6 +578,20 @@ sort_data/fast:
 .PHONY : sort_data/fast
 
 # Convenience name for target.
+morf_ik/CMakeFiles/sort_data2.dir/rule:
+	cd /home/leonor/tese/IK_MORF/catkin_ws/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 morf_ik/CMakeFiles/sort_data2.dir/rule
+.PHONY : morf_ik/CMakeFiles/sort_data2.dir/rule
+
+# Convenience name for target.
+sort_data2: morf_ik/CMakeFiles/sort_data2.dir/rule
+.PHONY : sort_data2
+
+# fast build rule for target.
+sort_data2/fast:
+	cd /home/leonor/tese/IK_MORF/catkin_ws/build && $(MAKE) $(MAKESILENT) -f morf_ik/CMakeFiles/sort_data2.dir/build.make morf_ik/CMakeFiles/sort_data2.dir/build
+.PHONY : sort_data2/fast
+
+# Convenience name for target.
 morf_ik/CMakeFiles/nn.dir/rule:
 	cd /home/leonor/tese/IK_MORF/catkin_ws/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 morf_ik/CMakeFiles/nn.dir/rule
 .PHONY : morf_ik/CMakeFiles/nn.dir/rule
@@ -1012,6 +1026,30 @@ src/sort_data.cpp.s:
 	cd /home/leonor/tese/IK_MORF/catkin_ws/build && $(MAKE) $(MAKESILENT) -f morf_ik/CMakeFiles/sort_data.dir/build.make morf_ik/CMakeFiles/sort_data.dir/src/sort_data.cpp.s
 .PHONY : src/sort_data.cpp.s
 
+src/sort_data2.o: src/sort_data2.cpp.o
+.PHONY : src/sort_data2.o
+
+# target to build an object file
+src/sort_data2.cpp.o:
+	cd /home/leonor/tese/IK_MORF/catkin_ws/build && $(MAKE) $(MAKESILENT) -f morf_ik/CMakeFiles/sort_data2.dir/build.make morf_ik/CMakeFiles/sort_data2.dir/src/sort_data2.cpp.o
+.PHONY : src/sort_data2.cpp.o
+
+src/sort_data2.i: src/sort_data2.cpp.i
+.PHONY : src/sort_data2.i
+
+# target to preprocess a source file
+src/sort_data2.cpp.i:
+	cd /home/leonor/tese/IK_MORF/catkin_ws/build && $(MAKE) $(MAKESILENT) -f morf_ik/CMakeFiles/sort_data2.dir/build.make morf_ik/CMakeFiles/sort_data2.dir/src/sort_data2.cpp.i
+.PHONY : src/sort_data2.cpp.i
+
+src/sort_data2.s: src/sort_data2.cpp.s
+.PHONY : src/sort_data2.s
+
+# target to generate assembly for a file
+src/sort_data2.cpp.s:
+	cd /home/leonor/tese/IK_MORF/catkin_ws/build && $(MAKE) $(MAKESILENT) -f morf_ik/CMakeFiles/sort_data2.dir/build.make morf_ik/CMakeFiles/sort_data2.dir/src/sort_data2.cpp.s
+.PHONY : src/sort_data2.cpp.s
+
 src/test_real.o: src/test_real.cpp.o
 .PHONY : src/test_real.o
 
@@ -1084,6 +1122,7 @@ help:
 	@echo "... morf_controller_real"
 	@echo "... nn"
 	@echo "... sort_data"
+	@echo "... sort_data2"
 	@echo "... home/leonor/CoppeliaSim/programming/common/shared_memory.o"
 	@echo "... home/leonor/CoppeliaSim/programming/common/shared_memory.i"
 	@echo "... home/leonor/CoppeliaSim/programming/common/shared_memory.s"
@@ -1126,6 +1165,9 @@ help:
 	@echo "... src/sort_data.o"
 	@echo "... src/sort_data.i"
 	@echo "... src/sort_data.s"
+	@echo "... src/sort_data2.o"
+	@echo "... src/sort_data2.i"
+	@echo "... src/sort_data2.s"
 	@echo "... src/test_real.o"
 	@echo "... src/test_real.i"
 	@echo "... src/test_real.s"

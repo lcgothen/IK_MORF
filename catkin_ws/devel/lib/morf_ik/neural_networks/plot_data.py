@@ -5,14 +5,16 @@ import csv
 import os.path
 from os import path
 
-filepath = "./devel/lib/morf_ik/neural_networks/data_6div_direct/"
+# filepath = "./devel/lib/morf_ik/neural_networks/data_6div_direct/"
+filepath = "./devel/lib/morf_ik/babbling_data/5div/"
 
-div=6
+div=5
 
 for j in range(div):
     for k in range(div):
         for l in range(div):
-            filename = filepath + "train" + str(j) + str(k) + str(l) + ".data"
+            # filename = filepath + "train" + str(j) + str(k) + str(l) + ".data"
+            filename = filepath + str(j) + str(k) + str(l) + ".data"
 
             if path.exists(filename):
                 reader = csv.reader(open(filename), delimiter=" ")
