@@ -48,6 +48,28 @@ int main(int argc, char **argv)
     int type = std::stoi(argv[1]);
     int n_trials = std::stoi(argv[2]);
 
+    std::string ann_path;
+    int div, divZ;
+    angles FL;
+
+    if(type==1)
+    {
+        std::ifstream configFile; 
+        configFile.open("ann_config.txt");
+
+        std::string str;
+        std::getline(configFile, ann_path);
+        std::getline(configFile, str);
+        div = std::stoi(str);
+        std::getline(configFile, str);
+        divZ = std::stoi(str);
+
+        configFile.close();
+
+        FL.initNN(ann_path, div, divZ);
+    }
+
+
     auto t = std::time(nullptr);
     auto tm = *std::localtime(&t);
     std::stringstream timeStream;
@@ -72,7 +94,7 @@ int main(int argc, char **argv)
         robot morf;
         images stereo;
 
-        std::string ann_path = "./neural_networks/data_4div_babbling/batch_01_05_01_50000_03_09/";
+        // std::string ann_path = "./neural_networks/data_4div_babbling/batch_01_05_01_50000_03_09/";
 
         ros::init(argc, argv, "IK_controller");
         ros::NodeHandle n;
@@ -106,7 +128,7 @@ int main(int argc, char **argv)
 
         // target coords for stabilizing with 4 legs
         point posFL, posFR, stableML, stableMR, stableBL, stableBR;
-        angles FL, FR, ML, MR, BL, BR, auxFL;
+        angles FR, ML, MR, BL, BR, auxFL;
         angles auxML, auxMR, auxBL, auxBR;
         
         posFL.x = 0;//-7.5776e-02;
@@ -133,7 +155,6 @@ int main(int argc, char **argv)
         stableBR.y = -0.17579;
         stableBR.z = 0.085760;
 
-        FL.initNN(ann_path);
 
         // calculate FL angles according to specified algorithm
         posFL = posFL.morf2FL(); 
@@ -147,7 +168,7 @@ int main(int argc, char **argv)
         else if(type==1)
         {
             init_calc = Clock::now();
-            FL.calcNN(posFL, &coords::point::morf2FL, ann_path);
+            FL.calcNN(posFL);
             duration += std::chrono::duration_cast<microseconds>(Clock::now() - init_calc);
             num_calcs++;
         }
@@ -628,7 +649,7 @@ int main(int argc, char **argv)
                 else if(type==1)
                 {
                     init_calc = Clock::now();
-                    FL.calcNN(posFL, &coords::point::morf2FL, ann_path);
+                    FL.calcNN(posFL);
                     duration += std::chrono::duration_cast<microseconds>(Clock::now() - init_calc);
                     num_calcs++;
                 }
@@ -677,7 +698,7 @@ int main(int argc, char **argv)
                 else if(type==1)
                 {
                     init_calc = Clock::now();
-                    FL.calcNN(posFL, &coords::point::morf2FL, ann_path);
+                    FL.calcNN(posFL);
                     duration += std::chrono::duration_cast<microseconds>(Clock::now() - init_calc);
                     num_calcs++;
                     auxFL.calcIK(posFL);

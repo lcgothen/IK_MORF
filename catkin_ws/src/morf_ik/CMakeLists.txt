@@ -10,7 +10,7 @@ project(morf_ik)
 set(OpenCV_DIR /usr/share/OpenCV/)
 set(fann_DIR ~/leonor/fann/)
 set(LIBPLUGIN_DIR $ENV{COPPELIASIM_ROOT_DIR}/programming/libPlugin)
-list(APPEND CMAKE_MODULE_PATH /home/leonor/CoppeliaSim/programming/libPlugin/cmake)
+list(APPEND CMAKE_MODULE_PATH ${LIBPLUGIN_DIR}/cmake)
 set(CoppeliaSim_DIR ${COPPELIASIM_ROOT_DIR})
 find_package(CoppeliaSim 4.1.0.0 REQUIRED)
 find_package(catkin REQUIRED COMPONENTS

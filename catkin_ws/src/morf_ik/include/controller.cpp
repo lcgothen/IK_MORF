@@ -105,12 +105,21 @@ void angles::calcIK(point target) // calculate angles with IK equations
     }
 }
 
-void angles::initNN(std::string ann_path)
+void angles::initNN(std::string ann_path, int div_input, int divZ_input)
 {
+    div = div_input;
+    divZ = divZ_input;
+
+    ann = new struct fann ***[div];
+
     for(int i=0; i<div; i++)
     {
+        ann[i] = new struct fann **[div];
+        
         for(int j=0; j<div; j++)
         {
+            ann[i][j] = new struct fann *[divZ];
+
             for(int k=0; k<divZ; k++)
             {
                 std::string filename = ann_path+std::to_string(i)+std::to_string(j)+std::to_string(k)+std::string(".net");
@@ -125,7 +134,7 @@ void angles::initNN(std::string ann_path)
     }
 }
 
-void angles::calcNN(point target, coords::point (coords::point::*morf2leg)(), std::string ann_path)
+void angles::calcNN(point target)
 {
     int cubeX=-1, cubeY=-1, cubeZ=-1;
 
