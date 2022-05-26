@@ -105,6 +105,26 @@ void angles::calcIK(point target) // calculate angles with IK equations
     }
 }
 
+void angles::initNN(std::string ann_path)
+{
+    for(int i=0; i<div; i++)
+    {
+        for(int j=0; j<div; j++)
+        {
+            for(int k=0; k<divZ; k++)
+            {
+                std::string filename = ann_path+std::to_string(i)+std::to_string(j)+std::to_string(k)+std::string(".net");
+
+                if (FILE *file = fopen(filename.c_str(), "r")) 
+                {
+                    fclose(file);
+                    ann[i][j][k] = fann_create_from_file(filename.c_str());
+                }
+            }
+        }
+    }
+}
+
 void angles::calcNN(point target, coords::point (coords::point::*morf2leg)(), std::string ann_path)
 {
     int cubeX=-1, cubeY=-1, cubeZ=-1;
@@ -128,23 +148,44 @@ void angles::calcNN(point target, coords::point (coords::point::*morf2leg)(), st
     // float z_start = -3.6406e-01;
 
     // bigger - FL
-    float x_length = -0.25494;
-    float y_length = 0.30011;
-    float z_length = 0.2301;
+    // float x_length = -0.25494;
+    // float y_length = 0.30011;
+    // float z_length = 0.2301;
 
-    float x_start = 0.225164; 
-    float y_start = -0.057090; 
-    float z_start = -0.0433698; 
+    // float x_start = 0.225164; 
+    // float y_start = -0.057090; 
+    // float z_start = -0.0433698; 
 
-    int div=4;
+    // // int div=4, divZ=div;
+
+    // float x_step = x_length/div;
+    // float y_step = y_length/div;
+    // float z_step = z_length/div;
+
+
+    // babbling
+    float x_length = 0.229327+0.0345405;
+    float y_length = 0.171063+0.0784675;
+    float z_length = 0.171879+0.190115;
+
+    float x_start = -0.0345405; 
+    float y_start = -0.0784675; 
+    float z_start = -0.190115; 
+
+    // int div=2, divZ=div*2;
 
     float x_step = x_length/div;
     float y_step = y_length/div;
-    float z_step = z_length/div;
+    float z_step = z_length/divZ;
+
+    // x: -0.0345405 , 0.229327
+    // y: -0.0784675 , 0.171063
+    // z: -0.190115 , 0.171879
+
 
     for(int j=0; j<div; j++)
     {
-        if(target.x < x_start && target.x > x_start+x_step)
+        if(target.x > x_start && target.x < x_start+x_step) // if(target.x < x_start && target.x > x_start+x_step)
         {
             cubeX=j;
             break;
@@ -164,7 +205,7 @@ void angles::calcNN(point target, coords::point (coords::point::*morf2leg)(), st
         y_start += y_step;
     }
 
-    for(int l=0; l<div; l++)
+    for(int l=0; l<divZ; l++)
     {
         if(target.z > z_start && target.z < z_start+z_step)
         {
@@ -175,16 +216,18 @@ void angles::calcNN(point target, coords::point (coords::point::*morf2leg)(), st
         z_start += z_step;
     }
 
+    // std::cout << cubeX << " , " << cubeY << " , " << cubeZ << std::endl;
+
     if(cubeX!=-1 && cubeY!=-1 && cubeZ!=-1)
     {
         point legTarget = target; // (target.*morf2leg)();
 
-        std::string filename = ann_path+std::to_string(cubeX)+std::to_string(cubeY)+std::to_string(cubeZ)+std::string(".net");
-        struct fann *ann = fann_create_from_file(filename.c_str());
+        // std::string filename = ann_path+std::to_string(cubeX)+std::to_string(cubeY)+std::to_string(cubeZ)+std::string(".net");
+        // struct fann *ann = fann_create_from_file(filename.c_str());
         float input[3] = {legTarget.x, legTarget.y, legTarget.z};
-        fann_scale_input(ann, input);
-        float *output = fann_run(ann, input);
-        fann_descale_output(ann, output);
+        fann_scale_input(ann[cubeX][cubeY][cubeZ], input);
+        float *output = fann_run(ann[cubeX][cubeY][cubeZ], input);
+        fann_descale_output(ann[cubeX][cubeY][cubeZ], output);
 
         th1 = output[0];
         th2 = output[1];

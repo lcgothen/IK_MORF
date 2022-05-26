@@ -72,7 +72,7 @@ int main(int argc, char **argv)
         robot morf;
         images stereo;
 
-        std::string ann_path = "./neural_networks/data_4div_direct/batch_01_10_01_50000_02_09/";
+        std::string ann_path = "./neural_networks/data_4div_babbling/batch_01_05_01_50000_03_09/";
 
         ros::init(argc, argv, "IK_controller");
         ros::NodeHandle n;
@@ -132,6 +132,8 @@ int main(int argc, char **argv)
         stableBR.x = -7.5776e-02;
         stableBR.y = -0.17579;
         stableBR.z = 0.085760;
+
+        FL.initNN(ann_path);
 
         // calculate FL angles according to specified algorithm
         posFL = posFL.morf2FL(); 
@@ -214,7 +216,7 @@ int main(int argc, char **argv)
             // else
             //     nearZ++;
 
-            // std::cout << state << std::endl;
+            //std::cout << state << std::endl;
 
             trial_dur = std::chrono::duration_cast<microseconds>(Clock::now() - init); //difftime(time(NULL), init);
 
@@ -752,13 +754,13 @@ int main(int argc, char **argv)
         }
         else if(durFail)
         {
-            std::cout << "Failed duration!" << std::endl;
+            std::cout << "trial " << trial << ": " << "Failed duration!" << std::endl;
             failFile << "trial " << trial << ":\t" << "duration " << "\t" << trial_dur.count() << "\n";
         }
         else
         {
             failFile << "trial " << trial << ":\t" << "distance" << "\t" << distance << "\n";
-            std::cout << "Failed distance: " << distance << std::endl;
+            std::cout << "trial " << trial << ": " << "Failed distance: " << distance << std::endl;
         }
     }
 

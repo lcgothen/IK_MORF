@@ -4,9 +4,9 @@ import csv
 import os.path
 from os import path
 
-filepath = "./devel/lib/morf_ik/neural_networks/results_6div_direct/batch_01_05_01_50000_02_09/"
+filepath = "./devel/lib/morf_ik/neural_networks/results_4div_babbling/batch_02_20_01_50000_03_09/"
 
-div=6
+div=8
 
 for j in range(div):
     for k in range(div):
@@ -26,7 +26,7 @@ for j in range(div):
                     err_train.append(float(row[1]))
                     err_vali.append(float(row[2]))
 
-                plt.plot(err_vali, label = "validation error")
+                # plt.plot(err_vali, label = "validation error")
                 plt.plot(err_train, label = "training error")
                 plt.legend()
                 plt.savefig(filepath + "graphs/" + str(j) + str(k) + str(l)  + ".png")

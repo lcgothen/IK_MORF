@@ -89,13 +89,17 @@ int main(int argc, char **argv)
     allInputFile.close();
     allOutputFile.close();
 
+    std::cout << "x: " << xmin << " , " << xmax << std::endl;
+    std::cout << "y: " << ymin << " , " << ymax << std::endl;
+    std::cout << "z: " << zmin << " , " << zmax << std::endl;
+
 
     std::ofstream auxFile;
     std::string aux_path = std::string("./babbling_data/aux/");
 
-    int div=5;
-    int count[div][div][div];
-    std::fill(&(count[0][0][0]), &(count[div][div][div]), 0);
+    int div=4, divZ=div*2;
+    int count[div][div][divZ];
+    std::fill(&(count[0][0][0]), &(count[div][div][divZ]), 0);
 
     std::cout << input.size() << std::endl;
 
@@ -113,10 +117,13 @@ int main(int argc, char **argv)
                 posY=j;
             else if(j==div-1 && posY==-1)
                 posY=j;
+        }
 
-            if(input[i].z<=zmin+(zmax-zmin)/div*(j+1) && posZ==-1)
+        for(int j=0; j<divZ; j++)
+        {
+            if(input[i].z<=zmin+(zmax-zmin)/divZ*(j+1) && posZ==-1)
                 posZ=j;
-            else if(j==div-1 && posZ==-1)
+            else if(j==divZ-1 && posZ==-1)
                 posZ=j;
         }
         
@@ -295,7 +302,7 @@ int main(int argc, char **argv)
     {
         for(int j=0; j<div; j++)
         {
-            for(int k=0; k<div; k++)
+            for(int k=0; k<divZ; k++)
             {
                 // std::cout << count[i][j][k] << std::endl;
                 if(count[i][j][k]>0)

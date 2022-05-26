@@ -18,9 +18,12 @@ namespace controller
     {
         public:
         float th1=0, th2=2.024319, th3=0;
+        float div=4, divZ=div*2;
+        struct fann *ann[4][4][8];
     
         void calcIK(point target); // calculate angles with IK equations
         void calcNN(point target, coords::point (coords::point::*morf2leg)(), std::string ann_path); // calculate angles with neural networks
+        void initNN(std::string ann_path); // open neural networks
     };
 
     class robot

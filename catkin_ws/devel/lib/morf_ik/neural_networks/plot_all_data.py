@@ -6,7 +6,7 @@ import os.path
 from os import path
 
 filepath = "./devel/lib/morf_ik/babbling_data/"
-filename = "./devel/lib/morf_ik/babbling_data/aux2.data"
+filename = "./devel/lib/morf_ik/babbling_data/input.data"
 # filepath = "./devel/lib/morf_ik/neural_networks/data_6div_direct/"
 
 # div=6
@@ -55,7 +55,7 @@ ax.set_xlabel('x')
 ax.set_ylabel('y')
 ax.set_zlabel('z')
 # plt.show()
-plt.savefig(filepath + "data2.png")
+plt.savefig(filepath + "all_data.png")
 plt.close()
 
 # filename = filepath + "train212.data"
