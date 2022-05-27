@@ -10,7 +10,7 @@ project(morf_ik)
 set(OpenCV_DIR /usr/share/OpenCV/)
 set(fann_DIR ~/leonor/fann/)
 set(LIBPLUGIN_DIR $ENV{COPPELIASIM_ROOT_DIR}/programming/libPlugin)
-list(APPEND CMAKE_MODULE_PATH ${LIBPLUGIN_DIR}/cmake)
+list(APPEND CMAKE_MODULE_PATH /home/leonor/CoppeliaSim/programming/libPlugin/cmake)
 set(CoppeliaSim_DIR ${COPPELIASIM_ROOT_DIR})
 find_package(CoppeliaSim 4.1.0.0 REQUIRED)
 find_package(catkin REQUIRED COMPONENTS
@@ -247,6 +247,7 @@ add_executable(nn src/nn.cpp)
 add_executable(calib src/calibration.cpp)
 add_executable(morf_controller_real src/test_real.cpp include/coordinates_real.cpp include/controller_real.cpp)
 add_executable(gen_data_real src/gen_data_real.cpp include/coordinates_real.cpp include/controller_real.cpp)
+add_executable(save_gen_data_real src/save_gen_data_real.cpp include/coordinates_real.cpp include/controller_real.cpp)
 
 
 target_compile_definitions(main PRIVATE NON_MATLAB_PARSING)
@@ -323,3 +324,7 @@ target_link_libraries(calib
                       ${OpenCV_LIBS}
                       coords
                       control)
+target_link_libraries(save_gen_data_real 
+                      ${catkin_LIBRARIES}
+                      ${OpenCV_LIBS}
+                      fann)
