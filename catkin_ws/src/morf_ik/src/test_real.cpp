@@ -43,9 +43,30 @@ int main(int argc, char **argv)
 
     int type = std::stoi(argv[1]);
 
+    std::string ann_path;
+    int div, divZ;
+    angles FL;
+
+    if(type==1)
+    {
+        std::ifstream configFile; 
+        configFile.open("ann_config.txt");
+
+        std::string str;
+        std::getline(configFile, ann_path);
+        std::getline(configFile, str);
+        div = std::stoi(str);
+        std::getline(configFile, str);
+        divZ = std::stoi(str);
+
+        configFile.close();
+
+        FL.initNN(ann_path, div, divZ);
+    }
+
     // target coords for stabilizing with 4 legs
     point posFL, stableFR, stableML, stableMR, stableBL, stableBR;
-    angles FL, FR, ML, MR, BL, BR;
+    angles FR, ML, MR, BL, BR;
     angles auxFL, auxML, auxBL, auxFR, auxMR, auxBR;
     
     posFL.x = -7.5776e-02;
@@ -128,7 +149,7 @@ int main(int argc, char **argv)
     int state=0, stable_state=0;
     point target;
 
-    std::string ann_path = "./neural_networks/";
+    // std::string ann_path = "./neural_networks/";
 
     ros::init(argc, argv, "IK_controller");
     ros::NodeHandle n;
@@ -439,7 +460,7 @@ int main(int argc, char **argv)
             else if(type==1)
             {
                 init_calc = Clock::now();
-                FL.calcNN(posFL, &coords::point::morf2FL, ann_path);
+                FL.calcNN(posFL);
                 duration += std::chrono::duration_cast<microseconds>(Clock::now() - init_calc);
                 num_calcs++;
             }
@@ -474,7 +495,7 @@ int main(int argc, char **argv)
             else if(type==1)
             {
                 init_calc = Clock::now();
-                FL.calcNN(posFL, &coords::point::morf2FL, ann_path);
+                FL.calcNN(posFL);
                 duration += std::chrono::duration_cast<microseconds>(Clock::now() - init_calc);
                 num_calcs++;
                 auxFL.calcIK(posFL);
