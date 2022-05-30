@@ -6,7 +6,7 @@ from os import path
 
 filepath = "./devel/lib/morf_ik/results/4div_babbling/"
 filename_eqs = filepath + "../eqs/successes.data"
-filename_nn = filepath + "batch_01_05_01_50000_03_09/successes.data"
+filename_nn = filepath + "batch_01_05_01_50000_03_09_smallerZ/successes.data"
 
 reader = csv.reader(open(filename_eqs), delimiter="\t")
 data_eqs = list(reader)

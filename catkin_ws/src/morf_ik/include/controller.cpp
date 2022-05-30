@@ -187,6 +187,8 @@ void angles::calcNN(point target)
     float y_step = y_length/div;
     float z_step = z_length/divZ;
 
+    z_start += z_step*3; // downsizing in z for babbling data
+
     // x: -0.0345405 , 0.229327
     // y: -0.0784675 , 0.171063
     // z: -0.190115 , 0.171879
@@ -214,7 +216,7 @@ void angles::calcNN(point target)
         y_start += y_step;
     }
 
-    for(int l=0; l<divZ; l++)
+    for(int l=3; l<divZ; l++) // downsizing in z for babbling data
     {
         if(target.z > z_start && target.z < z_start+z_step)
         {
@@ -224,6 +226,8 @@ void angles::calcNN(point target)
 
         z_start += z_step;
     }
+
+    // std::cout << div << " , " << divZ << std::endl;
 
     // std::cout << cubeX << " , " << cubeY << " , " << cubeZ << std::endl;
 
