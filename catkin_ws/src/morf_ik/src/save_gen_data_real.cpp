@@ -53,8 +53,8 @@ int main(int argc, char **argv)
 
     while(loop_control) 
     {
-        if(std::cin.get() == 'q')
-            loop_control=false;
+        // if(std::cin.get() == 'q')
+        //     loop_control=false;
 
         current = std::chrono::duration_cast<milliseconds>(Clock::now() - init);
 
