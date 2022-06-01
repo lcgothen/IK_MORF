@@ -83,27 +83,12 @@ int main(int argc, char **argv)
                     {
                         IK_order.data.clear();
 
-                        // left leg angles
-                        IK_order.data.push_back(FL.th1);
-                        IK_order.data.push_back(FL.th2);
-                        IK_order.data.push_back(FL.th3);
-                        IK_order.data.push_back(default_.th1);
-                        IK_order.data.push_back(default_.th2);
-                        IK_order.data.push_back(default_.th3);
-                        IK_order.data.push_back(default_.th1);
-                        IK_order.data.push_back(default_.th2);
-                        IK_order.data.push_back(default_.th3);
-
-                        // right leg angles
-                        IK_order.data.push_back(default_.th1);
-                        IK_order.data.push_back(default_.th2);
-                        IK_order.data.push_back(default_.th3);
-                        IK_order.data.push_back(default_.th1);
-                        IK_order.data.push_back(default_.th2);
-                        IK_order.data.push_back(default_.th3);
-                        IK_order.data.push_back(default_.th1);
-                        IK_order.data.push_back(default_.th2);
-                        IK_order.data.push_back(default_.th3);
+                        IK_order.data =    {11, FL.th1, 12, FL.th2, 13, FL.th3,
+                                21, default_.th1, 22, default_.th2, 23, default_.th3,
+                                31, default_.th1, 32, default_.th2, 33, default_.th3,
+                                41, default_.th1, 42, default_.th2, 43, default_.th3,
+                                51, default_.th1, 52, default_.th2, 53, default_.th3,
+                                61, default_.th1, 62, default_.th2, 63, default_.th3};
 
                         controller_pub.publish(IK_order);
                     }
