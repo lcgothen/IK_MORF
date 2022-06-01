@@ -76,25 +76,20 @@ int main(int argc, char **argv)
                     std::cout << "morf.FL: " << morf.FL.th1 << " , " << morf.FL.th2 << " , " << morf.FL.th3 << std::endl;
                     std::cout << "i, j, k: "  << i << " , " << j << " , " << k << std::endl;
 
-                    // if(std::cin.get() == 'q')
-                    //     exit(EXIT_FAILURE);
+                    if(std::cin.get() == 'q')
+                        exit(EXIT_FAILURE);
 
                     if(state==0)
                     {
                         IK_order.data.clear();
 
-                        IK_order.data =    {11, FL.th1, 12, FL.th2, 13, FL.th3,
-                                21, default_.th1, 22, default_.th2, 23, default_.th3,
-                                31, default_.th1, 32, default_.th2, 33, default_.th3,
-                                41, default_.th1, 42, default_.th2, 43, default_.th3,
-                                51, default_.th1, 52, default_.th2, 53, default_.th3,
-                                61, default_.th1, 62, default_.th2, 63, default_.th3};
+                        IK_order.data =    {11, FL.th1, 12, FL.th2, 13, FL.th3};
 
-                        controller_pub.publish(IK_order);
+                        // controller_pub.publish(IK_order);
                     }
                     if(state==1)
                     {
-                        controller_pub.publish(IK_order);
+                        // controller_pub.publish(IK_order);
                     }
 
                     if(state == 0)
