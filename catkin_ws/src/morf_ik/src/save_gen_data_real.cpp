@@ -37,7 +37,7 @@ int main(int argc, char **argv)
     std::ofstream allOutputFile;
     std::string allOutputFile_name = std::string("./babbling_data/output.data");
 
-    ros::init(argc, argv, "IK_controller");
+    ros::init(argc, argv, "save_data");
     ros::NodeHandle n;
     ros::Rate loop_rate(10);
 

@@ -45,7 +45,7 @@ int main(int argc, char **argv)
     FL.th3 = -179*M_PI/180;
 
 
-    ros::init(argc, argv, "IK_controller");
+    ros::init(argc, argv, "gen_data");
     ros::NodeHandle n;
     ros::Rate loop_rate(10);
 
@@ -75,6 +75,9 @@ int main(int argc, char **argv)
                     std::cout << "FL: " << FL.th1 << " , " << FL.th2 << " , " << FL.th3 << std::endl;
                     std::cout << "morf.FL: " << morf.FL.th1 << " , " << morf.FL.th2 << " , " << morf.FL.th3 << std::endl;
                     std::cout << "i, j, k: "  << i << " , " << j << " , " << k << std::endl;
+
+                    if(std::cin.get() == 'q')
+                        exit(EXIT_FAILURE);
 
                     if(state==0)
                     {
