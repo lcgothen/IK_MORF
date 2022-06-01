@@ -85,11 +85,11 @@ int main(int argc, char **argv)
 
                         IK_order.data =    {11, FL.th1, 12, FL.th2, 13, FL.th3};
 
-                        // controller_pub.publish(IK_order);
+                        controller_pub.publish(IK_order);
                     }
                     if(state==1)
                     {
-                        // controller_pub.publish(IK_order);
+                        controller_pub.publish(IK_order);
                     }
 
                     if(state == 0)
