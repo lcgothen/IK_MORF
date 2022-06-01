@@ -136,7 +136,9 @@ void angles::initNN(std::string ann_path, int div_input, int divZ_input)
 
 void angles::calcNN(point target)
 {
-    int cubeX=-1, cubeY=-1, cubeZ=-1;
+    cubeX=-1; 
+    cubeY=-1; 
+    cubeZ=-1;
 
     // smaller - morf
     // float x_length = 0.19010;
@@ -196,7 +198,7 @@ void angles::calcNN(point target)
 
     for(int j=0; j<div; j++)
     {
-        if(target.x > x_start && target.x < x_start+x_step) // if(target.x < x_start && target.x > x_start+x_step)
+        if(target.x > x_start && target.x < x_start+x_step)  // if(target.x < x_start && target.x > x_start+x_step)
         {
             cubeX=j;
             break;
@@ -216,7 +218,7 @@ void angles::calcNN(point target)
         y_start += y_step;
     }
 
-    for(int l=3; l<divZ; l++) // downsizing in z for babbling data
+    for(int l=3; l<divZ; l++) // downsizing in z for babbling data l=3
     {
         if(target.z > z_start && target.z < z_start+z_step)
         {

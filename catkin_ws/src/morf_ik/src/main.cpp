@@ -652,6 +652,7 @@ int main(int argc, char **argv)
                     FL.calcNN(posFL);
                     duration += std::chrono::duration_cast<microseconds>(Clock::now() - init_calc);
                     num_calcs++;
+                    // std::cout << FL.cubeX << " , " << FL.cubeY << " , " << FL.cubeZ << std::endl;
                 }
 
                 FL.th1=jointLimiter(FL.th1, -110, -20);
@@ -702,6 +703,7 @@ int main(int argc, char **argv)
                     duration += std::chrono::duration_cast<microseconds>(Clock::now() - init_calc);
                     num_calcs++;
                     auxFL.calcIK(posFL);
+                    // std::cout << FL.cubeX << " , " << FL.cubeY << " , " << FL.cubeZ << std::endl;
                 }
 
                 FL.th1=jointLimiter(FL.th1, -110, -20);
@@ -776,6 +778,7 @@ int main(int argc, char **argv)
         else if(durFail)
         {
             std::cout << "trial " << trial << ": " << "Failed duration!" << std::endl;
+            std::cout << "state: " << state << "stable_state" << stable_state << std::endl;
             failFile << "trial " << trial << ":\t" << "duration " << "\t" << trial_dur.count() << "\n";
         }
         else

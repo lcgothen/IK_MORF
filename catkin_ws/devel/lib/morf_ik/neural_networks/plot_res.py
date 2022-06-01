@@ -4,7 +4,7 @@ import csv
 import os.path
 from os import path
 
-filepath = "./devel/lib/morf_ik/neural_networks/results_4div_babbling/batch_02_20_01_50000_03_09/"
+filepath = "./devel/lib/morf_ik/neural_networks/results_4div_babbling/batch_01_05_01_50000_03_09/"
 
 div=8
 
