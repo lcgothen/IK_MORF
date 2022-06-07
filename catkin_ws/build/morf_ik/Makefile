@@ -606,6 +606,20 @@ nn/fast:
 .PHONY : nn/fast
 
 # Convenience name for target.
+morf_ik/CMakeFiles/nn_babbling.dir/rule:
+	cd /home/leonor/tese/IK_MORF/catkin_ws/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 morf_ik/CMakeFiles/nn_babbling.dir/rule
+.PHONY : morf_ik/CMakeFiles/nn_babbling.dir/rule
+
+# Convenience name for target.
+nn_babbling: morf_ik/CMakeFiles/nn_babbling.dir/rule
+.PHONY : nn_babbling
+
+# fast build rule for target.
+nn_babbling/fast:
+	cd /home/leonor/tese/IK_MORF/catkin_ws/build && $(MAKE) $(MAKESILENT) -f morf_ik/CMakeFiles/nn_babbling.dir/build.make morf_ik/CMakeFiles/nn_babbling.dir/build
+.PHONY : nn_babbling/fast
+
+# Convenience name for target.
 morf_ik/CMakeFiles/calib.dir/rule:
 	cd /home/leonor/tese/IK_MORF/catkin_ws/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 morf_ik/CMakeFiles/calib.dir/rule
 .PHONY : morf_ik/CMakeFiles/calib.dir/rule
@@ -1022,6 +1036,30 @@ src/nn.cpp.s:
 	cd /home/leonor/tese/IK_MORF/catkin_ws/build && $(MAKE) $(MAKESILENT) -f morf_ik/CMakeFiles/nn.dir/build.make morf_ik/CMakeFiles/nn.dir/src/nn.cpp.s
 .PHONY : src/nn.cpp.s
 
+src/nn_babbling.o: src/nn_babbling.cpp.o
+.PHONY : src/nn_babbling.o
+
+# target to build an object file
+src/nn_babbling.cpp.o:
+	cd /home/leonor/tese/IK_MORF/catkin_ws/build && $(MAKE) $(MAKESILENT) -f morf_ik/CMakeFiles/nn_babbling.dir/build.make morf_ik/CMakeFiles/nn_babbling.dir/src/nn_babbling.cpp.o
+.PHONY : src/nn_babbling.cpp.o
+
+src/nn_babbling.i: src/nn_babbling.cpp.i
+.PHONY : src/nn_babbling.i
+
+# target to preprocess a source file
+src/nn_babbling.cpp.i:
+	cd /home/leonor/tese/IK_MORF/catkin_ws/build && $(MAKE) $(MAKESILENT) -f morf_ik/CMakeFiles/nn_babbling.dir/build.make morf_ik/CMakeFiles/nn_babbling.dir/src/nn_babbling.cpp.i
+.PHONY : src/nn_babbling.cpp.i
+
+src/nn_babbling.s: src/nn_babbling.cpp.s
+.PHONY : src/nn_babbling.s
+
+# target to generate assembly for a file
+src/nn_babbling.cpp.s:
+	cd /home/leonor/tese/IK_MORF/catkin_ws/build && $(MAKE) $(MAKESILENT) -f morf_ik/CMakeFiles/nn_babbling.dir/build.make morf_ik/CMakeFiles/nn_babbling.dir/src/nn_babbling.cpp.s
+.PHONY : src/nn_babbling.cpp.s
+
 src/save_gen_data_real.o: src/save_gen_data_real.cpp.o
 .PHONY : src/save_gen_data_real.o
 
@@ -1165,6 +1203,7 @@ help:
 	@echo "... main"
 	@echo "... morf_controller_real"
 	@echo "... nn"
+	@echo "... nn_babbling"
 	@echo "... save_gen_data_real"
 	@echo "... sort_data"
 	@echo "... sort_data2"
@@ -1207,6 +1246,9 @@ help:
 	@echo "... src/nn.o"
 	@echo "... src/nn.i"
 	@echo "... src/nn.s"
+	@echo "... src/nn_babbling.o"
+	@echo "... src/nn_babbling.i"
+	@echo "... src/nn_babbling.s"
 	@echo "... src/save_gen_data_real.o"
 	@echo "... src/save_gen_data_real.i"
 	@echo "... src/save_gen_data_real.s"

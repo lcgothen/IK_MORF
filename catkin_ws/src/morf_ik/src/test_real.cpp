@@ -44,71 +44,73 @@ int main(int argc, char **argv)
     int type = std::stoi(argv[1]);
 
     std::string ann_path;
-    int div, divZ;
     angles FL;
 
     if(type==1)
     {
-        std::ifstream configFile; 
-        configFile.open("ann_config.txt");
+        cv::FileStorage configFile("ann_config.yml", cv::FileStorage::READ);
+        configFile["ann_path"] >> ann_path;
+        configFile["div"] >> FL.div;
+        configFile["divZ"] >> FL.divZ;
+        configFile["divZ_start"] >> FL.divZ_start;
+        configFile["x_length"] >> FL.x_length;
+        configFile["y_length"] >> FL.y_length;
+        configFile["z_length"] >> FL.z_length;
+        configFile["x_start"] >> FL.x_start;
+        configFile["y_start"] >> FL.y_start;
+        configFile["z_start"] >> FL.z_start;
+        configFile["reverse"] >> FL.reverse;
 
-        std::string str;
-        std::getline(configFile, ann_path);
-        std::getline(configFile, str);
-        div = std::stoi(str);
-        std::getline(configFile, str);
-        divZ = std::stoi(str);
-
-        configFile.close();
-
-        FL.initNN(ann_path, div, divZ);
+        FL.initNN(ann_path);
     }
 
+    point posFL;
+
     // target coords for stabilizing with 4 legs
-    point posFL, stableFR, stableML, stableMR, stableBL, stableBR;
+    // point posFL, stableFR, stableML, stableMR, stableBL, stableBR;
     angles FR, ML, MR, BL, BR;
     angles auxFL, auxML, auxBL, auxFR, auxMR, auxBR;
     
-    posFL.x = -7.5776e-02;
-    posFL.y = +1.3090e-01;
-    posFL.z = -2.9912e-01;
+    // posFL.x = -7.5776e-02;
+    // posFL.y = +1.3090e-01;
+    // posFL.z = -2.9912e-01;
 
-    stableML.x = -7.5776e-02;
-    stableML.y = +1.7632e-01;
-    stableML.z = -1.6912e-01;
+    // stableML.x = -7.5776e-02;
+    // stableML.y = +1.7632e-01;
+    // stableML.z = -1.6912e-01;
 
-    stableBL.x = -7.5776e-02;
-    stableBL.y = 0.17579;
-    stableBL.z = 0.085760;
+    // stableBL.x = -7.5776e-02;
+    // stableBL.y = 0.17579;
+    // stableBL.z = 0.085760;
 
-    stableFR.x = -7.5776e-02;
-    stableFR.y = -1.3090e-01;
-    stableFR.z = -2.9912e-01;
+    // stableFR.x = -7.5776e-02;
+    // stableFR.y = -1.3090e-01;
+    // stableFR.z = -2.9912e-01;
 
-    stableMR.x = -7.5776e-02;
-    stableMR.y = -1.7632e-01;
-    stableMR.z = -1.6912e-01;
+    // stableMR.x = -7.5776e-02;
+    // stableMR.y = -1.7632e-01;
+    // stableMR.z = -1.6912e-01;
 
-    stableBR.x = -7.5776e-02;
-    stableBR.y = -0.17579;
-    stableBR.z = 0.085760;
+    // stableBR.x = -7.5776e-02;
+    // stableBR.y = -0.17579;
+    // stableBR.z = 0.085760;
 
 
-    // convert to leg frames
-    posFL = posFL.morf2FL(); 
-    stableML = stableML.morf2ML(); 
-    stableBL = stableBL.morf2BL(); 
-    stableFR = stableFR.morf2FR(); 
-    stableMR = stableMR.morf2MR(); 
-    stableBR = stableBR.morf2BR(); 
+    // // convert to leg frames
+    // posFL = posFL.morf2FL(); 
+    // stableML = stableML.morf2ML(); 
+    // stableBL = stableBL.morf2BL(); 
+    // stableFR = stableFR.morf2FR(); 
+    // stableMR = stableMR.morf2MR(); 
+    // stableBR = stableBR.morf2BR(); 
 
-    // calculate IK parameters
-    FL.calcIK(posFL);
-    ML.calcIK(stableML);
-    BL.calcIK(stableBL);
-    FR.calcIK(stableFR);
-    MR.calcIK(stableMR);
-    BR.calcIK(stableBR);
+    // // calculate IK parameters
+    // FL.calcIK(posFL);
+    // ML.calcIK(stableML);
+    // BL.calcIK(stableBL);
+    // FR.calcIK(stableFR);
+    // MR.calcIK(stableMR);
+    // BR.calcIK(stableBR);
 
 
     angles default_;
@@ -116,6 +118,32 @@ int main(int argc, char **argv)
     default_.th1=0;
     default_.th2=2.024319;
     default_.th3=0;
+
+
+    FL.th1=-1.33956;
+    FL.th2=1.6478;
+    FL.th3=-0.606795;
+
+    ML.th1=-1.10023;
+    ML.th2=1.40566;
+    ML.th3=-1.03788;
+
+    BL.th1=-0.507609;
+    BL.th2=2.00719;
+    BL.th3=0.0646126;
+
+    FR.th1=1.33837;
+    FR.th2=1.65268;
+    FR.th3=-0.59803;
+
+    MR.th1=1.10005;
+    MR.th2=1.40621;
+    MR.th3=-1.03692;
+
+    BR.th1=0.506971;
+    BR.th2=2.00742;
+    BR.th3=0.0650275;
+
 
     auxFL.th1=-1.338374;
     auxFL.th2=2.429317;
@@ -323,56 +351,56 @@ int main(int argc, char **argv)
             if(stable_state==0)
             {
                 IK_order.data =    {11, auxFL.th1, 12, auxFL.th2, 13, auxFL.th3,
-                                    21, 0, 22, default_.th2, 23, default_.th3,
-                                    31, 0, 32, default_.th2, 33, default_.th3,
-                                    41, 0, 42, default_.th2, 43, default_.th3,
-                                    51, 0, 52, default_.th2, 53, default_.th3,
-                                    61, 0, 62, default_.th2, 63, default_.th3};
+                                    21, default_.th1, 22, default_.th2, 23, default_.th3,
+                                    31, default_.th1, 32, default_.th2, 33, default_.th3,
+                                    41, default_.th1, 42, default_.th2, 43, default_.th3,
+                                    51, default_.th1, 52, default_.th2, 53, default_.th3,
+                                    61, default_.th1, 62, default_.th2, 63, default_.th3};
             }
             else if(stable_state==1)
             {
                 IK_order.data =    {11, FL.th1, 12, FL.th2, 13, FL.th3,
-                                    21, 0, 22, default_.th2, 23, default_.th3,
-                                    31, 0, 32, default_.th2, 33, default_.th3,
-                                    41, 0, 42, default_.th2, 43, default_.th3,
-                                    51, 0, 52, default_.th2, 53, default_.th3,
-                                    61, 0, 62, default_.th2, 63, default_.th3};
+                                    21, default_.th1, 22, default_.th2, 23, default_.th3,
+                                    31, default_.th1, 32, default_.th2, 33, default_.th3,
+                                    41, default_.th1, 42, default_.th2, 43, default_.th3,
+                                    51, default_.th1, 52, default_.th2, 53, default_.th3,
+                                    61, default_.th1, 62, default_.th2, 63, default_.th3};
             }
             else if(stable_state==2)
             {
                 IK_order.data =    {11, FL.th1, 12, FL.th2, 13, FL.th3,
-                                    21, 0, 22, default_.th2, 23, default_.th3,
+                                    21, default_.th1, 22, default_.th2, 23, default_.th3,
                                     31, auxBL.th1, 32, auxBL.th2, 33, auxBL.th3,
-                                    41, 0, 42, default_.th2, 43, default_.th3,
-                                    51, 0, 52, default_.th2, 53, default_.th3,
-                                    61, 0, 62, default_.th2, 63, default_.th3};
+                                    41, default_.th1, 42, default_.th2, 43, default_.th3,
+                                    51, default_.th1, 52, default_.th2, 53, default_.th3,
+                                    61, default_.th1, 62, default_.th2, 63, default_.th3};
             }
             else if(stable_state==3)
             {
                 IK_order.data =    {11, FL.th1, 12, FL.th2, 13, FL.th3,
-                                    21, 0, 22, default_.th2, 23, default_.th3,
+                                    21, default_.th1, 22, default_.th2, 23, default_.th3,
                                     31, BL.th1, 32, BL.th2, 33, BL.th3,
-                                    41, 0, 42, default_.th2, 43, default_.th3,
-                                    51, 0, 52, default_.th2, 53, default_.th3,
-                                    61, 0, 62, default_.th2, 63, default_.th3};
+                                    41, default_.th1, 42, default_.th2, 43, default_.th3,
+                                    51, default_.th1, 52, default_.th2, 53, default_.th3,
+                                    61, default_.th1, 62, default_.th2, 63, default_.th3};
             }
             else if(stable_state==4)
             {
                 IK_order.data =    {11, FL.th1, 12, FL.th2, 13, FL.th3,
                                     21, auxML.th1, 22, auxML.th2, 23, auxML.th3,
                                     31, BL.th1, 32, BL.th2, 33, BL.th3,
-                                    41, 0, 42, default_.th2, 43, default_.th3,
-                                    51, 0, 52, default_.th2, 53, default_.th3,
-                                    61, 0, 62, default_.th2, 63, default_.th3};
+                                    41, default_.th1, 42, default_.th2, 43, default_.th3,
+                                    51, default_.th1, 52, default_.th2, 53, default_.th3,
+                                    61, default_.th1, 62, default_.th2, 63, default_.th3};
             }
             else if(stable_state==5)
             {
                 IK_order.data =    {11, FL.th1, 12, FL.th2, 13, FL.th3,
                                     21, ML.th1, 22, ML.th2, 23, ML.th3,
                                     31, BL.th1, 32, BL.th2, 33, BL.th3,
-                                    41, 0, 42, default_.th2, 43, default_.th3,
-                                    51, 0, 52, default_.th2, 53, default_.th3,
-                                    61, 0, 62, default_.th2, 63, default_.th3};
+                                    41, default_.th1, 42, default_.th2, 43, default_.th3,
+                                    51, default_.th1, 52, default_.th2, 53, default_.th3,
+                                    61, default_.th1, 62, default_.th2, 63, default_.th3};
             }
             else if(stable_state==6)
             {
@@ -380,8 +408,8 @@ int main(int argc, char **argv)
                                     21, ML.th1, 22, ML.th2, 23, ML.th3,
                                     31, BL.th1, 32, BL.th2, 33, BL.th3,
                                     41, auxFR.th1, 42, auxFR.th2, 43, auxFR.th3,
-                                    51, 0, 52, default_.th2, 53, default_.th3,
-                                    61, 0, 62, default_.th2, 63, default_.th3};
+                                    51, default_.th1, 52, default_.th2, 53, default_.th3,
+                                    61, default_.th1, 62, default_.th2, 63, default_.th3};
             }
             else if(stable_state==7)
             {
@@ -389,8 +417,8 @@ int main(int argc, char **argv)
                                     21, ML.th1, 22, ML.th2, 23, ML.th3,
                                     31, BL.th1, 32, BL.th2, 33, BL.th3,
                                     41, FR.th1, 42, FR.th2, 43, FR.th3,
-                                    51, 0, 52, default_.th2, 53, default_.th3,
-                                    61, 0, 62, default_.th2, 63, default_.th3};
+                                    51, default_.th1, 52, default_.th2, 53, default_.th3,
+                                    61, default_.th1, 62, default_.th2, 63, default_.th3};
             }
             else if(stable_state==8)
             {
@@ -398,7 +426,7 @@ int main(int argc, char **argv)
                                     21, ML.th1, 22, ML.th2, 23, ML.th3,
                                     31, BL.th1, 32, BL.th2, 33, BL.th3,
                                     41, FR.th1, 42, FR.th2, 43, FR.th3,
-                                    51, 0, 52, default_.th2, 53, default_.th3,
+                                    51, default_.th1, 52, default_.th2, 53, default_.th3,
                                     61, auxBR.th1, 62, auxBR.th2, 63, auxBR.th3};
             }
             else if(stable_state==9)
@@ -407,7 +435,7 @@ int main(int argc, char **argv)
                                     21, ML.th1, 22, ML.th2, 23, ML.th3,
                                     31, BL.th1, 32, BL.th2, 33, BL.th3,
                                     41, FR.th1, 42, FR.th2, 43, FR.th3,
-                                    51, 0, 52, default_.th2, 53, default_.th3,
+                                    51, default_.th1, 52, default_.th2, 53, default_.th3,
                                     61, BR.th1, 62, BR.th2, 63, BR.th3};
             }
             else if(stable_state==10)

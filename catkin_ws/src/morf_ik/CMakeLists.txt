@@ -244,6 +244,7 @@ add_executable(gen_data_ik src/gen_data_ik.cpp)
 add_executable(sort_data src/sort_data.cpp)
 add_executable(sort_data2 src/sort_data2.cpp)
 add_executable(nn src/nn.cpp)
+add_executable(nn_babbling src/nn_babbling.cpp)
 add_executable(calib src/calibration.cpp)
 add_executable(morf_controller_real src/test_real.cpp include/coordinates_real.cpp include/controller_real.cpp)
 add_executable(gen_data_real src/gen_data_real.cpp include/coordinates_real.cpp include/controller_real.cpp)
@@ -314,6 +315,12 @@ target_link_libraries(sort_data2
                       coords
                       control)
 target_link_libraries(nn 
+                      ${catkin_LIBRARIES}
+                      ${OpenCV_LIBS}
+                      coords
+                      control
+                      fann)
+target_link_libraries(nn_babbling 
                       ${catkin_LIBRARIES}
                       ${OpenCV_LIBS}
                       coords

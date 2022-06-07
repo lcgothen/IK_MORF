@@ -49,24 +49,24 @@ int main(int argc, char **argv)
     int n_trials = std::stoi(argv[2]);
 
     std::string ann_path;
-    int div, divZ;
     angles FL;
 
     if(type==1)
     {
-        std::ifstream configFile; 
-        configFile.open("ann_config.txt");
+        cv::FileStorage configFile("ann_config.yml", cv::FileStorage::READ);
+        configFile["ann_path"] >> ann_path;
+        configFile["div"] >> FL.div;
+        configFile["divZ"] >> FL.divZ;
+        configFile["divZ_start"] >> FL.divZ_start;
+        configFile["x_length"] >> FL.x_length;
+        configFile["y_length"] >> FL.y_length;
+        configFile["z_length"] >> FL.z_length;
+        configFile["x_start"] >> FL.x_start;
+        configFile["y_start"] >> FL.y_start;
+        configFile["z_start"] >> FL.z_start;
+        configFile["reverse"] >> FL.reverse;
 
-        std::string str;
-        std::getline(configFile, ann_path);
-        std::getline(configFile, str);
-        div = std::stoi(str);
-        std::getline(configFile, str);
-        divZ = std::stoi(str);
-
-        configFile.close();
-
-        FL.initNN(ann_path, div, divZ);
+        FL.initNN(ann_path);
     }
 
 
@@ -127,84 +127,123 @@ int main(int argc, char **argv)
         simxStartSimulation(clientID, simx_opmode_oneshot);
 
         // target coords for stabilizing with 4 legs
-        point posFL, posFR, stableML, stableMR, stableBL, stableBR;
-        angles FR, ML, MR, BL, BR, auxFL;
-        angles auxML, auxMR, auxBL, auxBR;
+        point posFL;
+        // point posFL, stableFR, stableML, stableMR, stableBL, stableBR;
+        angles FR, ML, MR, BL, BR;
+        angles auxFL, auxML, auxBL, auxFR, auxMR, auxBR;
         
-        posFL.x = 0;//-7.5776e-02;
-        posFL.y = +1.3090e-01;
-        posFL.z = -2.9912e-01;
+        // posFL.x = 0;//-7.5776e-02;
+        // posFL.y = +1.3090e-01;
+        // posFL.z = -2.9912e-01;
 
-        stableML.x = -7.5776e-02;
-        stableML.y = +1.7632e-01;
-        stableML.z = -1.6912e-01;
+        // stableML.x = -7.5776e-02;
+        // stableML.y = +1.7632e-01;
+        // stableML.z = -1.6912e-01;
 
-        stableBL.x = -7.5776e-02;
-        stableBL.y = 0.17579;
-        stableBL.z = 0.085760;
+        // stableBL.x = -7.5776e-02;
+        // stableBL.y = 0.17579;
+        // stableBL.z = 0.085760;
 
-        posFR.x = 0;//-7.5776e-02;
-        posFR.y = -1.3090e-01;
-        posFR.z = -2.9912e-01;
+        // posFR.x = 0;//-7.5776e-02;
+        // posFR.y = -1.3090e-01;
+        // posFR.z = -2.9912e-01;
 
-        stableMR.x = -7.5776e-02;
-        stableMR.y = -1.7632e-01;
-        stableMR.z = -1.6912e-01;
+        // stableMR.x = -7.5776e-02;
+        // stableMR.y = -1.7632e-01;
+        // stableMR.z = -1.6912e-01;
 
-        stableBR.x = -7.5776e-02;
-        stableBR.y = -0.17579;
-        stableBR.z = 0.085760;
+        // stableBR.x = -7.5776e-02;
+        // stableBR.y = -0.17579;
+        // stableBR.z = 0.085760;
 
 
-        // calculate FL angles according to specified algorithm
-        posFL = posFL.morf2FL(); 
-        if(type==0)
-        {
-            init_calc = Clock::now();
-            FL.calcIK(posFL);
-            duration += std::chrono::duration_cast<microseconds>(Clock::now() - init_calc);
-            num_calcs++;
-        }
-        else if(type==1)
-        {
-            init_calc = Clock::now();
-            FL.calcNN(posFL);
-            duration += std::chrono::duration_cast<microseconds>(Clock::now() - init_calc);
-            num_calcs++;
-        }
+        // // calculate FL angles according to specified algorithm
+        // posFL = posFL.morf2FL(); 
+        // if(type==0)
+        // {
+        //     init_calc = Clock::now();
+        //     FL.calcIK(posFL);
+        //     duration += std::chrono::duration_cast<microseconds>(Clock::now() - init_calc);
+        //     num_calcs++;
+        // }
+        // else if(type==1)
+        // {
+        //     init_calc = Clock::now();
+        //     FL.calcNN(posFL);
+        //     duration += std::chrono::duration_cast<microseconds>(Clock::now() - init_calc);
+        //     num_calcs++;
+        // }
 
-        // convert to leg frames for the rest of the legs
-        stableML = stableML.morf2ML(); 
-        stableBL = stableBL.morf2BL(); 
-        posFR = posFR.morf2FR(); 
-        stableMR = stableMR.morf2MR(); 
-        stableBR = stableBR.morf2BR(); 
+        // // convert to leg frames for the rest of the legs
+        // stableML = stableML.morf2ML(); 
+        // stableBL = stableBL.morf2BL(); 
+        // posFR = posFR.morf2FR(); 
+        // stableMR = stableMR.morf2MR(); 
+        // stableBR = stableBR.morf2BR(); 
 
-        // calculate IK parameters for the rest of the legs
-        ML.calcIK(stableML);
-        BL.calcIK(stableBL);
-        FR.calcIK(posFR);
-        MR.calcIK(stableMR);
-        BR.calcIK(stableBR);
+        // // calculate IK parameters for the rest of the legs
+        // ML.calcIK(stableML);
+        // BL.calcIK(stableBL);
+        // FR.calcIK(posFR);
+        // MR.calcIK(stableMR);
+        // BR.calcIK(stableBR);
+
+        angles default_;
+
+        default_.th1=0;
+        default_.th2=2.024319;
+        default_.th3=0;
+
+
+        FL.th1=-1.33956;
+        FL.th2=1.6478;
+        FL.th3=-0.606795;
+
+        ML.th1=-1.10023;
+        ML.th2=1.40566;
+        ML.th3=-1.03788;
+
+        BL.th1=-0.507609;
+        BL.th2=2.00719;
+        BL.th3=0.0646126;
+
+        FR.th1=1.33837;
+        FR.th2=1.65268;
+        FR.th3=-0.59803;
+
+        MR.th1=1.10005;
+        MR.th2=1.40621;
+        MR.th3=-1.03692;
+
+        BR.th1=0.506971;
+        BR.th2=2.00742;
+        BR.th3=0.0650275;
+
+
+        auxFL.th1=-1.338374;
+        auxFL.th2=2.429317;
+        auxFL.th3=-0.503011;
 
         auxML.th1=-1.100229;
         auxML.th2=2.324319;
         auxML.th3=-0.2;
-        auxMR.th1=1.100229;
-        auxMR.th2=2.324319;
-        auxMR.th3=-0.2;
 
         auxBL.th1=-0.507609;
         auxBL.th2=2.224319;
         auxBL.th3=0;
+
+        auxFR.th1=1.338374;
+        auxFR.th2=2.429317;
+        auxFR.th3=-0.503011;
+
+        auxMR.th1=1.100229;
+        auxMR.th2=2.324319;
+        auxMR.th3=-0.2;
+
         auxBR.th1=0.507609;
         auxBR.th2=2.224319;
         auxBR.th3=0;
 
-        angles default_;
-        default_.th1=0;
-        default_.th2=2.024319;
-        default_.th3=0;
 
 
         ros::Rate loop_rate(10);
@@ -213,6 +252,7 @@ int main(int argc, char **argv)
         CPG cpg;
         bool stable=false, inPos=false, done=false;
         int state=0, stable_state=0;
+        float margin = 0.001;
         point target;
 
         //int nearZ=0;
@@ -313,68 +353,76 @@ int main(int argc, char **argv)
             }
             else if(state==2)
             {
-                if(stable_state==0 && morf.FL.th1<FL.th1+0.001 && morf.FL.th1>FL.th1-0.001 && 
-                        morf.FL.th2<FL.th2+0.001 && morf.FL.th2>FL.th2-0.001 &&
-                        morf.FL.th3<FL.th3+0.001 && morf.FL.th3>FL.th3-0.001)
+                if(stable_state==0 && morf.FL.th1<auxFL.th1+margin && morf.FL.th1>auxFL.th1-margin && 
+                        morf.FL.th2<auxFL.th2+margin && morf.FL.th2>auxFL.th2-margin &&
+                        morf.FL.th3<auxFL.th3+margin && morf.FL.th3>auxFL.th3-margin)
                     stable_state=1;
-                else if(stable_state==1 && morf.BL.th1<auxBL.th1+0.001 && morf.BL.th1>auxBL.th1-0.001 && 
-                        morf.BL.th2<auxBL.th2+0.001 && morf.BL.th2>auxBL.th2-0.001 &&
-                        morf.BL.th3<auxBL.th3+0.001 && morf.BL.th3>auxBL.th3-0.001)
+                else if(stable_state==1 && morf.FL.th1<FL.th1+margin && morf.FL.th1>FL.th1-margin && 
+                        morf.FL.th2<FL.th2+margin && morf.FL.th2>FL.th2-margin &&
+                        morf.FL.th3<FL.th3+margin && morf.FL.th3>FL.th3-margin)
                     stable_state=2;
-                else if(stable_state==2 && morf.BL.th1<BL.th1+0.001 && morf.BL.th1>BL.th1-0.001 && 
-                        morf.BL.th2<BL.th2+0.001 && morf.BL.th2>BL.th2-0.001 &&
-                        morf.BL.th3<BL.th3+0.001 && morf.BL.th3>BL.th3-0.001)
+                else if(stable_state==2 && morf.BL.th1<auxBL.th1+margin && morf.BL.th1>auxBL.th1-margin && 
+                        morf.BL.th2<auxBL.th2+margin && morf.BL.th2>auxBL.th2-margin &&
+                        morf.BL.th3<auxBL.th3+margin && morf.BL.th3>auxBL.th3-margin)
                     stable_state=3;
-                else if(stable_state==3 && morf.ML.th1<auxML.th1+0.001 && morf.ML.th1>auxML.th1-0.001 && 
-                        morf.ML.th2<auxML.th2+0.001 && morf.ML.th2>auxML.th2-0.001 &&
-                        morf.ML.th3<auxML.th3+0.001 && morf.ML.th3>auxML.th3-0.001)
+                else if(stable_state==3 && morf.BL.th1<BL.th1+margin && morf.BL.th1>BL.th1-margin && 
+                        morf.BL.th2<BL.th2+margin && morf.BL.th2>BL.th2-margin &&
+                        morf.BL.th3<BL.th3+margin && morf.BL.th3>BL.th3-margin)
                     stable_state=4;
-                else if(stable_state==4 && morf.ML.th1<ML.th1+0.001 && morf.ML.th1>ML.th1-0.001 && 
-                        morf.ML.th2<ML.th2+0.001 && morf.ML.th2>ML.th2-0.001 &&
-                        morf.ML.th3<ML.th3+0.001 && morf.ML.th3>ML.th3-0.001)
+                else if(stable_state==4 && morf.ML.th1<auxML.th1+margin && morf.ML.th1>auxML.th1-margin && 
+                        morf.ML.th2<auxML.th2+margin && morf.ML.th2>auxML.th2-margin &&
+                        morf.ML.th3<auxML.th3+margin && morf.ML.th3>auxML.th3-margin)
                     stable_state=5;
-                else if(stable_state==5 && morf.FR.th1<FR.th1+0.001 && morf.FR.th1>FR.th1-0.001 && 
-                        morf.FR.th2<FR.th2+0.001 && morf.FR.th2>FR.th2-0.001 &&
-                        morf.FR.th3<FR.th3+0.001 && morf.FR.th3>FR.th3-0.001)
+                else if(stable_state==5 && morf.ML.th1<ML.th1+margin && morf.ML.th1>ML.th1-margin && 
+                        morf.ML.th2<ML.th2+margin && morf.ML.th2>ML.th2-margin &&
+                        morf.ML.th3<ML.th3+margin && morf.ML.th3>ML.th3-margin)
                     stable_state=6;
-                else if(stable_state==6 && morf.BR.th1<auxBR.th1+0.001 && morf.BR.th1>auxBR.th1-0.001 && 
-                        morf.BR.th2<auxBR.th2+0.001 && morf.BR.th2>auxBR.th2-0.001 &&
-                        morf.BR.th3<auxBR.th3+0.001 && morf.BR.th3>auxBR.th3-0.001)
+                else if(stable_state==6 && morf.FR.th1<auxFR.th1+margin && morf.FR.th1>auxFR.th1-margin && 
+                        morf.FR.th2<auxFR.th2+margin && morf.FR.th2>auxFR.th2-margin &&
+                        morf.FR.th3<auxFR.th3+margin && morf.FR.th3>auxFR.th3-margin)
                     stable_state=7;
-                else if(stable_state==7 && morf.BR.th1<BR.th1+0.001 && morf.BR.th1>BR.th1-0.001 && 
-                        morf.BR.th2<BR.th2+0.001 && morf.BR.th2>BR.th2-0.001 &&
-                        morf.BR.th3<BR.th3+0.001 && morf.BR.th3>BR.th3-0.001)
+                else if(stable_state==7 && morf.FR.th1<FR.th1+margin && morf.FR.th1>FR.th1-margin && 
+                        morf.FR.th2<FR.th2+margin && morf.FR.th2>FR.th2-margin &&
+                        morf.FR.th3<FR.th3+margin && morf.FR.th3>FR.th3-margin)
                     stable_state=8;
-                else if(stable_state==8 && morf.MR.th1<auxMR.th1+0.001 && morf.MR.th1>auxMR.th1-0.001 && 
-                        morf.MR.th2<auxMR.th2+0.001 && morf.MR.th2>auxMR.th2-0.001 &&
-                        morf.MR.th3<auxMR.th3+0.001 && morf.MR.th3>auxMR.th3-0.001)
+                else if(stable_state==8 && morf.BR.th1<auxBR.th1+margin && morf.BR.th1>auxBR.th1-margin && 
+                        morf.BR.th2<auxBR.th2+margin && morf.BR.th2>auxBR.th2-margin &&
+                        morf.BR.th3<auxBR.th3+margin && morf.BR.th3>auxBR.th3-margin)
                     stable_state=9;
-                else if(stable_state==9 && morf.MR.th1<MR.th1+0.001 && morf.MR.th1>MR.th1-0.001 && 
-                        morf.MR.th2<MR.th2+0.001 && morf.MR.th2>MR.th2-0.001 &&
-                        morf.MR.th3<MR.th3+0.001 && morf.MR.th3>MR.th3-0.001)
+                else if(stable_state==9 && morf.BR.th1<BR.th1+margin && morf.BR.th1>BR.th1-margin && 
+                        morf.BR.th2<BR.th2+margin && morf.BR.th2>BR.th2-margin &&
+                        morf.BR.th3<BR.th3+margin && morf.BR.th3>BR.th3-margin)
                     stable_state=10;
+                else if(stable_state==10 && morf.MR.th1<auxMR.th1+margin && morf.MR.th1>auxMR.th1-margin && 
+                        morf.MR.th2<auxMR.th2+margin && morf.MR.th2>auxMR.th2-margin &&
+                        morf.MR.th3<auxMR.th3+margin && morf.MR.th3>auxMR.th3-margin)
+                    stable_state=11;
+                else if(stable_state==11 && morf.MR.th1<MR.th1+margin && morf.MR.th1>MR.th1-margin && 
+                        morf.MR.th2<MR.th2+margin && morf.MR.th2>MR.th2-margin &&
+                        morf.MR.th3<MR.th3+margin && morf.MR.th3>MR.th3-margin)
+                    stable_state=12;
 
                 if(stable_state==0)
                 {
                     // left leg angles
-                    IK_order.data.push_back(FL.th1);
-                    IK_order.data.push_back(FL.th2);
-                    IK_order.data.push_back(FL.th3);
-                    IK_order.data.push_back(0);
+                    IK_order.data.push_back(auxFL.th1);
+                    IK_order.data.push_back(auxFL.th2);
+                    IK_order.data.push_back(auxFL.th3);
+                    IK_order.data.push_back(default_.th1);
                     IK_order.data.push_back(default_.th2);
                     IK_order.data.push_back(default_.th3);
-                    IK_order.data.push_back(0);
+                    IK_order.data.push_back(default_.th1);
                     IK_order.data.push_back(default_.th2);
                     IK_order.data.push_back(default_.th3);
 
                     // right leg angles
-                    IK_order.data.push_back(0);
+                    IK_order.data.push_back(default_.th1);
                     IK_order.data.push_back(default_.th2);
                     IK_order.data.push_back(default_.th3);
-                    IK_order.data.push_back(0);
+                    IK_order.data.push_back(default_.th1);
                     IK_order.data.push_back(default_.th2);
                     IK_order.data.push_back(default_.th3);
-                    IK_order.data.push_back(0);
+                    IK_order.data.push_back(default_.th1);
                     IK_order.data.push_back(default_.th2);
                     IK_order.data.push_back(default_.th3);
                 }
@@ -384,22 +432,22 @@ int main(int argc, char **argv)
                     IK_order.data.push_back(FL.th1);
                     IK_order.data.push_back(FL.th2);
                     IK_order.data.push_back(FL.th3);
-                    IK_order.data.push_back(0);
+                    IK_order.data.push_back(default_.th1);
                     IK_order.data.push_back(default_.th2);
                     IK_order.data.push_back(default_.th3);
-                    IK_order.data.push_back(auxBL.th1);
-                    IK_order.data.push_back(auxBL.th2);
-                    IK_order.data.push_back(auxBL.th3);
+                    IK_order.data.push_back(default_.th1);
+                    IK_order.data.push_back(default_.th2);
+                    IK_order.data.push_back(default_.th3);
 
 
                     // right leg angles
-                    IK_order.data.push_back(0);
+                    IK_order.data.push_back(default_.th1);
                     IK_order.data.push_back(default_.th2);
                     IK_order.data.push_back(default_.th3);
-                    IK_order.data.push_back(0);
+                    IK_order.data.push_back(default_.th1);
                     IK_order.data.push_back(default_.th2);
                     IK_order.data.push_back(default_.th3);
-                    IK_order.data.push_back(0);
+                    IK_order.data.push_back(default_.th1);
                     IK_order.data.push_back(default_.th2);
                     IK_order.data.push_back(default_.th3);
                 }
@@ -409,7 +457,32 @@ int main(int argc, char **argv)
                     IK_order.data.push_back(FL.th1);
                     IK_order.data.push_back(FL.th2);
                     IK_order.data.push_back(FL.th3);
-                    IK_order.data.push_back(0);
+                    IK_order.data.push_back(default_.th1);
+                    IK_order.data.push_back(default_.th2);
+                    IK_order.data.push_back(default_.th3);
+                    IK_order.data.push_back(auxBL.th1);
+                    IK_order.data.push_back(auxBL.th2);
+                    IK_order.data.push_back(auxBL.th3);
+
+
+                    // right leg angles
+                    IK_order.data.push_back(default_.th1);
+                    IK_order.data.push_back(default_.th2);
+                    IK_order.data.push_back(default_.th3);
+                    IK_order.data.push_back(default_.th1);
+                    IK_order.data.push_back(default_.th2);
+                    IK_order.data.push_back(default_.th3);
+                    IK_order.data.push_back(default_.th1);
+                    IK_order.data.push_back(default_.th2);
+                    IK_order.data.push_back(default_.th3);
+                }
+                else if(stable_state==3)
+                {
+                    // left leg angles
+                    IK_order.data.push_back(FL.th1);
+                    IK_order.data.push_back(FL.th2);
+                    IK_order.data.push_back(FL.th3);
+                    IK_order.data.push_back(default_.th1);
                     IK_order.data.push_back(default_.th2);
                     IK_order.data.push_back(default_.th3);
                     IK_order.data.push_back(BL.th1);
@@ -418,17 +491,17 @@ int main(int argc, char **argv)
 
 
                     // right leg angles
-                    IK_order.data.push_back(0);
+                    IK_order.data.push_back(default_.th1);
                     IK_order.data.push_back(default_.th2);
                     IK_order.data.push_back(default_.th3);
-                    IK_order.data.push_back(0);
+                    IK_order.data.push_back(default_.th1);
                     IK_order.data.push_back(default_.th2);
                     IK_order.data.push_back(default_.th3);
-                    IK_order.data.push_back(0);
+                    IK_order.data.push_back(default_.th1);
                     IK_order.data.push_back(default_.th2);
                     IK_order.data.push_back(default_.th3);
                 }
-                else if(stable_state==3)
+                else if(stable_state==4)
                 {
                     // left leg angles
                     IK_order.data.push_back(FL.th1);
@@ -442,37 +515,13 @@ int main(int argc, char **argv)
                     IK_order.data.push_back(BL.th3);
 
                     // right leg angles
-                    IK_order.data.push_back(0);
+                    IK_order.data.push_back(default_.th1);
                     IK_order.data.push_back(default_.th2);
                     IK_order.data.push_back(default_.th3);
-                    IK_order.data.push_back(0);
+                    IK_order.data.push_back(default_.th1);
                     IK_order.data.push_back(default_.th2);
                     IK_order.data.push_back(default_.th3);
-                    IK_order.data.push_back(0);
-                    IK_order.data.push_back(default_.th2);
-                    IK_order.data.push_back(default_.th3);
-                }
-                else if(stable_state==4)
-                {
-                    // left leg angles
-                    IK_order.data.push_back(FL.th1);
-                    IK_order.data.push_back(FL.th2);
-                    IK_order.data.push_back(FL.th3);
-                    IK_order.data.push_back(ML.th1);
-                    IK_order.data.push_back(ML.th2);
-                    IK_order.data.push_back(ML.th3);
-                    IK_order.data.push_back(BL.th1);
-                    IK_order.data.push_back(BL.th2);
-                    IK_order.data.push_back(BL.th3);
-
-                    // right leg angles
-                    IK_order.data.push_back(0);
-                    IK_order.data.push_back(default_.th2);
-                    IK_order.data.push_back(default_.th3);
-                    IK_order.data.push_back(0);
-                    IK_order.data.push_back(default_.th2);
-                    IK_order.data.push_back(default_.th3);
-                    IK_order.data.push_back(0);
+                    IK_order.data.push_back(default_.th1);
                     IK_order.data.push_back(default_.th2);
                     IK_order.data.push_back(default_.th3);
                 }
@@ -489,15 +538,14 @@ int main(int argc, char **argv)
                     IK_order.data.push_back(BL.th2);
                     IK_order.data.push_back(BL.th3);
 
-
                     // right leg angles
-                    IK_order.data.push_back(FR.th1);
-                    IK_order.data.push_back(FR.th2);
-                    IK_order.data.push_back(FR.th3);
-                    IK_order.data.push_back(0);
+                    IK_order.data.push_back(default_.th1);
                     IK_order.data.push_back(default_.th2);
                     IK_order.data.push_back(default_.th3);
-                    IK_order.data.push_back(0);
+                    IK_order.data.push_back(default_.th1);
+                    IK_order.data.push_back(default_.th2);
+                    IK_order.data.push_back(default_.th3);
+                    IK_order.data.push_back(default_.th1);
                     IK_order.data.push_back(default_.th2);
                     IK_order.data.push_back(default_.th3);
                 }
@@ -516,15 +564,15 @@ int main(int argc, char **argv)
 
 
                     // right leg angles
-                    IK_order.data.push_back(FR.th1);
-                    IK_order.data.push_back(FR.th2);
-                    IK_order.data.push_back(FR.th3);
-                    IK_order.data.push_back(0);
+                    IK_order.data.push_back(auxFR.th1);
+                    IK_order.data.push_back(auxFR.th2);
+                    IK_order.data.push_back(auxFR.th3);
+                    IK_order.data.push_back(default_.th1);
                     IK_order.data.push_back(default_.th2);
                     IK_order.data.push_back(default_.th3);
-                    IK_order.data.push_back(auxBR.th1);
-                    IK_order.data.push_back(auxBR.th2);
-                    IK_order.data.push_back(auxBR.th3);
+                    IK_order.data.push_back(default_.th1);
+                    IK_order.data.push_back(default_.th2);
+                    IK_order.data.push_back(default_.th3);
                 }
                 else if(stable_state==7)
                 {
@@ -544,14 +592,64 @@ int main(int argc, char **argv)
                     IK_order.data.push_back(FR.th1);
                     IK_order.data.push_back(FR.th2);
                     IK_order.data.push_back(FR.th3);
-                    IK_order.data.push_back(0);
+                    IK_order.data.push_back(default_.th1);
+                    IK_order.data.push_back(default_.th2);
+                    IK_order.data.push_back(default_.th3);
+                    IK_order.data.push_back(default_.th1);
+                    IK_order.data.push_back(default_.th2);
+                    IK_order.data.push_back(default_.th3);
+                }
+                else if(stable_state==8)
+                {
+                    // left leg angles
+                    IK_order.data.push_back(FL.th1);
+                    IK_order.data.push_back(FL.th2);
+                    IK_order.data.push_back(FL.th3);
+                    IK_order.data.push_back(ML.th1);
+                    IK_order.data.push_back(ML.th2);
+                    IK_order.data.push_back(ML.th3);
+                    IK_order.data.push_back(BL.th1);
+                    IK_order.data.push_back(BL.th2);
+                    IK_order.data.push_back(BL.th3);
+
+
+                    // right leg angles
+                    IK_order.data.push_back(FR.th1);
+                    IK_order.data.push_back(FR.th2);
+                    IK_order.data.push_back(FR.th3);
+                    IK_order.data.push_back(default_.th1);
+                    IK_order.data.push_back(default_.th2);
+                    IK_order.data.push_back(default_.th3);
+                    IK_order.data.push_back(auxBR.th1);
+                    IK_order.data.push_back(auxBR.th2);
+                    IK_order.data.push_back(auxBR.th3);
+                }
+                else if(stable_state==9)
+                {
+                    // left leg angles
+                    IK_order.data.push_back(FL.th1);
+                    IK_order.data.push_back(FL.th2);
+                    IK_order.data.push_back(FL.th3);
+                    IK_order.data.push_back(ML.th1);
+                    IK_order.data.push_back(ML.th2);
+                    IK_order.data.push_back(ML.th3);
+                    IK_order.data.push_back(BL.th1);
+                    IK_order.data.push_back(BL.th2);
+                    IK_order.data.push_back(BL.th3);
+
+
+                    // right leg angles
+                    IK_order.data.push_back(FR.th1);
+                    IK_order.data.push_back(FR.th2);
+                    IK_order.data.push_back(FR.th3);
+                    IK_order.data.push_back(default_.th1);
                     IK_order.data.push_back(default_.th2);
                     IK_order.data.push_back(default_.th3);
                     IK_order.data.push_back(BR.th1);
                     IK_order.data.push_back(BR.th2);
                     IK_order.data.push_back(BR.th3);
                 }
-                else if(stable_state==8)
+                else if(stable_state==10)
                 {
                     // left leg angles
                     IK_order.data.push_back(FL.th1);
@@ -576,7 +674,7 @@ int main(int argc, char **argv)
                     IK_order.data.push_back(BR.th2);
                     IK_order.data.push_back(BR.th3);
                 }
-                else if(stable_state==9)
+                else if(stable_state==11)
                 {
                     // left leg angles
                     IK_order.data.push_back(FL.th1);
@@ -601,7 +699,7 @@ int main(int argc, char **argv)
                     IK_order.data.push_back(BR.th2);
                     IK_order.data.push_back(BR.th3);
                 }
-                else if(stable_state==10)
+                else if(stable_state==12)
                 {
                     stable=true;
 
@@ -778,8 +876,8 @@ int main(int argc, char **argv)
         else if(durFail)
         {
             std::cout << "trial " << trial << ": " << "Failed duration!" << std::endl;
-            std::cout << "state: " << state << "stable_state" << stable_state << std::endl;
             failFile << "trial " << trial << ":\t" << "duration " << "\t" << trial_dur.count() << "\n";
+            std::cout << FL.cubeX << " , " << FL.cubeY << " , " << FL.cubeZ << std::endl;
         }
         else
         {

@@ -66,13 +66,21 @@ int main(int argc, char **argv)
     // y_interval = 0.26011
     // z_interval = 0.21494
 
-    float x_length = -0.25494;//0.23010;
-    float y_length = 0.30011;//0.30011;
-    float z_length = 0.2301;//0.25494;
+    // float x_length = -0.25494;//0.23010;
+    // float y_length = 0.30011;//0.30011;
+    // float z_length = 0.2301;//0.25494;
 
-    float x_start = 0.225164; //0.205164;//-5.4826e-02;
-    float y_start = -0.057090; //-0.01509;//+8.2794e-02;
-    float z_start = -0.0433698; //-0.0433698;//-3.6406e-01;
+    // float x_start = 0.225164; //0.205164;//-5.4826e-02;
+    // float y_start = -0.057090; //-0.01509;//+8.2794e-02;
+    // float z_start = -0.0433698; //-0.0433698;//-3.6406e-01;
+
+    float x_length = 0.26494;
+    float y_length = 0.25011;
+    float z_length = 0.2301;
+
+    float x_start = -0.034776; 
+    float y_start = -0.078090;
+    float z_start = -0.0433698;
 
 
     // float x_length = 0.19010;
@@ -99,7 +107,7 @@ int main(int argc, char **argv)
     // std::cout << start.x << " , " << start.y << " , " << start.z << std::endl;
     // std::cout << finish.x-start.x << " , " << finish.y-start.y << " , " << finish.z-start.z<< std::endl;
 
-    int div=6;
+    int div=5;
 
     float x_step = x_length/div;
     float y_step = y_length/div;
@@ -160,7 +168,7 @@ int main(int argc, char **argv)
                 if(count>50)
                 {
                     std::ofstream data;
-                    std::string filename = "./neural_networks/data_6div_direct/vali"+std::to_string(j)+std::to_string(k)+std::to_string(l)+std::string(".data");
+                    std::string filename = "./neural_networks/data_"+std::to_string(div)+"div_direct_bigger/vali"+std::to_string(j)+std::to_string(k)+std::to_string(l)+std::string(".data");
                     std::cout << filename << std::endl;
 
                     data.open(filename);

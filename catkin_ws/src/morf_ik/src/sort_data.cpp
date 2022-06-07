@@ -97,9 +97,22 @@ int main(int argc, char **argv)
     std::ofstream auxFile;
     std::string aux_path = std::string("./babbling_data/aux/");
 
-    int div=4, divZ=div*2;
+    int div=5, divZ=div*2;
     int count[div][div][divZ];
-    std::fill(&(count[0][0][0]), &(count[div][div][divZ]), 0);
+    // std::fill(&(count[0][0][0]), &(count[div][div][divZ]), 0);
+    // div=5;
+    // divZ=div*2;
+
+    for(int i=0; i<div;i++)
+    {
+        for(int j=0; j<div; j++)
+        {
+            for(int k=0; k<divZ; k++)
+            {
+                count[i][j][k]=0;
+            }
+        }
+    }
 
     std::cout << input.size() << std::endl;
 

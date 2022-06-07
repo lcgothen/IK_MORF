@@ -692,6 +692,19 @@ nn/fast:
 .PHONY : nn/fast
 
 #=============================================================================
+# Target rules for targets named nn_babbling
+
+# Build rule for target.
+nn_babbling: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 nn_babbling
+.PHONY : nn_babbling
+
+# fast build rule for target.
+nn_babbling/fast:
+	$(MAKE) $(MAKESILENT) -f morf_ik/CMakeFiles/nn_babbling.dir/build.make morf_ik/CMakeFiles/nn_babbling.dir/build
+.PHONY : nn_babbling/fast
+
+#=============================================================================
 # Target rules for targets named calib
 
 # Build rule for target.
@@ -825,6 +838,7 @@ help:
 	@echo "... main"
 	@echo "... morf_controller_real"
 	@echo "... nn"
+	@echo "... nn_babbling"
 	@echo "... save_gen_data_real"
 	@echo "... sort_data"
 	@echo "... sort_data2"

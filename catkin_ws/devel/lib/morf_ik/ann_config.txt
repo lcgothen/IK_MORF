@@ -1,3 +1,3 @@
-./neural_networks/data_4div_babbling/batch_02_10_01_50000_02_09/
-4
-8
+./neural_networks/data_5div_direct/batch_01_03_01_50000_02_09/
+5
+5

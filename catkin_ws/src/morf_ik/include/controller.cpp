@@ -105,11 +105,8 @@ void angles::calcIK(point target) // calculate angles with IK equations
     }
 }
 
-void angles::initNN(std::string ann_path, int div_input, int divZ_input)
+void angles::initNN(std::string ann_path)
 {
-    div = div_input;
-    divZ = divZ_input;
-
     ann = new struct fann ***[div];
 
     for(int i=0; i<div; i++)
@@ -118,9 +115,9 @@ void angles::initNN(std::string ann_path, int div_input, int divZ_input)
         
         for(int j=0; j<div; j++)
         {
-            ann[i][j] = new struct fann *[divZ];
+            ann[i][j] = new struct fann *[divZ+divZ_start];
 
-            for(int k=0; k<divZ; k++)
+            for(int k=0; k<divZ+divZ_start; k++)
             {
                 std::string filename = ann_path+std::to_string(i)+std::to_string(j)+std::to_string(k)+std::string(".net");
 
@@ -158,7 +155,7 @@ void angles::calcNN(point target)
     // float y_start = +8.2794e-02;
     // float z_start = -3.6406e-01;
 
-    // bigger - FL
+    // direct
     // float x_length = -0.25494;
     // float y_length = 0.30011;
     // float z_length = 0.2301;
@@ -167,71 +164,123 @@ void angles::calcNN(point target)
     // float y_start = -0.057090; 
     // float z_start = -0.0433698; 
 
-    // // int div=4, divZ=div;
 
-    // float x_step = x_length/div;
-    // float y_step = y_length/div;
-    // float z_step = z_length/div;
+    //bigger
+    // float x_length = 0.26494;
+    // float y_length = 0.25011;
+    // float z_length = 0.2301;
+
+    // float x_start = -0.034776; 
+    // float y_start = -0.078090;
+    // float z_start = -0.0433698;
+
+    // // int div=4, divZ=div;
 
 
     // babbling
-    float x_length = 0.229327+0.0345405;
-    float y_length = 0.171063+0.0784675;
-    float z_length = 0.171879+0.190115;
+    // float x_length = 0.229327+0.0345405;
+    // float y_length = 0.171063+0.0784675;
+    // float z_length = 0.171879+0.190115;
 
-    float x_start = -0.0345405; 
-    float y_start = -0.0784675; 
-    float z_start = -0.190115; 
+    // float x_start = -0.0345405; 
+    // float y_start = -0.0784675; 
+    // float z_start = -0.190115; 
 
     // int div=2, divZ=div*2;
 
     float x_step = x_length/div;
     float y_step = y_length/div;
-    float z_step = z_length/divZ;
-
-    z_start += z_step*3; // downsizing in z for babbling data
+    float z_step = z_length/(divZ+divZ_start);
 
     // x: -0.0345405 , 0.229327
     // y: -0.0784675 , 0.171063
     // z: -0.190115 , 0.171879
 
-
-    for(int j=0; j<div; j++)
+    if(reverse==1)
     {
-        if(target.x > x_start && target.x < x_start+x_step)  // if(target.x < x_start && target.x > x_start+x_step)
+        if(target.x > x_start)
+            cubeX=0;
+        else if(target.x < x_start+x_length)
+            cubeX=div;
+        else 
         {
-            cubeX=j;
-            break;
-        }
+            float aux = x_start;
+            for(int j=0; j<div; j++)
+            {
+                if(target.x < aux && target.x > aux+x_step)
+                {
+                    cubeX=j;
+                    break;
+                }
 
-        x_start += x_step;
+                aux += x_step;
+            }
+        }
+    }
+    else
+    {
+        if(target.x < x_start)
+            cubeX=0;
+        else if(target.x > x_start+x_length)
+            cubeX=div;
+        else 
+        {
+            float aux = x_start;
+            for(int j=0; j<div; j++)
+            {
+                if(target.x > aux && target.x < aux+x_step)
+                {
+                    cubeX=j;
+                    break;
+                }
+
+                aux += x_step;
+            }
+        }
     }
 
-    for(int k=0; k<div; k++)
+    if(target.y < y_start)
+        cubeY=0;
+    else if(target.y > y_start+y_length)
+        cubeY=div;
+    else 
     {
-        if(target.y > y_start && target.y < y_start+y_step)
+        float aux = y_start;
+        for(int k=0; k<div; k++)
         {
-            cubeY=k;
-            break;
-        }
+            if(target.y > aux && target.y < aux+y_step)
+            {
+                cubeY=k;
+                break;
+            }
 
-        y_start += y_step;
+            aux += y_step;
+        }
     }
 
-    for(int l=3; l<divZ; l++) // downsizing in z for babbling data l=3
+    if(target.z < z_start + z_step*divZ_start)
+        cubeZ=divZ_start;
+    else if(target.z > z_start+z_length)
+        cubeZ=divZ+divZ_start;
+    else 
     {
-        if(target.z > z_start && target.z < z_start+z_step)
+        float aux = z_start + z_step*divZ_start; // downsizing in z for babbling data
+        for(int l=divZ_start; l<divZ+divZ_start; l++) 
         {
-            cubeZ=l;
-            break;
-        }
+            if(target.z > aux && target.z < aux+z_step)
+            {
+                cubeZ=l;
+                break;
+            }
 
-        z_start += z_step;
+            aux += z_step;
+        }
     }
 
     // std::cout << div << " , " << divZ << std::endl;
 
     // std::cout << cubeX << " , " << cubeY << " , " << cubeZ << std::endl;
+    // std::cout << target.x << " , " << target.y <<  " , " << target.z << std::endl;
 
     if(cubeX!=-1 && cubeY!=-1 && cubeZ!=-1)
     {
@@ -250,7 +299,6 @@ void angles::calcNN(point target)
 
     }
     
-    // std::cout << target.x << " , " << target.y <<  " , " << target.z << std::endl;
     // std::cout << cubeX << " , " << cubeY << " , " << cubeZ << std::endl;
 }
 
@@ -298,6 +346,7 @@ void CPG::cyclic(images *stereo)
 
     oH1 = outputH1*k;
     oH2 = (outputH2-0.5)*k;
+    // oH2 = outputH2*0.3;
 }
 
 void CPG::walk(images stereo)
