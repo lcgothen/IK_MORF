@@ -55,10 +55,9 @@ This code is dependent on:
 
 **Note:** go to line 100 of the file **sort_data.cpp** to change the number of divisions of the workspace (variable named **div**)
 
-### Real robot
+<!-- ### Real robot
 - Connect to morf's network
 - Transfer the code by executing `ansible-playbook -i inventory morf_transfer_genData.yml`
 - If using the neural networks, execute also `ansible-playbook -i inventory morf_transfer_nn.yml`
 - SSH into MORF and execute the command `cd /home/morf-one/workspace/gorobots-mthor/projects/morf/real/catkin_ws/src/morf_controller/bin`
-- Execute `./morf_controller_real <TYPE>`
-    - TYPE: 0 is using the equations and 1 is using the neural networks
+- Execute -->
