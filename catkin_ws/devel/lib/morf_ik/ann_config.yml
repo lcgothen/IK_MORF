@@ -1,6 +1,6 @@
 %YAML:1.0
 ---
-ann_path: ./neural_networks/data_4div_direct/batch_01_10_01_50000_02_09/
+ann_path: ./neural_networks/data_4div_direct/batch_02_10_01_50000_02_09/
 div: 4
 divZ: 4
 divZ_start: 0

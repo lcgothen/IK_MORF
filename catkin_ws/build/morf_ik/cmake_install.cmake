@@ -86,29 +86,29 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  if(EXISTS "$ENV{DESTDIR}/home/leonor/CoppeliaSim/gen_data" AND
-     NOT IS_SYMLINK "$ENV{DESTDIR}/home/leonor/CoppeliaSim/gen_data")
+  if(EXISTS "$ENV{DESTDIR}/home/leonor/CoppeliaSim/gen_data_sim" AND
+     NOT IS_SYMLINK "$ENV{DESTDIR}/home/leonor/CoppeliaSim/gen_data_sim")
     file(RPATH_CHECK
-         FILE "$ENV{DESTDIR}/home/leonor/CoppeliaSim/gen_data"
+         FILE "$ENV{DESTDIR}/home/leonor/CoppeliaSim/gen_data_sim"
          RPATH "")
   endif()
   list(APPEND CMAKE_ABSOLUTE_DESTINATION_FILES
-   "/home/leonor/CoppeliaSim/gen_data")
+   "/home/leonor/CoppeliaSim/gen_data_sim")
   if(CMAKE_WARN_ON_ABSOLUTE_INSTALL_DESTINATION)
     message(WARNING "ABSOLUTE path INSTALL DESTINATION : ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
   endif()
   if(CMAKE_ERROR_ON_ABSOLUTE_INSTALL_DESTINATION)
     message(FATAL_ERROR "ABSOLUTE path INSTALL DESTINATION forbidden (by caller): ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
   endif()
-  file(INSTALL DESTINATION "/home/leonor/CoppeliaSim" TYPE EXECUTABLE FILES "/home/leonor/tese/IK_MORF/catkin_ws/devel/lib/morf_ik/gen_data")
-  if(EXISTS "$ENV{DESTDIR}/home/leonor/CoppeliaSim/gen_data" AND
-     NOT IS_SYMLINK "$ENV{DESTDIR}/home/leonor/CoppeliaSim/gen_data")
+  file(INSTALL DESTINATION "/home/leonor/CoppeliaSim" TYPE EXECUTABLE FILES "/home/leonor/tese/IK_MORF/catkin_ws/devel/lib/morf_ik/gen_data_sim")
+  if(EXISTS "$ENV{DESTDIR}/home/leonor/CoppeliaSim/gen_data_sim" AND
+     NOT IS_SYMLINK "$ENV{DESTDIR}/home/leonor/CoppeliaSim/gen_data_sim")
     file(RPATH_CHANGE
-         FILE "$ENV{DESTDIR}/home/leonor/CoppeliaSim/gen_data"
+         FILE "$ENV{DESTDIR}/home/leonor/CoppeliaSim/gen_data_sim"
          OLD_RPATH "/opt/ros/melodic/lib:/home/leonor/tese/IK_MORF/catkin_ws/devel/lib:"
          NEW_RPATH "")
     if(CMAKE_INSTALL_DO_STRIP)
-      execute_process(COMMAND "/usr/bin/strip" "$ENV{DESTDIR}/home/leonor/CoppeliaSim/gen_data")
+      execute_process(COMMAND "/usr/bin/strip" "$ENV{DESTDIR}/home/leonor/CoppeliaSim/gen_data_sim")
     endif()
   endif()
 endif()

@@ -79,7 +79,7 @@ int main(int argc, char **argv)
     mkdir(results_path.c_str(),0777);
 
     std::ofstream resFile, failFile;
-    std::string resName = results_path+std::string("successes.data");
+    std::string resName = results_path+std::string("results.data");
     std::string failName = results_path+std::string("failures.data");
 
     std::cout << results_path << std::endl;
@@ -883,11 +883,11 @@ int main(int argc, char **argv)
         }
         else
         {
-            // failFile.open(failName,  std::ios_base::app | std::ios_base::in);
-            // failFile << "trial " << trial << ":\t" << "distance" << "\t" << distance << "\n";
-            // std::cout << "trial " << trial << ": " << "Failed distance: " << distance << std::endl;
-            // failFile.close();
-            resFile.open(failName,  std::ios_base::app | std::ios_base::in);
+            failFile.open(failName,  std::ios_base::app | std::ios_base::in);
+            failFile << "trial " << trial << ":\t" << "distance" << "\t" << distance << "\n";
+            failFile.close();
+
+            resFile.open(resName,  std::ios_base::app | std::ios_base::in);
             std::cout << "trial " << trial << ": " << "Failed distance: " << distance << std::endl;
             resFile << "trial " << trial << ":\t" << duration.count()/num_calcs << "\t" << distance;
 

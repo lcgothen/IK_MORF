@@ -627,17 +627,17 @@ main/fast:
 .PHONY : main/fast
 
 #=============================================================================
-# Target rules for targets named gen_data
+# Target rules for targets named gen_data_sim
 
 # Build rule for target.
-gen_data: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 gen_data
-.PHONY : gen_data
+gen_data_sim: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 gen_data_sim
+.PHONY : gen_data_sim
 
 # fast build rule for target.
-gen_data/fast:
-	$(MAKE) $(MAKESILENT) -f morf_ik/CMakeFiles/gen_data.dir/build.make morf_ik/CMakeFiles/gen_data.dir/build
-.PHONY : gen_data/fast
+gen_data_sim/fast:
+	$(MAKE) $(MAKESILENT) -f morf_ik/CMakeFiles/gen_data_sim.dir/build.make morf_ik/CMakeFiles/gen_data_sim.dir/build
+.PHONY : gen_data_sim/fast
 
 #=============================================================================
 # Target rules for targets named gen_data_ik
@@ -692,17 +692,17 @@ nn/fast:
 .PHONY : nn/fast
 
 #=============================================================================
-# Target rules for targets named nn_babbling
+# Target rules for targets named nn_sim
 
 # Build rule for target.
-nn_babbling: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 nn_babbling
-.PHONY : nn_babbling
+nn_sim: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 nn_sim
+.PHONY : nn_sim
 
 # fast build rule for target.
-nn_babbling/fast:
-	$(MAKE) $(MAKESILENT) -f morf_ik/CMakeFiles/nn_babbling.dir/build.make morf_ik/CMakeFiles/nn_babbling.dir/build
-.PHONY : nn_babbling/fast
+nn_sim/fast:
+	$(MAKE) $(MAKESILENT) -f morf_ik/CMakeFiles/nn_sim.dir/build.make morf_ik/CMakeFiles/nn_sim.dir/build
+.PHONY : nn_sim/fast
 
 #=============================================================================
 # Target rules for targets named calib
@@ -828,9 +828,9 @@ help:
 	@echo "... calib"
 	@echo "... control"
 	@echo "... coords"
-	@echo "... gen_data"
 	@echo "... gen_data_ik"
 	@echo "... gen_data_real"
+	@echo "... gen_data_sim"
 	@echo "... gmock"
 	@echo "... gmock_main"
 	@echo "... gtest"
@@ -838,7 +838,7 @@ help:
 	@echo "... main"
 	@echo "... morf_controller_real"
 	@echo "... nn"
-	@echo "... nn_babbling"
+	@echo "... nn_sim"
 	@echo "... save_gen_data_real"
 	@echo "... sort_data"
 	@echo "... sort_data2"

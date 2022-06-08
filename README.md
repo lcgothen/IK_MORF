@@ -32,6 +32,8 @@ This code is dependent on:
     - TYPE: 0 is using the equations and 1 is using the neural networks
     - N_TRIALS: number of trials to be executed
 
+**Note:** the neural networks used can be changed by changing the file **ann_config.yml**. For neural networks trained with data generated with the equations, use `reverse: 1`. For neural networks trained with data generated with the simulation or the real robot, use `reverse: 0`.
+
 ## Control code for the real robot
 
 - Connect to morf's network
@@ -39,7 +41,9 @@ This code is dependent on:
 - If using the neural networks, execute also `ansible-playbook -i inventory morf_transfer_nn.yml`
 - SSH into MORF and execute the command `cd /home/morf-one/workspace/gorobots-mthor/projects/morf/real/catkin_ws/src/morf_controller/bin`
 - Execute `./morf_controller_real <TYPE>`
-    - TYPE: 0 is using the equations and 1 is using the neural networks
+    - TYPE: 0 is using the equations and 1 is using the neural networks 
+
+**Note:** the neural networks used can be changed by changing the file **ann_config.yml**. For neural networks trained with data generated with the equations, use `reverse: 1`. For neural networks trained with data generated with the simulation or the real robot, use `reverse: 0`.
 
 ## Data generation for neural networks
 
@@ -53,7 +57,7 @@ This code is dependent on:
 - Execute `./gen_data_sim`
 - When that is done, execute `./sort_data`
 
-**Note:** go to line 100 of the file **sort_data.cpp** to change the number of divisions of the workspace (variable named **div**)
+**Note:** go to line 100 of the file **sort_data.cpp** (/IK_MORF/catkin_ws/src/morf_ik/src/sort_data.cpp) to change the number of divisions of the workspace (variable named **div**). Do `catkin_make` in the catkin_ws folder in the terminal to update the executable.
 
 <!-- ### Real robot
 - Connect to morf's network
@@ -61,3 +65,15 @@ This code is dependent on:
 - If using the neural networks, execute also `ansible-playbook -i inventory morf_transfer_nn.yml`
 - SSH into MORF and execute the command `cd /home/morf-one/workspace/gorobots-mthor/projects/morf/real/catkin_ws/src/morf_controller/bin`
 - Execute -->
+
+## Neural networks training
+
+### Data generated with inverse kinematics equations
+- Execute `./nn`
+
+**Note:** go to the file **nn.cpp** (/IK_MORF/catkin_ws/src/morf_ik/src/nn.cpp) to change the number of divisions of the workspace (variable named **div**) and the training parameters. Do `catkin_make` in the catkin_ws folder in the terminal to update the executable.
+
+### Data generated with simulation
+- Execute `./nn_sim`
+
+**Note:** go to the file **nn_sim.cpp** (/IK_MORF/catkin_ws/src/morf_ik/src/nn_sim.cpp) to change the number of divisions of the workspace (variable named **div**) and the training parameters. Do `catkin_make` in the catkin_ws folder in the terminal to update the executable.

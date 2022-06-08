@@ -536,18 +536,18 @@ main/fast:
 .PHONY : main/fast
 
 # Convenience name for target.
-morf_ik/CMakeFiles/gen_data.dir/rule:
-	cd /home/leonor/tese/IK_MORF/catkin_ws/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 morf_ik/CMakeFiles/gen_data.dir/rule
-.PHONY : morf_ik/CMakeFiles/gen_data.dir/rule
+morf_ik/CMakeFiles/gen_data_sim.dir/rule:
+	cd /home/leonor/tese/IK_MORF/catkin_ws/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 morf_ik/CMakeFiles/gen_data_sim.dir/rule
+.PHONY : morf_ik/CMakeFiles/gen_data_sim.dir/rule
 
 # Convenience name for target.
-gen_data: morf_ik/CMakeFiles/gen_data.dir/rule
-.PHONY : gen_data
+gen_data_sim: morf_ik/CMakeFiles/gen_data_sim.dir/rule
+.PHONY : gen_data_sim
 
 # fast build rule for target.
-gen_data/fast:
-	cd /home/leonor/tese/IK_MORF/catkin_ws/build && $(MAKE) $(MAKESILENT) -f morf_ik/CMakeFiles/gen_data.dir/build.make morf_ik/CMakeFiles/gen_data.dir/build
-.PHONY : gen_data/fast
+gen_data_sim/fast:
+	cd /home/leonor/tese/IK_MORF/catkin_ws/build && $(MAKE) $(MAKESILENT) -f morf_ik/CMakeFiles/gen_data_sim.dir/build.make morf_ik/CMakeFiles/gen_data_sim.dir/build
+.PHONY : gen_data_sim/fast
 
 # Convenience name for target.
 morf_ik/CMakeFiles/gen_data_ik.dir/rule:
@@ -606,18 +606,18 @@ nn/fast:
 .PHONY : nn/fast
 
 # Convenience name for target.
-morf_ik/CMakeFiles/nn_babbling.dir/rule:
-	cd /home/leonor/tese/IK_MORF/catkin_ws/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 morf_ik/CMakeFiles/nn_babbling.dir/rule
-.PHONY : morf_ik/CMakeFiles/nn_babbling.dir/rule
+morf_ik/CMakeFiles/nn_sim.dir/rule:
+	cd /home/leonor/tese/IK_MORF/catkin_ws/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 morf_ik/CMakeFiles/nn_sim.dir/rule
+.PHONY : morf_ik/CMakeFiles/nn_sim.dir/rule
 
 # Convenience name for target.
-nn_babbling: morf_ik/CMakeFiles/nn_babbling.dir/rule
-.PHONY : nn_babbling
+nn_sim: morf_ik/CMakeFiles/nn_sim.dir/rule
+.PHONY : nn_sim
 
 # fast build rule for target.
-nn_babbling/fast:
-	cd /home/leonor/tese/IK_MORF/catkin_ws/build && $(MAKE) $(MAKESILENT) -f morf_ik/CMakeFiles/nn_babbling.dir/build.make morf_ik/CMakeFiles/nn_babbling.dir/build
-.PHONY : nn_babbling/fast
+nn_sim/fast:
+	cd /home/leonor/tese/IK_MORF/catkin_ws/build && $(MAKE) $(MAKESILENT) -f morf_ik/CMakeFiles/nn_sim.dir/build.make morf_ik/CMakeFiles/nn_sim.dir/build
+.PHONY : nn_sim/fast
 
 # Convenience name for target.
 morf_ik/CMakeFiles/calib.dir/rule:
@@ -709,7 +709,7 @@ home/leonor/CoppeliaSim/programming/common/shared_memory.o: home/leonor/Coppelia
 # target to build an object file
 home/leonor/CoppeliaSim/programming/common/shared_memory.c.o:
 	cd /home/leonor/tese/IK_MORF/catkin_ws/build && $(MAKE) $(MAKESILENT) -f morf_ik/CMakeFiles/main.dir/build.make morf_ik/CMakeFiles/main.dir/home/leonor/CoppeliaSim/programming/common/shared_memory.c.o
-	cd /home/leonor/tese/IK_MORF/catkin_ws/build && $(MAKE) $(MAKESILENT) -f morf_ik/CMakeFiles/gen_data.dir/build.make morf_ik/CMakeFiles/gen_data.dir/home/leonor/CoppeliaSim/programming/common/shared_memory.c.o
+	cd /home/leonor/tese/IK_MORF/catkin_ws/build && $(MAKE) $(MAKESILENT) -f morf_ik/CMakeFiles/gen_data_sim.dir/build.make morf_ik/CMakeFiles/gen_data_sim.dir/home/leonor/CoppeliaSim/programming/common/shared_memory.c.o
 .PHONY : home/leonor/CoppeliaSim/programming/common/shared_memory.c.o
 
 home/leonor/CoppeliaSim/programming/common/shared_memory.i: home/leonor/CoppeliaSim/programming/common/shared_memory.c.i
@@ -718,7 +718,7 @@ home/leonor/CoppeliaSim/programming/common/shared_memory.i: home/leonor/Coppelia
 # target to preprocess a source file
 home/leonor/CoppeliaSim/programming/common/shared_memory.c.i:
 	cd /home/leonor/tese/IK_MORF/catkin_ws/build && $(MAKE) $(MAKESILENT) -f morf_ik/CMakeFiles/main.dir/build.make morf_ik/CMakeFiles/main.dir/home/leonor/CoppeliaSim/programming/common/shared_memory.c.i
-	cd /home/leonor/tese/IK_MORF/catkin_ws/build && $(MAKE) $(MAKESILENT) -f morf_ik/CMakeFiles/gen_data.dir/build.make morf_ik/CMakeFiles/gen_data.dir/home/leonor/CoppeliaSim/programming/common/shared_memory.c.i
+	cd /home/leonor/tese/IK_MORF/catkin_ws/build && $(MAKE) $(MAKESILENT) -f morf_ik/CMakeFiles/gen_data_sim.dir/build.make morf_ik/CMakeFiles/gen_data_sim.dir/home/leonor/CoppeliaSim/programming/common/shared_memory.c.i
 .PHONY : home/leonor/CoppeliaSim/programming/common/shared_memory.c.i
 
 home/leonor/CoppeliaSim/programming/common/shared_memory.s: home/leonor/CoppeliaSim/programming/common/shared_memory.c.s
@@ -727,7 +727,7 @@ home/leonor/CoppeliaSim/programming/common/shared_memory.s: home/leonor/Coppelia
 # target to generate assembly for a file
 home/leonor/CoppeliaSim/programming/common/shared_memory.c.s:
 	cd /home/leonor/tese/IK_MORF/catkin_ws/build && $(MAKE) $(MAKESILENT) -f morf_ik/CMakeFiles/main.dir/build.make morf_ik/CMakeFiles/main.dir/home/leonor/CoppeliaSim/programming/common/shared_memory.c.s
-	cd /home/leonor/tese/IK_MORF/catkin_ws/build && $(MAKE) $(MAKESILENT) -f morf_ik/CMakeFiles/gen_data.dir/build.make morf_ik/CMakeFiles/gen_data.dir/home/leonor/CoppeliaSim/programming/common/shared_memory.c.s
+	cd /home/leonor/tese/IK_MORF/catkin_ws/build && $(MAKE) $(MAKESILENT) -f morf_ik/CMakeFiles/gen_data_sim.dir/build.make morf_ik/CMakeFiles/gen_data_sim.dir/home/leonor/CoppeliaSim/programming/common/shared_memory.c.s
 .PHONY : home/leonor/CoppeliaSim/programming/common/shared_memory.c.s
 
 home/leonor/CoppeliaSim/programming/remoteApi/extApi.o: home/leonor/CoppeliaSim/programming/remoteApi/extApi.c.o
@@ -736,7 +736,7 @@ home/leonor/CoppeliaSim/programming/remoteApi/extApi.o: home/leonor/CoppeliaSim/
 # target to build an object file
 home/leonor/CoppeliaSim/programming/remoteApi/extApi.c.o:
 	cd /home/leonor/tese/IK_MORF/catkin_ws/build && $(MAKE) $(MAKESILENT) -f morf_ik/CMakeFiles/main.dir/build.make morf_ik/CMakeFiles/main.dir/home/leonor/CoppeliaSim/programming/remoteApi/extApi.c.o
-	cd /home/leonor/tese/IK_MORF/catkin_ws/build && $(MAKE) $(MAKESILENT) -f morf_ik/CMakeFiles/gen_data.dir/build.make morf_ik/CMakeFiles/gen_data.dir/home/leonor/CoppeliaSim/programming/remoteApi/extApi.c.o
+	cd /home/leonor/tese/IK_MORF/catkin_ws/build && $(MAKE) $(MAKESILENT) -f morf_ik/CMakeFiles/gen_data_sim.dir/build.make morf_ik/CMakeFiles/gen_data_sim.dir/home/leonor/CoppeliaSim/programming/remoteApi/extApi.c.o
 .PHONY : home/leonor/CoppeliaSim/programming/remoteApi/extApi.c.o
 
 home/leonor/CoppeliaSim/programming/remoteApi/extApi.i: home/leonor/CoppeliaSim/programming/remoteApi/extApi.c.i
@@ -745,7 +745,7 @@ home/leonor/CoppeliaSim/programming/remoteApi/extApi.i: home/leonor/CoppeliaSim/
 # target to preprocess a source file
 home/leonor/CoppeliaSim/programming/remoteApi/extApi.c.i:
 	cd /home/leonor/tese/IK_MORF/catkin_ws/build && $(MAKE) $(MAKESILENT) -f morf_ik/CMakeFiles/main.dir/build.make morf_ik/CMakeFiles/main.dir/home/leonor/CoppeliaSim/programming/remoteApi/extApi.c.i
-	cd /home/leonor/tese/IK_MORF/catkin_ws/build && $(MAKE) $(MAKESILENT) -f morf_ik/CMakeFiles/gen_data.dir/build.make morf_ik/CMakeFiles/gen_data.dir/home/leonor/CoppeliaSim/programming/remoteApi/extApi.c.i
+	cd /home/leonor/tese/IK_MORF/catkin_ws/build && $(MAKE) $(MAKESILENT) -f morf_ik/CMakeFiles/gen_data_sim.dir/build.make morf_ik/CMakeFiles/gen_data_sim.dir/home/leonor/CoppeliaSim/programming/remoteApi/extApi.c.i
 .PHONY : home/leonor/CoppeliaSim/programming/remoteApi/extApi.c.i
 
 home/leonor/CoppeliaSim/programming/remoteApi/extApi.s: home/leonor/CoppeliaSim/programming/remoteApi/extApi.c.s
@@ -754,7 +754,7 @@ home/leonor/CoppeliaSim/programming/remoteApi/extApi.s: home/leonor/CoppeliaSim/
 # target to generate assembly for a file
 home/leonor/CoppeliaSim/programming/remoteApi/extApi.c.s:
 	cd /home/leonor/tese/IK_MORF/catkin_ws/build && $(MAKE) $(MAKESILENT) -f morf_ik/CMakeFiles/main.dir/build.make morf_ik/CMakeFiles/main.dir/home/leonor/CoppeliaSim/programming/remoteApi/extApi.c.s
-	cd /home/leonor/tese/IK_MORF/catkin_ws/build && $(MAKE) $(MAKESILENT) -f morf_ik/CMakeFiles/gen_data.dir/build.make morf_ik/CMakeFiles/gen_data.dir/home/leonor/CoppeliaSim/programming/remoteApi/extApi.c.s
+	cd /home/leonor/tese/IK_MORF/catkin_ws/build && $(MAKE) $(MAKESILENT) -f morf_ik/CMakeFiles/gen_data_sim.dir/build.make morf_ik/CMakeFiles/gen_data_sim.dir/home/leonor/CoppeliaSim/programming/remoteApi/extApi.c.s
 .PHONY : home/leonor/CoppeliaSim/programming/remoteApi/extApi.c.s
 
 home/leonor/CoppeliaSim/programming/remoteApi/extApiPlatform.o: home/leonor/CoppeliaSim/programming/remoteApi/extApiPlatform.c.o
@@ -763,7 +763,7 @@ home/leonor/CoppeliaSim/programming/remoteApi/extApiPlatform.o: home/leonor/Copp
 # target to build an object file
 home/leonor/CoppeliaSim/programming/remoteApi/extApiPlatform.c.o:
 	cd /home/leonor/tese/IK_MORF/catkin_ws/build && $(MAKE) $(MAKESILENT) -f morf_ik/CMakeFiles/main.dir/build.make morf_ik/CMakeFiles/main.dir/home/leonor/CoppeliaSim/programming/remoteApi/extApiPlatform.c.o
-	cd /home/leonor/tese/IK_MORF/catkin_ws/build && $(MAKE) $(MAKESILENT) -f morf_ik/CMakeFiles/gen_data.dir/build.make morf_ik/CMakeFiles/gen_data.dir/home/leonor/CoppeliaSim/programming/remoteApi/extApiPlatform.c.o
+	cd /home/leonor/tese/IK_MORF/catkin_ws/build && $(MAKE) $(MAKESILENT) -f morf_ik/CMakeFiles/gen_data_sim.dir/build.make morf_ik/CMakeFiles/gen_data_sim.dir/home/leonor/CoppeliaSim/programming/remoteApi/extApiPlatform.c.o
 .PHONY : home/leonor/CoppeliaSim/programming/remoteApi/extApiPlatform.c.o
 
 home/leonor/CoppeliaSim/programming/remoteApi/extApiPlatform.i: home/leonor/CoppeliaSim/programming/remoteApi/extApiPlatform.c.i
@@ -772,7 +772,7 @@ home/leonor/CoppeliaSim/programming/remoteApi/extApiPlatform.i: home/leonor/Copp
 # target to preprocess a source file
 home/leonor/CoppeliaSim/programming/remoteApi/extApiPlatform.c.i:
 	cd /home/leonor/tese/IK_MORF/catkin_ws/build && $(MAKE) $(MAKESILENT) -f morf_ik/CMakeFiles/main.dir/build.make morf_ik/CMakeFiles/main.dir/home/leonor/CoppeliaSim/programming/remoteApi/extApiPlatform.c.i
-	cd /home/leonor/tese/IK_MORF/catkin_ws/build && $(MAKE) $(MAKESILENT) -f morf_ik/CMakeFiles/gen_data.dir/build.make morf_ik/CMakeFiles/gen_data.dir/home/leonor/CoppeliaSim/programming/remoteApi/extApiPlatform.c.i
+	cd /home/leonor/tese/IK_MORF/catkin_ws/build && $(MAKE) $(MAKESILENT) -f morf_ik/CMakeFiles/gen_data_sim.dir/build.make morf_ik/CMakeFiles/gen_data_sim.dir/home/leonor/CoppeliaSim/programming/remoteApi/extApiPlatform.c.i
 .PHONY : home/leonor/CoppeliaSim/programming/remoteApi/extApiPlatform.c.i
 
 home/leonor/CoppeliaSim/programming/remoteApi/extApiPlatform.s: home/leonor/CoppeliaSim/programming/remoteApi/extApiPlatform.c.s
@@ -781,7 +781,7 @@ home/leonor/CoppeliaSim/programming/remoteApi/extApiPlatform.s: home/leonor/Copp
 # target to generate assembly for a file
 home/leonor/CoppeliaSim/programming/remoteApi/extApiPlatform.c.s:
 	cd /home/leonor/tese/IK_MORF/catkin_ws/build && $(MAKE) $(MAKESILENT) -f morf_ik/CMakeFiles/main.dir/build.make morf_ik/CMakeFiles/main.dir/home/leonor/CoppeliaSim/programming/remoteApi/extApiPlatform.c.s
-	cd /home/leonor/tese/IK_MORF/catkin_ws/build && $(MAKE) $(MAKESILENT) -f morf_ik/CMakeFiles/gen_data.dir/build.make morf_ik/CMakeFiles/gen_data.dir/home/leonor/CoppeliaSim/programming/remoteApi/extApiPlatform.c.s
+	cd /home/leonor/tese/IK_MORF/catkin_ws/build && $(MAKE) $(MAKESILENT) -f morf_ik/CMakeFiles/gen_data_sim.dir/build.make morf_ik/CMakeFiles/gen_data_sim.dir/home/leonor/CoppeliaSim/programming/remoteApi/extApiPlatform.c.s
 .PHONY : home/leonor/CoppeliaSim/programming/remoteApi/extApiPlatform.c.s
 
 include/controller.o: include/controller.cpp.o
@@ -969,7 +969,7 @@ src/gen_data_sim.o: src/gen_data_sim.cpp.o
 
 # target to build an object file
 src/gen_data_sim.cpp.o:
-	cd /home/leonor/tese/IK_MORF/catkin_ws/build && $(MAKE) $(MAKESILENT) -f morf_ik/CMakeFiles/gen_data.dir/build.make morf_ik/CMakeFiles/gen_data.dir/src/gen_data_sim.cpp.o
+	cd /home/leonor/tese/IK_MORF/catkin_ws/build && $(MAKE) $(MAKESILENT) -f morf_ik/CMakeFiles/gen_data_sim.dir/build.make morf_ik/CMakeFiles/gen_data_sim.dir/src/gen_data_sim.cpp.o
 .PHONY : src/gen_data_sim.cpp.o
 
 src/gen_data_sim.i: src/gen_data_sim.cpp.i
@@ -977,7 +977,7 @@ src/gen_data_sim.i: src/gen_data_sim.cpp.i
 
 # target to preprocess a source file
 src/gen_data_sim.cpp.i:
-	cd /home/leonor/tese/IK_MORF/catkin_ws/build && $(MAKE) $(MAKESILENT) -f morf_ik/CMakeFiles/gen_data.dir/build.make morf_ik/CMakeFiles/gen_data.dir/src/gen_data_sim.cpp.i
+	cd /home/leonor/tese/IK_MORF/catkin_ws/build && $(MAKE) $(MAKESILENT) -f morf_ik/CMakeFiles/gen_data_sim.dir/build.make morf_ik/CMakeFiles/gen_data_sim.dir/src/gen_data_sim.cpp.i
 .PHONY : src/gen_data_sim.cpp.i
 
 src/gen_data_sim.s: src/gen_data_sim.cpp.s
@@ -985,7 +985,7 @@ src/gen_data_sim.s: src/gen_data_sim.cpp.s
 
 # target to generate assembly for a file
 src/gen_data_sim.cpp.s:
-	cd /home/leonor/tese/IK_MORF/catkin_ws/build && $(MAKE) $(MAKESILENT) -f morf_ik/CMakeFiles/gen_data.dir/build.make morf_ik/CMakeFiles/gen_data.dir/src/gen_data_sim.cpp.s
+	cd /home/leonor/tese/IK_MORF/catkin_ws/build && $(MAKE) $(MAKESILENT) -f morf_ik/CMakeFiles/gen_data_sim.dir/build.make morf_ik/CMakeFiles/gen_data_sim.dir/src/gen_data_sim.cpp.s
 .PHONY : src/gen_data_sim.cpp.s
 
 src/main.o: src/main.cpp.o
@@ -1036,29 +1036,29 @@ src/nn.cpp.s:
 	cd /home/leonor/tese/IK_MORF/catkin_ws/build && $(MAKE) $(MAKESILENT) -f morf_ik/CMakeFiles/nn.dir/build.make morf_ik/CMakeFiles/nn.dir/src/nn.cpp.s
 .PHONY : src/nn.cpp.s
 
-src/nn_babbling.o: src/nn_babbling.cpp.o
-.PHONY : src/nn_babbling.o
+src/nn_sim.o: src/nn_sim.cpp.o
+.PHONY : src/nn_sim.o
 
 # target to build an object file
-src/nn_babbling.cpp.o:
-	cd /home/leonor/tese/IK_MORF/catkin_ws/build && $(MAKE) $(MAKESILENT) -f morf_ik/CMakeFiles/nn_babbling.dir/build.make morf_ik/CMakeFiles/nn_babbling.dir/src/nn_babbling.cpp.o
-.PHONY : src/nn_babbling.cpp.o
+src/nn_sim.cpp.o:
+	cd /home/leonor/tese/IK_MORF/catkin_ws/build && $(MAKE) $(MAKESILENT) -f morf_ik/CMakeFiles/nn_sim.dir/build.make morf_ik/CMakeFiles/nn_sim.dir/src/nn_sim.cpp.o
+.PHONY : src/nn_sim.cpp.o
 
-src/nn_babbling.i: src/nn_babbling.cpp.i
-.PHONY : src/nn_babbling.i
+src/nn_sim.i: src/nn_sim.cpp.i
+.PHONY : src/nn_sim.i
 
 # target to preprocess a source file
-src/nn_babbling.cpp.i:
-	cd /home/leonor/tese/IK_MORF/catkin_ws/build && $(MAKE) $(MAKESILENT) -f morf_ik/CMakeFiles/nn_babbling.dir/build.make morf_ik/CMakeFiles/nn_babbling.dir/src/nn_babbling.cpp.i
-.PHONY : src/nn_babbling.cpp.i
+src/nn_sim.cpp.i:
+	cd /home/leonor/tese/IK_MORF/catkin_ws/build && $(MAKE) $(MAKESILENT) -f morf_ik/CMakeFiles/nn_sim.dir/build.make morf_ik/CMakeFiles/nn_sim.dir/src/nn_sim.cpp.i
+.PHONY : src/nn_sim.cpp.i
 
-src/nn_babbling.s: src/nn_babbling.cpp.s
-.PHONY : src/nn_babbling.s
+src/nn_sim.s: src/nn_sim.cpp.s
+.PHONY : src/nn_sim.s
 
 # target to generate assembly for a file
-src/nn_babbling.cpp.s:
-	cd /home/leonor/tese/IK_MORF/catkin_ws/build && $(MAKE) $(MAKESILENT) -f morf_ik/CMakeFiles/nn_babbling.dir/build.make morf_ik/CMakeFiles/nn_babbling.dir/src/nn_babbling.cpp.s
-.PHONY : src/nn_babbling.cpp.s
+src/nn_sim.cpp.s:
+	cd /home/leonor/tese/IK_MORF/catkin_ws/build && $(MAKE) $(MAKESILENT) -f morf_ik/CMakeFiles/nn_sim.dir/build.make morf_ik/CMakeFiles/nn_sim.dir/src/nn_sim.cpp.s
+.PHONY : src/nn_sim.cpp.s
 
 src/save_gen_data_real.o: src/save_gen_data_real.cpp.o
 .PHONY : src/save_gen_data_real.o
@@ -1197,13 +1197,13 @@ help:
 	@echo "... calib"
 	@echo "... control"
 	@echo "... coords"
-	@echo "... gen_data"
 	@echo "... gen_data_ik"
 	@echo "... gen_data_real"
+	@echo "... gen_data_sim"
 	@echo "... main"
 	@echo "... morf_controller_real"
 	@echo "... nn"
-	@echo "... nn_babbling"
+	@echo "... nn_sim"
 	@echo "... save_gen_data_real"
 	@echo "... sort_data"
 	@echo "... sort_data2"
@@ -1246,9 +1246,9 @@ help:
 	@echo "... src/nn.o"
 	@echo "... src/nn.i"
 	@echo "... src/nn.s"
-	@echo "... src/nn_babbling.o"
-	@echo "... src/nn_babbling.i"
-	@echo "... src/nn_babbling.s"
+	@echo "... src/nn_sim.o"
+	@echo "... src/nn_sim.i"
+	@echo "... src/nn_sim.s"
 	@echo "... src/save_gen_data_real.o"
 	@echo "... src/save_gen_data_real.i"
 	@echo "... src/save_gen_data_real.s"
