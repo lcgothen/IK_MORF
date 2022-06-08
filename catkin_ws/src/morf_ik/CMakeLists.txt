@@ -9,9 +9,9 @@ project(morf_ik)
 ## is used, also find other catkin packages
 set(OpenCV_DIR /usr/share/OpenCV/)
 set(fann_DIR ~/leonor/fann/)
-set(LIBPLUGIN_DIR $ENV{COPPELIASIM_ROOT_DIR}/programming/libPlugin)
-list(APPEND CMAKE_MODULE_PATH /home/leonor/CoppeliaSim/programming/libPlugin/cmake)
-set(CoppeliaSim_DIR ${COPPELIASIM_ROOT_DIR})
+set(CoppeliaSim_DIR /home/leonor/CoppeliaSim)
+set(LIBPLUGIN_DIR ${CoppeliaSim_DIR}/programming/libPlugin)
+list(APPEND CMAKE_MODULE_PATH ${LIBPLUGIN_DIR}/cmake)
 find_package(CoppeliaSim 4.1.0.0 REQUIRED)
 find_package(catkin REQUIRED COMPONENTS
   OpenCV REQUIRED
@@ -234,7 +234,7 @@ coppeliasim_add_executable(main
     ${COPPELIASIM_ROOT_DIR}/programming/remoteApi/extApiPlatform.c)
 # add_executable(main_nn_data src/main_nn_data.cpp)
 # add_executable(gen_data src/gen_data_ik.cpp)
-coppeliasim_add_executable(gen_data 
+coppeliasim_add_executable(gen_data_sim 
     SOURCES
     src/gen_data_sim.cpp
     ${COPPELIASIM_COMMON_DIR}/shared_memory.c
@@ -262,16 +262,16 @@ target_include_directories(main PRIVATE ../remoteApi)
 target_link_libraries(main Boost::system)
 target_link_libraries(main Threads::Threads rt)
 
-target_compile_definitions(gen_data PRIVATE NON_MATLAB_PARSING)
-target_compile_definitions(gen_data PRIVATE MAX_EXT_API_CONNECTIONS=255)
-target_include_directories(gen_data PRIVATE ${COPPELIASIM_INCLUDE_DIR})
-target_include_directories(gen_data PRIVATE ${COPPELIASIM_ROOT_DIR}/programming/remoteApi)
-target_compile_definitions(gen_data PRIVATE NON_MATLAB_PARSING)
-target_compile_definitions(gen_data PRIVATE MAX_EXT_API_CONNECTIONS=255)
-target_include_directories(gen_data PRIVATE ${COPPELIASIM_INCLUDE_DIR})
-target_include_directories(gen_data PRIVATE ../remoteApi)
-target_link_libraries(gen_data Boost::system)
-target_link_libraries(gen_data Threads::Threads rt)
+target_compile_definitions(gen_data_sim PRIVATE NON_MATLAB_PARSING)
+target_compile_definitions(gen_data_sim PRIVATE MAX_EXT_API_CONNECTIONS=255)
+target_include_directories(gen_data_sim PRIVATE ${COPPELIASIM_INCLUDE_DIR})
+target_include_directories(gen_data_sim PRIVATE ${COPPELIASIM_ROOT_DIR}/programming/remoteApi)
+target_compile_definitions(gen_data_sim PRIVATE NON_MATLAB_PARSING)
+target_compile_definitions(gen_data_sim PRIVATE MAX_EXT_API_CONNECTIONS=255)
+target_include_directories(gen_data_sim PRIVATE ${COPPELIASIM_INCLUDE_DIR})
+target_include_directories(gen_data_sim PRIVATE ../remoteApi)
+target_link_libraries(gen_data_sim Boost::system)
+target_link_libraries(gen_data_sim Threads::Threads rt)
 
 add_library(coords include/coordinates.cpp)
 add_library(control include/controller.cpp)
@@ -299,7 +299,7 @@ target_link_libraries(gen_data_ik
                       ${catkin_LIBRARIES}
                       ${OpenCV_LIBS}
                       fann)
-target_link_libraries(gen_data 
+target_link_libraries(gen_data_sim 
                       ${catkin_LIBRARIES}
                       ${OpenCV_LIBS}
                       coords

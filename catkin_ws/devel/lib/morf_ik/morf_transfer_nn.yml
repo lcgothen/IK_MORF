@@ -1,0 +1,17 @@
+- hosts: morf-one
+  gather_facts: no
+  tasks:
+  - name: Copying neural networks to morfpc
+    copy:
+      src: /home/${USER}/IK_MORF/catkin_ws/devel/lib/morf_ik/neural_networks/data_4div_babbling/batch_01_05_01_50000_03_09
+      dest: /home/morf-one/workspace/gorobots-mthor/projects/morf/real/catkin_ws/src/morf_controller/bin/neural_networks
+      owner: morf-one
+      group: morf-one
+      mode: 0700
+  - name: Copying neural networks configuration file to morfpc
+    copy:
+      src: /home/${USER}/IK_MORF/catkin_ws/devel/lib/morf_ik/ann_config.yml
+      dest: /home/morf-one/workspace/gorobots-mthor/projects/morf/real/catkin_ws/src/morf_controller/bin
+      owner: morf-one
+      group: morf-one
+      mode: 0700

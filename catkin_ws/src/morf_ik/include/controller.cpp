@@ -201,7 +201,7 @@ void angles::calcNN(point target)
         if(target.x > x_start)
             cubeX=0;
         else if(target.x < x_start+x_length)
-            cubeX=div;
+            cubeX=div-1;
         else 
         {
             float aux = x_start;
@@ -222,7 +222,7 @@ void angles::calcNN(point target)
         if(target.x < x_start)
             cubeX=0;
         else if(target.x > x_start+x_length)
-            cubeX=div;
+            cubeX=div-1;
         else 
         {
             float aux = x_start;
@@ -242,7 +242,7 @@ void angles::calcNN(point target)
     if(target.y < y_start)
         cubeY=0;
     else if(target.y > y_start+y_length)
-        cubeY=div;
+        cubeY=div-1;
     else 
     {
         float aux = y_start;
@@ -261,7 +261,7 @@ void angles::calcNN(point target)
     if(target.z < z_start + z_step*divZ_start)
         cubeZ=divZ_start;
     else if(target.z > z_start+z_length)
-        cubeZ=divZ+divZ_start;
+        cubeZ=divZ+divZ_start-1;
     else 
     {
         float aux = z_start + z_step*divZ_start; // downsizing in z for babbling data

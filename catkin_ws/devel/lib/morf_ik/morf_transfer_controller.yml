@@ -1,0 +1,17 @@
+- hosts: morf-one
+  gather_facts: no
+  tasks:
+  - name: Copying controller binary to morfpc
+    copy:
+      src: /home/${USER}/IK_MORF/catkin_ws/devel/lib/morf_ik/morf_controller_real
+      dest: /home/morf-one/workspace/gorobots-mthor/projects/morf/real/catkin_ws/src/morf_controller/bin
+      owner: morf-one
+      group: morf-one
+      mode: 0700
+  - name: Copying camera configuration file to morfpc
+    copy:
+      src: /home/${USER}/IK_MORF/catkin_ws/devel/lib/morf_ik/matrices.yml
+      dest: /home/morf-one/workspace/gorobots-mthor/projects/morf/real/catkin_ws/src/morf_controller/bin
+      owner: morf-one
+      group: morf-one
+      mode: 0700

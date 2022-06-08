@@ -10,11 +10,13 @@ names = ["IK equations", \
         "4 div eq:\n 1 hidden\n 5 neurons\n 0.02 error", "4 div eq:\n 1 hidden\n 5 neurons\n 0.03 error", "4 div eq:\n 1 hidden\n 10 neurons\n 0.02 error", \
         "4 div eq:\n 2 hidden\n 10 neurons\n 0.02 error", "5 div eq:\n 1 hidden\n 3 neurons\n 0.02 error", \
         "5 div eq:\n 1 hidden\n 5 neurons\n 0.02 error", "4 div sim:\n 1 hidden\n 5 neurons\n 0.02 error", \
-        "4 div sim:\n 1 hidden\n 5 neurons\n 0.03 error", "4 div sim:\n 2 hidden\n 10 neurons\n 0.02 error"]
+        "4 div sim:\n 1 hidden\n 5 neurons\n 0.03 error", "4 div sim:\n 2 hidden\n 10 neurons\n 0.02 error", \
+        "5 div sim:\n 1 hidden\n 3 neurons\n 0.02 error"]
 filename_nn = [filepath + "4div/batch_01_05_01_50000_02_09/successes.data", filepath + "4div/batch_01_05_01_50000_03_09/successes.data", filepath + "4div/batch_01_10_01_50000_02_09/successes.data", \
                 filepath + "4div/batch_02_10_01_50000_02_09/successes.data", filepath + "5div/batch_01_03_01_50000_02_09/successes.data", \
                 filepath + "5div/batch_01_05_01_50000_02_09/successes.data", filepath + "4div_babbling/batch_01_05_01_50000_02_09/successes.data", \
-                filepath + "4div_babbling/batch_01_05_01_50000_03_09/successes.data", filepath + "4div_babbling/batch_02_10_01_50000_02_09/successes.data"]
+                filepath + "4div_babbling/batch_01_05_01_50000_03_09/successes.data", filepath + "4div_babbling/batch_02_10_01_50000_02_09/successes.data", \
+                filepath + "5div_babbling/batch_01_03_01_50000_02_09/successes.data"]
 
 n = len(names)
 

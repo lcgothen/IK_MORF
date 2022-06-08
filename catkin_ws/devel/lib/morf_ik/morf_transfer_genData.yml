@@ -1,0 +1,17 @@
+- hosts: morf-one
+  gather_facts: no
+  tasks:
+  - name: Copying data generation binary to morfpc
+    copy:
+      src: /home/${USER}/IK_MORF/catkin_ws/devel/lib/morf_ik/gen_data_real
+      dest: /home/morf-one/workspace/gorobots-mthor/projects/morf/real/catkin_ws/src/morf_controller/bin/neural_networks
+      owner: morf-one
+      group: morf-one
+      mode: 0700
+  - name: Copying data saving binary to morfpc
+    copy:
+      src: /home/${USER}/IK_MORF/catkin_ws/devel/lib/morf_ik/save_gen_data_real
+      dest: /home/morf-one/workspace/gorobots-mthor/projects/morf/real/catkin_ws/src/morf_controller/bin
+      owner: morf-one
+      group: morf-one
+      mode: 0700

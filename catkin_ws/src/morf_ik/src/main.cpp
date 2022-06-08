@@ -84,9 +84,6 @@ int main(int argc, char **argv)
 
     std::cout << results_path << std::endl;
 
-    resFile.open(resName);
-    failFile.open(failName);
-
     simxInt clientID = simxStart((simxChar*)"127.0.0.1", 19997, true, true, 2000, 5);
 
     for(int trial=0; trial < n_trials; trial++)
@@ -863,33 +860,49 @@ int main(int argc, char **argv)
 
         if(!durFail && !distFail)
         {
+            resFile.open(resName,  std::ios_base::app | std::ios_base::in);
             std::cout<< "trial " << trial << ": " << "Success! " << distance << std::endl;
             resFile << "trial " << trial << ":\t" << duration.count()/num_calcs << "\t" << distance;
 
             if(type==1)
             {
-                resFile << "\t" << abs(auxFL.th1-FL.th1)/abs(FL.th1)*100 << "\t" << abs(auxFL.th2-FL.th2)/abs(FL.th2)*100 << "\t" << abs(auxFL.th3-FL.th3)/abs(FL.th3)*100;
+                // resFile << "\t" << abs(auxFL.th1-FL.th1)/abs(FL.th1)*100 << "\t" << abs(auxFL.th2-FL.th2)/abs(FL.th2)*100 << "\t" << abs(auxFL.th3-FL.th3)/abs(FL.th3)*100;
+                resFile << "\t" << abs(auxFL.th1-FL.th1) << "\t" << abs(auxFL.th2-FL.th2) << "\t" << abs(auxFL.th3-FL.th3);
             }
             
             resFile << "\n";
+            resFile.close();
         }
         else if(durFail)
         {
+            failFile.open(failName,  std::ios_base::app | std::ios_base::in);
             std::cout << "trial " << trial << ": " << "Failed duration!" << std::endl;
             failFile << "trial " << trial << ":\t" << "duration " << "\t" << trial_dur.count() << "\n";
             std::cout << FL.cubeX << " , " << FL.cubeY << " , " << FL.cubeZ << std::endl;
+            failFile.close();
         }
         else
         {
-            failFile << "trial " << trial << ":\t" << "distance" << "\t" << distance << "\n";
+            // failFile.open(failName,  std::ios_base::app | std::ios_base::in);
+            // failFile << "trial " << trial << ":\t" << "distance" << "\t" << distance << "\n";
+            // std::cout << "trial " << trial << ": " << "Failed distance: " << distance << std::endl;
+            // failFile.close();
+            resFile.open(failName,  std::ios_base::app | std::ios_base::in);
             std::cout << "trial " << trial << ": " << "Failed distance: " << distance << std::endl;
+            resFile << "trial " << trial << ":\t" << duration.count()/num_calcs << "\t" << distance;
+
+            if(type==1)
+            {
+                // resFile << "\t" << abs(auxFL.th1-FL.th1)/abs(FL.th1)*100 << "\t" << abs(auxFL.th2-FL.th2)/abs(FL.th2)*100 << "\t" << abs(auxFL.th3-FL.th3)/abs(FL.th3)*100;
+                resFile << "\t" << abs(auxFL.th1-FL.th1) << "\t" << abs(auxFL.th2-FL.th2) << "\t" << abs(auxFL.th3-FL.th3);
+            }
+            
+            resFile << "\n";
+            resFile.close();
         }
     }
 
     simxFinish(clientID);
-    
-    resFile.close();
-    failFile.close();
 
 
     return 0;
