@@ -242,7 +242,6 @@ coppeliasim_add_executable(gen_data_sim
     ${COPPELIASIM_ROOT_DIR}/programming/remoteApi/extApiPlatform.c)
 add_executable(gen_data_ik src/gen_data_ik.cpp)
 add_executable(sort_data src/sort_data.cpp)
-add_executable(sort_data2 src/sort_data2.cpp)
 add_executable(nn src/nn.cpp)
 add_executable(nn_sim src/nn_sim.cpp)
 add_executable(calib src/calibration.cpp)
@@ -305,11 +304,6 @@ target_link_libraries(gen_data_sim
                       coords
                       control)
 target_link_libraries(sort_data 
-                      ${catkin_LIBRARIES}
-                      ${OpenCV_LIBS}
-                      coords
-                      control)
-target_link_libraries(sort_data2 
                       ${catkin_LIBRARIES}
                       ${OpenCV_LIBS}
                       coords

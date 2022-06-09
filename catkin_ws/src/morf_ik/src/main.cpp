@@ -74,7 +74,7 @@ int main(int argc, char **argv)
     auto tm = *std::localtime(&t);
     std::stringstream timeStream;
     timeStream << "./results/" << std::put_time(&tm, "%d-%m-%Y_%H-%M-%S/");
-    std::string results_path = timeStream.str();
+    std::string results_path = std::string("./results/09-06-2022_10-57-09/");//timeStream.str();
     
     mkdir(results_path.c_str(),0777);
 
@@ -86,7 +86,7 @@ int main(int argc, char **argv)
 
     simxInt clientID = simxStart((simxChar*)"127.0.0.1", 19997, true, true, 2000, 5);
 
-    for(int trial=0; trial < n_trials; trial++)
+    for(int trial=29; trial < n_trials; trial++)
     {
         robot morf;
         images stereo;
