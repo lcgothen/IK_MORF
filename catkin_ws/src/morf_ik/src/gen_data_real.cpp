@@ -56,7 +56,7 @@ int main(int argc, char **argv)
     std_msgs::Float32MultiArray IK_order;
 
     int state = 0;
-    float num = 40;
+    float num = 1;
     float margin = 0.01, step_th1 = 70/num*M_PI/180, step_th2 = 135/num*M_PI/180, step_th3 = 179/num*M_PI/180;
 
     // sleep(5); // wait 5 seconds to synchronize
@@ -76,8 +76,8 @@ int main(int argc, char **argv)
                     std::cout << "morf.FL: " << morf.FL.th1 << " , " << morf.FL.th2 << " , " << morf.FL.th3 << std::endl;
                     std::cout << "i, j, k: "  << i << " , " << j << " , " << k << std::endl;
 
-                    if(std::cin.get() == 'q')
-                        exit(EXIT_FAILURE);
+                    // if(std::cin.get() == 'q')
+                    //     exit(EXIT_FAILURE);
 
                     if(state==0)
                     {
