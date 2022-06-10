@@ -79,7 +79,7 @@ int main(int argc, char **argv)
                     if(std::cin.get() == 'q')
                         exit(EXIT_FAILURE);
 
-                    std::cout << "state: "  << state << std::endl;
+                    // std::cout << "state: "  << state << std::endl;
 
                     if(state==0)
                     {
@@ -107,7 +107,9 @@ int main(int argc, char **argv)
                     loop_rate.sleep();
                 }
 
-                if(k<num-1)
+                if(FL.th2<=54 && FL.th3>=step_th2*110/55*j-172) // limit th3 so as to not hit the table
+                    break;
+                else if(k<num-1)
                     FL.th3 += step_th3;
             }
 
