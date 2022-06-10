@@ -77,6 +77,7 @@ int main(int argc, char **argv)
                     // std::cout << "i, j, k: "  << i << " , " << j << " , " << k << std::endl;
 
                     std::cout << "FL.th2: "  << FL.th2 << std::endl;
+                    std::cout << "FL.th3: "  << FL.th3 << std::endl;
 
                     if(std::cin.get() == 'q')
                         exit(EXIT_FAILURE);
