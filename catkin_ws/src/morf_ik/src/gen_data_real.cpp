@@ -56,8 +56,8 @@ int main(int argc, char **argv)
     std_msgs::Float32MultiArray IK_order;
 
     int state = 0;
-    float num = 1;
-    float margin = 0.01, step_th1 = 70/num*M_PI/180, step_th2 = 135/num*M_PI/180, step_th3 = 179/num*M_PI/180;
+    float num = 40;
+    float margin = 0.05, step_th1 = 70/num*M_PI/180, step_th2 = 135/num*M_PI/180, step_th3 = 179/num*M_PI/180;
 
     // sleep(5); // wait 5 seconds to synchronize
     
