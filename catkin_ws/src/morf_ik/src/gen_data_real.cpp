@@ -76,6 +76,8 @@ int main(int argc, char **argv)
                     // std::cout << "morf.FL: " << morf.FL.th1 << " , " << morf.FL.th2 << " , " << morf.FL.th3 << std::endl;
                     // std::cout << "i, j, k: "  << i << " , " << j << " , " << k << std::endl;
 
+                    std::cout << "FL.th2: "  << FL.th2 << std::endl;
+
                     if(std::cin.get() == 'q')
                         exit(EXIT_FAILURE);
 
