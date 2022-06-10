@@ -110,7 +110,7 @@ int main(int argc, char **argv)
                     loop_rate.sleep();
                 }
 
-                if(FL.th2<=0.94 && FL.th3>=step_th2*1.95/0.98*j-3 && step_th3>0) // limit th3 so as to not hit the table
+                if(FL.th2<=0.94 && FL.th3>=-3 && step_th3>0) // limit th3 so as to not hit the table  //step_th2*1.95/0.98*j
                     break;
                 else if(FL.th2<=0.94 && FL.th3<=-179*M_PI/180 && step_th3<0) // limit th3 so as to not hit the table
                     break;
