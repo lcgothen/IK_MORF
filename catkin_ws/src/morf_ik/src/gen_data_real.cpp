@@ -76,11 +76,11 @@ int main(int argc, char **argv)
                     // std::cout << "morf.FL: " << morf.FL.th1 << " , " << morf.FL.th2 << " , " << morf.FL.th3 << std::endl;
                     // std::cout << "i, j, k: "  << i << " , " << j << " , " << k << std::endl;
 
-                    std::cout << "FL.th2: "  << FL.th2 << std::endl;
-                    std::cout << "FL.th3: "  << FL.th3 << std::endl;
+                    // std::cout << "FL.th2: "  << FL.th2 << std::endl;
+                    // std::cout << "FL.th3: "  << FL.th3 << std::endl;
 
-                    if(std::cin.get() == 'q')
-                        exit(EXIT_FAILURE);
+                    // if(std::cin.get() == 'q')
+                    //     exit(EXIT_FAILURE);
 
                     // std::cout << "state: "  << state << std::endl;
 
@@ -110,6 +110,7 @@ int main(int argc, char **argv)
                     loop_rate.sleep();
                 }
 
+                // finish testing this
                 if(FL.th2<=0.94 && FL.th3>=abs(step_th2)*1.95/0.98*j-3.1 && step_th3>0 && step_th2>0) // limit th3 so as to not hit the table 
                     break;
                 else if(FL.th2<=0.94 && FL.th3>=abs(step_th2)*1.95/0.98*(num-j)-3.1 && step_th3>0 && step_th2<0) // limit th3 so as to not hit the table 
