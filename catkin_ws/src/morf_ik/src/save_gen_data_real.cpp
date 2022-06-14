@@ -64,6 +64,9 @@ int main(int argc, char **argv)
             allOutputFile << morf.FL.th1 << "," << morf.FL.th2<< "," << morf.FL.th3 << "\n";
             allOutputFile.close();
         }
+
+        ros::spinOnce();
+        loop_rate.sleep();
     }
     
     return 0;
