@@ -48,25 +48,26 @@ int main(int argc, char **argv)
     typedef std::chrono::milliseconds milliseconds;
     Clock::time_point init = Clock::now();
     std::chrono::milliseconds current = std::chrono::milliseconds(0); 
+    std::chrono::milliseconds prev = std::chrono::milliseconds(0);
 
     bool loop_control=true;
 
     while(loop_control) 
     {
-        if(std::cin.get() == 'q')
-            loop_control=false;
+        // if(std::cin.get() == 'q')
+        //     loop_control=false;
 
         current = std::chrono::duration_cast<milliseconds>(Clock::now() - init);
 
-        if(current % std::chrono::milliseconds(5) == std::chrono::milliseconds(0))
+        if(current - std::chrono::milliseconds(5) >= prev)
         {
             allOutputFile.open(allOutputFile_name,  std::ios_base::app | std::ios_base::in);
             allOutputFile << morf.FL.th1 << "," << morf.FL.th2<< "," << morf.FL.th3 << "\n";
             allOutputFile.close();
             std::cout << morf.FL.th1 << "," << morf.FL.th2<< "," << morf.FL.th3 << "\n";
+            prev = current;
+            std::cout << current.count() << "\n";
         }
-        std::chrono::milliseconds aux = current % std::chrono::milliseconds(5);
-        std::cout << current.count() << "\t" << aux.count() << "\n";
 
         ros::spinOnce();
         loop_rate.sleep();
