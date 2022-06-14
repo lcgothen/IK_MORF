@@ -65,6 +65,8 @@ int main(int argc, char **argv)
             allOutputFile.close();
             std::cout << morf.FL.th1 << "," << morf.FL.th2<< "," << morf.FL.th3 << "\n";
         }
+        std::chrono::milliseconds aux = current % std::chrono::milliseconds(5);
+        std::cout << current.count() << "\t" << aux.count() << "\n";
 
         ros::spinOnce();
         loop_rate.sleep();
