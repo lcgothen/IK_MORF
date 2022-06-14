@@ -53,8 +53,8 @@ int main(int argc, char **argv)
 
     while(loop_control) 
     {
-        // if(std::cin.get() == 'q')
-        //     loop_control=false;
+        if(std::cin.get() == 'q')
+            loop_control=false;
 
         current = std::chrono::duration_cast<milliseconds>(Clock::now() - init);
 
@@ -63,6 +63,7 @@ int main(int argc, char **argv)
             allOutputFile.open(allOutputFile_name,  std::ios_base::app | std::ios_base::in);
             allOutputFile << morf.FL.th1 << "," << morf.FL.th2<< "," << morf.FL.th3 << "\n";
             allOutputFile.close();
+            std::cout << morf.FL.th1 << "," << morf.FL.th2<< "," << morf.FL.th3 << "\n";
         }
 
         ros::spinOnce();
