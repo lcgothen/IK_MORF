@@ -1,25 +1,25 @@
 %YAML:1.0
 ---
-# ann_path: ./neural_networks/data_5div_direct/batch_01_05_01_50000_02_09/
-# div: 5
-# divZ: 5
-# divZ_start: 0
-# x_length: -0.25494
-# y_length: 0.30011
-# z_length: 0.2301
-# x_start: 0.225164
-# y_start: -0.057090
-# z_start: -0.0433698
-# reverse: 1
+ann_path: ./neural_networks/data_1div_direct/batch_01_05_01_50000_03_09/
+div: 1
+divZ: 1
+divZ_start: 0
+x_length: -0.25494
+y_length: 0.30011
+z_length: 0.2301
+x_start: 0.225164
+y_start: -0.057090
+z_start: -0.0433698
+reverse: 1
 
-ann_path: ./neural_networks/data_5div_babbling/batch_01_03_01_50000_02_09/
-div: 5
-divZ: 6
-divZ_start: 4
-x_length: 0.26387
-y_length: 0.24953
-z_length: 0.36199
-x_start: -0.0345405
-y_start: -0.0784675
-z_start: -0.190115
-reverse: 0
+# ann_path: ./neural_networks/data_5div_babbling/batch_01_03_01_50000_02_09/
+# div: 5
+# divZ: 6
+# divZ_start: 4
+# x_length: 0.26387
+# y_length: 0.24953
+# z_length: 0.36199
+# x_start: -0.0345405
+# y_start: -0.0784675
+# z_start: -0.190115
+# reverse: 0

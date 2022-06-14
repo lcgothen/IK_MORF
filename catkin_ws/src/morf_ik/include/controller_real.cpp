@@ -336,12 +336,14 @@ void images::imageLeftCallback(const sensor_msgs::ImageConstPtr& msg)
 {
     imageL = cv_bridge::toCvShare(msg, "bgr8")->image;
     // imwrite("imageL.png", imageL);
+    imwrite("fisheyeL.png", imageL);
 }
 
 void images::imageRightCallback(const sensor_msgs::ImageConstPtr& msg)
 {
     imageR = cv_bridge::toCvShare(msg, "bgr8")->image;
     // imwrite("imageR.png", imageR);
+    imwrite("fisheyeR.png", imageR);
 }
 
 void images::generalImgCallback(const sensor_msgs::ImageConstPtr& msg)
@@ -482,11 +484,13 @@ void images::blob()
     detector->detect(imageR, keypointsR);
 
     cv::Mat imgKey;
-
-    cv::drawKeypoints(imageL, keypointsL, imgKey, cv::Scalar(0,0,255));//, cv::DrawMatchesFlags::DRAW_RICH_KEYPOINTS );
-    imwrite("imageL.png", imgKey);
+    
+    cv::drawKeypoints(imageL, keypointsL, imgKey, cv::Scalar(0,0,255), cv::DrawMatchesFlags::DRAW_RICH_KEYPOINTS );
+    imwrite("keypointL.png", imgKey);
+    imwrite("imageL.png", imageL);
     cv::drawKeypoints(imageR, keypointsR, imgKey, cv::Scalar(0,0,255), cv::DrawMatchesFlags::DRAW_RICH_KEYPOINTS );
-    imwrite("imageR.png", imgKey);
+    imwrite("keypointR.png", imgKey);
+    imwrite("imageR.png", imageR);
 
 
     if(!keypointsL.empty() && !keypointsR.empty())

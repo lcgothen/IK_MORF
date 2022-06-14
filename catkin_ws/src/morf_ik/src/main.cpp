@@ -74,7 +74,7 @@ int main(int argc, char **argv)
     auto tm = *std::localtime(&t);
     std::stringstream timeStream;
     timeStream << "./results/" << std::put_time(&tm, "%d-%m-%Y_%H-%M-%S/");
-    std::string results_path = std::string("./results/09-06-2022_10-57-09/");//timeStream.str();
+    std::string results_path = timeStream.str();
     
     mkdir(results_path.c_str(),0777);
 
@@ -86,7 +86,7 @@ int main(int argc, char **argv)
 
     simxInt clientID = simxStart((simxChar*)"127.0.0.1", 19997, true, true, 2000, 5);
 
-    for(int trial=29; trial < n_trials; trial++)
+    for(int trial=0; trial < n_trials; trial++)
     {
         robot morf;
         images stereo;
@@ -105,7 +105,7 @@ int main(int argc, char **argv)
         image_transport::ImageTransport it(n);
         image_transport::Subscriber imageLeft_sub = it.subscribe("imageLeft", 1, &images::imageLeftCallback, &stereo);
         image_transport::Subscriber imageRight_sub = it.subscribe("imageRight", 1, &images::imageRightCallback, &stereo);
-        image_transport::Subscriber generalImg_sub = it.subscribe("imageGeneral", 1, &images::generalImgCallback, &stereo);
+        // image_transport::Subscriber generalImg_sub = it.subscribe("imageGeneral", 1, &images::generalImgCallback, &stereo);
 
 
         
@@ -852,8 +852,8 @@ int main(int argc, char **argv)
             loop_rate.sleep();
         }
 
-        std::string imgName = results_path+"trial"+std::to_string(trial)+std::string(".png");
-        imwrite(imgName, stereo.genImg);
+        // std::string imgName = results_path+"trial"+std::to_string(trial)+std::string(".png");
+        // imwrite(imgName, stereo.genImg);
         
         simxStopSimulation(clientID, simx_opmode_oneshot);
         sleep(1);

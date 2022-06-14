@@ -107,7 +107,7 @@ int main(int argc, char **argv)
     // std::cout << start.x << " , " << start.y << " , " << start.z << std::endl;
     // std::cout << finish.x-start.x << " , " << finish.y-start.y << " , " << finish.z-start.z<< std::endl;
 
-    int div=5;
+    int div=1;
 
     float x_step = x_length/div;
     float y_step = y_length/div;
@@ -138,7 +138,7 @@ int main(int argc, char **argv)
                 std::vector<point> input;
                 std::vector<angles> output;
 
-                for(int i=0; i<10000; i++)
+                for(int i=0; i<100000; i++)
                 {
                     point in;
                     in.x = x_interval(rand_gen);
@@ -157,7 +157,7 @@ int main(int argc, char **argv)
                     if(!isnan(out.th1) && !isnan(out.th2) && !isnan(out.th3))
                     {
                         count++;
-                        //std::cout << count << ": " << out.th1 << "," << out.th2 << "," << out.th3 << std::endl;
+                        // std::cout << count << ": " << out.th1 << "," << out.th2 << "," << out.th3 << std::endl;
                         input.push_back(in);
 
                         output.push_back(out);
@@ -168,7 +168,7 @@ int main(int argc, char **argv)
                 if(count>50)
                 {
                     std::ofstream data;
-                    std::string filename = "./neural_networks/data_"+std::to_string(div)+"div_direct_bigger/vali"+std::to_string(j)+std::to_string(k)+std::to_string(l)+std::string(".data");
+                    std::string filename = "./neural_networks/data_"+std::to_string(div)+"div_direct/vali"+std::to_string(j)+std::to_string(k)+std::to_string(l)+std::string(".data");
                     std::cout << filename << std::endl;
 
                     data.open(filename);

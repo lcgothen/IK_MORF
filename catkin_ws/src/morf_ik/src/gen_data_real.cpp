@@ -111,9 +111,9 @@ int main(int argc, char **argv)
                 }
 
                 // finish testing this
-                if(FL.th2<=0.94 && FL.th3>=abs(step_th2)*1.95/0.98*j-3.1 && step_th3>0 && step_th2>0) // limit th3 so as to not hit the table 
+                if(FL.th2<=0.94 && FL.th3>=abs(step_th2)*1.7*j-3.1 && step_th3>0 && step_th2>0) // limit th3 so as to not hit the table 
                     break;
-                else if(FL.th2<=0.94 && FL.th3>=abs(step_th2)*1.95/0.98*(num-j)-3.1 && step_th3>0 && step_th2<0) // limit th3 so as to not hit the table 
+                else if(FL.th2<=0.94 && FL.th3>=abs(step_th2)*1.7*(num-j-1)-3.1 && step_th3>0 && step_th2<0) // limit th3 so as to not hit the table 
                     break;
                 else if(FL.th2<=0.94 && FL.th3<=-3.11 && step_th3<0) // limit th3 so as to not hit the table
                     break;

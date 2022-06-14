@@ -4,31 +4,38 @@ import csv
 import os.path
 from os import path
 
-filepath = "./devel/lib/morf_ik/results/4div_babbling/batch_01_05_01_50000_03_09/"
-filename_success = filepath + "successes.data"
-filename_fail = filepath + "failures.data"
+filepath = "./devel/lib/morf_ik/results/1div/batch_01_05_01_50000_03_09/"
+filename = filepath + "results.data"
+# filename_fail = filepath + "failures.data"
 
-reader = csv.reader(open(filename_success), delimiter="\t")
-data_success = list(reader)
-reader = csv.reader(open(filename_fail), delimiter="\t")
-data_fail = list(reader)
+reader = csv.reader(open(filename), delimiter="\t")
+data = list(reader)
+# reader = csv.reader(open(filename_fail), delimiter="\t")
+# data_fail = list(reader)
 
-dist_success = []
-i_success=0
-for row in data_success:
-    dist_success.append(float(row[2]))
-    i_success+=1
+colours = []
+colourmap = np.array(['darkgreen', 'darkred'])
 
-dist_fail = []
-i_fail=0
-for row in data_fail:
-    dist_fail.append(float(row[2]))
-    i_fail+=1
+dist = []
+i=0
+for row in data:
+    dist.append(float(row[2]))
+    i+=1
+    if float(row[2]) > 0.02:
+        colours.append(1)
+    else:
+        colours.append(0)
+
+# dist_fail = []
+# i_fail=0
+# for row in data_fail:
+#     dist_fail.append(float(row[2]))
+#     i_fail+=1
 
 
 plt.title("Distance to Button Centre")
-plt.scatter(range(i_success), dist_success, color = 'darkgreen')
-plt.scatter(range(i_fail), dist_fail, color = 'darkred')
+plt.scatter(range(i), dist, color = colourmap[colours])
+# plt.scatter(range(i_fail), dist_fail, color = 'darkred')
 plt.savefig(filepath + "distance_indiv.png")
 plt.close()
 

@@ -36,21 +36,21 @@ int main(int argc, char **argv)
 {
     const unsigned int num_input = 3;
     const unsigned int num_output = 3;
-    const unsigned int num_layers = 3;
-    const unsigned int num_neurons_hidden = 3;
+    const unsigned int num_layers = 4;
+    const unsigned int num_neurons_hidden = 10;
     const unsigned int max_epochs = 50000;
     const unsigned int epochs_between_reports = 1;
     const float desired_error = (const float) 0.02;
     const float learning_rate = (const float) 0.1;
 
     const uint layers[num_layers] = {num_input, 
-                                    num_neurons_hidden,
+                                    num_neurons_hidden, num_neurons_hidden,
                                     num_output};
 
     int div=5, divZ=div*2;
     int prevj=-1, prevk=-1, prevl=-1;
 
-    std::string train_name = "batch_01_03_01_50000_02_09/"; // naming: algorithm_numHiddenLayers_numNeuronsHidden_learningRate_maxEpochs_error_scaling.dat
+    std::string train_name = "batch_02_10_01_50000_02_09/"; // naming: algorithm_numHiddenLayers_numNeuronsHidden_learningRate_maxEpochs_error_scaling.dat
     std::string res_name = "./neural_networks/results_" + std::to_string(div) + "div_babbling/" + std::string(train_name);
     std::string dat_name = "./neural_networks/data_" + std::to_string(div) + "div_babbling/" + std::string(train_name);
 
