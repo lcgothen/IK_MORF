@@ -39,7 +39,7 @@ int main(int argc, char **argv)
 
     ros::init(argc, argv, "save_data");
     ros::NodeHandle n;
-    ros::Rate loop_rate(10);
+    ros::Rate loop_rate(5000);
 
     ros::Subscriber jointPos_sub = n.subscribe("/morf_hw/joint_positions", 1000, &robot::jointPosCallback, &morf);
 
@@ -59,14 +59,18 @@ int main(int argc, char **argv)
 
         current = std::chrono::duration_cast<milliseconds>(Clock::now() - init);
 
+        // allOutputFile.open(allOutputFile_name,  std::ios_base::app | std::ios_base::in);
+        // allOutputFile << current.count() << "," << morf.FL.th1 << "," << morf.FL.th2<< "," << morf.FL.th3 << "\n";
+        // allOutputFile.close();
+
+        // std::cout << current.count() << "\n";
+
         if(current - std::chrono::milliseconds(5) >= prev)
         {
             allOutputFile.open(allOutputFile_name,  std::ios_base::app | std::ios_base::in);
             allOutputFile << morf.FL.th1 << "," << morf.FL.th2<< "," << morf.FL.th3 << "\n";
             allOutputFile.close();
-            std::cout << morf.FL.th1 << "," << morf.FL.th2<< "," << morf.FL.th3 << "\n";
             prev = current;
-            std::cout << current.count() << "\n";
         }
 
         ros::spinOnce();

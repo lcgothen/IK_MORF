@@ -55,7 +55,7 @@ int main(int argc, char **argv)
     std::string dat_name = "./neural_networks/data_" + std::to_string(div) + "div_babbling/" + std::string(train_name);
 
 
-    for(int j=0; j<=div; j++)
+    for(int j=4; j<=div; j++)
     {
         for(int k=0; k<=div; k++)
         {

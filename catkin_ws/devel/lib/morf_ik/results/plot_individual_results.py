@@ -4,7 +4,7 @@ import csv
 import os.path
 from os import path
 
-filepath = "./devel/lib/morf_ik/results/1div/batch_01_05_01_50000_03_09/"
+filepath = "./devel/lib/morf_ik/results/5div/batch_02_10_01_50000_02_09/"
 filename = filepath + "results.data"
 # filename_fail = filepath + "failures.data"
 

@@ -73,7 +73,7 @@ int main(int argc, char **argv)
     auto t = std::time(nullptr);
     auto tm = *std::localtime(&t);
     std::stringstream timeStream;
-    timeStream << "./results/" << std::put_time(&tm, "%d-%m-%Y_%H-%M-%S/");
+    timeStream << "./results/" << "15-06-2022_10-16-08/"; // std::put_time(&tm, "%d-%m-%Y_%H-%M-%S/");
     std::string results_path = timeStream.str();
     
     mkdir(results_path.c_str(),0777);
@@ -86,7 +86,7 @@ int main(int argc, char **argv)
 
     simxInt clientID = simxStart((simxChar*)"127.0.0.1", 19997, true, true, 2000, 5);
 
-    for(int trial=0; trial < n_trials; trial++)
+    for(int trial=14; trial < n_trials; trial++)
     {
         robot morf;
         images stereo;
@@ -274,7 +274,7 @@ int main(int argc, char **argv)
             // else
             //     nearZ++;
 
-            //std::cout << state << std::endl;
+            // std::cout << state << std::endl;
 
             trial_dur = std::chrono::duration_cast<microseconds>(Clock::now() - init); //difftime(time(NULL), init);
 
