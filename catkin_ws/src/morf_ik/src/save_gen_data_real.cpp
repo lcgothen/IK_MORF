@@ -68,7 +68,7 @@ int main(int argc, char **argv)
         if(current - std::chrono::milliseconds(5) >= prev)
         {
             allOutputFile.open(allOutputFile_name,  std::ios_base::app | std::ios_base::in);
-            allOutputFile << morf.FL.th1 << "," << morf.FL.th2<< "," << morf.FL.th3 << "\n";
+            allOutputFile << current.count() << "," << morf.FL.th1 << "," << morf.FL.th2<< "," << morf.FL.th3 << "\n";
             allOutputFile.close();
             prev = current;
         }
