@@ -6,17 +6,13 @@ from os import path
 
 filepath = "./devel/lib/morf_ik/results/"
 filename_eqs = filepath + "eqs/successes.data"
-names = ["IK equations", \
-        "4 div eq:\n 1 hidden\n 5 neurons\n 0.02 error", "4 div eq:\n 1 hidden\n 5 neurons\n 0.03 error", "4 div eq:\n 1 hidden\n 10 neurons\n 0.02 error", \
-        "4 div eq:\n 2 hidden\n 10 neurons\n 0.02 error", "5 div eq:\n 1 hidden\n 3 neurons\n 0.02 error", \
-        "5 div eq:\n 1 hidden\n 5 neurons\n 0.02 error", "4 div sim:\n 1 hidden\n 5 neurons\n 0.02 error", \
-        "4 div sim:\n 1 hidden\n 5 neurons\n 0.03 error", "4 div sim:\n 2 hidden\n 10 neurons\n 0.02 error", \
-        "5 div sim:\n 1 hidden\n 3 neurons\n 0.02 error"]
-filename_nn = [filepath + "4div/batch_01_05_01_50000_02_09/results.data", filepath + "4div/batch_01_05_01_50000_03_09/results.data", filepath + "4div/batch_01_10_01_50000_02_09/results.data", \
-                filepath + "4div/batch_02_10_01_50000_02_09/results.data", filepath + "5div/batch_01_03_01_50000_02_09/results.data", \
-                filepath + "5div/batch_01_05_01_50000_02_09/results.data", filepath + "4div_babbling/batch_01_05_01_50000_02_09/results.data", \
-                filepath + "4div_babbling/batch_01_05_01_50000_03_09/results.data", filepath + "4div_babbling/batch_02_10_01_50000_02_09/results.data", \
-                filepath + "5div_babbling/batch_01_03_01_50000_02_09/results.data"]
+names = ["IK\n equations", \
+        "4 div.\n equations", \
+        "5 div.\n equations", \
+        "4 div.\n simulation", \
+        "5 div.\n simulation"]
+filename_nn = [filepath + "4div/batch_01_05_01_50000_02_09/results.data", filepath + "5div/batch_02_10_01_50000_02_09/results.data", \
+                filepath + "4div_babbling/batch_02_10_01_50000_02_09/results.data", filepath + "5div_babbling/batch_01_10_01_50000_02_09/results.data"]
 
 n = len(names)
 
@@ -69,42 +65,34 @@ for i in range(n-1):
     perc_tot[i] = (perc[0][i]+perc[1][i]+perc[2][i])/3
 
 
-size = (12,7)
+# size = (12,7)
 
-plt.figure(figsize=size)
-plt.title("Average Calculations Duration (ns)")
-plt.bar(names, dur)
+# plt.figure(figsize=size)
+plt.figure()
+ax = plt.axes()
+ax.tick_params(axis='both', which='major', labelsize=12)
+ax.tick_params(axis='both', which='minor', labelsize=12)
+# plt.title("Average Calculations Duration (ns)")
+plt.bar(names, dur, color=['mediumaquamarine', 'skyblue', 'skyblue', 'deepskyblue', 'deepskyblue'])
 plt.savefig(filepath + "duration.png")
 plt.close()
 
-plt.figure(figsize=size)
-plt.title("Average Distance to Button Centre (m)")
-plt.bar(names, dist)
+plt.figure()
+ax = plt.axes()
+ax.tick_params(axis='both', which='major', labelsize=12)
+ax.tick_params(axis='both', which='minor', labelsize=12)
+# plt.title("Average Distance to Button Centre (m)")
+plt.bar(names, dist, color=['mediumaquamarine', 'skyblue', 'skyblue', 'deepskyblue', 'deepskyblue'])
 plt.savefig(filepath + "distance.png")
 plt.close()
 
 
 
-plt.figure(figsize=size)
-plt.title("Neural Networks Deviation from Equations (m)")
-plt.bar(names[1:n], perc_tot)
+plt.figure()
+ax = plt.axes()
+ax.tick_params(axis='both', which='major', labelsize=12)
+ax.tick_params(axis='both', which='minor', labelsize=12)
+# plt.title("Neural Networks Deviation from Equations (rad)")
+plt.bar(names[1:n], perc_tot, color=['skyblue', 'skyblue', 'deepskyblue', 'deepskyblue'])
 plt.savefig(filepath + "perc.png")
-plt.close()
-
-plt.figure(figsize=size)
-plt.title("Theta 1 Neural Networks Deviation from Equations (%)")
-plt.bar(names[1:n], perc[0])
-plt.savefig(filepath + "perc1.png")
-plt.close()
-
-plt.figure(figsize=size)
-plt.title("Theta 2 Neural Networks Deviation from Equations (%)")
-plt.bar(names[1:n], perc[1])
-plt.savefig(filepath + "perc2.png")
-plt.close()
-
-plt.figure(figsize=size)
-plt.title("Theta 3 Neural Networks Deviation from Equations (%)")
-plt.bar(names[1:n], perc[2])
-plt.savefig(filepath + "perc3.png")
 plt.close()
