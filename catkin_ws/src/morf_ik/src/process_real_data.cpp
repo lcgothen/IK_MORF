@@ -36,7 +36,7 @@ int main(int argc, char **argv)
     std::string postProcInFile_name = std::string("./real_data/postProc.csv");
 
     std::string str, val;
-    int footNo = 2;
+    int footNo = 2, oldFootNo;
 
     std::vector<point> input;
     point aux_in, leg, foot;
@@ -58,20 +58,37 @@ int main(int argc, char **argv)
         {
             if(!noGo)
             {
-                std::cout << str << std::endl;
                 if(i==1)
                     time = std::stof(val);
                 else if(i==footNo)
                 {
                     if(val.empty() && !changed)
                     {
-                        footNo += 3;
-                        changed = true;
+                        if(footNo<32)
+                        {
+                            oldFootNo = footNo;
+                            footNo += 3;
+                            changed = true;
+                        }
+                        else
+                        {
+                            noGo = true;
+                        }
                     }
                     else if(val.empty() && changed)
                     {
-                        noGo = true;
-                        footNo -= 3;
+                        // noGo = true;
+                        // footNo -= 3;
+                        if(footNo<32)
+                        {
+                            footNo += 3;
+                            changed = true;
+                        }
+                        else
+                        {
+                            noGo = true;
+                            footNo = oldFootNo;
+                        }
                     }
                     else
                     {
@@ -85,15 +102,19 @@ int main(int argc, char **argv)
                     foot.z = std::stof(val);
                 else if(i==35)
                 {
-                    if(val.empty())
-                        noGo = true;
-                    else
+                    if(!val.empty())
                         leg.x = std::stof(val);
                 }
                 else if(i==36)
-                    leg.y = std::stof(val);
+                {
+                    if(!val.empty())
+                        leg.y = std::stof(val);
+                }
                 else if(i==37)
-                    leg.z = std::stof(val);
+                {
+                    if(!val.empty())
+                        leg.z = std::stof(val);
+                }
 
                 i++;
             }
@@ -101,6 +122,7 @@ int main(int argc, char **argv)
 
         if(!noGo)
         {
+            std::cout << time << std::endl;
             aux_in.x = -(foot.z-leg.z);
             aux_in.y = -(foot.x-leg.x);
             aux_in.z = foot.y-leg.y;
