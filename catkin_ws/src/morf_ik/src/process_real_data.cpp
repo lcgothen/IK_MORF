@@ -30,10 +30,10 @@ using namespace controller;
 int main(int argc, char **argv)
 {
     std::ifstream realInputFile;
-    std::string realInputFile_name = std::string("./real_data/trial_008_import.txt");
+    std::string realInputFile_name = std::string("./real_data/trial_008_import.csv");
 
     std::ofstream postProcInFile;
-    std::string postProcInFile_name = std::string("./real_data/postProc.txt");
+    std::string postProcInFile_name = std::string("./real_data/postProc.csv");
 
     std::string str, val;
     int footNo = 2;
