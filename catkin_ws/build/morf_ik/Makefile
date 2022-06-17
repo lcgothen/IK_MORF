@@ -662,6 +662,20 @@ save_gen_data_real/fast:
 .PHONY : save_gen_data_real/fast
 
 # Convenience name for target.
+morf_ik/CMakeFiles/process_real_data.dir/rule:
+	cd /home/leonor/tese/IK_MORF/catkin_ws/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 morf_ik/CMakeFiles/process_real_data.dir/rule
+.PHONY : morf_ik/CMakeFiles/process_real_data.dir/rule
+
+# Convenience name for target.
+process_real_data: morf_ik/CMakeFiles/process_real_data.dir/rule
+.PHONY : process_real_data
+
+# fast build rule for target.
+process_real_data/fast:
+	cd /home/leonor/tese/IK_MORF/catkin_ws/build && $(MAKE) $(MAKESILENT) -f morf_ik/CMakeFiles/process_real_data.dir/build.make morf_ik/CMakeFiles/process_real_data.dir/build
+.PHONY : process_real_data/fast
+
+# Convenience name for target.
 morf_ik/CMakeFiles/coords.dir/rule:
 	cd /home/leonor/tese/IK_MORF/catkin_ws/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 morf_ik/CMakeFiles/coords.dir/rule
 .PHONY : morf_ik/CMakeFiles/coords.dir/rule
@@ -1046,6 +1060,30 @@ src/nn_sim.cpp.s:
 	cd /home/leonor/tese/IK_MORF/catkin_ws/build && $(MAKE) $(MAKESILENT) -f morf_ik/CMakeFiles/nn_sim.dir/build.make morf_ik/CMakeFiles/nn_sim.dir/src/nn_sim.cpp.s
 .PHONY : src/nn_sim.cpp.s
 
+src/process_real_data.o: src/process_real_data.cpp.o
+.PHONY : src/process_real_data.o
+
+# target to build an object file
+src/process_real_data.cpp.o:
+	cd /home/leonor/tese/IK_MORF/catkin_ws/build && $(MAKE) $(MAKESILENT) -f morf_ik/CMakeFiles/process_real_data.dir/build.make morf_ik/CMakeFiles/process_real_data.dir/src/process_real_data.cpp.o
+.PHONY : src/process_real_data.cpp.o
+
+src/process_real_data.i: src/process_real_data.cpp.i
+.PHONY : src/process_real_data.i
+
+# target to preprocess a source file
+src/process_real_data.cpp.i:
+	cd /home/leonor/tese/IK_MORF/catkin_ws/build && $(MAKE) $(MAKESILENT) -f morf_ik/CMakeFiles/process_real_data.dir/build.make morf_ik/CMakeFiles/process_real_data.dir/src/process_real_data.cpp.i
+.PHONY : src/process_real_data.cpp.i
+
+src/process_real_data.s: src/process_real_data.cpp.s
+.PHONY : src/process_real_data.s
+
+# target to generate assembly for a file
+src/process_real_data.cpp.s:
+	cd /home/leonor/tese/IK_MORF/catkin_ws/build && $(MAKE) $(MAKESILENT) -f morf_ik/CMakeFiles/process_real_data.dir/build.make morf_ik/CMakeFiles/process_real_data.dir/src/process_real_data.cpp.s
+.PHONY : src/process_real_data.cpp.s
+
 src/save_gen_data_real.o: src/save_gen_data_real.cpp.o
 .PHONY : src/save_gen_data_real.o
 
@@ -1166,6 +1204,7 @@ help:
 	@echo "... morf_controller_real"
 	@echo "... nn"
 	@echo "... nn_sim"
+	@echo "... process_real_data"
 	@echo "... save_gen_data_real"
 	@echo "... sort_data"
 	@echo "... home/leonor/CoppeliaSim/programming/common/shared_memory.o"
@@ -1210,6 +1249,9 @@ help:
 	@echo "... src/nn_sim.o"
 	@echo "... src/nn_sim.i"
 	@echo "... src/nn_sim.s"
+	@echo "... src/process_real_data.o"
+	@echo "... src/process_real_data.i"
+	@echo "... src/process_real_data.s"
 	@echo "... src/save_gen_data_real.o"
 	@echo "... src/save_gen_data_real.i"
 	@echo "... src/save_gen_data_real.s"

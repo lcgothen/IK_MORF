@@ -248,6 +248,7 @@ add_executable(calib src/calibration.cpp)
 add_executable(morf_controller_real src/test_real.cpp include/coordinates_real.cpp include/controller_real.cpp)
 add_executable(gen_data_real src/gen_data_real.cpp include/coordinates_real.cpp include/controller_real.cpp)
 add_executable(save_gen_data_real src/save_gen_data_real.cpp include/coordinates_real.cpp include/controller_real.cpp)
+add_executable(process_real_data src/process_real_data.cpp)
 
 
 target_compile_definitions(main PRIVATE NON_MATLAB_PARSING)
@@ -329,3 +330,8 @@ target_link_libraries(save_gen_data_real
                       ${catkin_LIBRARIES}
                       ${OpenCV_LIBS}
                       fann)
+target_link_libraries(process_real_data 
+                      ${catkin_LIBRARIES}
+                      ${OpenCV_LIBS}
+                      coords
+                      control)

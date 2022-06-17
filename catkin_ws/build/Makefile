@@ -744,6 +744,19 @@ save_gen_data_real/fast:
 .PHONY : save_gen_data_real/fast
 
 #=============================================================================
+# Target rules for targets named process_real_data
+
+# Build rule for target.
+process_real_data: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 process_real_data
+.PHONY : process_real_data
+
+# fast build rule for target.
+process_real_data/fast:
+	$(MAKE) $(MAKESILENT) -f morf_ik/CMakeFiles/process_real_data.dir/build.make morf_ik/CMakeFiles/process_real_data.dir/build
+.PHONY : process_real_data/fast
+
+#=============================================================================
 # Target rules for targets named coords
 
 # Build rule for target.
@@ -826,6 +839,7 @@ help:
 	@echo "... morf_controller_real"
 	@echo "... nn"
 	@echo "... nn_sim"
+	@echo "... process_real_data"
 	@echo "... save_gen_data_real"
 	@echo "... sort_data"
 .PHONY : help
