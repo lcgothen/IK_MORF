@@ -4,11 +4,17 @@ from mpl_toolkits.mplot3d import axes3d
 import csv
 import os.path
 from os import path
+import statistics
+from scipy import stats
+from statsmodels.multivariate.manova import MANOVA
+import pandas as pd
 
 filepath = "./devel/lib/morf_ik/results/4div/"
 
 filename_nn = [filepath + "batch_01_05_01_50000_02_09/results.data", filepath + "batch_01_10_01_50000_02_09/results.data", \
                 filepath + "batch_02_10_01_50000_02_09/results.data"]
+
+names = ['1 layer, 5 neurons', '1 layer, 10 neurons', '2 layers, 10 neurons']
 
 n = len(filename_nn)
 
@@ -19,84 +25,119 @@ for i in range(n):
     data_nn.append(list(reader))
 
 
-s = (3,n)
+dur_vals = []
+dev_vals = []
+aux_dev = []
+aux_dur = []
 
-dur_nn = np.zeros(n)
-dist_nn = np.zeros(n)
-perc = np.zeros(s)
-perc_tot = np.zeros(n)
-quant_nn = np.zeros(n)
+duration = []
+deviation = []
+configuration = []
 
 for i in range(n):
     for row in data_nn[i]:
-        dur_nn[i] += float(row[1])
-        dist_nn[i] += float(row[2])
-        perc[0][i] += float(row[3])
-        perc[1][i] += float(row[4])
-        perc[2][i] += float(row[5])
-        quant_nn[i]+=1
+        aux_dev.append((float(row[3])+float(row[4])+float(row[5]))/3)
+        aux_dur.append(float(row[1]))
 
-dur = []
-dist = []
+        duration.append(float(row[1]))
+        deviation.append((float(row[3])+float(row[4])+float(row[5]))/3)
+        configuration.append(names[i])
+        
+    dev_vals.append(aux_dev)
+    dur_vals.append(aux_dur)
+
+    aux_dev = []
+    aux_dur = []
+
+s = (2,n)
+dev = np.zeros(s)
+dur = np.zeros(s)
 
 for i in range(n):
-    dur.append(dur_nn[i]/quant_nn[i])
-    dist.append(dist_nn[i]/quant_nn[i])
-    perc[0][i] = perc[0][i]/quant_nn[i]
-    perc[1][i] = perc[1][i]/quant_nn[i]
-    perc[2][i] = perc[2][i]/quant_nn[i]
-    perc_tot[i] = (perc[0][i]+perc[1][i]+perc[2][i])/3
+    dev[0][i] = statistics.mean(dev_vals[i])
+    dev[1][i] = statistics.variance(dev_vals[i], dev[0][i])
+    dur[0][i] = statistics.mean(dur_vals[i])
+    dur[1][i] = statistics.variance(dur_vals[i], dur[0][i])
+
+print(stats.f_oneway(dev_vals[0], dev_vals[1], dev_vals[2]))
+
+data = pd.DataFrame({'configuration' : configuration, 'duration' : duration, 'deviation' : deviation})
+# print(data)
+manova_result = MANOVA.from_formula('configuration ~ duration + deviation', data)
+# print(manova_result.mv_test(hypotheses=None))
+print("Duration")
+print(stats.ttest_ind(data[data['configuration'] == '1 layer, 5 neurons']['duration'], data[data['configuration'] == '1 layer, 10 neurons']['duration'], equal_var=False, alternative='less')) 
+print(stats.ttest_ind(data[data['configuration'] == '1 layer, 5 neurons']['duration'], data[data['configuration'] == '2 layers, 10 neurons']['duration'], equal_var=False)) 
+print(stats.ttest_ind(data[data['configuration'] == '1 layer, 10 neurons']['duration'], data[data['configuration'] == '2 layers, 10 neurons']['duration'], equal_var=False)) 
+
+print("Deviation")
+print(stats.ttest_ind(data[data['configuration'] == '1 layer, 5 neurons']['deviation'], data[data['configuration'] == '1 layer, 10 neurons']['deviation'], equal_var=False)) 
+print(stats.ttest_ind(data[data['configuration'] == '1 layer, 5 neurons']['deviation'], data[data['configuration'] == '2 layers, 10 neurons']['deviation'], equal_var=False)) 
+print(stats.ttest_ind(data[data['configuration'] == '1 layer, 10 neurons']['deviation'], data[data['configuration'] == '2 layers, 10 neurons']['deviation'], equal_var=False)) 
+
 
 y_labels = [1, 1, 2]
 x_labels = [5, 10, 10]
 
 y = [1, 1, 2]
 x = [1, 2, 2]
-z = np.zeros(3)
-dx = np.ones(3)
-dy = np.ones(3)         
+z = np.zeros(n)
+dx = np.ones(n)
+dy = np.ones(n)         
 
 
 # size = (12,7)
 
-plt.figure()
-ax = plt.axes(projection='3d')
-ax.set_xticklabels(x_labels)
-ax.set_yticklabels(y_labels)
-ax.set_xticks(x)
-ax.set_yticks(y)
-ax.set_ylabel('no. of hidden layers')
-ax.set_xlabel('no. of neurons')
-plt.title("Average Calculations Duration (ns)")
-ax.bar3d(x, y, z, dx, dy, dur, color=['skyblue', 'deepskyblue', 'steelblue'])
-# plt.show()
-plt.savefig(filepath + "duration_4div_eqs.png")
-plt.close()
-
-plt.figure()
-ax = plt.axes(projection='3d')
-ax.set_xticklabels(x_labels)
-ax.set_yticklabels(y_labels)
-ax.set_xticks(x)
-ax.set_yticks(y)
-ax.set_ylabel('no. of hidden layers')
-ax.set_xlabel('no. of neurons')
-plt.title("Average Distance to Button Centre (m)")
-ax.bar3d(x, y, z, dx, dy, dist, color=['skyblue', 'deepskyblue', 'steelblue'])
-plt.savefig(filepath + "distance_4div_eqs.png")
-plt.close()
+# plt.figure()
+# ax = plt.axes(projection='3d')
+# ax.set_xticklabels(x_labels)
+# ax.set_yticklabels(y_labels)
+# ax.set_xticks(x)
+# ax.set_yticks(y)
+# ax.set_ylabel('no. of hidden layers')
+# ax.set_xlabel('no. of neurons')
+# plt.title("Average Calculations Duration (ns) - Mean")
+# ax.bar3d(x, y, z, dx, dy, dur[0], color=['skyblue', 'deepskyblue', 'steelblue'])
+# plt.savefig(filepath + "dur_4div_eqs.png")
+# plt.close()
 
 
+# plt.figure()
+# ax = plt.axes(projection='3d')
+# ax.set_xticklabels(x_labels)
+# ax.set_yticklabels(y_labels)
+# ax.set_xticks(x)
+# ax.set_yticks(y)
+# ax.set_ylabel('no. of hidden layers')
+# ax.set_xlabel('no. of neurons')
+# plt.title("Neural Networks Deviation from Equations (rad) - Mean")
+# ax.bar3d(x, y, z, dx, dy, dev[0], color=['skyblue', 'deepskyblue', 'steelblue'])
+# plt.savefig(filepath + "dev_4div_eqs.png")
+# plt.close()
 
-plt.figure()
-ax = plt.axes(projection='3d')
-ax.set_xticklabels(x_labels)
-ax.set_yticklabels(y_labels)
-ax.set_xticks(x)
-ax.set_yticks(y)
-ax.set_ylabel('no. of hidden layers')
-ax.set_xlabel('no. of neurons')
-plt.title("Neural Networks Deviation from Equations (m)")
-ax.bar3d(x, y, z, dx, dy, perc_tot, color=['skyblue', 'deepskyblue', 'steelblue'])
-plt.savefig(filepath + "perc_4div_eqs.png")
-plt.close()
+# plt.figure()
+# ax = plt.axes(projection='3d')
+# ax.set_xticklabels(x_labels)
+# ax.set_yticklabels(y_labels)
+# ax.set_xticks(x)
+# ax.set_yticks(y)
+# ax.set_ylabel('no. of hidden layers')
+# ax.set_xlabel('no. of neurons')
+# plt.title("Average Calculations Duration (ns) - Variance")
+# ax.bar3d(x, y, z, dx, dy, dur[1], color=['skyblue', 'deepskyblue', 'steelblue'])
+# plt.savefig(filepath + "Vdur_4div_eqs.png")
+# plt.close()
+
+
+# plt.figure()
+# ax = plt.axes(projection='3d')
+# ax.set_xticklabels(x_labels)
+# ax.set_yticklabels(y_labels)
+# ax.set_xticks(x)
+# ax.set_yticks(y)
+# ax.set_ylabel('no. of hidden layers')
+# ax.set_xlabel('no. of neurons')
+# plt.title("Neural Networks Deviation from Equations (rad) - Variance")
+# ax.bar3d(x, y, z, dx, dy, dev[1], color=['skyblue', 'deepskyblue', 'steelblue'])
+# plt.savefig(filepath + "Vdev_4div_eqs.png")
+# plt.close()
