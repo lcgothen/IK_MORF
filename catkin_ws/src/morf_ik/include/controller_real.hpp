@@ -46,7 +46,7 @@ namespace controller
     {
         public:
         cv::Mat imageL, imageR, genImg;
-        point target, target_avg;
+        point target;
         int distZ=0; 
         bool nearZ=false; 
         float threshZ=0.9;
@@ -55,7 +55,6 @@ namespace controller
         void imageLeftCallback(const sensor_msgs::ImageConstPtr& msg);
         void imageRightCallback(const sensor_msgs::ImageConstPtr& msg);
         void generalImgCallback(const sensor_msgs::ImageConstPtr& msg);
-        void match();
         void blob();
     };
 

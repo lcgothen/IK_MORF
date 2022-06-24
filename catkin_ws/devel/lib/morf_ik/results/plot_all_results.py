@@ -3,6 +3,10 @@ import matplotlib.pyplot as plt
 import csv
 import os.path
 from os import path
+import statistics
+from scipy import stats
+from statsmodels.multivariate.manova import MANOVA
+import pandas as pd
 
 filepath = "./devel/lib/morf_ik/results/"
 filename_eqs = filepath + "eqs/successes.data"
@@ -25,44 +29,52 @@ for i in range(n-1):
     data_nn.append(list(reader))
 
 
-dur_eqs = 0
-dist_eqs = 0
-quant_eqs = 0
-
-for row in data_eqs:
-    dur_eqs += float(row[1])
-    dist_eqs += float(row[2])
-    quant_eqs+=1
-
-s = (3,n-1)
-
-dur_nn = np.zeros(n-1)
-dist_nn = np.zeros(n-1)
-perc = np.zeros(s)
-perc_tot = np.zeros(n-1)
-quant_nn = np.zeros(n-1)
-
-for i in range(n-1):
-    for row in data_nn[i]:
-        dur_nn[i] += float(row[1])
-        dist_nn[i] += float(row[2])
-        perc[0][i] += float(row[3])
-        perc[1][i] += float(row[4])
-        perc[2][i] += float(row[5])
-        quant_nn[i]+=1
-
+dur_eqs = []
+dist_eqs = []
 dur = []
 dist = []
 
-dur.append(dur_eqs/quant_eqs)
-dist.append(dist_eqs/quant_eqs)
+for row in data_eqs:
+    dur_eqs.append(float(row[1]))
+    dist_eqs.append(float(row[2]))
+
+dur.append(statistics.mean(dur_eqs))
+dist.append(statistics.mean(dist_eqs))
+
+dur_nn = []
+dev_nn = []
+dist_nn = []
+aux_dev = []
+aux_dur = []
+aux_dist = []
+
+duration = []
+deviation = []
+configuration = []
+
 for i in range(n-1):
-    dur.append(dur_nn[i]/quant_nn[i])
-    dist.append(dist_nn[i]/quant_nn[i])
-    perc[0][i] = perc[0][i]/quant_nn[i]
-    perc[1][i] = perc[1][i]/quant_nn[i]
-    perc[2][i] = perc[2][i]/quant_nn[i]
-    perc_tot[i] = (perc[0][i]+perc[1][i]+perc[2][i])/3
+    for row in data_nn[i]:
+        aux_dev.append((float(row[3])+float(row[4])+float(row[5]))/3)
+        aux_dur.append(float(row[1]))
+        aux_dist.append(float(row[2]))
+
+        duration.append(float(row[1]))
+        deviation.append((float(row[3])+float(row[4])+float(row[5]))/3)
+        configuration.append(names[i+1])
+        
+    dev_nn.append(aux_dev)
+    dur_nn.append(aux_dur)
+    dist_nn.append(aux_dist)
+
+    aux_dev = []
+    aux_dur = []
+
+dev = []
+
+for i in range(n-1):
+    dur.append(statistics.mean(dur_nn[i]))
+    dist.append(statistics.mean(dist_nn[i]))
+    dev.append(statistics.mean(dev_nn[i]))
 
 
 # size = (12,7)
@@ -86,6 +98,14 @@ plt.bar(names, dist, color=['mediumaquamarine', 'skyblue', 'skyblue', 'deepskybl
 plt.savefig(filepath + "distance.png")
 plt.close()
 
+plt.figure()
+ax = plt.axes()
+ax.tick_params(axis='both', which='major', labelsize=12)
+ax.tick_params(axis='both', which='minor', labelsize=12)
+# plt.title("Neural Networks Deviation from Equations (rad)")
+plt.bar(names[1:n], dev, color=['skyblue', 'skyblue', 'deepskyblue', 'deepskyblue'])
+plt.savefig(filepath + "deviation.png")
+plt.close()
 
 
 plt.figure()
@@ -93,6 +113,15 @@ ax = plt.axes()
 ax.tick_params(axis='both', which='major', labelsize=12)
 ax.tick_params(axis='both', which='minor', labelsize=12)
 # plt.title("Neural Networks Deviation from Equations (rad)")
-plt.bar(names[1:n], perc_tot, color=['skyblue', 'skyblue', 'deepskyblue', 'deepskyblue'])
-plt.savefig(filepath + "perc.png")
+plt.bar(names[1:3], dev[0:2], color=['skyblue', 'deepskyblue'])
+plt.savefig(filepath + "dev_nn_eqs.png")
+plt.close()
+
+plt.figure()
+ax = plt.axes()
+ax.tick_params(axis='both', which='major', labelsize=12)
+ax.tick_params(axis='both', which='minor', labelsize=12)
+# plt.title("Neural Networks Deviation from Equations (rad)")
+plt.bar(names[1:3], dur[0:2], color=['skyblue', 'deepskyblue'])
+plt.savefig(filepath + "dur_nn_eqs.png")
 plt.close()

@@ -429,7 +429,7 @@ void images::match()
         matcher.knnMatch(descriptorsL, descriptorsR, matches, 2);
         
         const float ratio_thresh = 0.6f;
-        std::vector<cv::DMatch> best_matches;
+        std::vector<cv::DMatch> green_matches;
         
         for (int i = 0; i < matches.size(); i++)
         {
@@ -443,13 +443,13 @@ void images::match()
 
                 if(hL>40 && hL<80 && hR>40 && hR<80)
                 {
-                    best_matches.push_back(matches[i][0]);
+                    green_matches.push_back(matches[i][0]);
                 }
             }
         }
         
         cv::Mat img_matches;
-        drawMatches( imageL, keypointsL, imageR, keypointsR, best_matches, img_matches, cv::Scalar::all(-1),
+        drawMatches( imageL, keypointsL, imageR, keypointsR, green_matches, img_matches, cv::Scalar::all(-1),
                     cv::Scalar::all(-1), std::vector<char>(), cv::DrawMatchesFlags::NOT_DRAW_SINGLE_POINTS);
         
         imshow("Matches", img_matches);
@@ -457,18 +457,18 @@ void images::match()
 
         float avg_x=0, avg_y=0, avg_z=0;
 
-        for (int i = 0; i < best_matches.size(); i++)
+        for (int i = 0; i < green_matches.size(); i++)
         {
-            float z = 175.05*0.06*1/(keypointsL[best_matches[i].queryIdx].pt.x-keypointsR[best_matches[i].trainIdx].pt.x);
+            float z = 175.05*0.06*1/(keypointsL[green_matches[i].queryIdx].pt.x-keypointsR[green_matches[i].trainIdx].pt.x);
             // std::cout << z << std::endl;
-            avg_x += keypointsL[best_matches[i].queryIdx].pt.x;
-            avg_y += keypointsL[best_matches[i].queryIdx].pt.y;
+            avg_x += keypointsL[green_matches[i].queryIdx].pt.x;
+            avg_y += keypointsL[green_matches[i].queryIdx].pt.y;
             avg_z += z;
         }
 
-        avg_x = avg_x/best_matches.size();
-        avg_y = avg_y/best_matches.size();
-        avg_z = avg_z/best_matches.size();
+        avg_x = avg_x/green_matches.size();
+        avg_y = avg_y/green_matches.size();
+        avg_z = avg_z/green_matches.size();
 
         float length = 2*avg_z*tan(2.3562/2);
         float width = 800*length/848;
@@ -482,129 +482,8 @@ void images::match()
             target.x = x;
             target.y = y;
             target.z = avg_z;
-
-            target_avg.z = target.z;
-            target_avg.x = target.x;
-            target_avg.y = target.y;
-            // std::cout << target.x << " , " << target.y <<  " , " << target.z << std::endl;
         }
 
     }
 
-}
-
-void images::blob()
-{
-    cv::Mat hsvL, hsvR;
-    cv::cvtColor(imageL, hsvL, cv::COLOR_BGR2HSV);
-    cv::cvtColor(imageR, hsvR, cv::COLOR_BGR2HSV);
-
-    cv::SimpleBlobDetector::Params params;
-    params.filterByArea = true;
-    params.minArea = 0;
-    // params.maxArea = 100;
-
-
-    cv::Ptr<cv::SimpleBlobDetector> detector = cv::SimpleBlobDetector::create(params);
-    std::vector<cv::KeyPoint> keypointsL, keypointsR, keypointsGreenL, keypointsGreenR;
-    detector->detect(imageL, keypointsL);
-    detector->detect(imageR, keypointsR);
-
-    int closestGreenL=0, closestGreenR=0;
-    float hClosestL=0, hClosestR=0;
-
-    float x_avgL=0, y_avgL=0, x_avgR=0, y_avgR=0, quantL=0, quantR=0;
-
-    for(int i=0; i<keypointsL.size(); i++)
-    {
-        cv::Vec3b bgrVal = imageL.at<cv::Vec3b>(keypointsL[i].pt);
-        cv::Vec3b bgrClosest = imageL.at<cv::Vec3b>(keypointsL[closestGreenL].pt);
-
-        cv::Vec3b hsvVal = hsvL.at<cv::Vec3b>(keypointsL[i].pt);
-        float h = hsvVal[0];
-
-        if(abs(h-60)<abs(hClosestL-60))
-        {
-            closestGreenL=i;
-            hClosestL=h;
-        }
-
-        if(h>40 && h<80)
-        {
-            x_avgL+=keypointsL[i].pt.x;
-            y_avgL+=keypointsL[i].pt.y;
-            quantL++;
-            keypointsGreenL.push_back(keypointsL[i]);
-        }
-
-        //std::cout << h << std::endl;
-    }
-
-    for(int i=0; i<keypointsR.size(); i++)
-    {
-        cv::Vec3b bgrVal = imageR.at<cv::Vec3b>(keypointsR[i].pt);
-        cv::Vec3b bgrClosest = imageR.at<cv::Vec3b>(keypointsR[closestGreenR].pt);
-
-
-        cv::Vec3b hsvVal = hsvR.at<cv::Vec3b>(keypointsR[i].pt);
-        float h = hsvVal[0];
-
-        if(abs(h-60)<abs(hClosestR-60))
-        {
-            closestGreenR=i;
-            hClosestR=h;
-        }
-
-        if(h>40 && h<80)
-        {
-            x_avgR+=keypointsR[i].pt.x;
-            y_avgR+=keypointsR[i].pt.y;
-            quantR++;
-            keypointsGreenR.push_back(keypointsR[i]);
-        }
-    }
-
-
-    if(!keypointsL.empty() && !keypointsR.empty())
-    {
-        cv::Mat correct;
-        std::vector<cv::KeyPoint> correctKeypoint = {keypointsL[closestGreenL]};
-        cv::drawKeypoints(imageL, keypointsGreenL, correct);
-        //cv::drawKeypoints(imageL, keypointsGreenL, correct, cv::Scalar::all(-1), cv::DrawMatchesFlags::DRAW_RICH_KEYPOINTS);
-        cv::imshow("correctL", correct);
-        correctKeypoint = {keypointsR[closestGreenR]};
-        cv::drawKeypoints(imageR, keypointsGreenR, correct);
-        cv::imshow("correctR", correct);
-        cv::waitKey(30);
-
-        target.z = 175.05*0.06*1/(keypointsL[closestGreenL].pt.x-keypointsR[closestGreenR].pt.x);
-
-        float length = 2*target.z*tan(2.3562/2);
-        float width = 800*length/848;
-
-        target.x = -keypointsL[closestGreenL].pt.x/848*length+length/2;
-        target.y = -keypointsL[closestGreenL].pt.y/800*width+width/2;
-
-        if(quantL>0)
-        {
-            x_avgL=x_avgL/quantL;
-            y_avgL=y_avgL/quantL;
-        }
-        if(quantR>0)
-        {
-            x_avgR=x_avgR/quantR;
-            y_avgR=y_avgR/quantR;
-        }
-
-        target_avg.z = 175.05*0.06*1/(x_avgL-x_avgR);
-
-        length = 2*target_avg.z*tan(2.3562/2);
-        width = 800*length/848;
-
-        target_avg.x = -x_avgL/848*length+length/2;
-        target_avg.y = -y_avgL/800*width+width/2;
-
-        
-        // std::cout << target_avg.x << " , " << target_avg.y << " , " << target_avg.z << std::endl;
-    }
 }

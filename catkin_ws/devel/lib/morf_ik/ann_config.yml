@@ -12,14 +12,31 @@
 # z_start: -0.0433698
 # reverse: 1
 
-ann_path: ./neural_networks/data_5div_babbling/batch_02_10_01_50000_02_09/
-div: 5
-divZ: 6
-divZ_start: 4
-x_length: 0.26387
-y_length: 0.24953
-z_length: 0.36199
-x_start: -0.0345405
-y_start: -0.0784675
-z_start: -0.190115
+# ann_path: ./neural_networks/data_5div_babbling/batch_02_10_01_50000_02_09/
+# div: 5
+# divZ: 6
+# divZ_start: 4
+# x_length: 0.26387
+# y_length: 0.24953
+# z_length: 0.36199
+# x_start: -0.0345405
+# y_start: -0.0784675
+# z_start: -0.190115
+# reverse: 0
+
+ann_path: ./neural_networks/data_4div_real/batch_01_05_01_50000_02_09/
+div: 4
+divZ: 5
+divZ_start: 3
+x_length: 0.24644
+y_length: 0.26666
+z_length: 0.33757
+x_start:  0.00106799
+y_start: -0.0837749
+z_start: -0.18068
 reverse: 0
+
+
+# x: 0.00106799 , 0.247507
+# y: -0.0837749 , 0.18289
+# z: -0.18068 , 0.156892

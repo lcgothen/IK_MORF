@@ -351,97 +351,6 @@ void images::generalImgCallback(const sensor_msgs::ImageConstPtr& msg)
     genImg = cv_bridge::toCvShare(msg, "bgr8")->image;
 }
 
-void images::match()
-{
-    cv::Mat hsvL, hsvR;
-    cv::cvtColor(imageL, hsvL, cv::COLOR_BGR2HSV);
-    cv::cvtColor(imageR, hsvR, cv::COLOR_BGR2HSV);
-
-    // detect features	
-    cv::Ptr<cv::FeatureDetector> detector = cv::ORB::create();
-    std::vector<cv::KeyPoint> keypointsL, keypointsR;
-    detector->detect(imageL, keypointsL);
-    detector->detect(imageR, keypointsR);
-    
-    // extract descriptors
-    cv::Ptr<cv::DescriptorExtractor> extractor = cv::ORB::create();
-    cv::Mat descriptorsL, descriptorsR;
-    extractor->compute(imageL, keypointsL, descriptorsL);
-    extractor->compute(imageR, keypointsR, descriptorsR);
-
-
-    cv::FlannBasedMatcher matcher = cv::FlannBasedMatcher(cv::makePtr<cv::flann::LshIndexParams>(12, 20, 2));
-
-    std::vector< std::vector<cv::DMatch> > matches;
-    if(!descriptorsL.empty() && !descriptorsR.empty())
-    {
-        matcher.knnMatch(descriptorsL, descriptorsR, matches, 2);
-        
-        const float ratio_thresh = 0.6f;
-        std::vector<cv::DMatch> best_matches;
-        
-        for (int i = 0; i < matches.size(); i++)
-        {
-            // Only save matches according to Lowe's ratio test
-            if(!matches[i].empty() && matches[i][0].distance < ratio_thresh * matches[i][1].distance)
-            {
-                cv::Vec3b hsvValL = hsvL.at<cv::Vec3b>(keypointsL[matches[i][0].queryIdx].pt);
-                float hL = hsvValL[0];
-                cv::Vec3b hsvValR = hsvR.at<cv::Vec3b>(keypointsR[matches[i][0].trainIdx].pt);
-                float hR = hsvValR[0];
-
-                if(hL>40 && hL<80 && hR>40 && hR<80)
-                {
-                    best_matches.push_back(matches[i][0]);
-                }
-            }
-        }
-        
-        cv::Mat img_matches;
-        drawMatches( imageL, keypointsL, imageR, keypointsR, best_matches, img_matches, cv::Scalar::all(-1),
-                    cv::Scalar::all(-1), std::vector<char>(), cv::DrawMatchesFlags::NOT_DRAW_SINGLE_POINTS);
-        
-        imshow("Matches", img_matches);
-        cv::waitKey(30);
-
-        float avg_x=0, avg_y=0, avg_z=0;
-
-        for (int i = 0; i < best_matches.size(); i++)
-        {
-            float z = 175.05*0.06*1/(keypointsL[best_matches[i].queryIdx].pt.x-keypointsR[best_matches[i].trainIdx].pt.x);
-            // std::cout << z << std::endl;
-            avg_x += keypointsL[best_matches[i].queryIdx].pt.x;
-            avg_y += keypointsL[best_matches[i].queryIdx].pt.y;
-            avg_z += z;
-        }
-
-        avg_x = avg_x/best_matches.size();
-        avg_y = avg_y/best_matches.size();
-        avg_z = avg_z/best_matches.size();
-
-        float length = 2*avg_z*tan(2.3562/2);
-        float width = 800*length/848;
-
-        float x,y;
-        x = -avg_x/848*length+length/2;
-        y = -avg_y/800*width+width/2;
-
-        if(!isnan(x) && !isnan(y) && !isnan(avg_z))
-        {
-            target.x = x;
-            target.y = y;
-            target.z = avg_z;
-
-            target_avg.z = target.z;
-            target_avg.x = target.x;
-            target_avg.y = target.y;
-            // std::cout << target.x << " , " << target.y <<  " , " << target.z << std::endl;
-        }
-
-    }
-
-}
-
 void images::blob()
 {
     cv::Mat undistortedL, undistortedR;
@@ -495,19 +404,6 @@ void images::blob()
 
     if(!keypointsL.empty() && !keypointsR.empty())
     {
-        // float f=171.0651796545387; //focal_length
-
-        // target.z = f*0.07/(keypointsL[0].pt.x-keypointsR[0].pt.x);
-
-        // float fov_x = 2*atan2(848/2, f);
-        // float fov_y = 2*atan2(800/2, f);
-
-        // float width = 2*target.z*tan(fov_x/2);
-        // float height = 2*target.z*tan(fov_y/2);
-        // // float height = 800*width/848;
-
-        // target.x = -keypointsL[0].pt.x/848*width+newMatrixL.at<double>(0,2)/848*width; //width/2;
-        // target.y = -keypointsL[0].pt.y/800*height+newMatrixL.at<double>(1,2)/800*height; //height/2
 
         float f=newMatrixL.at<double>(0,0); //focal_length
         // std::cout << f << std::endl;
@@ -522,9 +418,6 @@ void images::blob()
 
         target.x = -keypointsL[0].pt.x/848*width + newMatrixL.at<double>(0,2)/848*width; 
         target.y = -keypointsL[0].pt.y/800*height + (800-newMatrixL.at<double>(1,2))/800*height;
-
-        // float height = 800*width/848;
-
 
         std::cout << target.x << " , " << target.y << " , " << target.z << std::endl;
     }

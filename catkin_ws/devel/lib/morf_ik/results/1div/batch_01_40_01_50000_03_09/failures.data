@@ -1,17 +1,3 @@
-trial 1:	duration 	120000095
-trial 3:	distance	0.0322774
-trial 7:	distance	0.0280774
-trial 8:	distance	0.0371324
-trial 9:	distance	0.0324079
-trial 10:	distance	0.025677
-trial 11:	duration 	120000091
-trial 12:	duration 	120000061
-trial 13:	distance	0.0307839
-trial 14:	duration 	120000090
-trial 18:	distance	0.0320737
-trial 19:	distance	0.0373422
-trial 22:	distance	0.0378883
-trial 24:	distance	0.0217023
-trial 25:	distance	0.0401891
-trial 28:	distance	0.034075
-trial 29:	distance	0.0207843
+version https://git-lfs.github.com/spec/v1
+oid sha256:3ac230d4d647fe126e9b99f24888cd66597ef6dc57dc3961d8703f778abb0010
+size 490

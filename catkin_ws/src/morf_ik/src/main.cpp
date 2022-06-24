@@ -39,6 +39,15 @@ N_TRIALS: number of trials
 
 int main(int argc, char **argv)
 {
+    point ta;
+    ta.x=0.197401; 
+    ta.y=-0.0683856; 
+    ta.z= -0.161854;
+    angles ta_2;
+    ta_2.calcIK(ta);
+
+    ROS_INFO("%f, %f, %f", ta_2.th1, ta_2.th2, ta_2.th3);
+
     if(argc < 3)
     {
         std::cout << "./main TYPE N_TRIALS" << std::endl;
@@ -73,7 +82,7 @@ int main(int argc, char **argv)
     auto t = std::time(nullptr);
     auto tm = *std::localtime(&t);
     std::stringstream timeStream;
-    timeStream << "./results/" << "15-06-2022_10-16-08/"; // std::put_time(&tm, "%d-%m-%Y_%H-%M-%S/");
+    timeStream << "./results/" << std::put_time(&tm, "%d-%m-%Y_%H-%M-%S/");
     std::string results_path = timeStream.str();
     
     mkdir(results_path.c_str(),0777);
@@ -86,7 +95,7 @@ int main(int argc, char **argv)
 
     simxInt clientID = simxStart((simxChar*)"127.0.0.1", 19997, true, true, 2000, 5);
 
-    for(int trial=14; trial < n_trials; trial++)
+    for(int trial=0; trial < n_trials; trial++)
     {
         robot morf;
         images stereo;
@@ -728,9 +737,9 @@ int main(int argc, char **argv)
             }
             else if(state==3)
             {
-                target.x=stereo.target_avg.x;
-                target.y=stereo.target_avg.y;
-                target.z=stereo.target_avg.z-0.05;
+                target.x=stereo.target.x;
+                target.y=stereo.target.y;
+                target.z=stereo.target.z-0.05;
 
                 posFL = target.camLeft2morf(); 
                 posFL = posFL.morf2FL(); 

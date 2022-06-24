@@ -30,8 +30,8 @@ using namespace controller;
 int main(int argc, char **argv)
 {
     std::ifstream allInputFile, allOutputFile;
-    std::string allInputFile_name = std::string("./babbling_data/input.data");
-    std::string allOutputFile_name = std::string("./babbling_data/output.data");
+    std::string allInputFile_name = std::string("./real_data/input.data");
+    std::string allOutputFile_name = std::string("./real_data/output.data");
 
     float xmax=-1000, ymax=-1000, zmax=-1000;
     float xmin=1000, ymin=1000, zmin=1000;
@@ -95,9 +95,9 @@ int main(int argc, char **argv)
 
 
     std::ofstream auxFile;
-    std::string aux_path = std::string("./babbling_data/aux/");
+    std::string aux_path = std::string("./real_data/aux/");
 
-    int div=5, divZ=div*2;
+    int div=3, divZ=div*2;
     int count[div][div][divZ];
     // std::fill(&(count[0][0][0]), &(count[div][div][divZ]), 0);
     // div=5;
@@ -308,7 +308,7 @@ int main(int argc, char **argv)
     // save sorted and filtered
 
     std::ofstream dataFile;
-    std::string filepath = std::string("./babbling_data/")+std::to_string(div)+std::string("div/");
+    std::string filepath = std::string("./real_data/")+std::to_string(div)+std::string("div/");
     mkdir(filepath.c_str(),0777);
 
     for(int i=0; i<div; i++)

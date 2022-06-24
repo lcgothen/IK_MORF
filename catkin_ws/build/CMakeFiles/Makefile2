@@ -140,6 +140,9 @@ morf_ik/all: morf_ik/CMakeFiles/gen_data_ik.dir/all
 morf_ik/all: morf_ik/CMakeFiles/sort_data.dir/all
 morf_ik/all: morf_ik/CMakeFiles/nn.dir/all
 morf_ik/all: morf_ik/CMakeFiles/nn_sim.dir/all
+morf_ik/all: morf_ik/CMakeFiles/nn_real.dir/all
+morf_ik/all: morf_ik/CMakeFiles/nn_real2.dir/all
+morf_ik/all: morf_ik/CMakeFiles/nn_real3.dir/all
 morf_ik/all: morf_ik/CMakeFiles/calib.dir/all
 morf_ik/all: morf_ik/CMakeFiles/morf_controller_real.dir/all
 morf_ik/all: morf_ik/CMakeFiles/gen_data_real.dir/all
@@ -185,6 +188,9 @@ morf_ik/clean: morf_ik/CMakeFiles/gen_data_ik.dir/clean
 morf_ik/clean: morf_ik/CMakeFiles/sort_data.dir/clean
 morf_ik/clean: morf_ik/CMakeFiles/nn.dir/clean
 morf_ik/clean: morf_ik/CMakeFiles/nn_sim.dir/clean
+morf_ik/clean: morf_ik/CMakeFiles/nn_real.dir/clean
+morf_ik/clean: morf_ik/CMakeFiles/nn_real2.dir/clean
+morf_ik/clean: morf_ik/CMakeFiles/nn_real3.dir/clean
 morf_ik/clean: morf_ik/CMakeFiles/calib.dir/clean
 morf_ik/clean: morf_ik/CMakeFiles/morf_controller_real.dir/clean
 morf_ik/clean: morf_ik/CMakeFiles/gen_data_real.dir/clean
@@ -1166,7 +1172,7 @@ morf_ik/CMakeFiles/sort_data.dir/all: morf_ik/CMakeFiles/coords.dir/all
 morf_ik/CMakeFiles/sort_data.dir/all: morf_ik/CMakeFiles/control.dir/all
 	$(MAKE) $(MAKESILENT) -f morf_ik/CMakeFiles/sort_data.dir/build.make morf_ik/CMakeFiles/sort_data.dir/depend
 	$(MAKE) $(MAKESILENT) -f morf_ik/CMakeFiles/sort_data.dir/build.make morf_ik/CMakeFiles/sort_data.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/leonor/tese/IK_MORF/catkin_ws/build/CMakeFiles --progress-num=48,49 "Built target sort_data"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/leonor/tese/IK_MORF/catkin_ws/build/CMakeFiles --progress-num=54,55 "Built target sort_data"
 .PHONY : morf_ik/CMakeFiles/sort_data.dir/all
 
 # Build rule for subdir invocation for target.
@@ -1220,7 +1226,7 @@ morf_ik/CMakeFiles/nn_sim.dir/all: morf_ik/CMakeFiles/coords.dir/all
 morf_ik/CMakeFiles/nn_sim.dir/all: morf_ik/CMakeFiles/control.dir/all
 	$(MAKE) $(MAKESILENT) -f morf_ik/CMakeFiles/nn_sim.dir/build.make morf_ik/CMakeFiles/nn_sim.dir/depend
 	$(MAKE) $(MAKESILENT) -f morf_ik/CMakeFiles/nn_sim.dir/build.make morf_ik/CMakeFiles/nn_sim.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/leonor/tese/IK_MORF/catkin_ws/build/CMakeFiles --progress-num=40,41 "Built target nn_sim"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/leonor/tese/IK_MORF/catkin_ws/build/CMakeFiles --progress-num=46,47 "Built target nn_sim"
 .PHONY : morf_ik/CMakeFiles/nn_sim.dir/all
 
 # Build rule for subdir invocation for target.
@@ -1238,6 +1244,87 @@ nn_sim: morf_ik/CMakeFiles/nn_sim.dir/rule
 morf_ik/CMakeFiles/nn_sim.dir/clean:
 	$(MAKE) $(MAKESILENT) -f morf_ik/CMakeFiles/nn_sim.dir/build.make morf_ik/CMakeFiles/nn_sim.dir/clean
 .PHONY : morf_ik/CMakeFiles/nn_sim.dir/clean
+
+#=============================================================================
+# Target rules for target morf_ik/CMakeFiles/nn_real.dir
+
+# All Build rule for target.
+morf_ik/CMakeFiles/nn_real.dir/all: morf_ik/CMakeFiles/coords.dir/all
+morf_ik/CMakeFiles/nn_real.dir/all: morf_ik/CMakeFiles/control.dir/all
+	$(MAKE) $(MAKESILENT) -f morf_ik/CMakeFiles/nn_real.dir/build.make morf_ik/CMakeFiles/nn_real.dir/depend
+	$(MAKE) $(MAKESILENT) -f morf_ik/CMakeFiles/nn_real.dir/build.make morf_ik/CMakeFiles/nn_real.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/leonor/tese/IK_MORF/catkin_ws/build/CMakeFiles --progress-num=40,41 "Built target nn_real"
+.PHONY : morf_ik/CMakeFiles/nn_real.dir/all
+
+# Build rule for subdir invocation for target.
+morf_ik/CMakeFiles/nn_real.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/leonor/tese/IK_MORF/catkin_ws/build/CMakeFiles 6
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 morf_ik/CMakeFiles/nn_real.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/leonor/tese/IK_MORF/catkin_ws/build/CMakeFiles 0
+.PHONY : morf_ik/CMakeFiles/nn_real.dir/rule
+
+# Convenience name for target.
+nn_real: morf_ik/CMakeFiles/nn_real.dir/rule
+.PHONY : nn_real
+
+# clean rule for target.
+morf_ik/CMakeFiles/nn_real.dir/clean:
+	$(MAKE) $(MAKESILENT) -f morf_ik/CMakeFiles/nn_real.dir/build.make morf_ik/CMakeFiles/nn_real.dir/clean
+.PHONY : morf_ik/CMakeFiles/nn_real.dir/clean
+
+#=============================================================================
+# Target rules for target morf_ik/CMakeFiles/nn_real2.dir
+
+# All Build rule for target.
+morf_ik/CMakeFiles/nn_real2.dir/all: morf_ik/CMakeFiles/coords.dir/all
+morf_ik/CMakeFiles/nn_real2.dir/all: morf_ik/CMakeFiles/control.dir/all
+	$(MAKE) $(MAKESILENT) -f morf_ik/CMakeFiles/nn_real2.dir/build.make morf_ik/CMakeFiles/nn_real2.dir/depend
+	$(MAKE) $(MAKESILENT) -f morf_ik/CMakeFiles/nn_real2.dir/build.make morf_ik/CMakeFiles/nn_real2.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/leonor/tese/IK_MORF/catkin_ws/build/CMakeFiles --progress-num=42,43 "Built target nn_real2"
+.PHONY : morf_ik/CMakeFiles/nn_real2.dir/all
+
+# Build rule for subdir invocation for target.
+morf_ik/CMakeFiles/nn_real2.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/leonor/tese/IK_MORF/catkin_ws/build/CMakeFiles 6
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 morf_ik/CMakeFiles/nn_real2.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/leonor/tese/IK_MORF/catkin_ws/build/CMakeFiles 0
+.PHONY : morf_ik/CMakeFiles/nn_real2.dir/rule
+
+# Convenience name for target.
+nn_real2: morf_ik/CMakeFiles/nn_real2.dir/rule
+.PHONY : nn_real2
+
+# clean rule for target.
+morf_ik/CMakeFiles/nn_real2.dir/clean:
+	$(MAKE) $(MAKESILENT) -f morf_ik/CMakeFiles/nn_real2.dir/build.make morf_ik/CMakeFiles/nn_real2.dir/clean
+.PHONY : morf_ik/CMakeFiles/nn_real2.dir/clean
+
+#=============================================================================
+# Target rules for target morf_ik/CMakeFiles/nn_real3.dir
+
+# All Build rule for target.
+morf_ik/CMakeFiles/nn_real3.dir/all: morf_ik/CMakeFiles/coords.dir/all
+morf_ik/CMakeFiles/nn_real3.dir/all: morf_ik/CMakeFiles/control.dir/all
+	$(MAKE) $(MAKESILENT) -f morf_ik/CMakeFiles/nn_real3.dir/build.make morf_ik/CMakeFiles/nn_real3.dir/depend
+	$(MAKE) $(MAKESILENT) -f morf_ik/CMakeFiles/nn_real3.dir/build.make morf_ik/CMakeFiles/nn_real3.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/leonor/tese/IK_MORF/catkin_ws/build/CMakeFiles --progress-num=44,45 "Built target nn_real3"
+.PHONY : morf_ik/CMakeFiles/nn_real3.dir/all
+
+# Build rule for subdir invocation for target.
+morf_ik/CMakeFiles/nn_real3.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/leonor/tese/IK_MORF/catkin_ws/build/CMakeFiles 6
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 morf_ik/CMakeFiles/nn_real3.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/leonor/tese/IK_MORF/catkin_ws/build/CMakeFiles 0
+.PHONY : morf_ik/CMakeFiles/nn_real3.dir/rule
+
+# Convenience name for target.
+nn_real3: morf_ik/CMakeFiles/nn_real3.dir/rule
+.PHONY : nn_real3
+
+# clean rule for target.
+morf_ik/CMakeFiles/nn_real3.dir/clean:
+	$(MAKE) $(MAKESILENT) -f morf_ik/CMakeFiles/nn_real3.dir/build.make morf_ik/CMakeFiles/nn_real3.dir/clean
+.PHONY : morf_ik/CMakeFiles/nn_real3.dir/clean
 
 #=============================================================================
 # Target rules for target morf_ik/CMakeFiles/calib.dir
@@ -1325,7 +1412,7 @@ morf_ik/CMakeFiles/gen_data_real.dir/clean:
 morf_ik/CMakeFiles/save_gen_data_real.dir/all:
 	$(MAKE) $(MAKESILENT) -f morf_ik/CMakeFiles/save_gen_data_real.dir/build.make morf_ik/CMakeFiles/save_gen_data_real.dir/depend
 	$(MAKE) $(MAKESILENT) -f morf_ik/CMakeFiles/save_gen_data_real.dir/build.make morf_ik/CMakeFiles/save_gen_data_real.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/leonor/tese/IK_MORF/catkin_ws/build/CMakeFiles --progress-num=44,45,46,47 "Built target save_gen_data_real"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/leonor/tese/IK_MORF/catkin_ws/build/CMakeFiles --progress-num=50,51,52,53 "Built target save_gen_data_real"
 .PHONY : morf_ik/CMakeFiles/save_gen_data_real.dir/all
 
 # Build rule for subdir invocation for target.
@@ -1352,7 +1439,7 @@ morf_ik/CMakeFiles/process_real_data.dir/all: morf_ik/CMakeFiles/coords.dir/all
 morf_ik/CMakeFiles/process_real_data.dir/all: morf_ik/CMakeFiles/control.dir/all
 	$(MAKE) $(MAKESILENT) -f morf_ik/CMakeFiles/process_real_data.dir/build.make morf_ik/CMakeFiles/process_real_data.dir/depend
 	$(MAKE) $(MAKESILENT) -f morf_ik/CMakeFiles/process_real_data.dir/build.make morf_ik/CMakeFiles/process_real_data.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/leonor/tese/IK_MORF/catkin_ws/build/CMakeFiles --progress-num=42,43 "Built target process_real_data"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/leonor/tese/IK_MORF/catkin_ws/build/CMakeFiles --progress-num=48,49 "Built target process_real_data"
 .PHONY : morf_ik/CMakeFiles/process_real_data.dir/all
 
 # Build rule for subdir invocation for target.
