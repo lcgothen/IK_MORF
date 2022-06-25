@@ -1,2 +1,2 @@
 *.csv filter=lfs diff=lfs merge=lfs -text
-*.data filter=lfs diff=lfs merge=lfs -text
+trial_008_import.zip filter=lfs diff=lfs merge=lfs -text
