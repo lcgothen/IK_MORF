@@ -1,3 +1,26 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:112aa63c69808ad1b9556a098a56a44b64601aae6ef3286b048bfa54e3e75906
-size 742
+trial 0:	distance	0.0232802
+trial 1:	distance	0.0365193
+trial 2:	distance	0.022359
+trial 3:	distance	0.0232437
+trial 4:	distance	0.0248462
+trial 5:	distance	0.0249256
+trial 6:	distance	0.0344456
+trial 7:	distance	0.0355803
+trial 8:	duration 	120000061
+trial 9:	duration 	120000086
+trial 10:	distance	0.0374141
+trial 11:	distance	0.0207447
+trial 12:	distance	0.022102
+trial 13:	distance	0.03623
+trial 15:	distance	0.0366593
+trial 16:	distance	0.0332159
+trial 17:	distance	0.0352921
+trial 21:	duration 	120000073
+trial 22:	duration 	120000094
+trial 23:	distance	0.036466
+trial 24:	distance	0.0368108
+trial 25:	duration 	120000069
+trial 26:	distance	0.03672
+trial 27:	distance	0.0352643
+trial 28:	distance	0.0367545
+trial 29:	distance	0.0200565
