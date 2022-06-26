@@ -705,32 +705,6 @@ nn_real/fast:
 .PHONY : nn_real/fast
 
 #=============================================================================
-# Target rules for targets named nn_real2
-
-# Build rule for target.
-nn_real2: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 nn_real2
-.PHONY : nn_real2
-
-# fast build rule for target.
-nn_real2/fast:
-	$(MAKE) $(MAKESILENT) -f morf_ik/CMakeFiles/nn_real2.dir/build.make morf_ik/CMakeFiles/nn_real2.dir/build
-.PHONY : nn_real2/fast
-
-#=============================================================================
-# Target rules for targets named nn_real3
-
-# Build rule for target.
-nn_real3: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 nn_real3
-.PHONY : nn_real3
-
-# fast build rule for target.
-nn_real3/fast:
-	$(MAKE) $(MAKESILENT) -f morf_ik/CMakeFiles/nn_real3.dir/build.make morf_ik/CMakeFiles/nn_real3.dir/build
-.PHONY : nn_real3/fast
-
-#=============================================================================
 # Target rules for targets named calib
 
 # Build rule for target.
@@ -878,8 +852,6 @@ help:
 	@echo "... morf_controller_real"
 	@echo "... nn"
 	@echo "... nn_real"
-	@echo "... nn_real2"
-	@echo "... nn_real3"
 	@echo "... nn_sim"
 	@echo "... process_real_data"
 	@echo "... save_gen_data_real"

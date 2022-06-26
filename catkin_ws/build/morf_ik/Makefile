@@ -620,34 +620,6 @@ nn_real/fast:
 .PHONY : nn_real/fast
 
 # Convenience name for target.
-morf_ik/CMakeFiles/nn_real2.dir/rule:
-	cd /home/leonor/tese/IK_MORF/catkin_ws/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 morf_ik/CMakeFiles/nn_real2.dir/rule
-.PHONY : morf_ik/CMakeFiles/nn_real2.dir/rule
-
-# Convenience name for target.
-nn_real2: morf_ik/CMakeFiles/nn_real2.dir/rule
-.PHONY : nn_real2
-
-# fast build rule for target.
-nn_real2/fast:
-	cd /home/leonor/tese/IK_MORF/catkin_ws/build && $(MAKE) $(MAKESILENT) -f morf_ik/CMakeFiles/nn_real2.dir/build.make morf_ik/CMakeFiles/nn_real2.dir/build
-.PHONY : nn_real2/fast
-
-# Convenience name for target.
-morf_ik/CMakeFiles/nn_real3.dir/rule:
-	cd /home/leonor/tese/IK_MORF/catkin_ws/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 morf_ik/CMakeFiles/nn_real3.dir/rule
-.PHONY : morf_ik/CMakeFiles/nn_real3.dir/rule
-
-# Convenience name for target.
-nn_real3: morf_ik/CMakeFiles/nn_real3.dir/rule
-.PHONY : nn_real3
-
-# fast build rule for target.
-nn_real3/fast:
-	cd /home/leonor/tese/IK_MORF/catkin_ws/build && $(MAKE) $(MAKESILENT) -f morf_ik/CMakeFiles/nn_real3.dir/build.make morf_ik/CMakeFiles/nn_real3.dir/build
-.PHONY : nn_real3/fast
-
-# Convenience name for target.
 morf_ik/CMakeFiles/calib.dir/rule:
 	cd /home/leonor/tese/IK_MORF/catkin_ws/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 morf_ik/CMakeFiles/calib.dir/rule
 .PHONY : morf_ik/CMakeFiles/calib.dir/rule
@@ -1102,54 +1074,6 @@ src/nn_real.cpp.s:
 	cd /home/leonor/tese/IK_MORF/catkin_ws/build && $(MAKE) $(MAKESILENT) -f morf_ik/CMakeFiles/nn_real.dir/build.make morf_ik/CMakeFiles/nn_real.dir/src/nn_real.cpp.s
 .PHONY : src/nn_real.cpp.s
 
-src/nn_real2.o: src/nn_real2.cpp.o
-.PHONY : src/nn_real2.o
-
-# target to build an object file
-src/nn_real2.cpp.o:
-	cd /home/leonor/tese/IK_MORF/catkin_ws/build && $(MAKE) $(MAKESILENT) -f morf_ik/CMakeFiles/nn_real2.dir/build.make morf_ik/CMakeFiles/nn_real2.dir/src/nn_real2.cpp.o
-.PHONY : src/nn_real2.cpp.o
-
-src/nn_real2.i: src/nn_real2.cpp.i
-.PHONY : src/nn_real2.i
-
-# target to preprocess a source file
-src/nn_real2.cpp.i:
-	cd /home/leonor/tese/IK_MORF/catkin_ws/build && $(MAKE) $(MAKESILENT) -f morf_ik/CMakeFiles/nn_real2.dir/build.make morf_ik/CMakeFiles/nn_real2.dir/src/nn_real2.cpp.i
-.PHONY : src/nn_real2.cpp.i
-
-src/nn_real2.s: src/nn_real2.cpp.s
-.PHONY : src/nn_real2.s
-
-# target to generate assembly for a file
-src/nn_real2.cpp.s:
-	cd /home/leonor/tese/IK_MORF/catkin_ws/build && $(MAKE) $(MAKESILENT) -f morf_ik/CMakeFiles/nn_real2.dir/build.make morf_ik/CMakeFiles/nn_real2.dir/src/nn_real2.cpp.s
-.PHONY : src/nn_real2.cpp.s
-
-src/nn_real3.o: src/nn_real3.cpp.o
-.PHONY : src/nn_real3.o
-
-# target to build an object file
-src/nn_real3.cpp.o:
-	cd /home/leonor/tese/IK_MORF/catkin_ws/build && $(MAKE) $(MAKESILENT) -f morf_ik/CMakeFiles/nn_real3.dir/build.make morf_ik/CMakeFiles/nn_real3.dir/src/nn_real3.cpp.o
-.PHONY : src/nn_real3.cpp.o
-
-src/nn_real3.i: src/nn_real3.cpp.i
-.PHONY : src/nn_real3.i
-
-# target to preprocess a source file
-src/nn_real3.cpp.i:
-	cd /home/leonor/tese/IK_MORF/catkin_ws/build && $(MAKE) $(MAKESILENT) -f morf_ik/CMakeFiles/nn_real3.dir/build.make morf_ik/CMakeFiles/nn_real3.dir/src/nn_real3.cpp.i
-.PHONY : src/nn_real3.cpp.i
-
-src/nn_real3.s: src/nn_real3.cpp.s
-.PHONY : src/nn_real3.s
-
-# target to generate assembly for a file
-src/nn_real3.cpp.s:
-	cd /home/leonor/tese/IK_MORF/catkin_ws/build && $(MAKE) $(MAKESILENT) -f morf_ik/CMakeFiles/nn_real3.dir/build.make morf_ik/CMakeFiles/nn_real3.dir/src/nn_real3.cpp.s
-.PHONY : src/nn_real3.cpp.s
-
 src/nn_sim.o: src/nn_sim.cpp.o
 .PHONY : src/nn_sim.o
 
@@ -1318,8 +1242,6 @@ help:
 	@echo "... morf_controller_real"
 	@echo "... nn"
 	@echo "... nn_real"
-	@echo "... nn_real2"
-	@echo "... nn_real3"
 	@echo "... nn_sim"
 	@echo "... process_real_data"
 	@echo "... save_gen_data_real"
@@ -1366,12 +1288,6 @@ help:
 	@echo "... src/nn_real.o"
 	@echo "... src/nn_real.i"
 	@echo "... src/nn_real.s"
-	@echo "... src/nn_real2.o"
-	@echo "... src/nn_real2.i"
-	@echo "... src/nn_real2.s"
-	@echo "... src/nn_real3.o"
-	@echo "... src/nn_real3.i"
-	@echo "... src/nn_real3.s"
 	@echo "... src/nn_sim.o"
 	@echo "... src/nn_sim.i"
 	@echo "... src/nn_sim.s"
