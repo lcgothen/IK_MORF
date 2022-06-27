@@ -11,16 +11,14 @@ import pandas as pd
 filepath = "./devel/lib/morf_ik/results/"
 filename_eqs = filepath + "eqs/successes.data"
 names = ["IK\n equations", \
-        "ANN\n equations", \
-        "ANN\n simulation", \
-        "ANN\n real"]
-filename_nn = [filepath + "4div/batch_01_05_01_50000_02_09/results.data", \
-                filepath + "4div_babbling/batch_02_10_01_50000_02_09/results.data", filepath + "3div_real/batch_01_10_01_50000_02_09/results.data"]
+        "4 div.\n equations", \
+        "5 div.\n equations", \
+        "4 div.\n simulation", \
+        "5 div.\n simulation"]
+filename_nn = [filepath + "4div/batch_01_05_01_50000_02_09/results.data", filepath + "5div/batch_02_10_01_50000_02_09/results.data", \
+                filepath + "4div_babbling/batch_02_10_01_50000_02_09/results.data", filepath + "5div_babbling/batch_01_10_01_50000_02_09/results.data"]
 
 n = len(names)
-
-names2 = ["4 div.", \
-        "5 div."]
 
 reader = csv.reader(open(filename_eqs), delimiter="\t")
 data_eqs = list(reader)
@@ -70,7 +68,6 @@ for i in range(n-1):
 
     aux_dev = []
     aux_dur = []
-    aux_dist = []
 
 dev = []
 
@@ -79,26 +76,35 @@ for i in range(n-1):
     dist.append(statistics.mean(dist_nn[i]))
     dev.append(statistics.mean(dev_nn[i]))
 
+data = pd.DataFrame({'configuration' : configuration, 'duration' : duration, 'deviation' : deviation})
+
+print("Duration")
+print(stats.ttest_ind(data[data['configuration'] == '5 div.\n equations']['duration'], data[data['configuration'] == '4 div.\n equations']['duration'], equal_var=False, alternative='less')) 
+
+print("Deviation")
+print(stats.ttest_ind(data[data['configuration'] == '4 div.\n equations']['deviation'], data[data['configuration'] == '5 div.\n equations']['deviation'], equal_var=False, alternative='less')) 
+
+
 # size = (12,7)
 
 # plt.figure(figsize=size)
-plt.figure()
-ax = plt.axes()
-ax.tick_params(axis='both', which='major', labelsize=12)
-ax.tick_params(axis='both', which='minor', labelsize=12)
-# plt.title("Average Calculations Duration (ns)")
-plt.bar(names, dur, color=['mediumaquamarine', 'skyblue', 'deepskyblue', 'steelblue'])
-plt.savefig(filepath + "duration.png")
-plt.close()
+# plt.figure()
+# ax = plt.axes()
+# ax.tick_params(axis='both', which='major', labelsize=12)
+# ax.tick_params(axis='both', which='minor', labelsize=12)
+# # plt.title("Average Calculations Duration (ns)")
+# plt.bar(names, dur, color=['mediumaquamarine', 'skyblue', 'skyblue', 'deepskyblue', 'deepskyblue'])
+# plt.savefig(filepath + "duration.png")
+# plt.close()
 
-plt.figure()
-ax = plt.axes()
-ax.tick_params(axis='both', which='major', labelsize=12)
-ax.tick_params(axis='both', which='minor', labelsize=12)
-# plt.title("Average Distance to Button Centre (m)")
-plt.bar(names, dist, color=['mediumaquamarine', 'skyblue', 'deepskyblue', 'steelblue'])
-plt.savefig(filepath + "distance.png")
-plt.close()
+# plt.figure()
+# ax = plt.axes()
+# ax.tick_params(axis='both', which='major', labelsize=12)
+# ax.tick_params(axis='both', which='minor', labelsize=12)
+# # plt.title("Average Distance to Button Centre (m)")
+# plt.bar(names, dist, color=['mediumaquamarine', 'skyblue', 'skyblue', 'deepskyblue', 'deepskyblue'])
+# plt.savefig(filepath + "distance.png")
+# plt.close()
 
 # plt.figure()
 # ax = plt.axes()
@@ -109,21 +115,21 @@ plt.close()
 # plt.savefig(filepath + "deviation.png")
 # plt.close()
 
-# size = (5,5)
-# plt.figure(figsize=size)
+
+# plt.figure()
 # ax = plt.axes()
 # ax.tick_params(axis='both', which='major', labelsize=12)
 # ax.tick_params(axis='both', which='minor', labelsize=12)
 # # plt.title("Neural Networks Deviation from Equations (rad)")
-# plt.bar(names2, dev[0:2], color=['skyblue', 'deepskyblue'])
+# plt.bar(names[1:3], dev[0:2], color=['skyblue', 'deepskyblue'])
 # plt.savefig(filepath + "dev_nn_eqs.png")
 # plt.close()
 
-# plt.figure(figsize=size)
+# plt.figure()
 # ax = plt.axes()
 # ax.tick_params(axis='both', which='major', labelsize=12)
 # ax.tick_params(axis='both', which='minor', labelsize=12)
 # # plt.title("Neural Networks Deviation from Equations (rad)")
-# plt.bar(names2, dur[0:2], color=['skyblue', 'deepskyblue'])
+# plt.bar(names[1:3], dur[0:2], color=['skyblue', 'deepskyblue'])
 # plt.savefig(filepath + "dur_nn_eqs.png")
 # plt.close()

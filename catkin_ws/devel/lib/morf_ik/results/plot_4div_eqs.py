@@ -68,12 +68,10 @@ manova_result = MANOVA.from_formula('configuration ~ duration + deviation', data
 print("Duration")
 print(stats.ttest_ind(data[data['configuration'] == '1 layer, 5 neurons']['duration'], data[data['configuration'] == '1 layer, 10 neurons']['duration'], equal_var=False, alternative='less')) 
 print(stats.ttest_ind(data[data['configuration'] == '1 layer, 5 neurons']['duration'], data[data['configuration'] == '2 layers, 10 neurons']['duration'], equal_var=False)) 
-print(stats.ttest_ind(data[data['configuration'] == '1 layer, 10 neurons']['duration'], data[data['configuration'] == '2 layers, 10 neurons']['duration'], equal_var=False)) 
 
 print("Deviation")
-print(stats.ttest_ind(data[data['configuration'] == '1 layer, 5 neurons']['deviation'], data[data['configuration'] == '1 layer, 10 neurons']['deviation'], equal_var=False)) 
-print(stats.ttest_ind(data[data['configuration'] == '1 layer, 5 neurons']['deviation'], data[data['configuration'] == '2 layers, 10 neurons']['deviation'], equal_var=False)) 
-print(stats.ttest_ind(data[data['configuration'] == '1 layer, 10 neurons']['deviation'], data[data['configuration'] == '2 layers, 10 neurons']['deviation'], equal_var=False)) 
+print(stats.ttest_ind(data[data['configuration'] == '1 layer, 5 neurons']['deviation'], data[data['configuration'] == '1 layer, 10 neurons']['deviation'], equal_var=False, alternative='less')) 
+print(stats.ttest_ind(data[data['configuration'] == '1 layer, 5 neurons']['deviation'], data[data['configuration'] == '2 layers, 10 neurons']['deviation'], equal_var=False, alternative='less')) 
 
 
 y_labels = [1, 1, 2]
