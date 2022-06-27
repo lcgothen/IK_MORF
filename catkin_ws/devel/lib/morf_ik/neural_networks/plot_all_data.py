@@ -4,6 +4,8 @@ from mpl_toolkits import mplot3d
 import csv
 import os.path
 from os import path
+from matplotlib import cm
+import matplotlib.tri as mtri 
 
 
 filepath = "./devel/lib/morf_ik/neural_networks/data_4div_direct/"
@@ -13,6 +15,7 @@ div=4
 x = []
 y = []
 z = []
+c = []
 
 for j in range(div):
     for k in range(div):
@@ -30,6 +33,7 @@ for j in range(div):
                         x.append(float(row[0]))
                         y.append(float(row[1]))
                         z.append(float(row[2]))
+                        c.append(float(row[2])*1.5)
                         
                     i+=1
 
@@ -41,13 +45,12 @@ for j in range(div):
 #     y.append(float(row[1]))
 #     z.append(float(row[2]))
 
-# xx, yy = np.meshgrid(np.linspace(-0.001, 0.0002), np.linspace(-0.05, 0.25))
-# zz = xx*yy*0-0.05
 
 
 fig = plt.figure()
 ax = plt.axes(projection='3d')
-ax.scatter(x, y, z)
+# ax.scatter(x, y, z, c=c, vmin=-0.05, vmax=0.20, cmap=cm.coolwarm, s=0.1)
+plt.tricontourf(x, y, z, 20, vmin=0, vmax=0.15, cmap=cm.coolwarm)
 # ax.plot_surface(xx, yy, zz)
 ax.set_xlabel('x')
 ax.set_ylabel('y')

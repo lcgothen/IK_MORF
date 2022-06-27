@@ -4,6 +4,7 @@ from mpl_toolkits import mplot3d
 import csv
 import os.path
 from os import path
+from matplotlib import cm
 
 
 filepath = "./devel/lib/morf_ik/neural_networks/data_4div_direct/"
@@ -13,6 +14,7 @@ div=4
 x = []
 y = []
 z = []
+c = []
 
 x_aux = []
 y_aux = []
@@ -39,6 +41,7 @@ for j in range(div):
                         x.append(float(row[0]))
                         y.append(float(row[1]))
                         z.append(float(row[2]))
+                        c.append(float(row[2])*1.5)
                         
                     i+=1
 
@@ -112,22 +115,23 @@ for i in range(div+1):
 
 fig = plt.figure()
 ax = plt.axes(projection='3d')
-ax.scatter(x, y, z, alpha=0.01)
+# ax.scatter(x, y, z, alpha=0.01)
+plt.tricontourf(x, y, z, 20, vmin=0, vmax=0.15, cmap=cm.coolwarm)
+# ax.scatter(x, y, z, c=c, vmin = -0.05, vmax =0.15, cmap=cm.coolwarm, s=0.003)
 # ax.scatter(x_aux, y_aux, z_aux, color='green', alpha=0.01)
-# ax.plot_surface(xx, yy, zz)
 
 
 for i in range(div+1):
     for j in range(div+1):
-        ax.plot(x1[i][j], y1[i][j], z1[i], 'k', linewidth=0.8)
+        ax.plot(x1[i][j], y1[i][j], z1[i], 'k', linewidth=0.8,zorder=100)
 
 for i in range(div+1):
     for j in range(div+1):
-        ax.plot(x2[i], y2[i][j], z2[i][j], 'k', linewidth=0.8)
+        ax.plot(x2[i], y2[i][j], z2[i][j], 'k', linewidth=0.8,zorder=100)
 
 for i in range(div+1):
     for j in range(div+1):
-        ax.plot(x3[i][j], y3[i], z3[i][j], 'k', linewidth=0.8)
+        ax.plot(x3[i][j], y3[i], z3[i][j], 'k', linewidth=0.8,zorder=100)
 
 ax.set_xlabel('x')
 ax.set_ylabel('y')
