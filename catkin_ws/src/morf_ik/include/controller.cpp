@@ -387,6 +387,131 @@ void CPG::walk(images stereo)
     BR.th3 = offset3; 
 }
 
+void CPG::simple_cyclic()
+{
+    float W12 = 0.4; 
+    float W21 = -0.4; 
+    float W11 = 1.5; 
+    float W22 = 1.5;
+    float BiasH1 = 0.01;
+    float BiasH2 = 0.01;
+
+    float activityH1 = W11*outputH1 + W12*outputH2 + BiasH1;
+    float activityH2 = W22*outputH2 + W21*outputH1 + BiasH2;
+
+    outputH1 = tanh(activityH1);
+    outputH2 = tanh(activityH2);
+
+    oH1 = outputH1*k;
+    oH2 = outputH2*0.3;
+}
+
+void CPG::gait(int type)
+{
+    float offset2 = 1.5, offset3 = -2.25/3.5;
+
+    // joint limits from /gorobots/projects/C-CPGRBFN/CPGRBFN_BBO_v5/neural_controllers/morf/real/neutronController.cpp
+
+    if(type==1)
+    {
+        // front left
+        FL.th1 = jointLimiter(oH1, -17, 17);
+        FL.th2 = jointLimiter(-oH2+offset2, -5, 130);
+        FL.th3 = offset3;
+    
+        // middle left
+        ML.th1 = jointLimiter(-oH1, -17, 17);
+        ML.th2 = jointLimiter(oH2+offset2, -5, 130);
+        ML.th3 = offset3;
+
+        // back left
+        BL.th1 = jointLimiter(oH1, -17, 17);
+        BL.th2 = jointLimiter(-oH2+offset2, -5, 130);
+        BL.th3 = offset3;
+
+        // right side has the th1 angles inverted because of the orientation of the legs on the robot
+        // front right
+        FR.th1 = jointLimiter(oH1, -17, 17);
+        FR.th2 = jointLimiter(oH2+offset2, -5, 130);
+        FR.th3 = offset3;
+
+        // middle right
+        MR.th1 = jointLimiter(-oH1, -17, 17);
+        MR.th2 = jointLimiter(-oH2+offset2, -5, 130);
+        MR.th3 = offset3;
+
+        // back right
+        BR.th1 = jointLimiter(oH1, -17, 17);
+        BR.th2 = jointLimiter(oH2+offset2, -5, 130);
+        BR.th3 = offset3; 
+    }
+    else if(type==2)
+    {
+        // front left
+        FL.th1 = 0;
+        FL.th2 = jointLimiter(-oH2+offset2, -5, 130);
+        FL.th3 = jointLimiter(oH1+offset3, -80, 0);
+    
+        // middle left
+        ML.th1 = 0;
+        ML.th2 = jointLimiter(oH2+offset2, -5, 130);
+        ML.th3 = jointLimiter(oH1+offset3, -80, 0);
+
+        // back left
+        BL.th1 = 0;
+        BL.th2 = jointLimiter(-oH2+offset2, -5, 130);
+        BL.th3 = jointLimiter(oH1+offset3, -80, 0);
+
+        // front right
+        FR.th1 = 0;
+        FR.th2 = jointLimiter(oH2+offset2, -5, 130);
+        FR.th3 = jointLimiter(oH1+offset3, -80, 0);
+
+        // middle right
+        MR.th1 = 0;
+        MR.th2 = jointLimiter(-oH2+offset2, -5, 130);
+        MR.th3 = jointLimiter(oH1+offset3, -80, 0);
+
+        // back right
+        BR.th1 = 0;
+        BR.th2 = jointLimiter(oH2+offset2, -5, 130);
+        BR.th3 = jointLimiter(oH1+offset3, -80, 0); 
+    }
+    else if(type==3)
+    {
+        // front left
+        FL.th1 = jointLimiter(oH1, -17, 17);
+        FL.th2 = jointLimiter(-oH2+offset2, -5, 130);
+        FL.th3 = offset3;
+    
+        // middle left
+        ML.th1 = jointLimiter(-oH1, -17, 17);
+        ML.th2 = jointLimiter(oH2+offset2, -5, 130);
+        ML.th3 = offset3;
+
+        // back left
+        BL.th1 = jointLimiter(oH1, -17, 17);
+        BL.th2 = jointLimiter(-oH2+offset2, -5, 130);
+        BL.th3 = offset3;
+
+        // right side has the th1 angles inverted because of the orientation of the legs on the robot
+        // front right
+        FR.th1 = jointLimiter(-oH1, -17, 17);
+        FR.th2 = jointLimiter(oH2+offset2, -5, 130);
+        FR.th3 = offset3;
+
+        // middle right
+        MR.th1 = jointLimiter(oH1, -17, 17);
+        MR.th2 = jointLimiter(-oH2+offset2, -5, 130);
+        MR.th3 = offset3;
+
+        // back right
+        BR.th1 = jointLimiter(-oH1, -17, 17);
+        BR.th2 = jointLimiter(oH2+offset2, -5, 130);
+        BR.th3 = offset3; 
+    }
+}
+
 void images::imageLeftCallback(const sensor_msgs::ImageConstPtr& msg)
 {
     imageL = cv_bridge::toCvShare(msg, "bgr8")->image;

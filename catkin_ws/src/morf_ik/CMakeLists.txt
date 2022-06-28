@@ -226,9 +226,9 @@ include_directories(
 #     ${COPPELIASIM_ROOT_DIR}/programming/remoteApi/extApiPlatform.c)
 
 
-coppeliasim_add_executable(main 
+coppeliasim_add_executable(main_sim 
     SOURCES
-    src/main.cpp
+    src/main_sim.cpp
     ${COPPELIASIM_COMMON_DIR}/shared_memory.c
     ${COPPELIASIM_ROOT_DIR}/programming/remoteApi/extApi.c
     ${COPPELIASIM_ROOT_DIR}/programming/remoteApi/extApiPlatform.c)
@@ -240,28 +240,30 @@ coppeliasim_add_executable(gen_data_sim
     ${COPPELIASIM_COMMON_DIR}/shared_memory.c
     ${COPPELIASIM_ROOT_DIR}/programming/remoteApi/extApi.c
     ${COPPELIASIM_ROOT_DIR}/programming/remoteApi/extApiPlatform.c)
-add_executable(gen_data_ik src/gen_data_ik.cpp)
-add_executable(sort_data src/sort_data.cpp)
-add_executable(nn src/nn.cpp)
+add_executable(gen_data_eqs src/gen_data_eqs.cpp)
+add_executable(sort_data_sim src/sort_data_sim.cpp)
+add_executable(sort_data_real src/sort_data_real.cpp)
+add_executable(nn_eqs src/nn_eqs.cpp)
 add_executable(nn_sim src/nn_sim.cpp)
 add_executable(nn_real src/nn_real.cpp)
 add_executable(calib src/calibration.cpp)
-add_executable(morf_controller_real src/test_real.cpp include/coordinates_real.cpp include/controller_real.cpp)
+add_executable(morf_controller_real src/main_real.cpp include/coordinates_real.cpp include/controller_real.cpp)
 add_executable(gen_data_real src/gen_data_real.cpp include/coordinates_real.cpp include/controller_real.cpp)
 add_executable(save_gen_data_real src/save_gen_data_real.cpp include/coordinates_real.cpp include/controller_real.cpp)
 add_executable(process_real_data src/process_real_data.cpp)
+add_executable(gaits src/gaits.cpp)
 
 
-target_compile_definitions(main PRIVATE NON_MATLAB_PARSING)
-target_compile_definitions(main PRIVATE MAX_EXT_API_CONNECTIONS=255)
-target_include_directories(main PRIVATE ${COPPELIASIM_INCLUDE_DIR})
-target_include_directories(main PRIVATE ${COPPELIASIM_ROOT_DIR}/programming/remoteApi)
-target_compile_definitions(main PRIVATE NON_MATLAB_PARSING)
-target_compile_definitions(main PRIVATE MAX_EXT_API_CONNECTIONS=255)
-target_include_directories(main PRIVATE ${COPPELIASIM_INCLUDE_DIR})
-target_include_directories(main PRIVATE ../remoteApi)
-target_link_libraries(main Boost::system)
-target_link_libraries(main Threads::Threads rt)
+target_compile_definitions(main_sim PRIVATE NON_MATLAB_PARSING)
+target_compile_definitions(main_sim PRIVATE MAX_EXT_API_CONNECTIONS=255)
+target_include_directories(main_sim PRIVATE ${COPPELIASIM_INCLUDE_DIR})
+target_include_directories(main_sim PRIVATE ${COPPELIASIM_ROOT_DIR}/programming/remoteApi)
+target_compile_definitions(main_sim PRIVATE NON_MATLAB_PARSING)
+target_compile_definitions(main_sim PRIVATE MAX_EXT_API_CONNECTIONS=255)
+target_include_directories(main_sim PRIVATE ${COPPELIASIM_INCLUDE_DIR})
+target_include_directories(main_sim PRIVATE ../remoteApi)
+target_link_libraries(main_sim Boost::system)
+target_link_libraries(main_sim Threads::Threads rt)
 
 target_compile_definitions(gen_data_sim PRIVATE NON_MATLAB_PARSING)
 target_compile_definitions(gen_data_sim PRIVATE MAX_EXT_API_CONNECTIONS=255)
@@ -282,7 +284,7 @@ target_link_libraries(control
                       ${catkin_LIBRARIES}
                       ${OpenCV_LIBS}
                       fann)
-target_link_libraries(main 
+target_link_libraries(main_sim 
                       ${catkin_LIBRARIES}
                       ${OpenCV_LIBS}
                       coords
@@ -296,7 +298,7 @@ target_link_libraries(gen_data_real
                       ${catkin_LIBRARIES}
                       ${OpenCV_LIBS}
                       fann)
-target_link_libraries(gen_data_ik 
+target_link_libraries(gen_data_eqs 
                       ${catkin_LIBRARIES}
                       ${OpenCV_LIBS}
                       fann)
@@ -305,12 +307,17 @@ target_link_libraries(gen_data_sim
                       ${OpenCV_LIBS}
                       coords
                       control)
-target_link_libraries(sort_data 
+target_link_libraries(sort_data_sim 
                       ${catkin_LIBRARIES}
                       ${OpenCV_LIBS}
                       coords
                       control)
-target_link_libraries(nn 
+target_link_libraries(sort_data_real
+                      ${catkin_LIBRARIES}
+                      ${OpenCV_LIBS}
+                      coords
+                      control)
+target_link_libraries(nn_eqs 
                       ${catkin_LIBRARIES}
                       ${OpenCV_LIBS}
                       coords
@@ -342,3 +349,9 @@ target_link_libraries(process_real_data
                       ${OpenCV_LIBS}
                       coords
                       control)
+target_link_libraries(gaits 
+                      ${catkin_LIBRARIES}
+                      ${OpenCV_LIBS}
+                      coords
+                      control
+                      fann)

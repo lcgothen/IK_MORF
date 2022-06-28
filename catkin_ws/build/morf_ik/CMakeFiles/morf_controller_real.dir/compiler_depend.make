@@ -1394,7 +1394,7 @@ morf_ik/CMakeFiles/morf_controller_real.dir/include/coordinates_real.cpp.o: /hom
   /usr/include/c++/7/tr1/riemann_zeta.tcc \
   /home/leonor/tese/IK_MORF/catkin_ws/src/morf_ik/include/coordinates_real.hpp
 
-morf_ik/CMakeFiles/morf_controller_real.dir/src/test_real.cpp.o: /home/leonor/tese/IK_MORF/catkin_ws/src/morf_ik/src/test_real.cpp \
+morf_ik/CMakeFiles/morf_controller_real.dir/src/main_real.cpp.o: /home/leonor/tese/IK_MORF/catkin_ws/src/morf_ik/src/main_real.cpp \
   /usr/include/stdc-predef.h \
   /usr/include/c++/7/cstdio \
   /usr/include/x86_64-linux-gnu/c++/7/bits/c++config.h \
@@ -2796,8 +2796,6 @@ morf_ik/CMakeFiles/morf_controller_real.dir/src/test_real.cpp.o: /home/leonor/te
 
 /usr/include/boost/type_traits/is_unsigned.hpp:
 
-/home/leonor/tese/IK_MORF/catkin_ws/src/morf_ik/src/test_real.cpp:
-
 /usr/include/boost/type_traits/is_signed.hpp:
 
 /usr/include/boost/type_traits/conditional.hpp:
@@ -3291,6 +3289,8 @@ morf_ik/CMakeFiles/morf_controller_real.dir/src/test_real.cpp.o: /home/leonor/te
 /usr/include/boost/lexical_cast/detail/lcast_unsigned_converters.hpp:
 
 /usr/include/boost/predef/architecture/mips.h:
+
+/home/leonor/tese/IK_MORF/catkin_ws/src/morf_ik/src/main_real.cpp:
 
 /usr/include/boost/predef/architecture/ia64.h:
 

@@ -5,8 +5,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/morf_controller_real.dir/include/controller_real.cpp.o.d"
   "CMakeFiles/morf_controller_real.dir/include/coordinates_real.cpp.o"
   "CMakeFiles/morf_controller_real.dir/include/coordinates_real.cpp.o.d"
-  "CMakeFiles/morf_controller_real.dir/src/test_real.cpp.o"
-  "CMakeFiles/morf_controller_real.dir/src/test_real.cpp.o.d"
+  "CMakeFiles/morf_controller_real.dir/src/main_real.cpp.o"
+  "CMakeFiles/morf_controller_real.dir/src/main_real.cpp.o.d"
 )
 
 # Per-language clean rules from dependency scanning.

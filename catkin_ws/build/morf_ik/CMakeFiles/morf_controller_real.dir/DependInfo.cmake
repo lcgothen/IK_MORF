@@ -10,7 +10,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/home/leonor/tese/IK_MORF/catkin_ws/src/morf_ik/include/controller_real.cpp" "morf_ik/CMakeFiles/morf_controller_real.dir/include/controller_real.cpp.o" "gcc" "morf_ik/CMakeFiles/morf_controller_real.dir/include/controller_real.cpp.o.d"
   "/home/leonor/tese/IK_MORF/catkin_ws/src/morf_ik/include/coordinates_real.cpp" "morf_ik/CMakeFiles/morf_controller_real.dir/include/coordinates_real.cpp.o" "gcc" "morf_ik/CMakeFiles/morf_controller_real.dir/include/coordinates_real.cpp.o.d"
-  "/home/leonor/tese/IK_MORF/catkin_ws/src/morf_ik/src/test_real.cpp" "morf_ik/CMakeFiles/morf_controller_real.dir/src/test_real.cpp.o" "gcc" "morf_ik/CMakeFiles/morf_controller_real.dir/src/test_real.cpp.o.d"
+  "/home/leonor/tese/IK_MORF/catkin_ws/src/morf_ik/src/main_real.cpp" "morf_ik/CMakeFiles/morf_controller_real.dir/src/main_real.cpp.o" "gcc" "morf_ik/CMakeFiles/morf_controller_real.dir/src/main_real.cpp.o.d"
   )
 
 # Targets to which this target links.

@@ -69,19 +69,19 @@ include morf_ik/CMakeFiles/morf_controller_real.dir/progress.make
 # Include the compile flags for this target's objects.
 include morf_ik/CMakeFiles/morf_controller_real.dir/flags.make
 
-morf_ik/CMakeFiles/morf_controller_real.dir/src/test_real.cpp.o: morf_ik/CMakeFiles/morf_controller_real.dir/flags.make
-morf_ik/CMakeFiles/morf_controller_real.dir/src/test_real.cpp.o: /home/leonor/tese/IK_MORF/catkin_ws/src/morf_ik/src/test_real.cpp
-morf_ik/CMakeFiles/morf_controller_real.dir/src/test_real.cpp.o: morf_ik/CMakeFiles/morf_controller_real.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/leonor/tese/IK_MORF/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object morf_ik/CMakeFiles/morf_controller_real.dir/src/test_real.cpp.o"
-	cd /home/leonor/tese/IK_MORF/catkin_ws/build/morf_ik && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT morf_ik/CMakeFiles/morf_controller_real.dir/src/test_real.cpp.o -MF CMakeFiles/morf_controller_real.dir/src/test_real.cpp.o.d -o CMakeFiles/morf_controller_real.dir/src/test_real.cpp.o -c /home/leonor/tese/IK_MORF/catkin_ws/src/morf_ik/src/test_real.cpp
+morf_ik/CMakeFiles/morf_controller_real.dir/src/main_real.cpp.o: morf_ik/CMakeFiles/morf_controller_real.dir/flags.make
+morf_ik/CMakeFiles/morf_controller_real.dir/src/main_real.cpp.o: /home/leonor/tese/IK_MORF/catkin_ws/src/morf_ik/src/main_real.cpp
+morf_ik/CMakeFiles/morf_controller_real.dir/src/main_real.cpp.o: morf_ik/CMakeFiles/morf_controller_real.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/leonor/tese/IK_MORF/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object morf_ik/CMakeFiles/morf_controller_real.dir/src/main_real.cpp.o"
+	cd /home/leonor/tese/IK_MORF/catkin_ws/build/morf_ik && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT morf_ik/CMakeFiles/morf_controller_real.dir/src/main_real.cpp.o -MF CMakeFiles/morf_controller_real.dir/src/main_real.cpp.o.d -o CMakeFiles/morf_controller_real.dir/src/main_real.cpp.o -c /home/leonor/tese/IK_MORF/catkin_ws/src/morf_ik/src/main_real.cpp
 
-morf_ik/CMakeFiles/morf_controller_real.dir/src/test_real.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/morf_controller_real.dir/src/test_real.cpp.i"
-	cd /home/leonor/tese/IK_MORF/catkin_ws/build/morf_ik && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/leonor/tese/IK_MORF/catkin_ws/src/morf_ik/src/test_real.cpp > CMakeFiles/morf_controller_real.dir/src/test_real.cpp.i
+morf_ik/CMakeFiles/morf_controller_real.dir/src/main_real.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/morf_controller_real.dir/src/main_real.cpp.i"
+	cd /home/leonor/tese/IK_MORF/catkin_ws/build/morf_ik && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/leonor/tese/IK_MORF/catkin_ws/src/morf_ik/src/main_real.cpp > CMakeFiles/morf_controller_real.dir/src/main_real.cpp.i
 
-morf_ik/CMakeFiles/morf_controller_real.dir/src/test_real.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/morf_controller_real.dir/src/test_real.cpp.s"
-	cd /home/leonor/tese/IK_MORF/catkin_ws/build/morf_ik && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/leonor/tese/IK_MORF/catkin_ws/src/morf_ik/src/test_real.cpp -o CMakeFiles/morf_controller_real.dir/src/test_real.cpp.s
+morf_ik/CMakeFiles/morf_controller_real.dir/src/main_real.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/morf_controller_real.dir/src/main_real.cpp.s"
+	cd /home/leonor/tese/IK_MORF/catkin_ws/build/morf_ik && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/leonor/tese/IK_MORF/catkin_ws/src/morf_ik/src/main_real.cpp -o CMakeFiles/morf_controller_real.dir/src/main_real.cpp.s
 
 morf_ik/CMakeFiles/morf_controller_real.dir/include/coordinates_real.cpp.o: morf_ik/CMakeFiles/morf_controller_real.dir/flags.make
 morf_ik/CMakeFiles/morf_controller_real.dir/include/coordinates_real.cpp.o: /home/leonor/tese/IK_MORF/catkin_ws/src/morf_ik/include/coordinates_real.cpp
@@ -113,14 +113,14 @@ morf_ik/CMakeFiles/morf_controller_real.dir/include/controller_real.cpp.s: cmake
 
 # Object files for target morf_controller_real
 morf_controller_real_OBJECTS = \
-"CMakeFiles/morf_controller_real.dir/src/test_real.cpp.o" \
+"CMakeFiles/morf_controller_real.dir/src/main_real.cpp.o" \
 "CMakeFiles/morf_controller_real.dir/include/coordinates_real.cpp.o" \
 "CMakeFiles/morf_controller_real.dir/include/controller_real.cpp.o"
 
 # External object files for target morf_controller_real
 morf_controller_real_EXTERNAL_OBJECTS =
 
-/home/leonor/tese/IK_MORF/catkin_ws/devel/lib/morf_ik/morf_controller_real: morf_ik/CMakeFiles/morf_controller_real.dir/src/test_real.cpp.o
+/home/leonor/tese/IK_MORF/catkin_ws/devel/lib/morf_ik/morf_controller_real: morf_ik/CMakeFiles/morf_controller_real.dir/src/main_real.cpp.o
 /home/leonor/tese/IK_MORF/catkin_ws/devel/lib/morf_ik/morf_controller_real: morf_ik/CMakeFiles/morf_controller_real.dir/include/coordinates_real.cpp.o
 /home/leonor/tese/IK_MORF/catkin_ws/devel/lib/morf_ik/morf_controller_real: morf_ik/CMakeFiles/morf_controller_real.dir/include/controller_real.cpp.o
 /home/leonor/tese/IK_MORF/catkin_ws/devel/lib/morf_ik/morf_controller_real: morf_ik/CMakeFiles/morf_controller_real.dir/build.make

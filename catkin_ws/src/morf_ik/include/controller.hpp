@@ -69,6 +69,8 @@ namespace controller
     
         void cyclic(images *stereo);
         void walk(images stereo);
+        void simple_cyclic();
+        void gait(int type);
     };
 
     float jointLimiter(float jointValue, float jointMin, float jointMax);

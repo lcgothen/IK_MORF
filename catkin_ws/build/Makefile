@@ -614,17 +614,17 @@ geometry_msgs_generate_messages_py/fast:
 .PHONY : geometry_msgs_generate_messages_py/fast
 
 #=============================================================================
-# Target rules for targets named main
+# Target rules for targets named main_sim
 
 # Build rule for target.
-main: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 main
-.PHONY : main
+main_sim: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 main_sim
+.PHONY : main_sim
 
 # fast build rule for target.
-main/fast:
-	$(MAKE) $(MAKESILENT) -f morf_ik/CMakeFiles/main.dir/build.make morf_ik/CMakeFiles/main.dir/build
-.PHONY : main/fast
+main_sim/fast:
+	$(MAKE) $(MAKESILENT) -f morf_ik/CMakeFiles/main_sim.dir/build.make morf_ik/CMakeFiles/main_sim.dir/build
+.PHONY : main_sim/fast
 
 #=============================================================================
 # Target rules for targets named gen_data_sim
@@ -640,43 +640,56 @@ gen_data_sim/fast:
 .PHONY : gen_data_sim/fast
 
 #=============================================================================
-# Target rules for targets named gen_data_ik
+# Target rules for targets named gen_data_eqs
 
 # Build rule for target.
-gen_data_ik: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 gen_data_ik
-.PHONY : gen_data_ik
+gen_data_eqs: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 gen_data_eqs
+.PHONY : gen_data_eqs
 
 # fast build rule for target.
-gen_data_ik/fast:
-	$(MAKE) $(MAKESILENT) -f morf_ik/CMakeFiles/gen_data_ik.dir/build.make morf_ik/CMakeFiles/gen_data_ik.dir/build
-.PHONY : gen_data_ik/fast
+gen_data_eqs/fast:
+	$(MAKE) $(MAKESILENT) -f morf_ik/CMakeFiles/gen_data_eqs.dir/build.make morf_ik/CMakeFiles/gen_data_eqs.dir/build
+.PHONY : gen_data_eqs/fast
 
 #=============================================================================
-# Target rules for targets named sort_data
+# Target rules for targets named sort_data_sim
 
 # Build rule for target.
-sort_data: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 sort_data
-.PHONY : sort_data
+sort_data_sim: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 sort_data_sim
+.PHONY : sort_data_sim
 
 # fast build rule for target.
-sort_data/fast:
-	$(MAKE) $(MAKESILENT) -f morf_ik/CMakeFiles/sort_data.dir/build.make morf_ik/CMakeFiles/sort_data.dir/build
-.PHONY : sort_data/fast
+sort_data_sim/fast:
+	$(MAKE) $(MAKESILENT) -f morf_ik/CMakeFiles/sort_data_sim.dir/build.make morf_ik/CMakeFiles/sort_data_sim.dir/build
+.PHONY : sort_data_sim/fast
 
 #=============================================================================
-# Target rules for targets named nn
+# Target rules for targets named sort_data_real
 
 # Build rule for target.
-nn: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 nn
-.PHONY : nn
+sort_data_real: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 sort_data_real
+.PHONY : sort_data_real
 
 # fast build rule for target.
-nn/fast:
-	$(MAKE) $(MAKESILENT) -f morf_ik/CMakeFiles/nn.dir/build.make morf_ik/CMakeFiles/nn.dir/build
-.PHONY : nn/fast
+sort_data_real/fast:
+	$(MAKE) $(MAKESILENT) -f morf_ik/CMakeFiles/sort_data_real.dir/build.make morf_ik/CMakeFiles/sort_data_real.dir/build
+.PHONY : sort_data_real/fast
+
+#=============================================================================
+# Target rules for targets named nn_eqs
+
+# Build rule for target.
+nn_eqs: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 nn_eqs
+.PHONY : nn_eqs
+
+# fast build rule for target.
+nn_eqs/fast:
+	$(MAKE) $(MAKESILENT) -f morf_ik/CMakeFiles/nn_eqs.dir/build.make morf_ik/CMakeFiles/nn_eqs.dir/build
+.PHONY : nn_eqs/fast
 
 #=============================================================================
 # Target rules for targets named nn_sim
@@ -770,6 +783,19 @@ process_real_data/fast:
 .PHONY : process_real_data/fast
 
 #=============================================================================
+# Target rules for targets named gaits
+
+# Build rule for target.
+gaits: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 gaits
+.PHONY : gaits
+
+# fast build rule for target.
+gaits/fast:
+	$(MAKE) $(MAKESILENT) -f morf_ik/CMakeFiles/gaits.dir/build.make morf_ik/CMakeFiles/gaits.dir/build
+.PHONY : gaits/fast
+
+#=============================================================================
 # Target rules for targets named coords
 
 # Build rule for target.
@@ -841,21 +867,23 @@ help:
 	@echo "... calib"
 	@echo "... control"
 	@echo "... coords"
-	@echo "... gen_data_ik"
+	@echo "... gaits"
+	@echo "... gen_data_eqs"
 	@echo "... gen_data_real"
 	@echo "... gen_data_sim"
 	@echo "... gmock"
 	@echo "... gmock_main"
 	@echo "... gtest"
 	@echo "... gtest_main"
-	@echo "... main"
+	@echo "... main_sim"
 	@echo "... morf_controller_real"
-	@echo "... nn"
+	@echo "... nn_eqs"
 	@echo "... nn_real"
 	@echo "... nn_sim"
 	@echo "... process_real_data"
 	@echo "... save_gen_data_real"
-	@echo "... sort_data"
+	@echo "... sort_data_real"
+	@echo "... sort_data_sim"
 .PHONY : help
 
 

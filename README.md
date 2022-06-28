@@ -30,7 +30,7 @@ This code is dependent on:
 - Start a ROS core with the command `roscore`
 - Open CoppeliaSim
 - Open the simulation scene (File > Open scene... > MORF.ttt)
-- execute `./main <TYPE> <N_TRIALS>` in the terminal
+- execute `./main_sim <TYPE> <N_TRIALS>` in the terminal
     - TYPE: 0 is using the equations and 1 is using the neural networks
     - N_TRIALS: number of trials to be executed
 
@@ -50,14 +50,14 @@ This code is dependent on:
 ## Data generation for neural networks
 
 ### Inverse kinematics equations
-- Execute `./gen_data_ik`
+- Execute `./gen_data_eqs`
 
 ### Simulation
 - Start a ROS core with the command `roscore`
 - Open CoppeliaSim
 - Open the simulation scene (File > Open scene... > MORF_gen_data.ttt)
 - Execute `./gen_data_sim`
-- When that is done, execute `./sort_data`
+- When that is done, execute `./sort_data_sim`
 
 **Note:** go to line 100 of the file **sort_data.cpp** (/IK_MORF/catkin_ws/src/morf_ik/src/sort_data.cpp) to change the number of divisions of the workspace (variable named **div**). Do `catkin_make` in the catkin_ws folder in the terminal to update the executable.
 
@@ -70,11 +70,14 @@ This code is dependent on:
 - Start recording in the tracking software
 - Execute `./save_gen_data_real` in one terminal
 - Execute `./gen_data_real` in the other terminal
+- When that is done, execute `scp morf-one@192.168.0.1: ~/workspace/gorobots-mthor/projects/morf/real/catkin_ws/src/morf_controller/bin/real_data/output.data /<path>/IK_MORF/catkin_ws/devel/lib/morf_ik`
+- Execute `./process_real_data`
+- Execute `./sort_data_real`
 
 ## Neural networks training
 
 ### Data generated with inverse kinematics equations
-- Execute `./nn`
+- Execute `./nn_eqs`
 
 **Note:** go to the file **nn.cpp** (/IK_MORF/catkin_ws/src/morf_ik/src/nn.cpp) to change the number of divisions of the workspace (variable named **div**) and the training parameters. Do `catkin_make` in the catkin_ws folder in the terminal to update the executable.
 
@@ -82,3 +85,8 @@ This code is dependent on:
 - Execute `./nn_sim`
 
 **Note:** go to the file **nn_sim.cpp** (/IK_MORF/catkin_ws/src/morf_ik/src/nn_sim.cpp) to change the number of divisions of the workspace (variable named **div**) and the training parameters. Do `catkin_make` in the catkin_ws folder in the terminal to update the executable.
+
+### Data generated with simulation
+- Execute `./nn_real`
+
+**Note:** go to the file **nn_real.cpp** (/IK_MORF/catkin_ws/src/morf_ik/src/nn_sim.cpp) to change the number of divisions of the workspace (variable named **div**) and the training parameters. Do `catkin_make` in the catkin_ws folder in the terminal to update the executable.
