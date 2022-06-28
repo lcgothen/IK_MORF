@@ -61,12 +61,15 @@ This code is dependent on:
 
 **Note:** go to line 100 of the file **sort_data.cpp** (/IK_MORF/catkin_ws/src/morf_ik/src/sort_data.cpp) to change the number of divisions of the workspace (variable named **div**). Do `catkin_make` in the catkin_ws folder in the terminal to update the executable.
 
-<!-- ### Real robot
+### Real robot
 - Connect to morf's network
 - Transfer the code by executing `ansible-playbook -i inventory morf_transfer_genData.yml`
 - If using the neural networks, execute also `ansible-playbook -i inventory morf_transfer_nn.yml`
 - SSH into MORF and execute the command `cd /home/morf-one/workspace/gorobots-mthor/projects/morf/real/catkin_ws/src/morf_controller/bin`
-- Execute -->
+- Open another terminal and repeat the last step
+- Start recording in the tracking software
+- Execute `./save_gen_data_real` in one terminal
+- Execute `./gen_data_real` in the other terminal
 
 ## Neural networks training
 
