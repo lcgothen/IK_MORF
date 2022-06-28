@@ -116,22 +116,31 @@ for i in range(div+1):
 fig = plt.figure()
 ax = plt.axes(projection='3d')
 # ax.scatter(x, y, z, alpha=0.01)
-plt.tricontourf(x, y, z, 20, vmin=0, vmax=0.15, cmap=cm.coolwarm)
-# ax.scatter(x, y, z, c=c, vmin = -0.05, vmax =0.15, cmap=cm.coolwarm, s=0.003)
+# plt.tricontourf(x, y, z, 20, vmin=0, vmax=0.15, cmap=cm.coolwarm)
+ax.scatter(x, y, z, c=c, vmin = -0.05, vmax =0.15, cmap=cm.coolwarm, s=0.003)
 # ax.scatter(x_aux, y_aux, z_aux, color='green', alpha=0.01)
 
 
 for i in range(div+1):
     for j in range(div+1):
-        ax.plot(x1[i][j], y1[i][j], z1[i], 'k', linewidth=0.8,zorder=100)
+        if i==div or j==0:
+            ax.plot(x1[i][j], y1[i][j], z1[i], 'k', linewidth=0.8, zorder=100)
+        else:
+            ax.plot(x1[i][j], y1[i][j], z1[i], 'k', linewidth=0.8, zorder=100, linestyle=':')
 
 for i in range(div+1):
     for j in range(div+1):
-        ax.plot(x2[i], y2[i][j], z2[i][j], 'k', linewidth=0.8,zorder=100)
+        if i==div or j==0:
+            ax.plot(x2[i], y2[i][j], z2[i][j], 'k', linewidth=0.8, zorder=100)
+        else:
+            ax.plot(x2[i], y2[i][j], z2[i][j], 'k', linewidth=0.8, zorder=100, linestyle=':')
 
 for i in range(div+1):
     for j in range(div+1):
-        ax.plot(x3[i][j], y3[i], z3[i][j], 'k', linewidth=0.8,zorder=100)
+        if i==div or j==div:
+            ax.plot(x3[i][j], y3[i], z3[i][j], 'k', linewidth=0.8, zorder=100)
+        else:
+            ax.plot(x3[i][j], y3[i], z3[i][j], 'k', linewidth=0.8, zorder=100, linestyle=':')
 
 ax.set_xlabel('x')
 ax.set_ylabel('y')

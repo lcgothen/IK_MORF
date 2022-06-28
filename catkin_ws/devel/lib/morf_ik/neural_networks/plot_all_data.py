@@ -49,8 +49,8 @@ for j in range(div):
 
 fig = plt.figure()
 ax = plt.axes(projection='3d')
-# ax.scatter(x, y, z, c=c, vmin=-0.05, vmax=0.20, cmap=cm.coolwarm, s=0.1)
-plt.tricontourf(x, y, z, 20, vmin=0, vmax=0.15, cmap=cm.coolwarm)
+ax.scatter(x, y, z, c=c, vmin=-0.05, vmax=0.20, cmap=cm.coolwarm, s=0.1)
+# plt.tricontourf(x, y, z, 20, vmin=0, vmax=0.15, cmap=cm.coolwarm)
 # ax.plot_surface(xx, yy, zz)
 ax.set_xlabel('x')
 ax.set_ylabel('y')
