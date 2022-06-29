@@ -72,18 +72,6 @@ int main(int argc, char **argv)
 
                 while(state!=2)
                 {
-                    // std::cout << "FL: " << FL.th1 << " , " << FL.th2 << " , " << FL.th3 << std::endl;
-                    // std::cout << "morf.FL: " << morf.FL.th1 << " , " << morf.FL.th2 << " , " << morf.FL.th3 << std::endl;
-                    // std::cout << "i, j, k: "  << i << " , " << j << " , " << k << std::endl;
-
-                    // std::cout << "FL.th2: "  << FL.th2 << std::endl;
-                    // std::cout << "FL.th3: "  << FL.th3 << std::endl;
-
-                    // if(std::cin.get() == 'q')
-                    //     exit(EXIT_FAILURE);
-
-                    // std::cout << "state: "  << state << std::endl;
-
                     if(state==0)
                     {
                         IK_order.data.clear();

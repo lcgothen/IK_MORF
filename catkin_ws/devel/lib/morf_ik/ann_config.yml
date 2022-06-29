@@ -1,6 +1,6 @@
 %YAML:1.0
 ---
-# ann_path: ./neural_networks/data_4div_direct/batch_01_05_01_50000_02_09/
+# ann_path: ./neural_networks/data_4div_eqs/batch_01_05_01_50000_02_09/
 # div: 4
 # divZ: 4
 # divZ_start: 0
@@ -12,7 +12,7 @@
 # z_start: -0.0433698
 # reverse: 1
 
-# ann_path: ./neural_networks/data_4div_babbling/batch_02_10_01_50000_02_09/
+# ann_path: ./neural_networks/data_4div_sim/batch_02_10_01_50000_02_09/
 # div: 4
 # divZ: 5
 # divZ_start: 3

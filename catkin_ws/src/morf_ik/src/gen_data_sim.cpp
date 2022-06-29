@@ -59,8 +59,8 @@ int main(int argc, char **argv)
 
 
     std::ofstream allInputFile, allOutputFile;
-    std::string allInputFile_name = std::string("./babbling_data/input.data");
-    std::string allOutputFile_name = std::string("./babbling_data/output.data");
+    std::string allInputFile_name = std::string("./sim_data/input.data");
+    std::string allOutputFile_name = std::string("./sim_data/output.data");
 
     std::default_random_engine rand_gen(seed);
     std::uniform_real_distribution<float> th1_interval(-110*M_PI/180, -20*M_PI/180);
@@ -134,9 +134,6 @@ int main(int argc, char **argv)
                     {
                         controller_pub.publish(IK_order);
 
-                        // input.push_back(foot2leg);
-                        // output.push_back(morf.FL);
-
                         allInputFile.open(allInputFile_name,  std::ios_base::app | std::ios_base::in);
                         allOutputFile.open(allOutputFile_name,  std::ios_base::app | std::ios_base::in);
 
@@ -146,21 +143,6 @@ int main(int argc, char **argv)
                         allInputFile.close();
                         allOutputFile.close();
                     }
-                    // else if(state==2)
-                    // {
-                    //     // input.push_back(foot2leg);
-                    //     // output.push_back(morf.FL); 
-
-
-                    //     allInputFile.open(allInputFile_name,  std::ios_base::app | std::ios_base::in);
-                    //     allOutputFile.open(allOutputFile_name,  std::ios_base::app | std::ios_base::in);
-
-                    //     allInputFile << foot2leg.x << " " << foot2leg.y << " " << foot2leg.z << "\n";
-                    //     allOutputFile << morf.FL.th1 << " " << morf.FL.th2<< " " << morf.FL.th3 << "\n";
-
-                    //     allInputFile.close();
-                    //     allOutputFile.close();
-                    // }
 
                     if(state == 0)
                         state = 1;
@@ -193,97 +175,6 @@ int main(int argc, char **argv)
     }
 
     simxFinish(clientID);
-
-
-
-
-    // for(int i=0; i<100000; i++)
-    // {
-    //     state = 0;
-
-    //     while(state!=2)
-    //     {
-    //         std::cout << "foot2leg: " << foot2leg.x << " " << foot2leg.y << " " << foot2leg.z << std::endl;
-    //         std::cout << "morf.FL: " << morf.FL.th1 << " , " << morf.FL.th2 << " , " << morf.FL.th3 << std::endl;
-    //         std::cout << "data count: " << i << std::endl;
-
-    //         if(state==0)
-    //         {
-    //             FL.th1 = th1_interval(rand_gen);
-    //             FL.th2 = th2_interval(rand_gen);
-    //             FL.th3 = th3_interval(rand_gen);
-
-    //             IK_order.data.clear();
-
-    //             // left leg angles
-    //             IK_order.data.push_back(FL.th1);
-    //             IK_order.data.push_back(FL.th2);
-    //             IK_order.data.push_back(FL.th3);
-    //             IK_order.data.push_back(default_.th1);
-    //             IK_order.data.push_back(default_.th2);
-    //             IK_order.data.push_back(default_.th3);
-    //             IK_order.data.push_back(default_.th1);
-    //             IK_order.data.push_back(default_.th2);
-    //             IK_order.data.push_back(default_.th3);
-
-    //             // right leg angles
-    //             IK_order.data.push_back(default_.th1);
-    //             IK_order.data.push_back(default_.th2);
-    //             IK_order.data.push_back(default_.th3);
-    //             IK_order.data.push_back(default_.th1);
-    //             IK_order.data.push_back(default_.th2);
-    //             IK_order.data.push_back(default_.th3);
-    //             IK_order.data.push_back(default_.th1);
-    //             IK_order.data.push_back(default_.th2);
-    //             IK_order.data.push_back(default_.th3);
-
-    //             controller_pub.publish(IK_order);
-    //         }
-    //         if(state==1)
-    //         {
-    //             controller_pub.publish(IK_order);
-
-    //             // input.push_back(foot2leg);
-    //             // output.push_back(morf.FL);
-
-
-    //             allInputFile.open(allInputFile_name,  std::ios_base::app | std::ios_base::in);
-    //             allOutputFile.open(allOutputFile_name,  std::ios_base::app | std::ios_base::in);
-
-    //             allInputFile << foot2leg.x << " " << foot2leg.y << " " << foot2leg.z << "\n";
-    //             allOutputFile << morf.FL.th1 << " " << morf.FL.th2<< " " << morf.FL.th3 << "\n";
-
-    //             allInputFile.close();
-    //             allOutputFile.close();
-    //         }
-    //         else if(state==2)
-    //         {
-    //             // input.push_back(foot2leg);
-    //             // output.push_back(morf.FL); 
-
-
-    //             allInputFile.open(allInputFile_name,  std::ios_base::app | std::ios_base::in);
-    //             allOutputFile.open(allOutputFile_name,  std::ios_base::app | std::ios_base::in);
-
-    //             allInputFile << foot2leg.x << " " << foot2leg.y << " " << foot2leg.z << "\n";
-    //             allOutputFile << morf.FL.th1 << " " << morf.FL.th2<< " " << morf.FL.th3 << "\n";
-
-    //             allInputFile.close();
-    //             allOutputFile.close();
-    //         }
-
-    //         if(state == 0)
-    //             state = 1;
-    //         else if(state == 1 && morf.FL.th1<FL.th1+margin && morf.FL.th1>FL.th1-margin && 
-    //                     morf.FL.th2<FL.th2+margin && morf.FL.th2>FL.th2-margin &&
-    //                     morf.FL.th3<FL.th3+margin && morf.FL.th3>FL.th3-margin)
-    //             state = 2;
-
-    //         ros::spinOnce();
-    //         loop_rate.sleep();
-    //     }
-
-    // }
 
     return 0;
 }

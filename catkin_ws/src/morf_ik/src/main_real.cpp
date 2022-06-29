@@ -66,51 +66,8 @@ int main(int argc, char **argv)
 
     point posFL;
 
-    // target coords for stabilizing with 4 legs
-    // point posFL, stableFR, stableML, stableMR, stableBL, stableBR;
     angles FR, ML, MR, BL, BR;
     angles auxFL, auxML, auxBL, auxFR, auxMR, auxBR;
-    
-    // posFL.x = -7.5776e-02;
-    // posFL.y = +1.3090e-01;
-    // posFL.z = -2.9912e-01;
-
-    // stableML.x = -7.5776e-02;
-    // stableML.y = +1.7632e-01;
-    // stableML.z = -1.6912e-01;
-
-    // stableBL.x = -7.5776e-02;
-    // stableBL.y = 0.17579;
-    // stableBL.z = 0.085760;
-
-    // stableFR.x = -7.5776e-02;
-    // stableFR.y = -1.3090e-01;
-    // stableFR.z = -2.9912e-01;
-
-    // stableMR.x = -7.5776e-02;
-    // stableMR.y = -1.7632e-01;
-    // stableMR.z = -1.6912e-01;
-
-    // stableBR.x = -7.5776e-02;
-    // stableBR.y = -0.17579;
-    // stableBR.z = 0.085760;
-
-
-    // // convert to leg frames
-    // posFL = posFL.morf2FL(); 
-    // stableML = stableML.morf2ML(); 
-    // stableBL = stableBL.morf2BL(); 
-    // stableFR = stableFR.morf2FR(); 
-    // stableMR = stableMR.morf2MR(); 
-    // stableBR = stableBR.morf2BR(); 
-
-    // // calculate IK parameters
-    // FL.calcIK(posFL);
-    // ML.calcIK(stableML);
-    // BL.calcIK(stableBL);
-    // FR.calcIK(stableFR);
-    // MR.calcIK(stableMR);
-    // BR.calcIK(stableBR);
 
 
     angles default_;
@@ -176,8 +133,6 @@ int main(int argc, char **argv)
     bool stable=false, inPos=false, done=false;
     int state=0, stable_state=0;
     point target;
-
-    // std::string ann_path = "./neural_networks/";
 
     ros::init(argc, argv, "IK_controller");
     ros::NodeHandle n;
@@ -250,7 +205,6 @@ int main(int argc, char **argv)
 
         if(!stereo.imageL.empty() && !stereo.imageR.empty() && !stable)
         {
-            // stereo.match();
             stereo.blob();
         }
 
@@ -267,8 +221,6 @@ int main(int argc, char **argv)
             state=4;
         else if(state==4 && morf.sensFL<-0.3)
             state=5;
-        // else if(trial_dur.count()>120000000)//(clock()-init>120*CLOCKS_PER_SEC)
-        //     state=6;
 
         if(state==0)
         {
@@ -543,23 +495,8 @@ int main(int argc, char **argv)
                                     51, MR.th1, 52, MR.th2, 53, MR.th3,
                                     61, BR.th1, 62, BR.th2, 63, BR.th3};
 
-            //std::cout << stereo.target.x << " , " << stereo.target.y <<  " , " << stereo.target.z << std::endl;
             controller_pub.publish(IK_order);
         }
-        // else if(state==5)
-        // {
-        //     distance = sqrt(pow(morf.foot2button.x,2)+pow(morf.foot2button.y,2));
-
-        //     if(distance > but_rad)
-        //         distFail=true;
-
-        //     break;
-        // }
-        // else if(state==6)
-        // {
-        //     durFail=true;
-        //     break;
-        // }
 
         std::cout << state << " , " << stereo.target.z << std::endl;
 

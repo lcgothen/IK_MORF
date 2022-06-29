@@ -7,7 +7,7 @@ from os import path
 from matplotlib import cm
 
 
-filepath = "./devel/lib/morf_ik/neural_networks/data_4div_direct/"
+filepath = "./devel/lib/morf_ik/neural_networks/data_4div_eqs/"
 
 div=4
 

@@ -100,7 +100,6 @@ int main(int argc, char **argv)
         robot morf;
         images stereo;
 
-        // std::string ann_path = "./neural_networks/data_4div_babbling/batch_01_05_01_50000_03_09/";
 
         ros::init(argc, argv, "IK_controller");
         ros::NodeHandle n;
@@ -132,67 +131,9 @@ int main(int argc, char **argv)
 
         simxStartSimulation(clientID, simx_opmode_oneshot);
 
-        // target coords for stabilizing with 4 legs
         point posFL;
-        // point posFL, stableFR, stableML, stableMR, stableBL, stableBR;
         angles FR, ML, MR, BL, BR;
         angles auxFL, auxML, auxBL, auxFR, auxMR, auxBR;
-        
-        // posFL.x = 0;//-7.5776e-02;
-        // posFL.y = +1.3090e-01;
-        // posFL.z = -2.9912e-01;
-
-        // stableML.x = -7.5776e-02;
-        // stableML.y = +1.7632e-01;
-        // stableML.z = -1.6912e-01;
-
-        // stableBL.x = -7.5776e-02;
-        // stableBL.y = 0.17579;
-        // stableBL.z = 0.085760;
-
-        // posFR.x = 0;//-7.5776e-02;
-        // posFR.y = -1.3090e-01;
-        // posFR.z = -2.9912e-01;
-
-        // stableMR.x = -7.5776e-02;
-        // stableMR.y = -1.7632e-01;
-        // stableMR.z = -1.6912e-01;
-
-        // stableBR.x = -7.5776e-02;
-        // stableBR.y = -0.17579;
-        // stableBR.z = 0.085760;
-
-
-        // // calculate FL angles according to specified algorithm
-        // posFL = posFL.morf2FL(); 
-        // if(type==0)
-        // {
-        //     init_calc = Clock::now();
-        //     FL.calcIK(posFL);
-        //     duration += std::chrono::duration_cast<microseconds>(Clock::now() - init_calc);
-        //     num_calcs++;
-        // }
-        // else if(type==1)
-        // {
-        //     init_calc = Clock::now();
-        //     FL.calcNN(posFL);
-        //     duration += std::chrono::duration_cast<microseconds>(Clock::now() - init_calc);
-        //     num_calcs++;
-        // }
-
-        // // convert to leg frames for the rest of the legs
-        // stableML = stableML.morf2ML(); 
-        // stableBL = stableBL.morf2BL(); 
-        // posFR = posFR.morf2FR(); 
-        // stableMR = stableMR.morf2MR(); 
-        // stableBR = stableBR.morf2BR(); 
-
-        // // calculate IK parameters for the rest of the legs
-        // ML.calcIK(stableML);
-        // BL.calcIK(stableBL);
-        // FR.calcIK(posFR);
-        // MR.calcIK(stableMR);
-        // BR.calcIK(stableBR);
 
         angles default_;
 
@@ -260,32 +201,18 @@ int main(int argc, char **argv)
         int state=0, stable_state=0;
         float margin = 0.001;
         point target;
-
-        //int nearZ=0;
-
-        // -110 < th1 < -20
-        // jointValues.at(CF0)=jointLimiter(jointValues.at(CF0), -5, 130);
-        // jointValues.at(FT0)=jointLimiter(jointValues.at(FT0), -80, 0);
     
         while(ros::ok() && simxGetConnectionId(clientID)!=-1)
         {
             if(!stereo.imageL.empty() && !stereo.imageR.empty() && !stable)
             {
                 stereo.match();
-                //stereo.blob();
             }
 
-            //ROS_INFO("target: %f, %f, %f\n actual: %f, %f, %f", ML.th1, ML.th2, ML.th3, morf.ML.th1, morf.ML.th2, morf.ML.th3);
             IK_order.data.clear();
 
-            // if(stereo.target.z >= 0.15)
-            //     nearZ=0;
-            // else
-            //     nearZ++;
 
-            // std::cout << state << std::endl;
-
-            trial_dur = std::chrono::duration_cast<microseconds>(Clock::now() - init); //difftime(time(NULL), init);
+            trial_dur = std::chrono::duration_cast<microseconds>(Clock::now() - init); 
 
             if(state==0 && !stereo.imageL.empty() && !stereo.imageR.empty())
                 state=1;
@@ -299,7 +226,7 @@ int main(int argc, char **argv)
                 state=4;
             else if(state==4 && morf.sensFL>0.1)
                 state=5;
-            else if(trial_dur.count()>120000000)//(clock()-init>120*CLOCKS_PER_SEC)
+            else if(trial_dur.count()>120000000)
                 state=6;
 
             if(state==0)
@@ -756,7 +683,6 @@ int main(int argc, char **argv)
                     FL.calcNN(posFL);
                     duration += std::chrono::duration_cast<microseconds>(Clock::now() - init_calc);
                     num_calcs++;
-                    // std::cout << FL.cubeX << " , " << FL.cubeY << " , " << FL.cubeZ << std::endl;
                 }
 
                 FL.th1=jointLimiter(FL.th1, -110, -20);
@@ -807,13 +733,11 @@ int main(int argc, char **argv)
                     duration += std::chrono::duration_cast<microseconds>(Clock::now() - init_calc);
                     num_calcs++;
                     auxFL.calcIK(posFL);
-                    // std::cout << FL.cubeX << " , " << FL.cubeY << " , " << FL.cubeZ << std::endl;
                 }
 
                 FL.th1=jointLimiter(FL.th1, -110, -20);
                 FL.th2=jointLimiter(FL.th2, -5, 130);
                 FL.th3=jointLimiter(FL.th3, -180, 0);
-                //ROS_INFO("%f, %f, %f", FL.th1, FL.th2, FL.th3);
 
                 // left leg angles
                 IK_order.data.push_back(FL.th1);
@@ -838,7 +762,6 @@ int main(int argc, char **argv)
                 IK_order.data.push_back(BR.th2);
                 IK_order.data.push_back(BR.th3);
 
-                //std::cout << stereo.target.x << " , " << stereo.target.y <<  " , " << stereo.target.z << std::endl;
                 controller_pub.publish(IK_order);
             }
             else if(state==5)
@@ -861,8 +784,6 @@ int main(int argc, char **argv)
             loop_rate.sleep();
         }
 
-        // std::string imgName = results_path+"trial"+std::to_string(trial)+std::string(".png");
-        // imwrite(imgName, stereo.genImg);
         
         simxStopSimulation(clientID, simx_opmode_oneshot);
         sleep(1);
@@ -875,7 +796,6 @@ int main(int argc, char **argv)
 
             if(type==1)
             {
-                // resFile << "\t" << abs(auxFL.th1-FL.th1)/abs(FL.th1)*100 << "\t" << abs(auxFL.th2-FL.th2)/abs(FL.th2)*100 << "\t" << abs(auxFL.th3-FL.th3)/abs(FL.th3)*100;
                 resFile << "\t" << abs(auxFL.th1-FL.th1) << "\t" << abs(auxFL.th2-FL.th2) << "\t" << abs(auxFL.th3-FL.th3);
             }
             
@@ -902,7 +822,6 @@ int main(int argc, char **argv)
 
             if(type==1)
             {
-                // resFile << "\t" << abs(auxFL.th1-FL.th1)/abs(FL.th1)*100 << "\t" << abs(auxFL.th2-FL.th2)/abs(FL.th2)*100 << "\t" << abs(auxFL.th3-FL.th3)/abs(FL.th3)*100;
                 resFile << "\t" << abs(auxFL.th1-FL.th1) << "\t" << abs(auxFL.th2-FL.th2) << "\t" << abs(auxFL.th3-FL.th3);
             }
             

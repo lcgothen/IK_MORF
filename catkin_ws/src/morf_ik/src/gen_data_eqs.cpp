@@ -37,9 +37,6 @@ std::vector<float> calcIK_unsafe(point target) // calculate angles with IK equat
     yc1 = -sin(aux_th1)*target.x+cos(aux_th1)*target.y-L1;
     zc1 = target.z+L0;
 
-    // th2 = acos((pow(L3,2)-pow(yc1,2)-pow(zc1,2)-pow(L2,2))/(-2*L2*sqrt(pow(yc1,2)+pow(zc1,2))))+atan2(zc1,yc1)+offset2;
-    // th3 = acos((pow(yc1,2)+pow(zc1,2)-pow(L2,2)-pow(L3,2))/(2*L2*L3))+offset3; 
-
     aux_th3 = acos((pow(yc1,2)+pow(zc1,2)-pow(L2,2)-pow(L3,2))/(2*L2*L3));
     aux_th2 = atan2(zc1,yc1)+atan2(L3*sin(aux_th3),L2+L3*cos(aux_th3))+offset2;
     aux_th3 += offset3;
@@ -58,22 +55,6 @@ int main(int argc, char **argv)
     std::random_device rand_dev;
     unsigned int seed = rand_dev();
 
-    // -7.4826e-02 <= x <= 0.11527
-    // +6.2794e-02 <= y <= +3.2290e-01
-    // -3.8406e-01 <= z <= -1.6912e-01
-
-    // x_interval = 0.19010
-    // y_interval = 0.26011
-    // z_interval = 0.21494
-
-    // float x_length = -0.25494;//0.23010;
-    // float y_length = 0.30011;//0.30011;
-    // float z_length = 0.2301;//0.25494;
-
-    // float x_start = 0.225164; //0.205164;//-5.4826e-02;
-    // float y_start = -0.057090; //-0.01509;//+8.2794e-02;
-    // float z_start = -0.0433698; //-0.0433698;//-3.6406e-01;
-
     float x_length = 0.26494;
     float y_length = 0.25011;
     float z_length = 0.2301;
@@ -82,31 +63,6 @@ int main(int argc, char **argv)
     float y_start = -0.078090;
     float z_start = -0.0433698;
 
-
-    // float x_length = 0.19010;
-    // float y_length = 0.26011;
-    // float z_length = 0.21494;
-
-    // float x_start = -7.4826e-02;
-    // float y_start = +6.2794e-02;
-    // float z_start = -3.8406e-01;
-
-    // point aux, start, finish;
-    // aux.x = x_start;
-    // aux.y = y_start;
-    // aux.z = z_start;
-
-    // start = aux.morf2FL();
-
-    // aux.x = x_start+x_length;
-    // aux.y = y_start+y_length;
-    // aux.z = z_start+z_length;
-
-    // finish = aux.morf2FL();
-
-    // std::cout << start.x << " , " << start.y << " , " << start.z << std::endl;
-    // std::cout << finish.x-start.x << " , " << finish.y-start.y << " , " << finish.z-start.z<< std::endl;
-
     int div=1;
 
     float x_step = x_length/div;
@@ -114,22 +70,16 @@ int main(int argc, char **argv)
     float z_step = z_length/div;
 
     std::default_random_engine rand_gen(seed);
-    // std::uniform_real_distribution<float> x_interval(-7.4826e-02,0.11527);
-    // std::uniform_real_distribution<float> y_interval(+6.2794e-02,+3.2290e-01);
-    // std::uniform_real_distribution<float> z_interval(-3.8406e-01,-1.6912e-01);
-    // std::uniform_real_distribution<float> x_interval(-7.4826e-02, -0.036806);
-    // std::uniform_real_distribution<float> y_interval(+6.2794e-02, 0.11482);
-    // std::uniform_real_distribution<float> z_interval(-3.8406e-01, -0.34107);
 
     // create train data
     for(int j=0; j<div; j++)
     {
         std::uniform_real_distribution<float> x_interval(x_start, x_start+x_step);
-        y_start = -0.057090; //-0.01509; //+6.2794e-02;
+        y_start = -0.057090;
         for(int k=0; k<div; k++)
         {
             std::uniform_real_distribution<float> y_interval(y_start, y_start+y_step);
-            z_start = -0.0433698; //-3.8406e-01;
+            z_start = -0.0433698; 
             for(int l=0; l<div; l++)
             {
                 std::uniform_real_distribution<float> z_interval(z_start, z_start+z_step);
@@ -148,7 +98,7 @@ int main(int argc, char **argv)
                     //point in;
                     angles out;
                     std::vector<float> th;
-                    //in = aux_in.morf2FL();
+                    
                     th = calcIK_unsafe(in);
                     out.th1=th[0];
                     out.th2=th[1];
@@ -157,11 +107,9 @@ int main(int argc, char **argv)
                     if(!isnan(out.th1) && !isnan(out.th2) && !isnan(out.th3))
                     {
                         count++;
-                        // std::cout << count << ": " << out.th1 << "," << out.th2 << "," << out.th3 << std::endl;
+                        
                         input.push_back(in);
-
                         output.push_back(out);
-                        //std::cout << count << ": " << output[i].th1 << "," << output[i].th2 << "," << output[i].th3 << std::endl;
                     }
                 }
                 

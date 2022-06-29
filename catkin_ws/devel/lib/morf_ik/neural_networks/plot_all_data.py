@@ -8,7 +8,7 @@ from matplotlib import cm
 import matplotlib.tri as mtri 
 
 
-filepath = "./devel/lib/morf_ik/neural_networks/data_4div_direct/"
+filepath = "./devel/lib/morf_ik/neural_networks/data_4div_eqs/"
 
 div=4
 
