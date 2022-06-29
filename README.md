@@ -1,6 +1,6 @@
 # IK_MORF: Inverse kinematic control of MORF
 
-The file **dissertation.pdf** is the Master's dissertation associated with this project.
+The file **dissertation.pdf** is the Master's dissertation associated with this project. 
 
 This project contains the tools to perform inverse kinematic control on MORF, either with equations or with neural networks. This includes:
 - control code with inverse kinematic equations or with neural networks
